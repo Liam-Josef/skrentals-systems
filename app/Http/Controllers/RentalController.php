@@ -10,6 +10,7 @@ use App\Models\Rental;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\RentalHistory;
+use App\Models\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
@@ -21,7 +22,8 @@ class RentalController extends Controller
         $rentals = Rental::all();
 
         return view('admin.rentals.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals
         ]);
     }
@@ -29,7 +31,8 @@ class RentalController extends Controller
     public function show(Rental $rental) {
         $maintenances = Maintenance::where('service_type', 'COC')->get();
         return view('admin.rentals.show', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rental' => $rental,
             'maintenances' => $maintenances,
             'users' => User::all(),
@@ -41,7 +44,8 @@ class RentalController extends Controller
         $rentals = Rental::all();
         $today = Carbon::now('PST')->toDateString();
         return view('admin.rentals.rentals-today', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals,
             'today' => $today
         ]);
@@ -62,7 +66,8 @@ class RentalController extends Controller
 
         $rentals = Rental::orderBy('updated_at', 'desc')->get();
         return view('admin.rentals.rental-history', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals
         ]);
     }

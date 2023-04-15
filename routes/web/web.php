@@ -49,8 +49,13 @@ Route::middleware('auth')->group(function() {
 
 Route::middleware(['auth','role:admin'])->group(function() {
 
-    Route::get('/admin/index', [AdminsController::class, 'index'])->name('admin.index');
     Route::get('/admin', [AdminsController::class, 'master'])->name('admin.master');
+
+    Route::get('/admin/index', [AdminsController::class, 'index'])->name('admin.index');
+
+    Route::get('/admin/dev/app-info', [App\Http\Controllers\AdminsController::class, 'siteInfo'])->name('admin.dev.siteInfo');
+
+    Route::patch('/admin/dev/app-info/{website}/update', [App\Http\Controllers\WebsiteController::class, 'update'])->name('admin.dev.siteInfo.update');
 
     Route::get('admin/users/index', [UserController::class, 'index'])->name('users.index');
 

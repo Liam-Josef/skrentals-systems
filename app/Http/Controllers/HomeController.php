@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\Post;
 use App\Models\Rental;
+use App\Models\Website;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -29,9 +30,10 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::latest()->get();
-        $applications = Application::where('id', '=', '1')->get();
+        $applications = Website::where('id', '=', '1')->get();
 
         return view('home.index', [
+            'websites' => Website::where('id', '=', '1')->get(),
             'posts'=>$posts,
             'applications' => $applications
             ]);
@@ -41,7 +43,8 @@ class HomeController extends Controller
         $posts = Post::latest()->get();
         return view('home.book-now', [
             'posts'=>$posts,
-            'applications' => Application::where('id', '=', '1')->get()
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 
@@ -49,14 +52,16 @@ class HomeController extends Controller
         $posts = Post::latest()->get();
         return view('home.our-fleet', [
             'posts'=>$posts,
-            'applications' => Application::where('id', '=', '1')->get()
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 
     public function about_us() {
         $posts = Post::latest()->get();
         return view('home.about-us', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'posts' => $posts
         ]);
     }
@@ -65,7 +70,8 @@ class HomeController extends Controller
         $posts = Post::latest()->get();
         return view('home.contact', [
             'posts'=>$posts,
-            'applications' => Application::where('id', '=', '1')->get()
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 
