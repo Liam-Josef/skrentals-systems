@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Post;
+use App\Models\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -16,7 +17,8 @@ class PostController extends Controller
         $posts = Post::latest()->get();
 
         return view('admin.posts.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'posts' => $posts
         ]);
 
@@ -24,7 +26,8 @@ class PostController extends Controller
 
     public function show(Post $post) {
         return view('blog-post', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'post' => $post,
             'posts' => Post::latest()->take(10)->get()
         ]);

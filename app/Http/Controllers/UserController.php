@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Rental;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Website;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,7 +17,8 @@ class UserController extends Controller
         $users = User::all();
 
         return view('admin.users.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'users'=>$users,
             'roles'=>Role::all()
         ]);
@@ -24,7 +26,8 @@ class UserController extends Controller
 
     public function create() {
         return view('admin.users.create', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 // TODO - Update generic profile image
@@ -68,7 +71,8 @@ class UserController extends Controller
         $rentalCocCleared = Rental::where('cleared_by', '=', $user->id)->where('status', '=', 'COC')->get()->count();
         $rentalClearCoc = Rental::where('cleared_by', '=', $user->id)->where('status', '=', 'COC')->get()->count();
         return view('admin.users.profile', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'user'=>$user,
             'users'=>$users,
             'rentals' => $rentals,
@@ -90,7 +94,8 @@ class UserController extends Controller
         $rentalCoc = Rental::where('launched_by', '=', $user->id)->where('status', '=', 'COC')->get()->count();
         $rentalClearCoc = Rental::where('cleared_by', '=', $user->id)->where('status', '=', 'COC')->get()->count();
         return view('team.profile', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'user'=>$user,
             'users'=>$users,
             'rentals' => $rentals,
@@ -104,7 +109,8 @@ class UserController extends Controller
 
     public function profileUpdate(User $user) {
         return view('admin.users.profile-update', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'user'=>$user,
             'roles'=>Role::all()
         ]);

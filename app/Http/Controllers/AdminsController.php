@@ -7,6 +7,7 @@ use App\Models\Maintenance;
 use App\Models\Rental;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Website;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,8 @@ class AdminsController extends Controller
         $activeService = Maintenance::where('is_active', '=', '1')->get()->count();
         $activeRentals = Rental::where('activity_date', 'like', '%'.$today.'%')->get()->count();
         return view('admin.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+            'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'vehicleSeaDoo' => $vehicleSeaDoo,
             'vehiclePontoon' => $vehiclePontoon,
             'vehicleScarab' => $vehicleScarab,
@@ -81,6 +83,13 @@ class AdminsController extends Controller
             'activeRentals' => $activeRentals
         ]);
 
+    }
+
+    public function siteInfo() {
+        $websites = Website::where('id', '=', '1')->get();
+        return view('admin.dev.site-info', [
+            'websites' => $websites
+        ]);
     }
 
 

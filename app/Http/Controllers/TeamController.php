@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Rental;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Website;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -36,7 +37,7 @@ class TeamController extends Controller
         $today = Carbon::now('PST')->toDateString();
         $maintenances = Maintenance::orderByRaw("FIELD(status , 'New', 'In Service', 'Invoice Submitted', 'Completed')")->orderBy('status', 'desc')->get();
 
-        $applications = Application::where('id', '=', '1')->get();
+        $applications = Website::where('id', '=', '1')->get();
         // TODO - Query to move rentals to history after day has passed
 //        Rental::query()
 //            ->where('updated_at','<', now()->subDays(1))
@@ -76,6 +77,7 @@ class TeamController extends Controller
 
         return view('team.index', [
             'users' => User::where('is_active', '=', '1')->where('is_rg', '=', '0')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'userCount' => User::where('is_active', '=', '1')->where('is_rg', '=', '0')->get()->count(),
             'posts'=>$posts,
             'applications' => $applications,

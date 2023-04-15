@@ -7,6 +7,7 @@ use App\Models\Maintenance;
 use App\Models\Rental;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Website;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class MaintenanceController extends Controller
         $vehiclePontoon = Vehicle::where('vehicle_type', '=', 'Pontoon')->get();
         $vehicleScarab = Vehicle::where('vehicle_type', '=', 'Scarab')->get();
         return view('admin.maintenance.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'users' => User::all(),
             'vehicles' => Vehicle::all(),
             'createdCount' => $createdCount,
@@ -60,7 +62,8 @@ class MaintenanceController extends Controller
         $vehicleRentals = $vehicle->rentals()->get()->count();
         $maintenances = Maintenance::all();
         return view('admin.maintenance.maintenance-chart', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'users' => User::all(),
             'vehicles' => $vehicles,
             'vehicleSeaDoo' => $vehicleSeaDoo,
@@ -86,7 +89,8 @@ class MaintenanceController extends Controller
         $completedCount = Maintenance::where('status', '=', 'Completed')->get()->count();
         $dateNow =Carbon::now('PST')->addHours(1);
         return view('admin.maintenance.service', data: [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'users' => User::all(),
             'vehicles' => Vehicle::all(),
             'createdCount' => $createdCount,
@@ -102,7 +106,8 @@ class MaintenanceController extends Controller
     public function show(Maintenance $maintenance) {
         $rentals = Rental::all();
         return view('admin.maintenance.profile', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'maintenance' => $maintenance,
             'rentals' => $rentals
         ]);
@@ -110,14 +115,16 @@ class MaintenanceController extends Controller
 
     public function profileAdmin(Maintenance $maintenance) {
         return view('admin.maintenance.profile', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'maintenance' => $maintenance
         ]);
     }
 
     public function hours() {
         return view('admin.maintenance.hour-counts', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get()
         ]);
     }
 
@@ -181,7 +188,8 @@ class MaintenanceController extends Controller
         $rentals = Rental::where('status', 'COC')->orderBy('updated_at', 'desc')->get();
         $maintenances = Maintenance::orderByRaw("FIELD(status , 'New', 'In Service', 'Invoice Submitted', 'Completed')")->orderBy('status', 'desc')->get();
         return view('service.index', data: [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'maintenances' => $maintenances,
             'vehicles' => Vehicle::all(),
             'dateNow' => Carbon::now('PST')->addHours(1),
