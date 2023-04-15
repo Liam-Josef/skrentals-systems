@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-secondary fixed-top team-header">
     <div class="container-fluid">
         <div class="team-header">
-            <a class="navbar-brand" href="{{route('home.index')}}">
+            <a class="navbar-brand" href="{{route('team.index')}}">
                 <img src="@yield('logo-horizontal-2')" alt="SK Logo Light" />
             </a>
         </div>
