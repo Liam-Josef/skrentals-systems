@@ -21,7 +21,7 @@
                     </li>
                 @endif
                 @if(auth()->user()->userHasRole('Dock'))
-                    <li class="nav-item dropdown no-arrow mt-1">
+                    <li class="nav-item smaller dropdown no-arrow mt-1">
                         <a class="nav-link dropdown-toggle" href="#" id="operationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Operations
                         </a>
