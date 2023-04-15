@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminsController;
-use App\Http\Controllers\COCController;
+use App\Http\Controllers\CocController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DockController;
 use App\Http\Controllers\MaintenanceController;
