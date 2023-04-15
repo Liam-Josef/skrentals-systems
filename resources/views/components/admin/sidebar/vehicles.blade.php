@@ -5,7 +5,7 @@
 
 <!-- Nav Item - Utilities Collapse Menu -->
 <li class="nav-item {{ Request::is('admin/maintenance*') ? 'active' : '' }}">
-    <a class="nav-link {{ Request::is('admin/index*', ['admin/roles*', 'admin/rentals*', 'admin/users*', 'admin/posts*', 'admin/coc*', 'admin/customers*', 'admin/training*', 'admin/vehicles*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseMaintenance" aria-expanded="true" aria-controls="collapseMaintenance">
+    <a class="nav-link {{ Request::is('admin/index*', ['admin/roles*', 'admin/rentals*', 'admin/users*', 'admin/posts*', 'admin/coc*', 'admin/customers*', 'admin/training*', 'admin/dev*', 'admin/vehicles*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseMaintenance" aria-expanded="true" aria-controls="collapseMaintenance">
         <i class="fas fa-fw fa-wrench"></i>
         <span class="hidden-xs-contents">Maintenance</span>
         <span class="visible-xs">Maint</span>
@@ -24,7 +24,7 @@
 @if(auth()->user()->userHasRole('Admin'))
     <!-- Nav Item - Tables -->
     <li class="nav-item {{ Request::is('admin/vehicles*') ? 'active' : '' }}">
-        <a class="nav-link {{ Request::is('admin/index*', ['admin/roles*', 'admin/rentals*', 'admin/posts*', 'admin/maintenance*', 'admin/coc*', 'admin/customers*', 'admin/users*', 'admin/training*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseVehicles" aria-expanded="true" aria-controls="collapseVehicles">
+        <a class="nav-link {{ Request::is('admin/index*', ['admin/roles*', 'admin/rentals*', 'admin/posts*', 'admin/maintenance*', 'admin/coc*', 'admin/customers*', 'admin/dev*', 'admin/users*', 'admin/training*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseVehicles" aria-expanded="true" aria-controls="collapseVehicles">
             {{--            <i class="fas fa-fw fa-wrench"></i>--}}
             <i class="fa-solid fa-ferry"></i>
             <span>Vehicles</span>

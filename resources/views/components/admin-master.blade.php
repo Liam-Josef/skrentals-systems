@@ -67,16 +67,16 @@
 
             <hr class="sidebar-divider hidden-xs">
 
-            <x-admin.sidebar.employees></x-admin.sidebar.employees>
+            <x-admin.sidebar.vehicles></x-admin.sidebar.vehicles>
 
             <hr class="sidebar-divider hidden-xs">
 
-            <x-admin.sidebar.vehicles></x-admin.sidebar.vehicles>
+            <x-admin.sidebar.employees></x-admin.sidebar.employees>
 
             <x-admin.sidebar.website></x-admin.sidebar.website>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            @yield('analytic_links')
+{{--            @yield('analytic_links')--}}
 
         </div>
 
