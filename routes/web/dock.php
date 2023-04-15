@@ -6,7 +6,7 @@ use App\Http\Controllers\DockController;
 use App\Http\Controllers\RentalController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('role:operations')->group(function() {
+Route::middleware('role:dock')->group(function() {
 
     Route::get('team/dock/index', [DockController::class, 'index'])->name('dock.index');
     Route::get('team/dock/departing', [DockController::class, 'departing'])->name('dock.departing');

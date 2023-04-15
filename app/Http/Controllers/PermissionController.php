@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Permission;
+use App\Models\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,8 @@ class PermissionController extends Controller
 
     public function index() {
         return view('admin.roles.permissions', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'permissions' => Permission::all()
         ]);
     }
@@ -33,7 +35,8 @@ class PermissionController extends Controller
 
     public function edit(Permission $permission) {
         return view('admin.roles.permissions.edit', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'permission' => $permission
         ]);
 

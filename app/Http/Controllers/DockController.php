@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Rental;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Website;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,8 @@ class DockController extends Controller
 //        $returnRentals = Vehicle::where('launched', '=', '1')->get();
 
         return view('dock.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentalReturn' => Rental::where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'On Water', 'COC', 'Clear')")->orderBy('updated_at', 'asc')->get(),
             'rentalDepart' => Rental::where('activity_date', 'like', '%'.$today.'%')->orderBy('updated_at', 'asc')->get(),
             'posts' => Post::orderBy('created_at', 'desc')->take(1)->get(),
@@ -75,7 +77,7 @@ class DockController extends Controller
         $today = Carbon::now('PST')->toDateString();
         $dateNow =Carbon::now('PST')->addHours(1);
         return view('dock.hour-counts', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
             'officePrecheck' => $officePrecheck,
             'officePrecheckCount' => $officePrecheckCount,
             'vehicleScarab' => Vehicle::where('vehicle_type','=', 'Scarab')->where('location', '!=', 'Service')->get(),
@@ -111,7 +113,7 @@ class DockController extends Controller
             }
         };
         return view('dock.returning', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
             'rentalReturn' => Rental::where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'On Water', 'COC', 'Clear')")->orderBy('updated_at', 'asc')->get(),
             'rentalReturnScarab' => Rental::where('activity_item', '=', 'Scarab 215')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'On Water', 'COC', 'Clear')")->orderBy('updated_at', 'asc')->get(),
             'rentalReturnPontoon' => Rental::where('activity_item', '=', '23ft. Pontoon Boat')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'On Water', 'COC', 'Clear')")->orderBy('updated_at', 'asc')->get(),
@@ -172,7 +174,7 @@ class DockController extends Controller
             }
         };
         return view('dock.departing', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
             'rentalDepart' => Rental::where('activity_date', 'like', '%'.$today.'%')->orderBy('updated_at', 'asc')->get(),
             'rentalDepartScarab' => Rental::where('activity_item', '=', 'Scarab 215')->where('activity_date', 'like', '%'.$today.'%')->orderBy('updated_at', 'asc')->get(),
             'rentalDepartPontoon' => Rental::where('activity_item', '=', '23ft. Pontoon Boat')->where('activity_date', 'like', '%'.$today.'%')->orderBy('updated_at', 'asc')->get(),

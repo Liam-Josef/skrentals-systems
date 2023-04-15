@@ -9,6 +9,7 @@ use App\Models\Rental;
 use App\Models\RentalHistory;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Website;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,7 +20,7 @@ class CocController extends Controller
 
     public function index() {
         return view('admin.coc.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
         'serviceTotalCount' => Rental::where('status', '=', 'COC')->where('coc_status', '!=', 'Complete')->get()->count(),
         'serviceNewCount' => Rental::where('status', '=', 'COC')->where('coc_status', '=', 'New')->get()->count(),
         'serviceInCount' => Rental::where('status', '=', 'COC')->where('coc_status', '=', 'Service')->get()->count(),
@@ -43,7 +44,8 @@ class CocController extends Controller
         $rentalBilling = Rental::where('status', 'COC')->where('coc_status', 'Billing')->orderBy('updated_at', 'asc')->get();
         $rentalHistory = RentalHistory::where('status', 'COC')->orderBy('created_at', 'asc')->get();
         return view('admin.coc.current', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'maintenances' => Maintenance::all(),
             'vehicles' => Vehicle::all(),
             'dateNow' => $dateNow,
@@ -62,7 +64,8 @@ class CocController extends Controller
         $rentals = Rental::where('status', 'COC')->where('coc_status', 'Complete')->orderBy('updated_at', 'asc')->get();
         $rentalComplete = Rental::where('status', 'COC')->where('coc_status', 'Complete')->orderBy('updated_at', 'asc')->get();
         return view('admin.coc.history', [
-            'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals,
             'rentalComplete' => $rentalComplete
         ]);
@@ -70,13 +73,15 @@ class CocController extends Controller
 
     public function create() {
         return view('admin.coc.create', [
-            'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
         ]);
     }
 
     public function customers() {
         return view('admin.coc.customers', [
-            'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
         ]);
     }
 

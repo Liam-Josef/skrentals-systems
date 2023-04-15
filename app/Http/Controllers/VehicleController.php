@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Maintenance;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -17,14 +18,16 @@ class VehicleController extends Controller
     public function index() {
         $vehicles = Vehicle::all();
         return view('admin.vehicles.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'vehicles' => $vehicles
         ]);
     }
 
     public function create() {
         return view('admin.vehicles.create', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 
@@ -69,7 +72,8 @@ class VehicleController extends Controller
         $vehicleCoc = $vehicle->rentals()->where('status', '=', 'COC')->get()->count();
         $vehicleService = $vehicle->maintenances()->get()->count();
         return view('admin.vehicles.profile', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'vehicle' => $vehicle,
             'vehicles' => Vehicle::all(),
             'users' => User::all(),
@@ -82,7 +86,8 @@ class VehicleController extends Controller
 
     public function edit(Vehicle $vehicle) {
         return view('admin.vehicles.edit', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'vehicle' => $vehicle
         ]);
     }

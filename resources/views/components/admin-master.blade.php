@@ -36,14 +36,7 @@
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2HB7CGVTH"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-V2HB7CGVTH');
-    </script>
+    @yield('analytic_tag')
 
 </head>
 
@@ -57,9 +50,9 @@
     animation-name: fadeIn; " id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-3" href="{{route('home.index')}}">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-3" href="{{route('team.index')}}">
             <div class="sidebar-brand-icon">
-                <img src="@yield('logo_horizontal_2')" alt="RentalGuru Admin Logo" class="img-responsive" />
+                <img src="@yield('logo_horizontal_2')" alt="SK Logo" class="img-responsive" />
             </div>
         </a>
 
@@ -80,12 +73,8 @@
 
             <x-admin.sidebar.vehicles></x-admin.sidebar.vehicles>
 
-            <hr class="sidebar-divider hidden-xs">
+            <x-admin.sidebar.website></x-admin.sidebar.website>
 
-            <!-- Heading -->
-            <div class="sidebar-heading hidden-xs">
-                Website
-            </div>
             <!-- Nav Item - Utilities Collapse Menu -->
             @yield('analytic_links')
 

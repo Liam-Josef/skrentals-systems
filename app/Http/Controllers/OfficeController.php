@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Rental;
 use App\Models\User;
 use App\Models\Vehicle;
+use App\Models\Website;
 use Carbon\Carbon;
 use App\Models\RentalHistory;
 use Illuminate\Http\Request;
@@ -61,7 +62,8 @@ class OfficeController extends Controller
 
 
         return view('office.index', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentalReturn' => $rentalReturn,
             'rentalDepart' => $rentalDepart,
             'posts' => $posts,
@@ -110,7 +112,8 @@ class OfficeController extends Controller
 
 
         return view('office.checkin', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rental'=>$rental,
             'customers' => Customer::all(),
             'dateNow' => $dateNow
@@ -208,7 +211,8 @@ class OfficeController extends Controller
         $dateNow =Carbon::now('PST')->addHours(1);
 
         return view('office.precheckin', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals,
             'dateNow' => $dateNow,
             'rentalPrecheck' => $rentalPrecheck,
@@ -251,7 +255,8 @@ class OfficeController extends Controller
         $rentalPreCheckShow = Rental::where('status', '=', 'Pre-Check')->orderBy('updated_at', 'desc')->get();
         $rentalPreCheckShowCount = Rental::where('status', '=', 'Pre-Check')->orderBy('updated_at', 'desc')->get()->count();
         return view('office.precheck.show', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rental' => $rental,
             'dateNow' => $dateNow,
             'rentalPreCheckShow' => $rentalPreCheckShow,
@@ -277,7 +282,8 @@ class OfficeController extends Controller
 
         $posts = Post::orderBy('created_at', 'desc')->take(2)->get();
         return view('office.rental-history', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals,
             'posts' => $posts,
         ]);
@@ -288,7 +294,8 @@ class OfficeController extends Controller
     public function rentalProfile(Rental $rental) {
         $maintenances = Maintenance::where('service_type', 'COC')->get();
         return view('office.rental-profile', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rental' => $rental,
             'customer' => Customer::all(),
             'maintenances' => $maintenances,
@@ -304,7 +311,8 @@ class OfficeController extends Controller
 //        $customerRental = Rentals::where('')
         $posts = Post::orderBy('created_at', 'desc')->take(2)->get();
         return view('office.customers', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'posts' => $posts,
             'customers' => $customers,
             'customerRentals'=>$customerRentals
@@ -315,7 +323,8 @@ class OfficeController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->take(2)->get();
         $rentals = $customer->rentals()->get();
         return view('office.customer-profile', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'customer' => $customer,
             'rentals' => $rentals,
             'posts' => $posts
@@ -329,7 +338,8 @@ class OfficeController extends Controller
         $clearedBy = User::get('id');
         $users = User::all();
         return view('office.coc', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals,
             'rentalHistory' => $rentalHistory,
             'posts' => $posts,

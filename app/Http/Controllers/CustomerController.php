@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\Customer;
 use App\Models\Rental;
+use App\Models\Website;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -16,12 +17,14 @@ class CustomerController extends Controller
 
         return view('admin.customers.index', [
             'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get()
         ]);
     }
 
     public function create() {
         return view('admin.customers.create', [
             'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get()
         ]);
     }
 
@@ -58,6 +61,7 @@ class CustomerController extends Controller
 
         return view('admin.customers.customers', [
             'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'customers'=>Customer::all()
         ]);
     }
@@ -65,11 +69,13 @@ class CustomerController extends Controller
     public function profile() {
         return view('customers.profile.view', [
             'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
     public function profileUpdate(Customer $customer) {
        return view('admin.customers.profile-update', [
            'applications' => Application::where('id', '=', '1')->get(),
+           'websites' => Website::where('id', '=', '1')->get(),
            'customer' => $customer
        ]);
     }
@@ -92,6 +98,7 @@ class CustomerController extends Controller
 
         return view('admin.customers.profile', [
             'applications' => Application::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'customer'=> $customer,
             'rentals' => $rentals
         ]);
@@ -99,7 +106,8 @@ class CustomerController extends Controller
 
     public function coc() {
         return view('admin.office.coc', [
-            'applications' => Application::where('id', '=', '1')->get(),
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 

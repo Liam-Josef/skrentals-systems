@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Post;
+use App\Models\Website;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -17,7 +18,8 @@ class ApplicationController extends Controller
         $posts = Post::latest()->get();
 
         return view('admin.dev.update', [
-            'applications' => Application::where('id', '=', '1')->get(),
+            'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
             'posts' => $posts
         ]);
     }
