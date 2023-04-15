@@ -50,7 +50,7 @@
     animation-name: fadeIn; " id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-3" href="{{route('home.index')}}">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-3" href="{{route('team.index')}}">
             <div class="sidebar-brand-icon">
                 <img src="@yield('logo_horizontal_2')" alt="SK Logo" class="img-responsive" />
             </div>

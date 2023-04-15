@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="team-header">
             <a class="navbar-brand" href="{{route('home.index')}}">
-                <img src="@yield('logo-horizontal-2')" alt="RentalGuru Logo Light" />
+                <img src="@yield('logo-horizontal-2')" alt="SK Logo Light" />
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@
                         <a class="nav-link" href="{{route('office.index')}}">Office</a>
                     </li>
                 @endif
-                @if(auth()->user()->userHasRole('Operations'))
+                @if(auth()->user()->userHasRole('Dock'))
                     <li class="nav-item dropdown no-arrow mt-1">
                         <a class="nav-link dropdown-toggle" href="#" id="operationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Operations
