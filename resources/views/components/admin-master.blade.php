@@ -80,12 +80,8 @@
 
             <x-admin.sidebar.vehicles></x-admin.sidebar.vehicles>
 
-            <hr class="sidebar-divider hidden-xs">
+            <x-admin.sidebar.website></x-admin.sidebar.website>
 
-            <!-- Heading -->
-            <div class="sidebar-heading hidden-xs">
-                Website
-            </div>
             <!-- Nav Item - Utilities Collapse Menu -->
             @yield('analytic_links')
 

@@ -83,6 +83,10 @@ class AdminsController extends Controller
 
     }
 
+    public function appInfo() {
+        return view('admin.app-info-index');
+    }
+
 
 
 
