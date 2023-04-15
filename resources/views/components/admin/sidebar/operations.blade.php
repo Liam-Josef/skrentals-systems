@@ -5,7 +5,7 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item {{ Request::is('admin/rentals*') ? 'active' : '' }}">
-    <a class="nav-link {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/coc*', 'admin/customers*', 'admin/training*', 'admin/vehicles*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseRentals" aria-expanded="true" aria-controls="collapseRentals">
+    <a class="nav-link {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/coc*', 'admin/customers*', 'admin/training*', 'admin/vehicles*', 'admin/dev*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseRentals" aria-expanded="true" aria-controls="collapseRentals">
         <i class="fa-solid fa-ship"></i>
         <span>Rentals</span>
     </a>
@@ -21,11 +21,11 @@
 
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('admin/coc*') ? 'active' : '' }}">
-    <a class="nav-link visible-sm {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/rentals*', 'admin/customers*', 'admin/training*', 'admin/vehicles*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseCOC" aria-expanded="true" aria-controls="collapseCOC">
+    <a class="nav-link visible-sm {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/rentals*', 'admin/customers*', 'admin/training*', 'admin/vehicles*', 'admin/dev*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseCOC" aria-expanded="true" aria-controls="collapseCOC">
         <i class="fa-solid fa-person-drowning"></i>
         <span>COC</span>
     </a>
-    <a class="nav-link visible-md {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/rentals*', 'admin/customers*', 'admin/training*', 'admin/vehicles*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseCOC" aria-expanded="true" aria-controls="collapseCOC">
+    <a class="nav-link visible-md {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/rentals*', 'admin/customers*', 'admin/training*', 'admin/vehicles*', 'admin/dev*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseCOC" aria-expanded="true" aria-controls="collapseCOC">
         <i class="fa-solid fa-person-drowning"></i>
         <span>C<span>hange</span> O<span>f</span> C<span>ondition</span></span>
     </a>
@@ -43,7 +43,7 @@
 
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ Request::is('admin/customers*') ? 'active' : '' }}">
-    <a class="nav-link {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/rentals*', 'admin/coc*', 'admin/training*', 'admin/vehicles*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseCustomers" aria-expanded="true" aria-controls="collapseCustomers">
+    <a class="nav-link {{ Request::is(['admin/index*', 'admin/roles*', 'admin/maintenance*', 'admin/users*', 'admin/posts*', 'admin/rentals*', 'admin/coc*', 'admin/training*', 'admin/vehicles*', 'admin/dev*']) ? 'collapsed' : '' }}" href="#" data-toggle="collapse" data-target="#collapseCustomers" aria-expanded="true" aria-controls="collapseCustomers">
         <i class="fa-solid fa-robot"></i>
         <span>Customers</span>
     </a>
