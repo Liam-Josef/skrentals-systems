@@ -107,18 +107,35 @@ class VehicleController extends Controller
         return back();
     }
     public function update(Vehicle $vehicle) {
-
         $inputs = request()->validate([
             'internal_vehicle_id' => ['min:1', 'string', 'max:2'],
-            'location' => ['string', 'max:15'],
         ]);
-
-        if($vehicle->isDirty('vehicle_type', 'location', 'internal_vehicle_id')) {
-            session()->flash('vehicle-updated', 'Vehicle "'. request('vehicle_type') . '" has been updated');
-            $vehicle->save();
+        if(request('location')) {
+            $inputs['location'] = request('location');
         }
-        else {
-            session()->flash('vehicle-updated', 'Nothing has been updated...');
+        if(request('status')) {
+            $inputs['status'] = request('status');
+        }
+        if(request('or_number')) {
+            $inputs['or_number'] = request('or_number');
+        }
+        if(request('current_hours')) {
+            $inputs['current_hours'] = request('current_hours');
+        }
+        if(request('expected_hours')) {
+            $inputs['expected_hours'] = request('expected_hours');
+        }
+        if(request('remaining_hours')) {
+            $inputs['remaining_hours'] = request('remaining_hours');
+        }
+        if(request('previous_hours')) {
+            $inputs['previous_hours'] = request('previous_hours');
+        }
+        if(request('hours_updated')) {
+            $inputs['hours_updated'] = request('hours_updated');
+        }
+        if(request('last_serviced')) {
+            $inputs['last_serviced'] = request('last_serviced');
         }
 
         $vehicle->update($inputs);
