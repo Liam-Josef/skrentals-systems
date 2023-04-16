@@ -116,7 +116,7 @@
                                             @endif
                                         @endforeach
                                     </td>
-                                    <td class="no-border-right pt-7"><a href="{{route('user.profile.show', $user->id)}}" class="btn btn-primary width-100">View</a></td>
+                                    <td class="no-border-right pt-7"><a href="{{route('user.profile.show', $user->id)}}" class="btn btn-primary-red width-100">View</a></td>
                                     <td class="no-border-right pt-7"><a href="#" class="btn btn-secondary width-100" data-toggle="modal" data-target="#editEmployee{{$user->id}}">Edit</a></td>
                                     <td class="pt-7 hidden-xs-table">
                                         <form action="{{route('user.disable', $user->id)}}" method="post"
@@ -129,7 +129,7 @@
                                         >
                                             @csrf
                                             @method('PUT')
-                                            <button class="btn btn-primary-red width-100">Disable</button>
+                                            <button class="btn btn-primary width-100">Disable</button>
                                         </form>
                                         <form action="{{route('user.enable', $user->id)}}" method="post"
                                               @if($user->is_active == '1')

@@ -97,7 +97,7 @@
 
 
     @section('content')
-        <h1 class="h3 mb-4 text-gray-800">Admin Dashboard</h1>
+{{--        <h1 class="h3 mb-4 text-gray-800">Admin Dashboard</h1>--}}
         <div class="row">
             <div class="col-md-8">
 
@@ -841,7 +841,7 @@
                                                         @endif
                                                     </div>
                                                     <div class="col-6">
-                                                        <h6> <span class="text-white">Descripion: &nbsp; </span>{{$maintenance->description}}</h6>
+                                                        <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
                                                         <h6> <span class="text-white">Submitted By: &nbsp; </span>
                                                             @foreach($users as $user)
                                                                 @if($user->id == $maintenance->submitted_by)
@@ -1217,7 +1217,7 @@
                         <!-- /Finalize Billing - Maintenance -->
 
                         @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount && !$serviceReqCocServCount && !$serviceReqInvoiceCount)
-                            <h1 class="text-center text-gray">All Service Requests are Complete</h1>
+                            <h1 class="text-center text-gray">...nothing to do</h1>
                         @endif
 
 
@@ -1268,7 +1268,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="service_type">Select Request Type</label>
                                                     <select name="service_type" id="service_type" class="form-control">
@@ -1280,7 +1280,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-6">
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="vehicle_id">Select SeaDoo</label>
@@ -1327,7 +1327,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="service_type">Select Request Type</label>
                                                     <select name="service_type" id="service_type" class="form-control">
@@ -1339,7 +1339,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-6">
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="vehicle_id">Select Pontoon</label>
@@ -1386,7 +1386,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label for="service_type">Select Request Type</label>
                                                     <select name="service_type" id="service_type" class="form-control">
@@ -1398,7 +1398,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6">
+                                            <div class="col-sm-6">
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <label for="vehicle_id">Select Scarab</label>
