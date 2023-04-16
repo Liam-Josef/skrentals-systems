@@ -124,7 +124,12 @@ class MaintenanceController extends Controller
     public function hours() {
         return view('admin.maintenance.hour-counts', [
            'applications' => Website::where('id', '=', '1')->get(),
-            'websites' => Website::where('id', '=', '1')->get()
+            'websites' => Website::where('id', '=', '1')->get(),
+            'vehicleScarab' => Vehicle::where('vehicle_type','=', 'Scarab')->where('location', '!=', 'Service')->get(),
+            'vehiclePontoon' => Vehicle::where('vehicle_type','=', 'Pontoon')->where('location', '!=', 'Service')->get(),
+            'vehicleSeaDoo' => Vehicle::where('vehicle_type','=', 'SeaDoo')->where('location', '!=', 'Service')->get(),
+            'today' => $today = Carbon::now('PST')->toDateString(),
+            'dateNow' => $dateNow =Carbon::now('PST')->addHours(1)
         ]);
     }
 

@@ -192,7 +192,10 @@ class UserController extends Controller
     }
 
     public function damageReports() {
-        return view('admin.users.damage-reports');
+        return view('admin.users.damage-reports', [
+            'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+        ]);
     }
 
 

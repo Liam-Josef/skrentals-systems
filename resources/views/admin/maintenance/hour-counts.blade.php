@@ -79,12 +79,146 @@
             </div>
         </div>
 
-        <!-- 404 Error Text -->
-        <div class="text-center mt-5">
-            <div class="error mx-auto" data-text="COMING SOON">COMING SOON</div>
-            <p class="lead text-gray-800 mb-5">Still in Production!</p>
-            <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
+        <!-- Hour Counts -->
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div class="card shadow card-dark mb-4">
+                    <div class="card-header">
+                        <!-- Departing Tablist -->
+                        <ul class="nav nav-tabs nav-justified dock-depart" id="runnerView" role="tablist">
+                            <li class="nav-item mb-0">
+                                <a class="nav-link active" id="view-seadoo-tab" data-toggle="tab" href="#seadoo-tab" role="tab" aria-controls="seadoo-tab"
+                                   aria-selected="true">
+                                    SeaDoo
+                                </a>
+                            </li>
+                            <li class="nav-item mb-0">
+                                <a class="nav-link" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
+                                   aria-selected="true">
+                                    Pontoon
+                                </a>
+                            </li>
+                            <li class="nav-item mb-0">
+                                <a class="nav-link" id="view-scarab-tab" data-toggle="tab" href="#scarab-tab" role="tab" aria-controls="scarab-tab"
+                                   aria-selected="true">
+                                    Scarab
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show" id="scarab-tab" role="tabpanel" aria-labelledby="scarab-tab">
+
+                                @foreach($vehicleScarab as $vehicle)
+                                    <form method="post" action="{{route('vehicle.updateHours', $vehicle)}}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="row">
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-5"><h3 class="text-white text-center mt-1">{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</h3></div>
+                                            <span class="hidden">{{$updatedDate = \Carbon\Carbon::now()->addDay()}}</span>
+                                            @if(strpos($vehicle->hours_updated, $today) !== false)
+                                                <div class="col-sm-3">
+                                                    <h3 class="mt-1">  {{$vehicle->current_hours}}</h3>
+                                                </div>
+                                            @else
+                                                <div class="col-6 col-sm-1">
+                                                    <input type="text" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                    <input type="hidden" class="form-control" name="hours_updated" value="{{$dateNow}}" />
+                                                    <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <button type="submit" class="btn btn-primary-red">Update</button>
+                                                </div>
+                                            @endif
+
+                                            <div class="col-sm-2">
+                                                @if($vehicle->launched == '1')
+                                                    <h4 class="mt-2">( On Rental )</h4>
+                                                @endif
+                                            </div>
+                                            <hr class="rounded mt-3" />
+                                        </div>
+                                    </form>
+                                @endforeach
+
+                            </div>
+                            <div class="tab-pane fade show" id="pontoon-tab" role="tabpanel" aria-labelledby="pontoon-tab">
+                                @foreach($vehiclePontoon as $vehicle)
+                                    <form method="post" action="{{route('vehicle.updateHours', $vehicle)}}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="row">
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-5"><h3 class="text-white text-center mt-1">{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</h3></div>
+                                            <span class="hidden">{{$updatedDate = \Carbon\Carbon::now()->addDay()}}</span>
+                                            @if(strpos($vehicle->hours_updated, $today) !== false)
+                                                <div class="col-sm-3">
+                                                    <h3 class="mt-1">  {{$vehicle->current_hours}}</h3>
+                                                </div>
+                                            @else
+                                                <div class="col-6 col-sm-1">
+                                                    <input type="text" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                    <input type="hidden" class="form-control" name="hours_updated" value="{{Carbon\Carbon::now('PST')}}" />
+                                                    <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <button type="submit" class="btn btn-primary-red">Update</button>
+                                                </div>
+                                            @endif
+
+                                            <div class="col-sm-2">
+                                                @if($vehicle->launched == '1')
+                                                    <h4 class="mt-2">( On Rental )</h4>
+                                                @endif
+                                            </div>
+                                            <hr class="rounded mt-3" />
+                                        </div>
+                                    </form>
+                                @endforeach
+                            </div>
+                            <div class="tab-pane fade show active" id="seadoo-tab" role="tabpanel" aria-labelledby="seadoo-tab">
+                                @foreach($vehicleSeaDoo as $vehicle)
+                                    <form method="post" action="{{route('vehicle.updateHours', $vehicle)}}">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="row">
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-5"><h3 class="text-white text-center mt-1">{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</h3></div>
+                                            <span class="hidden">{{$updatedDate = \Carbon\Carbon::now()->addDay()}}</span>
+                                            @if(strpos($vehicle->hours_updated, $today) !== false)
+                                                <div class="col-sm-3">
+                                                    <h3 class="mt-1">  {{$vehicle->current_hours}}</h3>
+                                                </div>
+                                            @else
+                                                <div class="col-6 col-sm-1">
+                                                    <input type="text" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                    <input type="hidden" class="form-control" name="hours_updated" value="{{Carbon\Carbon::now('PST')}}" />
+                                                    <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
+                                                </div>
+                                                <div class="col-6 col-sm-2">
+                                                    <button type="submit" class="btn btn-primary-red">Update</button>
+                                                </div>
+                                            @endif
+
+                                            <div class="col-sm-2">
+                                                @if($vehicle->launched == '1')
+                                                    <h4 class="mt-2">( On Rental )</h4>
+                                                @endif
+                                            </div>
+                                            <hr class="rounded mt-3" />
+                                        </div>
+                                    </form>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- /Hour Counts -->
 
 
     @endsection

@@ -41,7 +41,6 @@
 </head>
 
 <body id="page-top" style="padding-top: 0px;">
-@if(auth()->user(['role:admin']))
 <!-- Page Wrapper -->
 <div id="wrapper">
 
@@ -134,7 +133,6 @@
 
 <!-- Logout Modal-->
 <x-modal.logout></x-modal.logout>
-@endif
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
