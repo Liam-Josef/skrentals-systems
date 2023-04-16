@@ -135,14 +135,18 @@
                                     </td>
                                     <td class="no-border-right">
 
-                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editVehicle{{$vehicle->id}}">Edit</a>
+                                            <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#editVehicle{{$vehicle->id}}">Edit</a>
                                     </td>
                                     <td>
                                         <form method="post" action="">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="btn btn-danger" type="submit" disabled>Deactivate</button>
+                                            <button class="btn btn-primary-red" type="submit"
+                                                @if(auth()->user()->userHasRole('Supervisor'))
+                                                disabled
+                                                @else
+                                                @endif>Deactivate</button>
                                         </form>
 {{--                                        <form method="post" action="{{route('vehicle.delete', $vehicle->id)}}">--}}
 {{--                                            @csrf--}}

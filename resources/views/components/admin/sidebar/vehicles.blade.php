@@ -15,8 +15,10 @@
             <h6 class="collapse-header">Maintenance Log Menu:</h6>
             <a class="collapse-item {{ Request::is('admin/maintenance/index*') ? 'active' : '' }}" href="{{route('maintenance.index')}}">Maintenance</a>
             <a class="collapse-item {{ Request::is('admin/maintenance/chart*') ? 'active' : '' }}" href="{{route('maintenance.chart')}}">Maintenance Chart</a>
-            <a class="collapse-item {{ Request::is('admin/maintenance/service*') ? 'active' : '' }}" href="{{route('maintenance.service')}}">Service</a>
-            <a class="inactive collapse-item {{ Request::is('admin/maintenance/hour-counts*') ? 'active' : '' }}" href="{{route('maintenance.hours')}}">Hour Counts</a>
+            @if(auth()->user()->userHasRole('Admin'))
+                <a class="collapse-item {{ Request::is('admin/maintenance/service*') ? 'active' : '' }}" href="{{route('maintenance.service')}}">Service</a>
+            @endif
+            <a class="collapse-item {{ Request::is('admin/maintenance/hour-counts*') ? 'active' : '' }}" href="{{route('maintenance.hours')}}">Hour Counts</a>
         </div>
     </div>
 </li>
@@ -31,7 +33,7 @@
         </a>
         <div id="collapseVehicles" class="collapse {{ Request::is('admin/vehicles*') ? 'show' : '' }}" aria-labelledby="headingVehicles" data-parent="#accordionSidebar">
             <div class="py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Vehicle Menu"</h6>
+                <h6 class="collapse-header">Vehicle Menu</h6>
                 <a class="collapse-item {{ Request::is('admin/vehicles/index*') ? 'active' : '' }}" href="{{route('vehicle.index')}}">Vehicles</a>
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#addVehicle">Add Vehicle</a>
             </div>

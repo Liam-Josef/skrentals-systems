@@ -56,6 +56,32 @@ class PostController extends Controller
 
     }
 
+
+    public function store_sup() {
+
+        $inputs = request()->validate([
+            'title' => 'required|max:255',
+            'post_image' => 'file',
+            'body' => 'required'
+        ]);
+        if(request('post_image')) {
+            $inputs['post_image'] = request('post_image')->store('images');
+        }
+        if(request('sup_approval')) {
+            $inputs['sup_approval'] = request('sup_approval');
+        }
+        auth()->user()->posts()->create($inputs);
+
+        session()->flash('post-created-message', 'Announcement "'. $inputs['title'] . '" was Created...');
+
+
+        return redirect()->route('post.index');
+
+    }
+
+
+
+
     public function edit(Post $post) {
 
         return view('admin.posts.edit', ['post' => $post]);
