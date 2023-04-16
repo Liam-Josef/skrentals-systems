@@ -130,7 +130,7 @@
                                             @csrf
                                             @method('GET')
 
-                                            <button type="submit" class="btn btn-primary">View </button>
+                                            <button type="submit" class="btn btn-primary-red">View </button>
                                         </form>
                                     </td>
                                     <td class="no-border-right">
@@ -142,11 +142,11 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="btn btn-primary-red" type="submit"
+                                            <button class="btn btn-primary" type="submit"
                                                 @if(auth()->user()->userHasRole('Supervisor'))
                                                 disabled
                                                 @else
-                                                @endif>Deactivate</button>
+                                                @endif>DeCommission</button>
                                         </form>
 {{--                                        <form method="post" action="{{route('vehicle.delete', $vehicle->id)}}">--}}
 {{--                                            @csrf--}}

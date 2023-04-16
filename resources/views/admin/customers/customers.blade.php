@@ -113,10 +113,10 @@
 {{--                                            </td>--}}
 {{--                                            <td class="no-border-right pt-6">$nbsp;</td>--}}
                                             <td class="no-border-right">
-                                                <a href="{{route('customers.profile.view', $customer->id)}}" class="btn btn-primary">View Profile</a>
+                                                <a href="{{route('customers.profile.view', $customer->id)}}" class="btn btn-primary-red">View</a>
                                             </td>
                                             <td class="no-border-right hidden-xs">
-                                                <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#updateCustomer{{$customer->id}}">Edit Profile</a>
+                                                <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#updateCustomer{{$customer->id}}">Edit</a>
                                             </td>
                                         </tr>
                                     @endforeach
