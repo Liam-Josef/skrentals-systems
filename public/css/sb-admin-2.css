@@ -12634,8 +12634,8 @@ body.sidebar-toggled footer.sticky-footer {
     width: 100%;
 }
 .sidebar-container-scroll {
-    height: 700px;
-    overflow-y: scroll;
+    /*height: 700px;*/
+    /*overflow-y: scroll;*/
     position:relative;
 }
 footer img.img-square {
