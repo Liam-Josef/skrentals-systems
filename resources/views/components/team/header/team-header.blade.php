@@ -23,7 +23,7 @@
                 @if(auth()->user()->userHasRole('Dock'))
                     <li class="nav-item smaller dropdown no-arrow mt-1">
                         <a class="nav-link dropdown-toggle" href="#" id="operationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Operations
+                            Dock
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="operationsDropdown">
