@@ -122,11 +122,8 @@ class VehicleController extends Controller
         if(request('current_hours')) {
             $inputs['current_hours'] = request('current_hours');
         }
-        if(request('expected_hours')) {
-            $inputs['expected_hours'] = request('expected_hours');
-        }
-        if(request('remaining_hours')) {
-            $inputs['remaining_hours'] = request('remaining_hours');
+        if(request('$expected_hours')) {
+            $inputs['$expected_hours'] = request('$expected_hours');
         }
         if(request('previous_hours')) {
             $inputs['previous_hours'] = request('previous_hours');
@@ -138,7 +135,12 @@ class VehicleController extends Controller
             $inputs['last_serviced'] = request('last_serviced');
         }
 
+        $curhours = request('current_hours');
+        $prevHours = request('previous_hours');
+        $remaining_hours = [$curhours - $prevHours];
+        $vehicle->update(['remaining_hours' => $remaining_hours]);
         $vehicle->update($inputs);
+
         return redirect()->route('vehicle.index');
     }
 

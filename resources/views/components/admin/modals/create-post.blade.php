@@ -10,7 +10,13 @@
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{route('post.store')}}" enctype="multipart/form-data">
+                <form method="POST"
+                      @if(auth()->user()->userHasRole('Admin'))
+                        action="{{route('post.store')}}"
+                      @elseif(auth()->user()->userHasRole('Supervisor'))
+                        action="{{route('post.sup.store')}}"
+                      @endif
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-sm-6">
@@ -30,6 +36,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        @if(auth()->user()->userHasRole('Supervisor'))
+                            <input type="text" class="hidden" name="sup_approval" id="sup_approval" value="Pending">
+                        @endif
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
                         <button class="btn btn-primary" type="submit">Submit Announcement</button>
                     </div>

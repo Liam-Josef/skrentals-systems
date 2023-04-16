@@ -105,9 +105,9 @@ class CustomerController extends Controller
     }
 
     public function coc() {
-        return view('admin.office.coc', [
+        return view('admin.customers.coc', [
            'applications' => Website::where('id', '=', '1')->get(),
-            'websites' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get()
         ]);
     }
 
