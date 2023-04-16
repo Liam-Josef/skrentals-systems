@@ -108,6 +108,7 @@
                     <input type="hidden" name="is_active" value="1">
 
                     <div class="modal-footer">
+                        <input type="hidden" name="avatar" id="avatar" value="app-images/placeholder-avatar.jpg" />
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
                         <button type="submit" class="btn btn-primary">Add Employee</button>
                     </div>
