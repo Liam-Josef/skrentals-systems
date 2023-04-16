@@ -40,7 +40,8 @@ class UserController extends Controller
             'email' => ['required','string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'unique:users'],
             'password' => ['min:8', 'max:255', 'confirmed'],
-            'is_active' => ['required']
+            'is_active' => ['required'],
+            'avatar' => ['required']
         ]);
         User::create([
             'username' => request('username'),
