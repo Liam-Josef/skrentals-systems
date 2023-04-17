@@ -15,6 +15,8 @@ class VehicleController extends Controller
     //
 
 
+    private $types;
+
     public function index() {
         $vehicles = Vehicle::all();
         return view('admin.vehicles.index', [
@@ -134,10 +136,14 @@ class VehicleController extends Controller
         if(request('last_serviced')) {
             $inputs['last_serviced'] = request('last_serviced');
         }
+        if(request('notes')) {
+            $inputs['notes'] = request('notes');
+        }
 
         $curhours = request('current_hours');
-        $prevHours = request('previous_hours');
-        $remaining_hours = [$curhours - $prevHours];
+        $expHours = request('expected_hours');
+        $remaining_hours = [trim($expHours - $curhours)];
+//        $remaining_hours = preg_replace('/\([^)]*\)|[()]/', '', $option_title);
         $vehicle->update(['remaining_hours' => $remaining_hours]);
         $vehicle->update($inputs);
 
@@ -149,7 +155,11 @@ class VehicleController extends Controller
         session()->flash('vehicle-deleted', 'Vehicle has been deleted...');
         return back();
     }
-
+    public function printProducts()
+    {
+        $skips = ["[","]","\""];
+        return str_replace($skips, ' ',$this->types->pluck('name'));
+    }
 
 
 
