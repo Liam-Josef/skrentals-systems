@@ -171,7 +171,7 @@
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 id="modal_rental_title" class="modal-title"><span>Add a Vehicle </span></h3>
+                                <h3 id="modal_rental_title" class="modal-title"><span>Update </span>{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</h3>
                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
@@ -302,7 +302,15 @@
 
 
                                     <div class="modal-footer">
-                                        <button class="btn btn-primary">Update</button>
+                                        <div class="row width-100">
+                                            <div class="col-10">
+                                                <textarea name="notes" id="notes" cols="10" rows="2"
+                                                          class="form-control" placeholder="Add Notes...">{{$vehicle->notes}}</textarea>
+                                            </div>
+                                            <div class="col-2">
+                                                <button class="btn btn-primary">Update</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </form>
 

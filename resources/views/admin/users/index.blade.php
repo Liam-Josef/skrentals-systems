@@ -125,6 +125,8 @@
                                             @endif
                                               @if($user->id == '2' or $user->id == '1')
                                               hidden
+                                              @elseif($user->id == '3' or $user->id == '12')
+                                              hidden
                                             @endif
                                         >
                                             @csrf
