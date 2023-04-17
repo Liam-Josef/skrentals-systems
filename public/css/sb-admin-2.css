@@ -96,7 +96,7 @@ body {
     color: #959596;
     text-align: left;
     /*background-color: #fff;*/
-    background-image: url("http://127.0.0.1:8000/storage/images/background2.1.jpg");
+    background-image: url("http://127.0.0.1:8000/storage/app-images/background.jpg");
     background-position: bottom center;
     background-size: inherit;
     background-repeat: no-repeat;
