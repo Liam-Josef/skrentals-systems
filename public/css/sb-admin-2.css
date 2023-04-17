@@ -96,7 +96,7 @@ body {
     color: #959596;
     text-align: left;
     /*background-color: #fff;*/
-    background-image: url("http://127.0.0.1:8000/storage/images/background2.1.jpg");
+    background-image: url("http://127.0.0.1:8000/storage/app-images/background.jpg");
     background-position: bottom center;
     background-size: inherit;
     background-repeat: no-repeat;
@@ -226,8 +226,8 @@ a {
 }
 
 a:hover {
-    color: #224abe;
-    text-decoration: underline;
+    color: #9C0A0D ;
+    text-decoration: none;
 }
 
 a:not([href]):not([tabindex]) {
@@ -4865,7 +4865,7 @@ ul#runnerView li a {
     border-radius: 7px !important;
 }
 .card.card-dark .card-header {
-    background-color: transparent;
+    background-color: transparent !important;
 }
 .card.card-dark .card-header h4.rental-time {
     color:#9C0A0D !important;
@@ -5093,7 +5093,12 @@ span.spacer {
 .card-link {
     color: #959596;
 }
-
+.serv-req-card .card-link {
+    color: #151515;
+}
+.serv-req-card .card-link p {
+    margin-bottom: 0px;
+}
 .card-link:hover {
     text-decoration: none;
     color: #cf191c;
@@ -5120,10 +5125,11 @@ span.spacer {
     color: #f8f9fc;
     margin-bottom: 0px !important;
 }
-
 .card-header h4 {
+    color: #f8f9fc;
     margin-bottom: 0px !important;
 }
+
 .card h4.lighter {
     font-weight:lighter;
 }

@@ -30,7 +30,7 @@
 @endsection
 
 @section('content')
-<div class="container-login-back ">
+<div class="">
     <div class="container">
         <div class="row justify-content-center" style="margin-top:10%; margin-bottom: 10%;">
             <div class="col-sm-8 col-md-6">
