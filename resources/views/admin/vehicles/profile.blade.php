@@ -81,6 +81,7 @@
                     <h6 class="text-gray-900"><span class="text-dk-red">Vehicle Model: &nbsp;</span> {{$vehicle->model}} </h6>
                     <h6 class="text-gray-900"><span class="text-dk-red">VIN: &nbsp;</span> {{$vehicle->vin}} </h6>
                     <h6 class="text-gray-900"><span class="text-dk-red">Hours to Service: &nbsp;</span> {{$vehicle->remaining_hours}} </h6>
+                    <h6 class="text-gray-900"><span class="text-dk-red">Notes: &nbsp;</span> {{$vehicle->notes}} </h6>
                     {{--                                    <h6 class="text-white"><span class="text-gray-600">Hours Updated: &nbsp;</span> {{Carbon\Carbon::parse($vehicle->remaining_hours)->format('m / d / y')}} </h6>--}}
                 </div>
                 <div class="col-sm-6 col-md-8">
