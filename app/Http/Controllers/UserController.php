@@ -64,6 +64,7 @@ class UserController extends Controller
 
     public function show(User $user) {
         $rentals = Rental::all();
+        $roles = Role::all();
         $users = User::all();
         $rentalCheckedIn = Rental::where('check_in_by', '=', $user->id)->get()->count();
         $rentalLaunched = Rental::where('launched_by', '=', $user->id)->get()->count();
@@ -76,6 +77,7 @@ class UserController extends Controller
             'websites' => Website::where('id', '=', '1')->get(),
             'user'=>$user,
             'users'=>$users,
+            'roles'=>$roles,
             'rentals' => $rentals,
             'rentalCheckedIn' => $rentalCheckedIn,
             'rentalLaunched' => $rentalLaunched,
@@ -89,6 +91,7 @@ class UserController extends Controller
     public function profile(User $user) {
         $rentals = Rental::all();
         $users = User::all();
+        $roles = Role::all();
         $rentalCheckedIn = Rental::where('check_in_by', '=', $user->id)->get()->count();
         $rentalLaunched = Rental::where('launched_by', '=', $user->id)->get()->count();
         $rentalCleared = Rental::where('cleared_by', '=', $user->id)->get()->count();
@@ -99,6 +102,7 @@ class UserController extends Controller
             'websites' => Website::where('id', '=', '1')->get(),
             'user'=>$user,
             'users'=>$users,
+            'roles'=>$roles,
             'rentals' => $rentals,
             'rentalCheckedIn' => $rentalCheckedIn,
             'rentalLaunched' => $rentalLaunched,

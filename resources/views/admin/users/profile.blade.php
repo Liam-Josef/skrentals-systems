@@ -74,7 +74,27 @@
     @section('content')
         <div class="row">
             <div class="col-12">
-                <h1>Employee Profile &nbsp;<span> <small>{{$user->firstname}} {{$user->lastname}}</small></span></h1>
+                <h1>
+                    Employee Profile &nbsp;
+                    <span>
+                        <small>{{$user->firstname}} {{$user->lastname}}</small>
+                        <small class="text-gray-700">
+                            (
+                             @foreach($roles as $role)
+                                @if($user->roles->contains($role))
+                                    @if($role->name == 'Office' && $role->name != 'Dock')
+                                        {{$role->name}}&nbsp;
+                                        @elseif($role->name == 'Dock' && $role->name != 'Office')
+                                        {{$role->name}}&nbsp;
+                                    @elseif($role->name == 'Admin')
+                                        {{$role->name}}&nbsp;
+                                    @endif
+                                @endif
+                            @endforeach
+                            )
+                        </small>
+                    </span>
+                </h1>
             </div>
         </div>
 
@@ -94,7 +114,12 @@
                                         <h4 class="lighter-title">Phone</h4>
                                     </div>
                                     <div class="col-8">
-                                        <h4 class="lighter">
+                                        <a href="tel:{{$user->phone}}" class="visible-xs">
+                                            <h4 class="lighter">
+                                                {{$user->phone}}
+                                            </h4>
+                                        </a>
+                                        <h4 class="lighter hidden-xs">
                                             {{$user->phone}}
                                         </h4>
                                     </div>
@@ -105,10 +130,12 @@
                                     <div class="col-3">
                                         <h4 class="lighter-title">Email</h4>
                                     </div>
-                                    <div class="col-8">
-                                        <h4 class="lighter">
-                                            {{$user->email}}
-                                        </h4>
+                                    <div class="col-8 p-0">
+                                        <a href="mailto:{{$user->email}}">
+                                            <h4 class="lighter">
+                                                {{$user->email}}
+                                            </h4>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -254,7 +281,7 @@
 
                 <div class="card format shadow card-dark text-center mb-4">
                     <div class="card-header">
-                        <h3>Rentals Checked In</h3>
+                        <h4>Rentals Checked In</h4>
                     </div>
                     <div class="card-body">
                         @if($rentalCheckedIn)
@@ -267,7 +294,7 @@
 
                 <div class="card format shadow card-dark text-center mb-4">
                     <div class="card-header">
-                        <h3>Rentals Launched</h3>
+                        <h4>Rentals Launched</h4>
                     </div>
                     <div class="card-body">
                         @if($rentalLaunched)
@@ -280,7 +307,7 @@
 
                 <div class="card format shadow card-dark text-center mb-4">
                     <div class="card-header">
-                        <h3>Rentals Cleared</h3>
+                        <h4>Rentals Cleared</h4>
                     </div>
                     <div class="card-body">
                         @if($rentalCleared)
@@ -293,7 +320,7 @@
 
                 <div class="card format shadow card-dark text-center mb-4">
                     <div class="card-header">
-                        <h3>Launched COC's</h3>
+                        <h4>Launched COC's</h4>
                     </div>
                     <div class="card-body">
                         @if($rentalCoc)
@@ -306,7 +333,7 @@
 
                 <div class="card format shadow card-dark text-center mb-4">
                     <div class="card-header">
-                        <h3>Cleared COC's</h3>
+                        <h4>Cleared COC's</h4>
                     </div>
                     <div class="card-body">
                         @if($rentalClearCoc)

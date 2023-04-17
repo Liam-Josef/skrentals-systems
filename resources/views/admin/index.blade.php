@@ -103,67 +103,75 @@
 
                 <div class="row">
                     <div class="col-12 col-sm-3">
-                        <div class="card shadow my-3">
-                            <div class="card-header pl-0 pr-0">
-                                <h6 class="text-center text-white mt-1">Employee's</h6>
+                        <a href="{{route('users.index')}}">
+                            <div class="card shadow my-3">
+                                <div class="card-header pl-0 pr-0">
+                                    <h6 class="text-center text-white mt-1">Employee's</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="font-gray-500 text-center">Active</h6>
+                                    @if($activeEmp)
+                                        <h2 class="text-dk-red text-center">{{$activeEmp}}</h2>
+                                    @else
+                                        <h2 class="text-dk-red text-center">0</h2>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h6 class="font-gray-500 text-center">Active</h6>
-                                @if($activeEmp)
-                                    <h2 class="text-dk-red text-center">{{$activeEmp}}</h2>
-                                @else
-                                    <h2 class="text-dk-red text-center">0</h2>
-                                @endif
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-sm-3">
-                        <div class="card shadow my-3">
-                            <div class="card-header pl-0 pr-0">
-                                <h6 class="text-center text-white mt-1">COC's</h6>
+                        <a href="{{route('coc.index')}}">
+                            <div class="card shadow my-3">
+                                <div class="card-header pl-0 pr-0">
+                                    <h6 class="text-center text-white mt-1">COC's</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="font-gray-500 text-center">Active</h6>
+                                    @if($activeCoc)
+                                        <h2 class="text-dk-red text-center">{{$activeCoc}}</h2>
+                                    @else
+                                        <h2 class="text-dk-red text-center">0</h2>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h6 class="font-gray-500 text-center">Active</h6>
-                                @if($activeCoc)
-                                    <h2 class="text-dk-red text-center">{{$activeCoc}}</h2>
-                                @else
-                                    <h2 class="text-dk-red text-center">0</h2>
-                                @endif
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-sm-3">
-                        <div class="card shadow my-3">
-                            <div class="card-header pl-0 pr-0">
-                                <h6 class="text-center text-white mt-1">Service <span class="hidden-sm-contents">Requests</span></h6>
+                        <a href="{{route('maintenance.index')}}">
+                            <div class="card shadow my-3">
+                                <div class="card-header pl-0 pr-0">
+                                    <h6 class="text-center text-white mt-1">Service <span class="hidden-sm-contents">Requests</span></h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="font-gray-500 text-center">Active</h6>
+                                    @if($activeService)
+                                        <h2 class="text-dk-red text-center">{{$activeService}}</h2>
+                                    @else
+                                        <h2 class="text-dk-red text-center">0</h2>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h6 class="font-gray-500 text-center">Active</h6>
-                                @if($activeService)
-                                    <h2 class="text-dk-red text-center">{{$activeService}}</h2>
-                                @else
-                                    <h2 class="text-dk-red text-center">0</h2>
-                                @endif
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-12 col-sm-3">
-                        <div class="card shadow my-3">
-                            <div class="card-header pl-0 pr-0">
-                                <h6 class="text-center text-white mt-1">Rentals</h6>
+                        <a href="{{route('rental.index')}}">
+                            <div class="card shadow my-3">
+                                <div class="card-header pl-0 pr-0">
+                                    <h6 class="text-center text-white mt-1">Rentals</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="font-gray-500 text-center">Today</h6>
+                                    @if($activeRentals)
+                                        <h2 class="text-dk-red text-center">{{$activeRentals}}</h2>
+                                    @else
+                                        <h2 class="text-dk-red text-center">0</h2>
+                                    @endif
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <h6 class="font-gray-500 text-center">Today</h6>
-                                @if($activeRentals)
-                                    <h2 class="text-dk-red text-center">{{$activeRentals}}</h2>
-                                @else
-                                    <h2 class="text-dk-red text-center">0</h2>
-                                @endif
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                 </div>
@@ -1216,8 +1224,12 @@
                         @endif
                         <!-- /Finalize Billing - Maintenance -->
 
-                        @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount && !$serviceReqCocServCount && !$serviceReqInvoiceCount)
+                        @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount)
                             <h1 class="text-center text-gray">...nothing to do</h1>
+                            @elseif(!$serviceReqCocServCount && !$serviceReqInvoiceCount)
+                            <h1 class="text-center text-gray">...nothing to do</h1>
+                            @else
+                            &nbsp;
                         @endif
 
 
@@ -1235,212 +1247,212 @@
                     </div>
                     <div class="card-body">
 
-                            <div class="row">
-                                <div class="col-12">
-                                    <!-- Vehicle List -->
-                                    <ul class="nav nav-tabs nav-justified mb-3 dock-depart sidebar-tab-list" id="runnerView" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="view-seadoo-tab" data-toggle="tab" href="#seadoo-tab" role="tab" aria-controls="seadoo-tab"
-                                               aria-selected="true">
-                                                SeaDoo
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
-                                               aria-selected="true">
-                                                Pontoon
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="view-scarab-tab" data-toggle="tab" href="#scarab-tab" role="tab" aria-controls="scarab-tab"
-                                               aria-selected="true">
-                                                Scarab
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Vehicle List -->
+                                <ul class="nav nav-tabs nav-justified mb-3 dock-depart sidebar-tab-list" id="runnerView" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="view-seadoo-tab" data-toggle="tab" href="#seadoo-tab" role="tab" aria-controls="seadoo-tab"
+                                           aria-selected="true">
+                                            SeaDoo
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
+                                           aria-selected="true">
+                                            Pontoon
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="view-scarab-tab" data-toggle="tab" href="#scarab-tab" role="tab" aria-controls="scarab-tab"
+                                           aria-selected="true">
+                                            Scarab
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
+                        </div>
 
-                            <!-- Vehicle List Content -->
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="seadoo-tab" role="tabpanel" aria-labelledby="seadoo-tab">
-                                    <form action="{{route('maintenance.submitMaintReqAdmin')}}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="row">
-                                            <div class="col-sm-6">
+                        <!-- Vehicle List Content -->
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="seadoo-tab" role="tabpanel" aria-labelledby="seadoo-tab">
+                                <form action="{{route('maintenance.submitMaintReqAdmin')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="service_type">Select Request Type</label>
+                                                <select name="service_type" id="service_type" class="form-control">
+                                                    <option value="Service">Service</option>
+                                                    <option value="Repair">Repair</option>
+                                                    <option value="COC">COC</option>
+                                                    <option value="Summerize">Summerize</option>
+                                                    <option value="Winterize">Winterize</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="service_type">Select Request Type</label>
-                                                    <select name="service_type" id="service_type" class="form-control">
-                                                        <option value="Service">Service</option>
-                                                        <option value="Repair">Repair</option>
-                                                        <option value="COC">COC</option>
-                                                        <option value="Summerize">Summerize</option>
-                                                        <option value="Winterize">Winterize</option>
+                                                    <label for="vehicle_id">Select SeaDoo</label>
+                                                    <select name="vehicle_id" id="vehicle_id" class="form-control">
+                                                        @foreach($vehicleSeaDoo as $vehicle)
+                                                            <option id="{{$vehicle->id}}" value="{{$vehicle->id}}"> {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="vehicle_id">Select SeaDoo</label>
-                                                        <select name="vehicle_id" id="vehicle_id" class="form-control">
-                                                            @foreach($vehicleSeaDoo as $vehicle)
-                                                                <option id="{{$vehicle->id}}" value="{{$vehicle->id}}"> {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="row hidden">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="description">Request Description</label>
+                                                <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
                                             </div>
                                         </div>
-                                        <div class="row hidden">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="description">Request Description</label>
-                                                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
-                                                </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="image">Attach an Image</label>
+                                                <input type="file" name="image" id="image" class="form-control" accept="image/*">
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="image">Attach an Image</label>
-                                                    <input type="file" name="image" id="image" class="form-control" accept="image/*">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="vehicle_type" value="SeaDoo">
-                                        <div class="modal-footer">
-                                            <input type="hidden" name="is_active" value="0">
-                                            <input type="hidden" name="status" value="Created">
-                                            <input type="hidden" name="internal_vehicle_id" value="Z">
-                                            <input type="hidden" name="submitted_by" value="{{auth()->user()->id}}">
-                                            <input type="hidden" name="date_submitted" value="{{$dateNow}}">
-                                            <button class="btn btn-primary-red" type="submit">Submit Request</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane fade show" id="pontoon-tab" role="tabpanel" aria-labelledby="pontoon-tab">
-                                    <form action="{{route('maintenance.submitMaintReqAdmin')}}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="service_type">Select Request Type</label>
-                                                    <select name="service_type" id="service_type" class="form-control">
-                                                        <option value="Service">Service</option>
-                                                        <option value="Repair">Repair</option>
-                                                        <option value="COC">COC</option>
-                                                        <option value="Summerize">Summerize</option>
-                                                        <option value="Winterize">Winterize</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="vehicle_id">Select Pontoon</label>
-                                                        <select name="vehicle_id" id="vehicle_id" class="form-control">
-                                                            @foreach($vehiclePontoon as $vehicle)
-                                                                <option id="{{$vehicle->id}}" value="{{$vehicle->id}}"> {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row hidden">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="description">Request Description</label>
-                                                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="image">Attach an Image</label>
-                                                    <input type="file" name="image" id="image" class="form-control" accept="image/*">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="vehicle_type" value="23ft. Pontoon Boat">
-                                        <div class="modal-footer">
-                                            <input type="hidden" name="is_active" value="0">
-                                            <input type="hidden" name="status" value="Created">
-                                            <input type="hidden" name="internal_vehicle_id" value="Z">
-                                            <input type="hidden" name="submitted_by" value="{{auth()->user()->id}}">
-                                            <input type="hidden" name="date_submitted" value="{{$dateNow}}">
-                                            <button class="btn btn-primary-red" type="submit">Submit Request</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="tab-pane fade show" id="scarab-tab" role="tabpanel" aria-labelledby="scarab-tab">
-                                    <form action="{{route('maintenance.submitMaintReqAdmin')}}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="service_type">Select Request Type</label>
-                                                    <select name="service_type" id="service_type" class="form-control">
-                                                        <option value="Service">Service</option>
-                                                        <option value="Repair">Repair</option>
-                                                        <option value="COC">COC</option>
-                                                        <option value="Summerize">Summerize</option>
-                                                        <option value="Winterize">Winterize</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <label for="vehicle_id">Select Scarab</label>
-                                                        <select name="vehicle_id" id="vehicle_id" class="form-control">
-                                                            @foreach($vehicleScarab as $vehicle)
-                                                                <option id="{{$vehicle->id}}" value="{{$vehicle->id}}"> {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row hidden">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="description">Request Description</label>
-                                                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="image">Attach an Image</label>
-                                                    <input type="file" name="image" id="image" class="form-control" accept="image/*">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="vehicle_type" value="Scarab 215">
-                                        <div class="modal-footer">
-                                            <input type="hidden" name="is_active" value="0">
-                                            <input type="hidden" name="status" value="Created">
-                                            <input type="hidden" name="internal_vehicle_id" value="Z">
-                                            <input type="hidden" name="submitted_by" value="{{auth()->user()->id}}">
-                                            <input type="hidden" name="date_submitted" value="{{$dateNow}}">
-                                            <button class="btn btn-primary-red" type="submit">Submit Request</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <input type="hidden" name="vehicle_type" value="SeaDoo">
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="is_active" value="0">
+                                        <input type="hidden" name="status" value="Created">
+                                        <input type="hidden" name="internal_vehicle_id" value="Z">
+                                        <input type="hidden" name="submitted_by" value="{{auth()->user()->id}}">
+                                        <input type="hidden" name="date_submitted" value="{{$dateNow}}">
+                                        <button class="btn btn-primary-red" type="submit">Submit Request</button>
+                                    </div>
+                                </form>
                             </div>
+                            <div class="tab-pane fade show" id="pontoon-tab" role="tabpanel" aria-labelledby="pontoon-tab">
+                                <form action="{{route('maintenance.submitMaintReqAdmin')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="service_type">Select Request Type</label>
+                                                <select name="service_type" id="service_type" class="form-control">
+                                                    <option value="Service">Service</option>
+                                                    <option value="Repair">Repair</option>
+                                                    <option value="COC">COC</option>
+                                                    <option value="Summerize">Summerize</option>
+                                                    <option value="Winterize">Winterize</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="vehicle_id">Select Pontoon</label>
+                                                    <select name="vehicle_id" id="vehicle_id" class="form-control">
+                                                        @foreach($vehiclePontoon as $vehicle)
+                                                            <option id="{{$vehicle->id}}" value="{{$vehicle->id}}"> {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row hidden">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="description">Request Description</label>
+                                                <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="image">Attach an Image</label>
+                                                <input type="file" name="image" id="image" class="form-control" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="vehicle_type" value="23ft. Pontoon Boat">
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="is_active" value="0">
+                                        <input type="hidden" name="status" value="Created">
+                                        <input type="hidden" name="internal_vehicle_id" value="Z">
+                                        <input type="hidden" name="submitted_by" value="{{auth()->user()->id}}">
+                                        <input type="hidden" name="date_submitted" value="{{$dateNow}}">
+                                        <button class="btn btn-primary-red" type="submit">Submit Request</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade show" id="scarab-tab" role="tabpanel" aria-labelledby="scarab-tab">
+                                <form action="{{route('maintenance.submitMaintReqAdmin')}}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="service_type">Select Request Type</label>
+                                                <select name="service_type" id="service_type" class="form-control">
+                                                    <option value="Service">Service</option>
+                                                    <option value="Repair">Repair</option>
+                                                    <option value="COC">COC</option>
+                                                    <option value="Summerize">Summerize</option>
+                                                    <option value="Winterize">Winterize</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label for="vehicle_id">Select Scarab</label>
+                                                    <select name="vehicle_id" id="vehicle_id" class="form-control">
+                                                        @foreach($vehicleScarab as $vehicle)
+                                                            <option id="{{$vehicle->id}}" value="{{$vehicle->id}}"> {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row hidden">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="description">Request Description</label>
+                                                <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="image">Attach an Image</label>
+                                                <input type="file" name="image" id="image" class="form-control" accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="vehicle_type" value="Scarab 215">
+                                    <div class="modal-footer">
+                                        <input type="hidden" name="is_active" value="0">
+                                        <input type="hidden" name="status" value="Created">
+                                        <input type="hidden" name="internal_vehicle_id" value="Z">
+                                        <input type="hidden" name="submitted_by" value="{{auth()->user()->id}}">
+                                        <input type="hidden" name="date_submitted" value="{{$dateNow}}">
+                                        <button class="btn btn-primary-red" type="submit">Submit Request</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
 
                     </div>
                 </div>

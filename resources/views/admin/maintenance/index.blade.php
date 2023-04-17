@@ -83,63 +83,53 @@
 
             <div class="col-sm-3">
                 <div class="card shadow">
-                    <div class="card-header">
-                        <h5 class="text-center text-white mt-2">Created</h5>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">Created</h5>
                         @if($createdCount)
-                            <h2 class="text-center text-dk-red">{{$createdCount}}</h2>
-                            @else
-                            <h2 class="text-center text-dk-red">0</h2>
+                            <h3 class="text-dk-red">{{$createdCount}}</h3>
+                        @else
+                            <h3 class="text-dk-red">0</h3>
                         @endif
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-3">
                 <div class="card shadow">
-                    <div class="card-header">
-                        <h5 class="text-center text-white mt-2">In Service</h5>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">In Service</h5>
                         @if($serviceCount)
-                            <h2 class="text-center text-dk-red">{{$serviceCount}}</h2>
+                            <h3 class="text-dk-red">{{$serviceCount}}</h3>
                         @else
-                            <h2 class="text-center text-dk-red">0</h2>
+                            <h3 class="text-dk-red">0</h3>
                         @endif
                     </div>
                 </div>
             </div>
-
             <div class="col-sm-3">
                 <div class="card shadow">
-                    <div class="card-header">
-                        <h5 class="text-center text-white mt-2">Invoice Submitted</h5>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">Invoice Submitted</h5>
                         @if($invoiceCount)
-                            <h2 class="text-center text-dk-red">{{$invoiceCount}}</h2>
+                            <h3 class="text-dk-red">{{$invoiceCount}}</h3>
                         @else
-                            <h2 class="text-center text-dk-red">0</h2>
+                            <h3 class="text-dk-red">0</h3>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">Completed</h5>
+                        @if($completedCount)
+                            <h3 class="text-dk-red">{{$completedCount}}</h3>
+                        @else
+                            <h3 class="text-dk-red">0</h3>
                         @endif
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-3">
-                <div class="card shadow">
-                    <div class="card-header">
-                        <h5 class="text-center text-white mt-2">Completed</h5>
-                    </div>
-                    <div class="card-body">
-                        @if($completedCount)
-                            <h2 class="text-center text-dk-red">{{$completedCount}}</h2>
-                        @else
-                            <h2 class="text-center text-dk-red">0</h2>
-                        @endif
-                    </div>
-                </div>
-            </div>
 
         </div>
 
@@ -149,7 +139,7 @@
                 <h2 class="text-gray-500 mt-4 mb-2 text-center">Within the Past Week</h2>
 
                 @foreach($activeMaintenanceWeek as $maintenance)
-                    <div class="card shadow mt-0 my-2">
+                    <div class="card shadow mt-0 my-2 serv-req-card">
                         <a href="#" class="card-link" data-toggle="modal" data-target="#activeMaint{{$maintenance->id}}">
                             <div class="card-body">
                                 <div class="row">
@@ -220,7 +210,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="service_type">Select Request Type</label>
                                                 <select name="service_type" id="service_type" class="form-control">
@@ -232,7 +222,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-sm-6">
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="vehicle_id">Select SeaDoo</label>
@@ -279,7 +269,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="service_type">Select Request Type</label>
                                                 <select name="service_type" id="service_type" class="form-control">
@@ -291,7 +281,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-sm-6">
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="vehicle_id">Select Pontoon</label>
@@ -338,7 +328,7 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
-                                        <div class="col-lg-6">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="service_type">Select Request Type</label>
                                                 <select name="service_type" id="service_type" class="form-control">
@@ -350,7 +340,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <div class="col-sm-6">
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="vehicle_id">Select Scarab</label>
@@ -405,7 +395,7 @@
                 <h2 class="text-gray-500 mt-4 mb-2 text-center">Over 7 Days Old</h2>
 
                 @foreach($activeMaintenance7days as $maintenance)
-                    <div class="card shadow mt-0 my-2">
+                    <div class="card shadow mt-0 my-2 serv-req-card">
                         <a href="#" class="card-link" data-toggle="modal" data-target="#activeMaint{{$maintenance->id}}">
                             <div class="card-body">
                                 <div class="row">
@@ -441,7 +431,7 @@
                 <h2 class="text-gray-500 mt-4 mb-2 text-center">Over 14 Days Old</h2>
 
                 @foreach($activeMaintenance14days as $maintenance)
-                    <div class="card shadow mt-0 my-2">
+                    <div class="card shadow mt-0 my-2 serv-req-card">
                         <a href="#" class="card-link" data-toggle="modal" data-target="#activeMaint{{$maintenance->id}}">
                             <div class="card-body">
                                 <div class="row">
@@ -559,12 +549,12 @@
                                 </div>
                                 <div class="modal-footer">
                                     @if($maintenance->status == 'Created')
-                                        <h3 class="text-center text-red">Waiting for Service to Accept...</h3>
+                                        <h3 class="text-center text-lt-red">Waiting for Service to Accept...</h3>
                                         <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">Close</button>
                                     @endif
 
                                     @if($maintenance->status == 'In Service')
-                                        <h3 class="text-center text-red">Waiting for Service Invoice</h3>
+                                        <h3 class="text-center text-lt-red">Waiting for Service Invoice</h3>
                                         <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">Close</button>
                                     @endif
 
