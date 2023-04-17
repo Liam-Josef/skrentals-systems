@@ -84,18 +84,32 @@
 
 
             <div class="col-12 col-sm-3">
+
+                <!-- OLD -->
+{{--                <div class="card shadow mt-3">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h4 class="text-center">Waiting on Customer</h4>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        @if($serviceBillCount)--}}
+{{--                            <h1 class="text-red text-center">{{$serviceBillCount}}</h1>--}}
+{{--                        @else--}}
+{{--                            <h1 class="text-red text-center">0</h1>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
                 <div class="card shadow mt-3">
-                    <div class="card-header">
-                        <h3 class="text-center">New</h3>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">New</h5>
                         @if($serviceNewCount)
-                            <h1 class="text-red text-center">{{$serviceNewCount}}</h1>
+                            <h3 class="text-dk-red">{{$serviceNewCount}}</h3>
                         @else
-                             <h1 class="text-red text-center">0</h1>
+                            <h3 class="text-dk-red">0</h3>
                         @endif
                     </div>
                 </div>
+
                 @foreach($serviceNew as $rental)
                     <div class="card shadow mt-3">
                         <div class="card-body">
@@ -154,17 +168,16 @@
 
             <div class="col-12 col-sm-3">
                 <div class="card shadow mt-3">
-                    <div class="card-header">
-                        <h3 class="text-center">In Service</h3>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">In Service</h5>
                         @if($serviceInCount)
-                            <h1 class="text-red text-center">{{$serviceInCount}}</h1>
+                            <h3 class="text-dk-red">{{$serviceInCount}}</h3>
                         @else
-                            <h1 class="text-red text-center">0</h1>
+                            <h3 class="text-dk-red">0</h3>
                         @endif
                     </div>
                 </div>
+
                 @foreach($serviceService as $rental)
                     <div class="card shadow mt-3">
                         <div class="card-body">
@@ -223,17 +236,16 @@
 
             <div class="col-12 col-sm-3">
                 <div class="card shadow mt-3">
-                    <div class="card-header">
-                        <h3 class="text-center">Invoice Submitted</h3>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">Invoice Submitted</h5>
                         @if($serviceInvAprCount)
-                            <h1 class="text-red text-center">{{$serviceInvAprCount}}</h1>
+                            <h3 class="text-dk-red">{{$serviceInvAprCount}}</h3>
                         @else
-                            <h1 class="text-red text-center">0</h1>
+                            <h3 class="text-dk-red">0</h3>
                         @endif
                     </div>
                 </div>
+
                 @foreach($serviceInvApr as $rental)
                     <div class="card shadow mt-3">
                         <div class="card-body">
@@ -292,17 +304,17 @@
 
             <div class="col-12 col-sm-3">
                 <div class="card shadow mt-3">
-                    <div class="card-header">
-                        <h3 class="text-center">Waiting on Customer</h3>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
+                        <h5 class="text-dark">Waiting on Customer</h5>
                         @if($serviceBillCount)
-                            <h1 class="text-red text-center">{{$serviceBillCount}}</h1>
+                            <h3 class="text-dk-red">{{$serviceBillCount}}</h3>
                         @else
-                            <h1 class="text-red text-center">0</h1>
+                            <h3 class="text-dk-red">0</h3>
                         @endif
                     </div>
                 </div>
+
+
                 @foreach($serviceBill as $rental)
                     <div class="card shadow mt-3">
                         <div class="card-body">

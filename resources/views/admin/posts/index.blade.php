@@ -216,7 +216,7 @@
                                     </div>
 
                                     <div class="form-group mt-5">
-                                        <div><img height="100" src="{{asset('storage/' . $post->post_image)}}" alt="{{$post->title}}" class="img-responsive"></div>
+                                        <div><img height="100" src="{{$post->post_image}}" alt="{{$post->title}}" class="img-responsive"></div>
                                         <label for="post_image">Upload an Image</label>
                                         <input type="file" class="form-control" name="post_image" id="post_image" />
                                     </div>

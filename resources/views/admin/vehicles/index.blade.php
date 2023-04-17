@@ -95,24 +95,22 @@
                             <thead>
                             <tr>
                                 <th>Vehicle</th>
-                                <th>ID</th>
                                 <th>Year</th>
                                 <th>Vin</th>
-                                <th>OR Number</th>
+                                <th>OR-Number</th>
                                 <th>Hours</th>
                                 <th>Expected</th>
                                 <th>Location</th>
-                                <th>View</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
 
                             @foreach($vehicles as $vehicle)
                                 <tr>
-                                    <td class="no-border-right pt-6">{{$vehicle->vehicle_type}}</td>
-                                    <td class="no-border-right pt-6">{{$vehicle->internal_vehicle_id}}</td>
+                                    <td class="no-border-right pt-6">{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</td>
                                     <td class="no-border-right pt-6">{{$vehicle->year}}</td>
                                     <td class="no-border-right pt-6">{{$vehicle->vin}}</td>
                                     <td class="no-border-right pt-6">{{$vehicle->or_number}}</td>
@@ -146,7 +144,7 @@
                                                 @if(auth()->user()->userHasRole('Supervisor'))
                                                 disabled
                                                 @else
-                                                @endif>DeCommission</button>
+                                                @endif>DeComm</button>
                                         </form>
 {{--                                        <form method="post" action="{{route('vehicle.delete', $vehicle->id)}}">--}}
 {{--                                            @csrf--}}

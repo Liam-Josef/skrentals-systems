@@ -40,10 +40,10 @@
 @yield('style')
 
 <!-- Navigation -->
-<x-home.home-nl-header></x-home.home-nl-header>
+{{--<x-home.home-nl-header></x-home.home-nl-header>--}}
 
 <!-- Page Content -->
-<div class="container-login-back">
+<div class="container-login">
     <div class="container">
 
         <div class="row">
