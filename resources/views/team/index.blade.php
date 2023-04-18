@@ -379,22 +379,26 @@
 
                 @if($userCount > 0)
                     @foreach($users as $user)
-                        <div class="coc-item">
-                            <div class="row">
-                                <div class="col-6 col-sm-3">
-                                    <h5 class="mt-2">{{$user->firstname}}</h5>
+                        @if($user->id != '2' && $user->id != '3')
+                            @if($user->id != '15')
+                                <div class="coc-item">
+                                    <div class="row">
+                                        <div class="col-6 col-sm-3">
+                                            <h5 class="mt-2">{{$user->firstname}}</h5>
+                                        </div>
+                                        <div class="col-6 col-sm-3">
+                                            <h5 class="mt-2">{{$user->lastname}}</h5>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <h5 class="mt-2"><a href="tel:{{$user->phone}}">{{$user->phone}}</a></h5>
+                                        </div>
+                                        <div class="col-12 col-sm-3">
+                                            <h5 class="coc-incident mt-2"><a href="mailto:{{$user->email}}">{{$user->email}}</a></h5>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-6 col-sm-3">
-                                    <h5 class="mt-2">{{$user->lastname}}</h5>
-                                </div>
-                                <div class="col-12 col-sm-3">
-                                    <h5 class="mt-2"><a href="tel:{{$user->phone}}">{{$user->phone}}</a></h5>
-                                </div>
-                                <div class="col-12 col-sm-3">
-                                    <h5 class="coc-incident mt-2"><a href="mailto:{{$user->email}}">{{$user->email}}</a></h5>
-                                </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endif
                     @endforeach
                 @else
                     <h1 class="text-center text-black">Module Malfunction... Please contact <a href="mailto:support@rentalguru.us">RentalGuru</a></h1>
@@ -660,7 +664,7 @@
 
 
 
-<!-- Service Section -->
+    wa<!-- Service Section -->
     @if(auth()->user()->userHasRole('Service'))
 
         @section('content')
