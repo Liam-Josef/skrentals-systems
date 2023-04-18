@@ -73,7 +73,37 @@
 
 
     @section('content')
-        <h1>Vehicle Profile <span>{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</span></h1>
+        <div class="row">
+            <div class="col-sm-10">
+                <h1>Vehicle Profile <span>{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</span> <small class="text-gray-700">( {{$vehicle->location}} )</small></h1>
+            </div>
+            <div class="col-sm-2">
+                @if($vehicle->location == 'Dock')
+                    <form method="post" action="{{route('vehicle.updateLocation', $vehicle)}}">
+                        @csrf
+                        @method('PUT')
+
+                        <input type="hidden" name="location" id="location" value="Service" />
+                        <input type="hidden" name="location_timestamp" id="location_timestamp" value="{{\Carbon\Carbon::now()->format('Y-m-d H:m:s')}}" />
+
+                        <button class="btn btn-secondary" type="submit">Move to Service</button>
+                    </form>
+                    @elseif($vehicle->location == 'Service')
+                    <form method="post" action="{{route('vehicle.updateLocation', $vehicle)}}">
+                        @csrf
+                        @method('PUT')
+
+                        <input type="hidden" name="location" id="location" value="Dock" />
+                        <input type="hidden" name="location_timestamp" id="location_timestamp" value="{{\Carbon\Carbon::now()->format('Y-m-d H:m:s')}}" />
+
+                        <button class="btn btn-secondary" type="submit">Move to Dock</button>
+                    </form>
+                    @else
+                    &nbsp;
+                @endif
+            </div>
+        </div>
+
 
             <div class="row">
                 <div class="col-sm-6 col-md-3">

@@ -75,7 +75,7 @@
     @section('content')
         <div class="row">
             <div class="col-12">
-                <h1>Service</h1>
+                <h1>Service <span class="small text-gray-700">(Writer View)</span></h1>
             </div>
         </div>
 
@@ -92,14 +92,12 @@
                                             <span class="visible-xs-table">&nbsp;</span>
                                             <div class="row hidden-xs-flex">
                                                 <div class="col-sm-1">Image</div>
-                                                <div class="col-sm-1">Date</div>
-                                                <div class="col-sm-2">Vehicle Type</div>
-                                                <div class="col-sm-1">ID</div>
+                                                <div class="col-sm-1">Submitted</div>
+                                                <div class="col-sm-2">Vehicle</div>
                                                 <div class="col-sm-2">Description</div>
-                                                <div class="col-sm-1">Invoice</div>
+                                                <div class="col-sm-1">R / O</div>
                                                 <div class="col-sm-2">Submitted By</div>
                                                 <div class="col-sm-1 text-center pr-0">Status</div>
-                                                <div class="col-sm-1 text-center pr-0">&nbsp;</div>
                                             </div>
                                         </th>
                                     </tr>
@@ -124,15 +122,10 @@
                                                             </p>
                                                         </div>
                                                         <div class="col-sm-2">
-                                                            <p>
-                                                                {{$maintenance->vehicle_type}}
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-sm-1">
                                                             <p class="sm-md">
                                                                 @foreach($vehicles as $vehicle)
                                                                     @if($maintenance->vehicle_id == $vehicle->id)
-                                                                        {{$vehicle->internal_vehicle_id}}
+                                                                        {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
                                                                     @endif
                                                                 @endforeach
                                                             </p>
@@ -158,14 +151,18 @@
                                                             <p>{{$maintenance->status}}</p>
                                                         </div>
                                                         <div class="col-sm-2 pl-0">
-                                                            <div class="form-div">
+                                                            <div class="form-div" style="text-align: right">
                                                                 <a href="#" class="table-li-link" data-toggle="modal" data-target="#maintModal{{$maintenance->id}}">
                                                                     @if($maintenance->status == 'Created')
                                                                         <h4 class="text-red">Need to Accept</h4>
                                                                     @elseif($maintenance->invoice == '')
-                                                                        <h4 class="text-gray-700">Upload Invoice</h4>
+                                                                        @if($maintenance->status == 'Rejected')
+                                                                            &nbsp;
+                                                                        @else
+                                                                            <h4 class="text-gray-700">Upload Invoice</h4>
+                                                                        @endif
                                                                     @elseif($maintenance->status == 'Invoice Submitted')
-                                                                        <h4 class="text-gray-600">Invoice Waiting Approval</h4>
+                                                                        <h4 class="text-gray-600">R/O Waiting Approval</h4>
                                                                     @else
                                                                         <h4 class="text-gray-400">Completed</h4>
                                                                     @endif
@@ -194,17 +191,20 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3>
-                                <span>Service Invoice: #{{$maintenance->service_invoice}} </span>
-                                | {{$maintenance->service_type}}
-                                <span> |
+                                <span>
                                     @foreach($vehicles as $vehicle)
                                         @if($maintenance->vehicle_id == $vehicle->id)
                                             {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
                                         @endif
                                     @endforeach
                                 </span>
-                            </h3>
+                                | {{$maintenance->service_type}}
 
+                            </h3>
+                            @if($maintenance->service_invoice != '')
+                                <span>R / O: {{$maintenance->service_invoice}} </span>
+                                @else
+                            @endif
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -237,17 +237,45 @@
                                     @endif
                                     <div class="row">
                                         <div class="col-6">
+                                            <h5>Request Type: &nbsp;</h5>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5>
+                                                 <span>
+                                                   {{$maintenance->service_type}}
+                                                </span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
                                             <h5>VIN: &nbsp;</h5>
                                         </div>
                                         <div class="col-6">
                                             <h5>
-                                                                 <span>
-                                                                        @foreach($vehicles as $vehicle)
-                                                                         @if($vehicle->id == $maintenance->vehicle_id)
-                                                                             {{$vehicle->vin}}
-                                                                         @endif
-                                                                     @endforeach
-                                                                </span>
+                                                 <span>
+                                                    @foreach($vehicles as $vehicle)
+                                                         @if($vehicle->id == $maintenance->vehicle_id)
+                                                             {{$vehicle->vin}}
+                                                         @endif
+                                                     @endforeach
+                                                </span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h5>Vehicle Location: &nbsp;</h5>
+                                        </div>
+                                        <div class="col-6">
+                                            <h5>
+                                                 <span>
+                                                    @foreach($vehicles as $vehicle)
+                                                         @if($vehicle->id == $maintenance->vehicle_id)
+                                                             {{$vehicle->location}}
+                                                         @endif
+                                                     @endforeach
+                                                </span>
                                             </h5>
                                         </div>
                                     </div>
@@ -259,9 +287,23 @@
                                             <h5>Hours: &nbsp;</h5>
                                         </div>
                                         <div class="col-6">
-                                            <h5>
-                                             {{$maintenance->service_hours}}
-                                            </h5>
+                                           @if($maintenance->service_hours == '')
+                                                <h5>
+                                                    @foreach($vehicles as $vehicle)
+                                                        @if($vehicle->id == $maintenance->vehicle_id)
+                                                            {{$vehicle->current_hours}}
+                                                            <br>
+                                                            <small>( Vehicle Hours at last check on {{\Carbon\Carbon::parse($vehicle->hours_updated)->format('M d, Y')}} )</small>
+                                                        @endif
+                                                    @endforeach
+                                                </h5>
+                                            @elseif($maintenance->service_hours == '')
+                                                <h5>
+                                                    {{$maintenance->service_hours}}
+                                                </h5>
+                                            @else
+                                               <h5>No Hours Recorded</h5>
+                                           @endif
                                         </div>
                                     </div>
 
@@ -269,7 +311,7 @@
 
                                     <div class="row">
                                         <div class="col-6">
-                                            <h5>Date Submitted: &nbsp;</h5>
+                                            <h5>Request Submitted: &nbsp;</h5>
                                         </div>
                                         <div class="col-6">
                                             <h5><span>{{\Carbon\Carbon::parse($maintenance->date_submitted)->format('M d, Y')}}</span></h5>
@@ -292,10 +334,46 @@
                                     </div>
 
 
+                                    @if($maintenance->denied_by != '')
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5>Request Rejected: &nbsp;</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                <h5><span>{{\Carbon\Carbon::parse($maintenance->deny_date)->format('M d, Y')}}</span></h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5>Rejected By: &nbsp;</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                @foreach($users as $user)
+                                                    @if($user->id == $maintenance->denied_by)
+                                                        <h5><span>{{$user->firstname}} {{$user->lastname}}</span></h5>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5>Rejection Explaination: &nbsp;</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                <h5>{{$maintenance->serv_deny_reason}}</h5>
+                                            </div>
+                                        </div>
+                                        @else
+
+                                    @endif
+
+
                                     @if($maintenance->invoice)
                                         <div class="row">
                                             <div class="col-6">
-                                                <h5>Date Invoice Submitted: &nbsp;</h5>
+                                                <h5>Date R/O Submitted: &nbsp;</h5>
                                             </div>
                                             <div class="col-6">
                                                 <h5><span>{{\Carbon\Carbon::parse($maintenance->date_invoiced)->format('M d, Y')}}</span></h5>
@@ -304,7 +382,7 @@
 
                                         <div class="row">
                                             <div class="col-6">
-                                                <h5>Invoice Submitted By: &nbsp;</h5>
+                                                <h5>R/O Submitted By: &nbsp;</h5>
                                             </div>
                                             <div class="col-6">
                                                 <h5>
@@ -363,13 +441,7 @@
                                                         </form>
                                                     </div>
                                                     <div class="col-6">
-                                                        <form action="#" method="post">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <div class="form-group width-100">
-                                                                <button type="submit" class="btn btn-secondary width-100 p-3">No</button>
-                                                            </div>
-                                                        </form>
+                                                        <a href="#" class="btn btn-secondary width-100 p-3" data-toggle="modal" data-target="#reject_modal{{$maintenance->id}}">No</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -385,11 +457,11 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <label for="service_invoice">Invoice Number</label>
+                                                            <label for="service_invoice">R / O</label>
                                                             <input type="text" class="form-control" name="service_invoice" value="{{$maintenance->service_invoice}}">
                                                         </div>
                                                         <div class="col-8">
-                                                            <label for="invoice">Upload Invoice - <small>{{$maintenance->service_invoice}}.pdf</small></label>
+                                                            <label for="invoice">Upload Invoice - <small>{{$maintenance->service_invoice}}.pdf (required)</small></label>
                                                             <input type="file" class="form-control" name="invoice">
                                                         </div>
                                                     </div>
@@ -409,7 +481,7 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <label for="service_invoice">Invoice Number</label>
+                                                            <label for="service_invoice">R / O </label>
                                                             <input type="text" class="form-control" name="service_invoice" value="{{$maintenance->service_invoice}}">
                                                         </div>
                                                         <div class="col-8">
@@ -428,6 +500,11 @@
                                 </div>
                             </div>
 
+                            @if($maintenance->invoiced_by != '')
+                                <div class="row mt-5">
+                                    <iframe src="{{asset('storage/' . $maintenance->invoice)}}" style="width: 100%;height: 800px;border: none;"></iframe>
+                                </div>
+                            @endif
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close </button>
@@ -437,14 +514,58 @@
             </div>
             <!-- /Maint Modal -->
 
-            <!-- Invoice Modal -->
+            <!-- Service Reject Modal -->
+            @foreach($maintenances as $maintenance)
+                <div class="modal fade" id="reject_modal{{$maintenance->id}}" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+
+                                @foreach($vehicles as $vehicle)
+                                    @if($vehicle->id == $maintenance->vehicle_id)
+                                        <h3>Deny Request for: <span>{{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}</span></h3>
+                                    @endif
+                                @endforeach
+                            </div>
+                            <form method="post" action="{{route('maintenance.reqDeny', $maintenance)}}">
+                                @csrf
+                                @method('PUT')
+                                <div class="modal-body">
+                                    @if($maintenance->image == '')
+                                        <img class="img-responsive" src="{{asset('storage/images/no-image.jpg')}}" height="auto" width="100%" />
+                                    @else
+                                        <img class="img-responsive" src="{{asset('storage/' . $maintenance->image)}}" height="auto" width="100%" />
+                                    @endif
+
+                                        <div class="form-group">
+                                            <label for="serv_deny_reason">
+                                                <h3 class="mt-3">Rejection Explanation</h3>
+                                            </label>
+                                            <textarea class="form-control" name="serv_deny_reason" id="serv_deny_reason" width="100%" rows="10" placeholder="Enter reason for denial"></textarea>
+                                        </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" class="form-control" name="denied_by" value="{{auth()->user()->id}}">
+                                    <input type="hidden" class="" id="status" name="status" value="Rejected">
+                                    <input type="hidden" class="" id="deny_date" name="deny_date" value="{{$dateNow}}">
+                                    <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel </button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <!-- /Service Reject Modal -->
+
+            <!-- View Invoice Modal -->
             <div class="modal fade" id="viewInvoice{{$maintenance->id}}" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true">
                 <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
 
                             <h3>
-                                <span>Service Invoice: #{{$maintenance->service_invoice}} </span>
+                                <span>R / O: {{$maintenance->service_invoice}} </span>
                                 | {{$maintenance->service_type}}
                                 <span> |
                                     @foreach($vehicles as $vehicle)
@@ -485,8 +606,8 @@
                                         <span class="text-white">Hours: &nbsp; </span>
                                         {{$maintenance->service_hours}}
                                     </h6>
-                                    <h6> <span class="text-white">Descripion: &nbsp; </span>{{$maintenance->description}}</h6>
-                                    <h6> <span class="text-white">Service Invoice #: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
+                                    <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
+                                    <h6> <span class="text-white">R / O &nbsp; </span>{{$maintenance->service_invoice}}</h6>
                                     <h6> <span class="text-white">Submitted By: &nbsp; </span>
                                         @foreach($users as $user)
                                             @if($user->id == $maintenance->submitted_by)
@@ -505,7 +626,7 @@
                                                 @endif
                                             @endforeach
                                         </h6>
-                                        <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                        <h6> <span class="text-white">R/O Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                     @endif
 
                                     @if($maintenance->approved_by == '')
@@ -518,7 +639,7 @@
                                                 @endif
                                             @endforeach
                                         </h6>
-                                        <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                        <h6> <span class="text-white">R/O Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                     @endif
 
                                 </div>

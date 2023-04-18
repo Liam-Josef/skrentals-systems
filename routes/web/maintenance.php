@@ -26,6 +26,7 @@ Route::middleware('role:admin')->group(function() {
     Route::put('admin/maintenance/{maintenance}/submit-request', [MaintenanceController::class, 'submitServiceReqAdmin'])->name('maintenance.submitServiceReqAdmin');
     Route::put('admin/maintenance/{maintenance}/accept-maint-req-admin', [MaintenanceController::class, 'acceptMaintReqAdmin'])->name('maintenance.acceptMaintReqAdmin');
     Route::put('admin/maintenance/{maintenance}/accept-maint-invoice-admin', [MaintenanceController::class, 'acceptMaintInvoiceAdmin'])->name('maintenance.acceptMaintInvoiceAdmin');
+    Route::put('admin/maintenance/{maintenance}/req-deny', [MaintenanceController::class, 'req_deny'])->name('maintenance.reqDeny');
     Route::get('admin/maintenance/{maintenance}/profile', [MaintenanceController::class, 'profileAdmin'])->name('maintenance.profileAdmin');
 
 

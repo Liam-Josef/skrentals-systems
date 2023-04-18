@@ -7,6 +7,7 @@ use App\Models\Maintenance;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\Website;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -30,6 +31,19 @@ class VehicleController extends Controller
         return view('admin.vehicles.create', [
            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
+        ]);
+    }
+
+    public function service() {
+        return view('admin.vehicles.to-service', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'vehicles' => Vehicle::all(),
+            'vehicleScarab' => Vehicle::where('vehicle_type','=', 'Scarab')->where('location', '!=', 'On Rental')->get(),
+            'vehiclePontoon' => Vehicle::where('vehicle_type','=', 'Pontoon')->where('location', '!=', 'On Rental')->get(),
+            'vehicleSeaDoo' => Vehicle::where('vehicle_type','=', 'SeaDoo')->where('location', '!=', 'On Rental')->get(),
+            'today' => Carbon::now('PST')->toDateString(),
+            'dateNow' => Carbon::now('PST')->addHours(1)
         ]);
     }
 
@@ -83,6 +97,7 @@ class VehicleController extends Controller
             'vehicleCoc' => $vehicleCoc,
             'vehicleService' => $vehicleService,
             'maintenances' => Maintenance::all(),
+            'dateNow' => Carbon::now('PST')->addHours(1)
         ]);
     }
 
@@ -104,6 +119,28 @@ class VehicleController extends Controller
 //        $hoursExp = $vehicle->where('id', '=', request('id'))->select('expected_hours')->get();
 //        $currentHour = $vehicle->where('id', '=', request('id'))->select('current_hours')->get();
 //        $remainHour = $hoursExp + $currentHour;
+
+        $vehicle->update($inputs);
+        return back();
+    }
+    public function updateLocation(Vehicle $vehicle) {
+        $inputs = request()->validate([
+            'location' => ['required'],
+            'location_timestamp' => ['required']
+        ]);
+
+        // TODO Updated expected_hours when updating hour counts
+//        $hoursExp = $vehicle->where('id', '=', request('id'))->select('expected_hours')->get();
+//        $currentHour = $vehicle->where('id', '=', request('id'))->select('current_hours')->get();
+//        $remainHour = $hoursExp + $currentHour;
+
+//        $rental->update(['precheck_time' => request('precheck_time')]);
+        if(request('hours_updated')) {
+            $vehicle->update(['hours_updated' => request('hours_updated')]);
+        }
+        if(request('current_hours')) {
+            $vehicle->update(['current_hours' => request('current_hours')]);
+        }
 
         $vehicle->update($inputs);
         return back();
