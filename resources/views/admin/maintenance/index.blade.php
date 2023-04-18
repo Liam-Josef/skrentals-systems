@@ -502,7 +502,7 @@
                                                 <span class="text-white">Hours: &nbsp; </span>
                                                 {{$maintenance->service_hours}}
                                             </h6>
-                                            <h6> <span class="text-white">Descripion: &nbsp; </span>{{$maintenance->description}}</h6>
+                                            <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
                                             <h6> <span class="text-white">Service Invoice #: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
                                             <h6> <span class="text-white">Submitted By: &nbsp; </span>
                                                 @foreach($users as $user)

@@ -26,7 +26,7 @@ class MaintenanceController extends Controller
         $serviceCount = Maintenance::where('status', '=', 'In Service')->get()->count();
         $invoiceCount = Maintenance::where('status', '=', 'Invoice Submitted')->get()->count();
         $completedCount = Maintenance::where('status', '=', 'Completed')->get()->count();
-        $dateNow =Carbon::now('PST')->addHours(1);
+        $dateNow =Carbon::now('PST');
         $vehicleSeaDoo = Vehicle::where('vehicle_type', '=', 'SeaDoo')->get();
         $vehiclePontoon = Vehicle::where('vehicle_type', '=', 'Pontoon')->get();
         $vehicleScarab = Vehicle::where('vehicle_type', '=', 'Scarab')->get();
@@ -52,7 +52,7 @@ class MaintenanceController extends Controller
     }
 
     public function chart(Vehicle $vehicle) {
-        $dateNow =Carbon::now('PST')->addHours(1);
+        $dateNow =Carbon::now('PST');
         $vehicles = Vehicle::all();
         $vehicleSeaDoo = Vehicle::where('vehicle_type', '=', 'SeaDoo')->get();
         $vehiclePontoon = Vehicle::where('vehicle_type', '=', 'Pontoon')->get();
@@ -78,25 +78,27 @@ class MaintenanceController extends Controller
     }
 
     public function service() {
-        $users = User::all();
         $rentals = Rental::where('status', 'COC')->orderBy('updated_at', 'desc')->get();
-        $maintenances = Maintenance::orderByRaw("FIELD(status , 'New', 'In Service', 'Invoice Submitted', 'Completed')")->orderBy('status', 'desc')->get();
+        $maintenances = Maintenance::orderByRaw("FIELD(status , 'New', 'In Service', 'Invoice Submitted', 'Completed', 'Rejected')")->orderBy('status', 'desc')->get();
 //        $maintenances = Maintenance::all();
         $activeMaintenance = Maintenance::where('is_active', '=', '1')->get();
         $createdCount = Maintenance::where('status', '=', 'Created')->get()->count();
         $serviceCount = Maintenance::where('status', '=', 'In Service')->get()->count();
         $invoiceCount = Maintenance::where('status', '=', 'Invoice Submitted')->get()->count();
         $completedCount = Maintenance::where('status', '=', 'Completed')->get()->count();
-        $dateNow =Carbon::now('PST')->addHours(1);
+        $rejectedCount = Maintenance::where('status', '=', 'Rejected')->get()->count();
+        $dateNow =Carbon::now('PST');
         return view('admin.maintenance.service', data: [
            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
             'users' => User::all(),
             'vehicles' => Vehicle::all(),
+            'rentals' => $rentals,
             'createdCount' => $createdCount,
             'serviceCount' => $serviceCount,
             'invoiceCount' => $invoiceCount,
             'completedCount' => $completedCount,
+            'rejectedCount' => $rejectedCount,
             'activeMaintenance' => $activeMaintenance,
             'maintenances' => $maintenances,
             'dateNow' => $dateNow
@@ -128,14 +130,22 @@ class MaintenanceController extends Controller
             'vehicleScarab' => Vehicle::where('vehicle_type','=', 'Scarab')->where('location', '!=', 'Service')->get(),
             'vehiclePontoon' => Vehicle::where('vehicle_type','=', 'Pontoon')->where('location', '!=', 'Service')->get(),
             'vehicleSeaDoo' => Vehicle::where('vehicle_type','=', 'SeaDoo')->where('location', '!=', 'Service')->get(),
-            'today' => $today = Carbon::now('PST')->toDateString(),
-            'dateNow' => $dateNow =Carbon::now('PST')->addHours(1)
+            'today' => Carbon::now('PST')->toDateString(),
+            'dateNow' => Carbon::now('PST')->addHours(1)
         ]);
     }
 
     public function acceptMaintReqCoc(Maintenance $maintenance) {
         $maintenance->update(['status' => 'In Service']);
         $maintenance->update(['service_notes' => request('service_notes')]);
+        return back();
+    }
+
+    public function req_deny(Maintenance $maintenance) {
+        $maintenance->update(['status' => request('status')]);
+        $maintenance->update(['denied_by' => request('denied_by')]);
+        $maintenance->update(['serv_deny_reason' => request('serv_deny_reason')]);
+        $maintenance->update(['deny_date' => request('deny_date')]);
         return back();
     }
 
@@ -197,7 +207,7 @@ class MaintenanceController extends Controller
             'websites' => Website::where('id', '=', '1')->get(),
             'maintenances' => $maintenances,
             'vehicles' => Vehicle::all(),
-            'dateNow' => Carbon::now('PST')->addHours(1),
+            'dateNow' => Carbon::now('PST'),
             'rentals' => $rentals,
             'users' => $users
         ]);

@@ -1225,9 +1225,9 @@
                         <!-- /Finalize Billing - Maintenance -->
 
                         @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount)
+                            @if(!$serviceReqCocServCount && !$serviceReqInvoiceCount)
                             <h1 class="text-center text-gray">...nothing to do</h1>
-                            @elseif(!$serviceReqCocServCount && !$serviceReqInvoiceCount)
-                            <h1 class="text-center text-gray">...nothing to do</h1>
+                            @endif
                             @else
                             &nbsp;
                         @endif

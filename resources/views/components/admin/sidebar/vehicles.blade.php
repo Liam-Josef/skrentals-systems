@@ -35,6 +35,7 @@
             <div class="py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Vehicle Menu</h6>
                 <a class="collapse-item {{ Request::is('admin/vehicles/index*') ? 'active' : '' }}" href="{{route('vehicle.index')}}">Vehicles</a>
+                <a class="collapse-item {{ Request::is('admin/vehicles/service*') ? 'active' : '' }}" href="{{route('vehicle.service')}}">Move Vehicle</a>
                 <a class="collapse-item" href="#" data-toggle="modal" data-target="#addVehicle">Add Vehicle</a>
             </div>
         </div>
