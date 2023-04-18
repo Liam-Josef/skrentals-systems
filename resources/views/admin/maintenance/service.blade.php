@@ -96,7 +96,7 @@
                                                 <div class="col-sm-2">Vehicle Type</div>
                                                 <div class="col-sm-1">ID</div>
                                                 <div class="col-sm-2">Description</div>
-                                                <div class="col-sm-1">Invoice</div>
+                                                <div class="col-sm-1">R / O</div>
                                                 <div class="col-sm-2">Submitted By</div>
                                                 <div class="col-sm-1 text-center pr-0">Status</div>
                                                 <div class="col-sm-1 text-center pr-0">&nbsp;</div>
@@ -163,9 +163,13 @@
                                                                     @if($maintenance->status == 'Created')
                                                                         <h4 class="text-red">Need to Accept</h4>
                                                                     @elseif($maintenance->invoice == '')
-                                                                        <h4 class="text-gray-700">Upload Invoice</h4>
+                                                                        @if($maintenance->status == 'Rejected')
+                                                                            &nbsp;
+                                                                        @else
+                                                                            <h4 class="text-gray-700">Upload Invoice</h4>
+                                                                        @endif
                                                                     @elseif($maintenance->status == 'Invoice Submitted')
-                                                                        <h4 class="text-gray-600">Invoice Waiting Approval</h4>
+                                                                        <h4 class="text-gray-600">R/O Waiting Approval</h4>
                                                                     @else
                                                                         <h4 class="text-gray-400">Completed</h4>
                                                                     @endif
@@ -194,17 +198,20 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3>
-                                <span>Service Invoice: #{{$maintenance->service_invoice}} </span>
-                                | {{$maintenance->service_type}}
-                                <span> |
+                                <span>
                                     @foreach($vehicles as $vehicle)
                                         @if($maintenance->vehicle_id == $vehicle->id)
                                             {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
                                         @endif
                                     @endforeach
                                 </span>
-                            </h3>
+                                | {{$maintenance->service_type}}
 
+                            </h3>
+                            @if($maintenance->service_invoice != '')
+                                <span>R / O: {{$maintenance->service_invoice}} </span>
+                                @else
+                            @endif
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -334,10 +341,46 @@
                                     </div>
 
 
+                                    @if($maintenance->denied_by != '')
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5>Request Rejected: &nbsp;</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                <h5><span>{{\Carbon\Carbon::parse($maintenance->deny_date)->format('M d, Y')}}</span></h5>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5>Rejected By: &nbsp;</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                @foreach($users as $user)
+                                                    @if($user->id == $maintenance->denied_by)
+                                                        <h5><span>{{$user->firstname}} {{$user->lastname}}</span></h5>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <h5>Rejection Explaination: &nbsp;</h5>
+                                            </div>
+                                            <div class="col-6">
+                                                <h5>{{$maintenance->serv_deny_reason}}</h5>
+                                            </div>
+                                        </div>
+                                        @else
+
+                                    @endif
+
+
                                     @if($maintenance->invoice)
                                         <div class="row">
                                             <div class="col-6">
-                                                <h5>Date Invoice Submitted: &nbsp;</h5>
+                                                <h5>Date R/O Submitted: &nbsp;</h5>
                                             </div>
                                             <div class="col-6">
                                                 <h5><span>{{\Carbon\Carbon::parse($maintenance->date_invoiced)->format('M d, Y')}}</span></h5>
@@ -346,7 +389,7 @@
 
                                         <div class="row">
                                             <div class="col-6">
-                                                <h5>Invoice Submitted By: &nbsp;</h5>
+                                                <h5>R/O Submitted By: &nbsp;</h5>
                                             </div>
                                             <div class="col-6">
                                                 <h5>
@@ -421,11 +464,11 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-4">
-                                                            <label for="service_invoice">Invoice Number</label>
+                                                            <label for="service_invoice">R / O</label>
                                                             <input type="text" class="form-control" name="service_invoice" value="{{$maintenance->service_invoice}}">
                                                         </div>
                                                         <div class="col-8">
-                                                            <label for="invoice">Upload Invoice - <small>{{$maintenance->service_invoice}}.pdf</small></label>
+                                                            <label for="invoice">Upload Invoice - <small>{{$maintenance->service_invoice}}.pdf (required)</small></label>
                                                             <input type="file" class="form-control" name="invoice">
                                                         </div>
                                                     </div>
@@ -504,8 +547,9 @@
                                         </div>
                                 </div>
                                 <div class="modal-footer">
+                                    <input type="hidden" class="form-control" name="denied_by" value="{{auth()->user()->id}}">
                                     <input type="hidden" class="" id="status" name="status" value="Rejected">
-                                    <input type="hidden" class="" id="deny_date" name="deny_date" value="{{\Carbon\Carbon::now('PST')->format('Y-m-d H:m:s')}}">
+                                    <input type="hidden" class="" id="deny_date" name="deny_date" value="{{$dateNow}}">
                                     <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel </button>
                                     <button class="btn btn-primary" type="submit">Submit</button>
                                 </div>
@@ -584,7 +628,7 @@
                                                 @endif
                                             @endforeach
                                         </h6>
-                                        <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                        <h6> <span class="text-white">R/O Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                     @endif
 
                                     @if($maintenance->approved_by == '')
@@ -597,7 +641,7 @@
                                                 @endif
                                             @endforeach
                                         </h6>
-                                        <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                        <h6> <span class="text-white">R/O Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                     @endif
 
                                 </div>
