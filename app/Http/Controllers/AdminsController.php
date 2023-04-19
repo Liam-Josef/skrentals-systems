@@ -31,6 +31,8 @@ class AdminsController extends Controller
         $serviceReqAcceptCount = Maintenance::where('is_active', '=', '0')->where('status', '=', 'Created')->orderBy('updated_at', 'asc')->get()->count();
         $serviceReqInvoice = Maintenance::where('is_active', '=', '1')->where('status', '=', 'Invoice Submitted')->orderBy('updated_at', 'asc')->get();
         $serviceReqInvoiceCount = Maintenance::where('is_active', '=', '1')->where('status', '=', 'Invoice Submitted')->orderBy('updated_at', 'asc')->get()->count();
+        $serviceReqRejected = Maintenance::where('status', '=', 'Rejected')->where('is_active', '=', '1')->orderby('updated_at', 'asc')->get();
+        $serviceReqRejectedCount = Maintenance::where('status', '=', 'Rejected')->where('is_active', '=', '1')->orderby('updated_at', 'asc')->get()->count();
 
         $serviceReqCocNew = Rental::where('status', '=', 'COC')->where('coc_status', 'New')->orderby('updated_at', 'asc')->get();
         $serviceReqCocNewCount = Rental::where('status', '=', 'COC')->where('coc_status', 'New')->orderby('updated_at', 'asc')->get()->count();
@@ -77,6 +79,8 @@ class AdminsController extends Controller
             'serviceReqCocServCount' => $serviceReqCocServCount,
             'serviceReqCocBilling' => $serviceReqCocBilling,
             'serviceReqCocBillingCount' => $serviceReqCocBillingCount,
+            'serviceReqRejected' => $serviceReqRejected,
+            'serviceReqRejectedCount' => $serviceReqRejectedCount,
             'activeEmp' => $activeEmp,
             'activeCoc' => $activeCoc,
             'activeService' => $activeService,
