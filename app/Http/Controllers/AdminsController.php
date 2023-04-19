@@ -48,7 +48,7 @@ class AdminsController extends Controller
 
 
 
-        $activeEmp = User::where('is_active', '=', '1')->get()->count();
+        $activeEmp = User::where('is_active', '=', '1')->where('id', '!=', '2')->where('id', '!=', '3')->where('id', '!=', '15')->get()->count();
         $activeCoc = Rental::where('status', '=', 'COC')->where('coc_status', '!=', 'Complete')->get()->count();
         $activeService = Maintenance::where('is_active', '=', '1')->get()->count();
         $activeRentals = Rental::where('activity_date', 'like', '%'.$today.'%')->get()->count();
