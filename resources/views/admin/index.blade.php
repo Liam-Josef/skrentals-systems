@@ -1224,6 +1224,181 @@
                         @endif
                         <!-- /Finalize Billing - Maintenance -->
 
+                        <!-- RO Rejected - Maintenance -->
+                        @if($serviceReqRejectedCount > 0)
+                            @foreach($serviceReqRejected as $maintenance)
+                                <div class="coc-item">
+                                    <div class="row">
+                                        <a href="#" class="service-link" data-toggle="modal" data-target="#viewInvoice{{$maintenance->id}}">
+                                            <div class="col-8 col-sm-2">
+                                                <h6 class="mt-2">
+                                                    @if($maintenance->vehicle_type == 'Scarab 215')
+                                                        Scarab
+                                                    @elseif($maintenance->vehicle_type == '23ft. Pontoon Boat')
+                                                        Pontoon
+                                                    @elseif($maintenance->vehicle_type == '23ft. Pontoon Boat')
+                                                        Pontoon
+                                                    @elseif($maintenance->vehicle_type == 'Renegade BC 600ETec')
+                                                        Renegade
+                                                    @elseif($maintenance->vehicle_type == 'Summit 154 SP')
+                                                        Summit
+                                                    @elseif($maintenance->vehicle_type == '14ft. Aluminum Boat')
+                                                        Aluminum
+                                                    @elseif($maintenance->vehicle_type == 'Kayak Single')
+                                                        Single Kayak
+                                                    @elseif($maintenance->vehicle_type == 'Double Kayak')
+                                                        Double Kayak
+                                                    @elseif($maintenance->vehicle_type == 'Stand Up Paddleboard')
+                                                        SUP
+                                                    @elseif($maintenance->vehicle_type == 'Segway i2')
+                                                        Segway
+                                                    @elseif($maintenance->vehicle_type == 'Spyder RT-S SE6')
+                                                        Spyder
+                                                    @elseif($maintenance->vehicle_type == 'SeaDoo')
+                                                        SeaDoo
+                                                    @else
+                                                        <br>
+                                                        {{$maintenance->vehicle_type}}
+
+                                                    @endif
+                                                    @foreach($vehicles as $vehicle)
+                                                        @if($vehicle->id == $maintenance->vehicle_id)
+                                                            {{$vehicle->internal_vehicle_id}}
+                                                        @endif
+                                                    @endforeach
+                                                </h6>
+                                            </div>
+                                            <div class="col-4 col-sm-2">
+                                                <h6 class="mt-2 text-red">{{$maintenance->status}}</h6>
+                                            </div>
+                                            <div class="col-12 col-sm-4">
+                                                <h6 class="coc-incident mt-2">{{$maintenance->description}}</h6>
+                                            </div>
+                                            <div class="col-12 col-sm-2">
+                                                <h6 class="mt-2 text-gray-500">{{$maintenance->service_type}}</h6>
+                                            </div>
+                                        </a>
+                                        <div class="col-6 col-sm-2">
+                                            {{--                                            TODO - Maintenance Invoice Button--}}
+                                            <a href="#" class="btn btn-primary-red width-100 height-auto" data-toggle="modal" data-target="#rejctModal{{$maintenance->id}}">Review</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Rejected Modal -->
+                                <div class="modal fade" id="rejctModal{{$maintenance->id}}" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3><span>Rejected Request: </span>{{$maintenance->service_type}} | {{$maintenance->vehicle_type}} {{$maintenance->internal_vehicle_id}}</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        @if($maintenance->image == '')
+                                                            <img src="{{asset('storage/' . 'images/no-image.jpg')}}" alt="Service Request Image" class="img-responsive">
+                                                        @else
+                                                            <img src="{{asset('storage/' . $maintenance->image)}}" alt="Service Request Image" class="img-responsive">
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-6">
+                                                            @foreach($vehicles as $vehicle)
+                                                                @if($maintenance->vehicle_id == $vehicle->id)
+                                                                <h6>
+                                                                    <span class="text-white">Vehicle: &nbsp; </span>
+                                                                    {{$vehicle->vehicle_type}}
+                                                                    {{$vehicle->internal_vehicle_id}}
+                                                                </h6>
+                                                                @endif
+                                                            @endforeach
+                                                        <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
+                                                        <h6> <span class="text-white">Submitted By: &nbsp; </span>
+                                                            @foreach($users as $user)
+                                                                @if($user->id == $maintenance->submitted_by)
+                                                                    {{$user->firstname}} {{$user->lastname}}
+                                                                @endif
+                                                            @endforeach
+                                                        </h6>
+                                                        <h6> <span class="text-white">Date Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}}</h6>
+                                                        @if($maintenance->invoiced_by == '')
+
+                                                            @else
+
+                                                                <h6> <span class="text-white">RO: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
+                                                                <h6> <span class="text-white">Invoiced By: &nbsp; </span>
+                                                                    @foreach($users as $user)
+                                                                        @if($user->id == $maintenance->invoiced_by)
+                                                                            {{$user->firstname}} {{$user->lastname}}
+                                                                        @endif
+                                                                    @endforeach
+                                                                </h6>
+                                                                <h6> <span class="text-white">RO Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->service_notes == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Service Notes: &nbsp; </span> </h6>
+                                                            <h6> {{$maintenance->service_notes}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->approved_by == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Approved Invoice: &nbsp; </span>
+                                                                @foreach($users as $user)
+                                                                    @if($user->id == $maintenance->approved_by)
+                                                                        {{$user->firstname}} {{$user->lastname}}
+                                                                    @endif
+                                                                @endforeach
+                                                            </h6>
+                                                            <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->denied_by != '')
+                                                            <h6> <span class="text-white">Request Rejected: &nbsp; </span>{{\Carbon\Carbon::parse($maintenance->deny_date)->format('M d, Y')}}</h6>
+
+                                                            <h6> <span class="text-white">Rejected By: &nbsp; </span>
+                                                                @foreach($users as $user)
+                                                                    @if($user->id == $maintenance->denied_by)
+                                                                        <span>{{$user->firstname}} {{$user->lastname}}</span>
+                                                                    @endif
+                                                                @endforeach
+                                                            </h6>
+
+
+                                                            <h6> <span class="text-white">Rejection Explaination: &nbsp; </span>{{$maintenance->serv_deny_reason}}</h6>
+                                                        @else
+
+                                                        @endif
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">CANCEL</button>
+                                                <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    <div class="form-group width-100">
+                                                        <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
+                                                        <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
+                                                        <input type="hidden" class="form-group" name="status" value="Completed"/>
+                                                        <button class="btn btn-primary btn-modal btn-right" type="submit">Re-Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Rejected Modal -->
+                            @endforeach
+                        @endif
+                        <!-- /Finalize Billing - Maintenance -->
+
+
                         @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount)
                             @if(!$serviceReqCocServCount && !$serviceReqInvoiceCount)
                             <h1 class="text-center text-gray">...nothing to do</h1>
