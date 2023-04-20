@@ -273,13 +273,12 @@
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h3>
-                                                    <span>Rental COC - #{{$rental->invoice_number}}</span> |
-                                                        @foreach($vehicles as $vehicle)
-                                                            @if($vehicle->id == $rental->coc_vehicle)
+                                                <h3><span>Rental COC - #{{$rental->invoice_number}}</span> |
+                                                    @foreach($vehicles as $vehicle)
+                                                        @if($vehicle->id == $maintenance->vehicle_id)
                                                             {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
-                                                            @endif
-                                                        @endforeach
+                                                        @endif
+                                                    @endforeach
                                                     | <span> New</span>
                                                 </h3>
                                             </div>
@@ -439,7 +438,7 @@
                                         {{$rental_maintenance->rental_id}}
                                     @if($rental_maintenance->rental_invoice == $rental->invoice_number)
                                     hidden
-                                    @endif
+@endif
                                 @endforeach
                                     ">
                                     <a href="#" class="service-link" data-toggle="modal" data-target="#serviceModal{{$rental->id}}">
@@ -447,7 +446,7 @@
                                             <div class="col-8 col-sm-2">
                                                 <h6 class="mt-2">
                                                     @foreach($vehicles as $vehicle)
-                                                        @if($vehicle->id == $rental->vehicle_id)
+                                                        @if($vehicle->id == $maintenance->vehicle_id)
                                                             {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
                                                         @endif
                                                     @endforeach
@@ -509,10 +508,9 @@
                                     <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h3>
-                                                    <span>Rental COC - #{{$rental->invoice_number}}</span> |
-                                                    @foreach($vehicles as $vehicle)
-                                                        @if($vehicle->id == $rental->vehicle_id)
+                                                <h3><span>Rental COC - #{{$rental->invoice_number}}</span> |
+                                                        @foreach($vehicles as $vehicle)
+                                                        @if($vehicle->id == $maintenance->vehicle_id)
                                                             {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
                                                         @endif
                                                     @endforeach
@@ -698,7 +696,7 @@
                                             <div class="col-8 col-sm-2">
                                                 <h6 class="mt-2">
                                                     @foreach($vehicles as $vehicle)
-                                                        @if($vehicle->id == $rental->vehicle_id)
+                                                        @if($vehicle->id == $maintenance->vehicle_id)
                                                             {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
                                                         @endif
                                                     @endforeach
@@ -902,6 +900,103 @@
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <!-- Invoice Modal -->
+                                <div class="modal fade" id="viewInvoice{{$maintenance->id}}" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3><span>Service Invoice: </span>{{$maintenance->service_type}}</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        @if($maintenance->image == '')
+                                                            <img src="{{asset('storage/' . 'images/no-image.jpg')}}" alt="Service Request Image" class="img-responsive">
+                                                        @else
+                                                            <img src="{{asset('storage/' . $maintenance->image)}}" alt="Service Request Image" class="img-responsive">
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-6">
+
+
+                                                            @foreach($vehicles as $vehicle)
+                                                                @if($maintenance->vehicle_id == $vehicle->id)
+                                                                <h6>
+                                                                    <span class="text-white">Vehicle: &nbsp; </span>
+                                                                    {{$vehicle->vehicle_type}}
+                                                                    {{$vehicle->internal_vehicle_id}}
+                                                                </h6>
+                                                                @endif
+                                                            @endforeach
+                                                        <h6> <span class="text-white">Descripion: &nbsp; </span>{{$maintenance->description}}</h6>
+                                                        <h6> <span class="text-white">Service Invoice #: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
+                                                        <h6> <span class="text-white">Submitted By: &nbsp; </span>
+                                                            @foreach($users as $user)
+                                                                @if($user->id == $maintenance->submitted_by)
+                                                                    {{$user->firstname}} {{$user->lastname}}
+                                                                @endif
+                                                            @endforeach
+                                                        </h6>
+                                                        <h6> <span class="text-white">Date Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}}</h6>
+                                                        @if($maintenance->invoiced_by == '')
+
+                                                            @else
+                                                                <h6> <span class="text-white">Invoiced By: &nbsp; </span>
+                                                                    @foreach($users as $user)
+                                                                        @if($user->id == $maintenance->invoiced_by)
+                                                                            {{$user->firstname}} {{$user->lastname}}
+                                                                        @endif
+                                                                    @endforeach
+                                                                </h6>
+                                                                <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->service_notes == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Service Notes: &nbsp; </span> </h6>
+                                                            <h6> {{$maintenance->service_notes}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->approved_by == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Approved Invoice: &nbsp; </span>
+                                                                @foreach($users as $user)
+                                                                    @if($user->id == $maintenance->approved_by)
+                                                                        {{$user->firstname}} {{$user->lastname}}
+                                                                    @endif
+                                                                @endforeach
+                                                            </h6>
+                                                            <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-5">
+                                                    <iframe src="{{asset('storage/' . $maintenance->invoice)}}" style="width: 100%;height: 800px;border: none;"></iframe>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">CANCEL</button>
+                                                <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    <div class="form-group width-100">
+                                                        <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
+                                                        <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
+                                                        <input type="hidden" class="form-group" name="status" value="Completed"/>
+                                                        <button class="btn btn-primary btn-modal btn-right" type="submit">Accept Invoice & Close</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Invoice Modal -->
                             @endforeach
                         @endif
                         <!-- /Finalize Billing - Maintenance -->
@@ -940,9 +1035,277 @@
                                 </div>
 
 
+                                <!-- Rejected Modal -->
+                                <div class="modal fade" id="rejctModal{{$maintenance->id}}" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true">
+                                    <div class="modal-dialog modal-xl" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3><span>Rejected Request: </span>{{$maintenance->service_type}} | {{$maintenance->vehicle_type}} {{$maintenance->internal_vehicle_id}}</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        @if($maintenance->image == '')
+                                                            <img src="{{asset('storage/' . 'images/no-image.jpg')}}" alt="Service Request Image" class="img-responsive">
+                                                        @else
+                                                            <img src="{{asset('storage/' . $maintenance->image)}}" alt="Service Request Image" class="img-responsive">
+                                                        @endif
+                                                    </div>
+                                                    <div class="col-6">
+                                                            @foreach($vehicles as $vehicle)
+                                                                @if($maintenance->vehicle_id == $vehicle->id)
+                                                                <h6>
+                                                                    <span class="text-white">Vehicle: &nbsp; </span>
+                                                                    {{$vehicle->vehicle_type}}
+                                                                    {{$vehicle->internal_vehicle_id}}
+                                                                </h6>
+                                                                @endif
+                                                            @endforeach
+                                                        <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
+                                                        <h6> <span class="text-white">Submitted By: &nbsp; </span>
+                                                            @foreach($users as $user)
+                                                                @if($user->id == $maintenance->submitted_by)
+                                                                    {{$user->firstname}} {{$user->lastname}}
+                                                                @endif
+                                                            @endforeach
+                                                        </h6>
+                                                        <h6> <span class="text-white">Date Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}}</h6>
+                                                        @if($maintenance->invoiced_by == '')
+
+                                                            @else
+
+                                                                <h6> <span class="text-white">RO: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
+                                                                <h6> <span class="text-white">Invoiced By: &nbsp; </span>
+                                                                    @foreach($users as $user)
+                                                                        @if($user->id == $maintenance->invoiced_by)
+                                                                            {{$user->firstname}} {{$user->lastname}}
+                                                                        @endif
+                                                                    @endforeach
+                                                                </h6>
+                                                                <h6> <span class="text-white">RO Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->service_notes == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Service Notes: &nbsp; </span> </h6>
+                                                            <h6> {{$maintenance->service_notes}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->approved_by == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Approved Invoice: &nbsp; </span>
+                                                                @foreach($users as $user)
+                                                                    @if($user->id == $maintenance->approved_by)
+                                                                        {{$user->firstname}} {{$user->lastname}}
+                                                                    @endif
+                                                                @endforeach
+                                                            </h6>
+                                                            <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->denied_by != '')
+                                                            <h6> <span class="text-white">Request Rejected: &nbsp; </span>{{\Carbon\Carbon::parse($maintenance->deny_date)->format('M d, Y')}}</h6>
+
+                                                            <h6> <span class="text-white">Rejected By: &nbsp; </span>
+                                                                @foreach($users as $user)
+                                                                    @if($user->id == $maintenance->denied_by)
+                                                                        <span>{{$user->firstname}} {{$user->lastname}}</span>
+                                                                    @endif
+                                                                @endforeach
+                                                            </h6>
+
+
+                                                            <h6> <span class="text-white">Rejection Explanation: &nbsp; </span>{{$maintenance->serv_deny_reason}}</h6>
+                                                        @else
+
+                                                        @endif
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">CANCEL</button>
+                                                <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    <div class="form-group width-100">
+                                                        <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
+                                                        <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
+                                                        <input type="hidden" class="form-group" name="status" value="Completed"/>
+                                                        <button class="btn btn-primary btn-modal btn-right" type="submit">Re-Submit</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Rejected Modal -->
                             @endforeach
                         @endif
                         <!--  /RO Rejected - Maintenance -->
+
+
+                        <!-- Service Request Modal -->
+                        @foreach($maintenances as $maintenance)
+                            <div class="modal fade" id="servReqModal{{$maintenance->id}}" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+
+                                        <div class="modal-header">
+                                            <h3>
+                                                @foreach($vehicles as $vehicle)
+                                                    @if($vehicle->id == $maintenance->vehicle_id)
+                                                        {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}} &nbsp;
+                                                    @endif
+                                                @endforeach
+                                                <span>
+                                                @if($maintenance->is_active == '0' && $maintenance->status == 'Created')
+                                                        {{$maintenance->service_type}} <span class="font-weight-lighter">| {{$maintenance->status}}</span>
+                                                    @elseif($maintenance->is_active == '1' && $maintenance->status == 'Invoice Submitted')
+                                                        <span>{{$maintenance->service_type}} <span>| Review Invoice</span>
+                                                            @else
+                                                                <span>{{$maintenance->service_type}} <span>| {{$maintenance->status}}</span>
+                                                                    @endif
+                                                </span>
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    @if($maintenance->image == '')
+                                                        <img src="{{asset('storage/' . 'app-images/no-image.jpg')}}" alt="Service Request Image" class="img-responsive">
+                                                    @else
+                                                        <img src="{{asset('storage/' . $maintenance->image)}}" alt="Service Request Image" class="img-responsive">
+                                                    @endif
+                                                </div>
+                                                <div class="col-6">
+                                                    <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
+                                                    <h6> <span class="text-white">Submitted By: &nbsp; </span>
+                                                        @foreach($users as $user)
+                                                            @if($user->id == $maintenance->submitted_by)
+                                                                {{$user->firstname}} {{$user->lastname}}
+                                                            @endif
+                                                        @endforeach
+                                                    </h6>
+                                                    <h6> <span class="text-white">Submitted Date: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}}</h6>
+
+                                                    @if($maintenance->denied_by != '')
+                                                        <h6> <span class="text-white">Request Rejected: &nbsp; </span>{{\Carbon\Carbon::parse($maintenance->deny_date)->format('M d, Y')}}</h6>
+
+                                                        <h6> <span class="text-white">Rejected By: &nbsp; </span>
+                                                            @foreach($users as $user)
+                                                                @if($user->id == $maintenance->denied_by)
+                                                                    <span>{{$user->firstname}} {{$user->lastname}}</span>
+                                                                @endif
+                                                            @endforeach
+                                                        </h6>
+
+
+                                                        <h6> <span class="text-white">Rejection Explanation: &nbsp; </span>{{$maintenance->serv_deny_reason}}</h6>
+                                                    @else
+
+                                                        @if($maintenance->invoiced_by == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Invoiced By: &nbsp; </span>
+                                                                @foreach($users as $user)
+                                                                    @if($user->id == $maintenance->invoiced_by)
+                                                                        {{$user->firstname}} {{$user->lastname}}
+                                                                    @endif
+                                                                @endforeach
+                                                            </h6>
+                                                            <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->service_notes == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Service Notes: &nbsp; </span> </h6>
+                                                            <h6> {{$maintenance->service_notes}}</h6>
+                                                        @endif
+
+                                                        @if($maintenance->approved_by == '')
+
+                                                        @else
+                                                            <h6> <span class="text-white">Approved Invoice: &nbsp; </span>
+                                                                @foreach($users as $user)
+                                                                    @if($user->id == $maintenance->approved_by)
+                                                                        {{$user->firstname}} {{$user->lastname}}
+                                                                    @endif
+                                                                @endforeach
+                                                            </h6>
+                                                            <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                        @endif
+
+                                                    @endif
+
+
+
+                                                </div>
+                                            </div>
+                                            @if($maintenance->invoiced_by != '')
+                                                <div class="row mt-5">
+                                                    <iframe src="{{asset('storage/' . $maintenance->invoice)}}" style="width: 100%;height: 800px;border: none;"></iframe>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">CANCEL</button>
+                                            @if($maintenance->is_active == '0' && $maintenance->status == 'Created')
+                                                <form action="{{route('maintenance.submitServiceReqAdmin', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    <div class="form-group width-100">
+                                                        <input type="hidden" class="form-group" name="submitted_by" value="{{auth()->user()->id}}"/>
+                                                        <input type="hidden" class="form-group" name="date_submitted" value="{{$dateNow}}"/>
+                                                        <input type="hidden" class="form-group" name="image" value="images/rentalLogo_new_square-m.png"/>
+                                                        <input type="hidden" class="form-control" name="vehicle_id" value="{{$maintenance->vehicle_id}}">
+                                                        <input type="hidden" class="form-control" name="is_active" value="1">
+                                                        @foreach($vehicles as $vehicle)
+                                                            @if($maintenance->vehicle_id == $vehicle->id)
+                                                                <input type="hidden" class="form-control" name="internal_vehicle_id" value="{{$vehicle->internal_vehicle_id}}">
+                                                            @endif
+                                                        @endforeach
+                                                        <button class="btn btn-primary-red btn-right" type="submit">Submit to Service</button>
+                                                    </div>
+                                                </form>
+                                            @elseif($maintenance->is_active == '1' && $maintenance->status == 'Invoice Submitted')
+                                                <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('PUT')
+
+                                                    <div class="form-group width-100">
+                                                        <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
+                                                        <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
+                                                        <input type="hidden" class="form-group" name="status" value="Completed"/>
+                                                        <button class="btn btn-primary btn-modal btn-right" type="submit">Accept Invoice & Close</button>
+                                                    </div>
+                                                </form>
+                                            @else
+                                                @if($maintenance->is_active == '1' && $maintenance->status == 'Rejected')
+                                                    <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <div class="form-group width-100">
+                                                            <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
+                                                            <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
+                                                            <input type="hidden" class="form-group" name="status" value="Completed"/>
+                                                            <button class="btn btn-primary btn-modal btn-right" type="submit">Re-Submit</button>
+                                                        </div>
+                                                    </form>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        <!-- /Service Request Modal -->
 
 
                         @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount)
@@ -1179,175 +1542,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-        <!-- Service Request Modal -->
-        @foreach($maintenances as $maintenance)
-            <div class="modal fade" id="servReqModal{{$maintenance->id}}" tabindex="-1" role="dialog" aria-labelledby="viewInvoice" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
-
-                        <div class="modal-header">
-                            <h3>
-                                @foreach($vehicles as $vehicle)
-                                    @if($vehicle->id == $maintenance->vehicle_id)
-                                        {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}} &nbsp;
-                                    @endif
-                                @endforeach
-                                <span>
-                                            @if($maintenance->is_active == '0' && $maintenance->status == 'Created')
-                                        {{$maintenance->service_type}} <span class="font-weight-lighter">| {{$maintenance->status}}</span>
-                                    @elseif($maintenance->is_active == '1' && $maintenance->status == 'Invoice Submitted')
-                                        <span>{{$maintenance->service_type}} <span>| Review Invoice</span>
-                                                        @else
-                                                <span>{{$maintenance->service_type}} <span>| {{$maintenance->status}}</span>
-                                                                @endif
-                                            </span>
-                            </h3>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-6">
-                                    @if($maintenance->image == '')
-                                        <img src="{{asset('storage/' . 'app-images/no-image.jpg')}}" alt="Service Request Image" class="img-responsive">
-                                    @else
-                                        <img src="{{asset('storage/' . $maintenance->image)}}" alt="Service Request Image" class="img-responsive">
-                                    @endif
-                                </div>
-                                <div class="col-6">
-                                    <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
-                                    <h6> <span class="text-white">Submitted By: &nbsp; </span>
-                                        @foreach($users as $user)
-                                            @if($user->id == $maintenance->submitted_by)
-                                                {{$user->firstname}} {{$user->lastname}}
-                                            @endif
-                                        @endforeach
-                                    </h6>
-                                    <h6> <span class="text-white">Submitted Date: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}}</h6>
-
-                                    @if($maintenance->denied_by != '')
-                                        <h6> <span class="text-white">Request Rejected: &nbsp; </span>{{\Carbon\Carbon::parse($maintenance->deny_date)->format('M d, Y')}}</h6>
-
-                                        <h6> <span class="text-white">Rejected By: &nbsp; </span>
-                                            @foreach($users as $user)
-                                                @if($user->id == $maintenance->denied_by)
-                                                    <span>{{$user->firstname}} {{$user->lastname}}</span>
-                                                @endif
-                                            @endforeach
-                                        </h6>
-
-
-                                        <h6> <span class="text-white">Rejection Explanation: &nbsp; </span>{{$maintenance->serv_deny_reason}}</h6>
-                                    @else
-
-                                        @if($maintenance->invoiced_by == '')
-
-                                        @else
-                                            <h6> <span class="text-white">Invoiced By: &nbsp; </span>
-                                                @foreach($users as $user)
-                                                    @if($user->id == $maintenance->invoiced_by)
-                                                        {{$user->firstname}} {{$user->lastname}}
-                                                    @endif
-                                                @endforeach
-                                            </h6>
-                                            <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
-                                        @endif
-
-                                        @if($maintenance->service_notes == '')
-
-                                        @else
-                                            <h6> <span class="text-white">Service Notes: &nbsp; </span> </h6>
-                                            <h6> {{$maintenance->service_notes}}</h6>
-                                        @endif
-
-                                        @if($maintenance->approved_by == '')
-
-                                        @else
-                                            <h6> <span class="text-white">Approved Invoice: &nbsp; </span>
-                                                @foreach($users as $user)
-                                                    @if($user->id == $maintenance->approved_by)
-                                                        {{$user->firstname}} {{$user->lastname}}
-                                                    @endif
-                                                @endforeach
-                                            </h6>
-                                            <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
-                                        @endif
-
-                                    @endif
-
-
-
-                                </div>
-                            </div>
-                            @if($maintenance->invoiced_by != '')
-                                <div class="row mt-5">
-                                    <iframe src="{{asset('storage/' . $maintenance->invoice)}}" style="width: 100%;height: 800px;border: none;"></iframe>
-                                </div>
-                            @endif
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">CANCEL</button>
-                            @if($maintenance->is_active == '0' && $maintenance->status == 'Created')
-                                <form action="{{route('maintenance.submitServiceReqAdmin', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-
-                                    <div class="form-group width-100">
-                                        <input type="hidden" class="form-group" name="submitted_by" value="{{auth()->user()->id}}"/>
-                                        <input type="hidden" class="form-group" name="date_submitted" value="{{$dateNow}}"/>
-                                        <input type="hidden" class="form-group" name="image" value="images/rentalLogo_new_square-m.png"/>
-                                        <input type="hidden" class="form-control" name="vehicle_id" value="{{$maintenance->vehicle_id}}">
-                                        <input type="hidden" class="form-control" name="is_active" value="1">
-                                        @foreach($vehicles as $vehicle)
-                                            @if($maintenance->vehicle_id == $vehicle->id)
-                                                <input type="hidden" class="form-control" name="internal_vehicle_id" value="{{$vehicle->internal_vehicle_id}}">
-                                            @endif
-                                        @endforeach
-                                        <button class="btn btn-primary-red btn-right" type="submit">Submit to Service</button>
-                                    </div>
-                                </form>
-                            @elseif($maintenance->is_active == '1' && $maintenance->status == 'Invoice Submitted')
-                                <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('PUT')
-
-                                    <div class="form-group width-100">
-                                        <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
-                                        <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
-                                        <input type="hidden" class="form-group" name="status" value="Completed"/>
-                                        <button class="btn btn-primary btn-modal btn-right" type="submit">Accept Invoice & Close</button>
-                                    </div>
-                                </form>
-                            @else
-                                @if($maintenance->is_active == '1' && $maintenance->status == 'Rejected')
-                                    <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PUT')
-
-                                        <div class="form-group width-100">
-                                            <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
-                                            <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
-                                            <input type="hidden" class="form-group" name="status" value="Completed"/>
-                                            <button class="btn btn-primary btn-modal btn-right" type="submit">Re-Submit</button>
-                                        </div>
-                                    </form>
-                                @endif
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endforeach
-        <!-- /Service Request Modal -->
-
-
-
     @endsection
 
 
