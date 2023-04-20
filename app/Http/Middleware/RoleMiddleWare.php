@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class RoleMiddleWare
     public function handle(Request $request, Closure $next, $role)
     {
         if(!$request->user()->userHasRole($role)) {
-            abort(403, 'Not Authorized');
+//            abort(403, 'Not Authorized');
+            return redirect(RouteServiceProvider::HOME);
         }
 
 
