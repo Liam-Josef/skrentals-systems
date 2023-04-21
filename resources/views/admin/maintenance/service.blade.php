@@ -248,7 +248,7 @@
                                                     <small>( Vehicle Hours at last check on {{\Carbon\Carbon::parse($vehicle->hours_updated)->format('M d, Y')}} )</small>
                                                 @endif
                                             @endforeach
-                                        @elseif($maintenance->service_hours == '')
+                                        @elseif($maintenance->service_hours != '')
                                             {{$maintenance->service_hours}}
                                         @else
                                             No Hours Recorded...

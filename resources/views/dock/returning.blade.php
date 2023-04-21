@@ -8036,10 +8036,10 @@
                                             <div class="form-group mt-4">
                                                 <div class="row">
                                                     <div class="col-6">
-                                                            <label for="current_hours">Vehicle Hour Count <em>(Req)</em> </label>
+                                                            <label for="coc_hours">Vehicle Hour Count <em>(Req)</em> </label>
                                                     </div>
                                                     <div class="col-6">
-                                                            <input type="text" class="form-control" name="current_hours" id="current_hours" />
+                                                            <input type="text" class="form-control" name="coc_hours" id="coc_hours" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -8060,7 +8060,6 @@
                                      <input type="hidden" name="last_four" value="0000">
                                      <input type="hidden" name="coc_status" value="New">
                                      <input type="hidden" value="{{$dateNow}}" name="cleared_time">
-                                     <input type="hidden" value="{{$dateNow}}" name="hours_updated">
                                      <button class="btn btn-primary" type="submit">SUBMIT COC</button>
                                  </div>
                              </div>
@@ -8152,10 +8151,10 @@
                                              <div class="form-group mt-4">
                                                  <div class="row">
                                                      <div class="col-6">
-                                                         <label for="current_hours">Vehicle Hour Count <em>(Req)</em> </label>
+                                                         <label for="coc_hours">Vehicle Hour Count <em>(Req)</em> </label>
                                                      </div>
                                                      <div class="col-6">
-                                                         <input type="text" class="form-control" name="current_hours" id="current_hours" />
+                                                         <input type="text" class="form-control" name="coc_hours" id="coc_hours" />
                                                      </div>
                                                  </div>
                                              </div>
@@ -8169,7 +8168,6 @@
                                      <input type="hidden" name="last_four" value="0000">
                                      <input type="hidden" name="coc_status" value="New">
                                      <input type="hidden" value="{{$dateNow}}" name="cleared_time">
-                                     <input type="hidden" value="{{$dateNow}}" name="hours_updated">
                                      <button class="btn btn-primary" type="submit">SUBMIT COC</button>
                                  </div>
 
