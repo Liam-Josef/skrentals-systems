@@ -147,12 +147,10 @@
                                                                 @endforeach
                                                             </p>
                                                         </div>
-                                                        <div class="col-sm-1">
-                                                            <p>{{$maintenance->status}}</p>
-                                                        </div>
-                                                        <div class="col-sm-2 pl-0">
+                                                        <div class="col-sm-3">
                                                             <div class="form-div" style="text-align: right">
                                                                 <a href="#" class="table-li-link" data-toggle="modal" data-target="#maintModal{{$maintenance->id}}">
+
                                                                     @if($maintenance->status == 'Created')
                                                                         <h4 class="text-red">Need to Accept</h4>
                                                                     @elseif($maintenance->invoice == '')
