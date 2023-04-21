@@ -239,7 +239,6 @@
                                         </div>
                                     </a>
                                 </div>
-
                             @endforeach
                         @endif
                         <!-- /Submit COC to Service - Rental -->
@@ -312,192 +311,9 @@
                                         </div>
                                     </a>
                                 </div>
-
-
-                                <!-- Service Modal -->
-                                <div class="modal fade" id="serviceModal{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="cocIntake" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h3><span>Rental COC - #{{$rental->invoice_number}}</span> |
-                                                        @foreach($vehicles as $vehicle)
-                                                        @if($vehicle->id == $rental->coc_vehicle)
-                                                            {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
-                                                        @endif
-                                                    @endforeach
-                                                    | <span> New</span>
-                                                </h3>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <img class="img-responsive" src="{{asset('storage/' . $rental->image_1)}}" height="auto" width="100%" />
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <h6> <span class="text-white">Status: &nbsp; </span>{{$rental->coc_status}}</h6>
-                                                        <h6> <span class="text-white">Rental Date: &nbsp; </span>{{Carbon\Carbon::parse($rental->activity_date)->format('m / d / y')}}</h6>
-                                                        <h6> <span class="text-white">Rental Invoice #: &nbsp; </span>{{$rental->invoice_number}}</h6>
-                                                        <h6> <span class="text-white">Found By: &nbsp; </span>
-                                                            @foreach($users as $user)
-                                                                @if($rental->cleared_by == $user->id)
-                                                                    {{$user->firstname}} {{$user->lastname}}
-                                                                @endif
-                                                            @endforeach
-                                                        </h6>
-                                                        @foreach($vehicles as $vehicle)
-                                                            @if($rental->coc_vehicle == $vehicle->id)
-                                                                <h6>
-                                                                    <span class="text-white">Vehicle: &nbsp; </span>
-                                                                    {{$vehicle->vehicle_type}}
-                                                                    {{$vehicle->internal_vehicle_id}}
-                                                                </h6>
-                                                                <h6>
-                                                                    <span class="text-white">VIN: &nbsp; </span>
-                                                                    {{$vehicle->vin}}
-                                                                </h6>
-                                                                <h6>
-                                                                    <span class="text-white">Hours: &nbsp; </span>
-                                                                    {{$rental->coc_hours}}
-                                                                </h6>
-                                                            @endif
-                                                        @endforeach
-                                                        <h6> <span class="text-white">Description: &nbsp; </span>{{$rental->incident}}</h6>
-
-                                                        <div class="row mt-5">
-                                                            <div class="col-12">
-                                                                @if($rental->coc_status == 'New')
-                                                                    <form action="{{route('coc.intakeCoc', $rental->id)}}" method="post" class="width-100" enctype="multipart/form-data">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <div class="row">
-                                                                            <div class="col-6">
-                                                                                <textarea name="description" id="description" cols="30" rows="5">{{$rental->incident}}</textarea>
-                                                                            </div>
-                                                                            <div class="col-6">
-
-                                                                                <input type="file" class="form-control mb-3" name="image" id="image" value="{{$rental->image_1}}" />
-
-                                                                                <div class="form-group">
-                                                                                    <label for="last_four">Last 4 of Card(s) <em>- Required *</em></label>
-                                                                                    <input type="text" name="last_four" class="form-control mb-3" placeholder="Last 4 of CC">
-                                                                                </div>
-
-                                                                                <div class="row mt-5">
-                                                                                    <div class="form-group width-100">
-                                                                                        <input type="hidden" class="form-group" name="vehicle_type" value="{{$rental->activity_item}}"/>
-                                                                                        <input type="hidden" class="form-group" name="internal_vehicle_id" value="
-                                                                                    @foreach($rental->vehicles as $rental_vehicle)
-                                                                                        @if($rental->coc_vehicle == $rental_vehicle->id)
-                                                                                        {{$rental_vehicle->internal_vehicle_id}}
-                                                                                        @endif
-                                                                                        @endforeach
-                                                                                            "/>
-                                                                                        <input type="hidden" class="form-control" name="coc_status" value="Service">
-                                                                                        <input type="hidden" class="form-control" name="status" value="Created">
-                                                                                        <input type="hidden" class="form-control" name="rental_invoice" value="{{$rental->invoice_number}}">
-                                                                                        @if(Auth::check())
-                                                                                            <input type="hidden" value="{{auth()->user()->id}}" name="submitted_by">
-                                                                                        @endif
-                                                                                        <input type="hidden" value="{{$dateNow}}" name="date_submitted">
-                                                                                        <input type="hidden" class="form-control" name="rental_id" value="{{$rental->id}}">
-                                                                                        {{--                                                    <input type="hidden" class="form-control" name="image" value="coc-images/{{$rental->image_1}}">--}}
-                                                                                        <input type="hidden" class="form-control" name="maint_active" value="1">
-                                                                                        <input type="hidden" class="form-control" name="service_type" value="COC">
-                                                                                        <input type="hidden" class="form-control" name="coc_hours" value="{{$rental->coc_hours}}">
-                                                                                        <input type="hidden" class="form-control" name="vehicle_id" value="
-                                                                                      @foreach($rental->vehicles as $rental_vehicle)
-                                                                                        @if($rental->coc_vehicle == $rental_vehicle->id)
-                                                                                        {{$rental_vehicle->id}}
-                                                                                        @endif
-                                                                                        @endforeach
-                                                                                            ">
-                                                                                        <div class="row">
-                                                                                            <div class="col-12">
-
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <div class="row mt-2">
-                                                                                {{--                                                                        TODO - QuickBooks - COC - Create Customer Invoice--}}
-                                                                                <form action="" method="post" class="width-100">
-                                                                                    @csrf
-                                                                                    @method('PUT')
-
-                                                                                    <div class="form-group">
-                                                                                        <label for="" class="hidden"></label>
-                                                                                        <input type="hidden" class="form-group" name=""/>
-                                                                                        <button class="btn btn-outline-primary btn-right width-100 mr-3" type="submit">Create Customer Invoice</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                                <a href="#" class="btn btn-secondary btn-right">
-                                                                                   Reject
-                                                                                </a>
-                                                                                <button class="btn btn-primary width-100 btn-right" type="submit">Intake COC</button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                @elseif($rental->status == 'Billing')
-                                                                    <form action="{{route('coc.cocComplete', $rental)}}" method="post" class="width-100">
-                                                                        @csrf
-                                                                        @method('PUT')
-
-                                                                        <div class="form-group width-100">
-                                                                            <label for="" class="hidden"></label>
-                                                                            <input type="hidden" class="form-group" name=""/>
-                                                                            <button class="btn btn-primary width-100" type="submit">Create Customer Invoice</button>
-                                                                        </div>
-                                                                    </form>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-secondary btn-right btn-modal mr-4" data-dismiss="modal" aria-label="Close">Cancel </button>
-
-                                                <form method="post" action="{{route('coc.attachRental', $rental)}}" enctype="multipart/form-data">
-                                                    @method('PUT')
-                                                    @csrf
-                                                    <input type="hidden" name="rental" value="{{$rental->id}}">
-                                                    <input type="hidden" name="coc_hours" value="{{$rental->coc_hours}}">
-                                                    <input type="hidden" class="form-control" name="image" value="{{$rental->image_1}}">
-{{--                                                    <input type="hidden" class="form-control" name="image" value="{{$rental->image_1}}" accept="image/*">--}}
-                                                    <input type="hidden" name="maintenance" value="
-                                                                       @foreach($maintenances as $maintenance)
-                                                    @if($maintenance->rental_invoice == $rental->invoice_number)
-                                                    {{$maintenance->id}}
-                                                    @endif
-                                                    @endforeach
-                                                        ">
-
-                                                    <button class="btn btn-primary-red width-100 btn-right"
-                                                            @foreach($rental->maintenances as $rental_maintenance)
-                                                            {{$rental_maintenance->rental_id}}
-                                                            @if($rental_maintenance->rental_invoice == $rental->invoice_number)
-                                                            hidden
-                                                        @endif
-                                                        @endforeach
-                                                    type="submit">Submit to Service</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Service Modal -->
                             @endforeach
                         @endif
                         <!-- /Finalize Submit COC to Service - Rental -->
-
-
-
-
 
                         <!-- Finalize Billing - Rental -->
                         @if($serviceReqCocBillingCount > 0)
@@ -541,8 +357,6 @@
                         <!-- /Finalize Billing - Rental -->
 
 
-
-
                         <!-- Submit Request to Service - Maintenance -->
                         @if($serviceReqAcceptCount > 0)
                             @foreach($serviceReqAccept as $maintenance)
@@ -578,8 +392,7 @@
                         @endif
                         <!-- /Submit Request to Service - Maintenance -->
 
-
-                        <!-- Finalize Billing - Maintenance -->
+                        <!-- Finalize Invoice - Maintenance -->
                         @if($serviceReqInvoiceCount > 0)
                             @foreach($serviceReqInvoice as $maintenance)
                                 <div class="coc-item">
@@ -612,8 +425,7 @@
                                 </div>
                             @endforeach
                         @endif
-                        <!-- /Finalize Billing - Maintenance -->
-
+                        <!-- /Finalize Invoice - Maintenance -->
 
                         <!-- RO Rejected - Maintenance -->
                         @if($serviceReqRejectedCount > 0)
@@ -929,8 +741,8 @@
                                                         </h6>
                                                     @endif
                                                 @endforeach
-                                                <h6> <span class="text-white">Descripion: &nbsp; </span>{{$maintenance->description}}</h6>
-                                                <h6> <span class="text-white">Service Invoice #: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
+                                                <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
+                                                <h6> <span class="text-white">RO: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
                                                 <h6> <span class="text-white">Submitted By: &nbsp; </span>
                                                     @foreach($users as $user)
                                                         @if($user->id == $maintenance->submitted_by)
@@ -949,20 +761,20 @@
                                                             @endif
                                                         @endforeach
                                                     </h6>
-                                                    <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                    <h6> <span class="text-white">RO Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                                 @endif
 
                                                 @if($maintenance->approved_by == '')
 
                                                 @else
-                                                    <h6> <span class="text-white">Approved Invoice: &nbsp; </span>
+                                                    <h6> <span class="text-white">Approved RO: &nbsp; </span>
                                                         @foreach($users as $user)
                                                             @if($user->id == $maintenance->approved_by)
                                                                 {{$user->firstname}} {{$user->lastname}}
                                                             @endif
                                                         @endforeach
                                                     </h6>
-                                                    <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                    <h6> <span class="text-white">Accepted By: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                                 @endif
 
                                             </div>
@@ -1103,22 +915,26 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <div class="row mt-2">
+                                                            <div class="row mt-2 width-100">
                                                                 {{--                                                                        TODO - QuickBooks - COC - Create Customer Invoice--}}
-                                                                <form action="" method="post" class="width-100">
-                                                                    @csrf
-                                                                    @method('PUT')
+{{--                                                                <form action="" method="post" class="width-100">--}}
+{{--                                                                    @csrf--}}
+{{--                                                                    @method('PUT')--}}
 
-                                                                    <div class="form-group">
-                                                                        <label for="" class="hidden"></label>
-                                                                        <input type="hidden" class="form-group" name=""/>
-                                                                        <button class="btn btn-outline-primary btn-right width-100 mr-3" type="submit">Create Customer Invoice</button>
-                                                                    </div>
-                                                                </form>
-                                                                <a href="#" class="btn btn-secondary btn-right">
-                                                                    Reject
-                                                                </a>
-                                                                <button class="btn btn-primary width-100 btn-right" type="submit">Intake COC</button>
+{{--                                                                    <div class="form-group">--}}
+{{--                                                                        <label for="" class="hidden"></label>--}}
+{{--                                                                        <input type="hidden" class="form-group" name=""/>--}}
+{{--                                                                        <button class="btn btn-outline-primary btn-right width-100 mr-3" type="submit">Create Customer Invoice</button>--}}
+{{--                                                                    </div>--}}
+{{--                                                                </form>--}}
+                                                                <div class="col-6">
+                                                                    <a href="#" class="btn btn-outline-primary btn-right width-100 font-bold text-gray-400">
+                                                                        Reject
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <button class="btn btn-primary width-100 btn-right" type="submit">Intake COC</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </form>

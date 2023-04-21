@@ -111,7 +111,7 @@ body {
 /* background-image: url({{route('storage'. 'images/background2.1.jpg')}}); */
 @media screen and (min-width:1280px) {
     body {
-        background-image: url("http://127.0.0.1:8000/storage/images/background2.1.jpg");
+        background-image: url("http://127.0.0.1:8000/storage/images/background.jpg");
         background-position: bottom center;
         background-size: cover;
         background-repeat: no-repeat;
