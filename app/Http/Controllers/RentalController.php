@@ -364,6 +364,7 @@ class RentalController extends Controller
         $rental->update(['incident' => request('incident')]);
         $rental->update(['coc_vehicle' => request('coc_vehicle')]);
         $rental->update(['image_1' => request('image_1')]);
+        $rental->update(['coc_hours' => request('coc_hours')]);
         $inputs = request()->validate([
             'image_1' => ['file'],
         ]);
@@ -373,7 +374,7 @@ class RentalController extends Controller
         $rental->update($inputs);
         $rental->vehicles()->update(['location' => 'Dock']);
         $rental->vehicles()->update(['launched' => '0']);
-        $rental->vehicles()->update(['current_hours' => request('current_hours')]);
+        $rental->vehicles()->update(['current_hours' => request('coc_hours')]);
         $rental->vehicles()->update(['hours_updated' => request('hours_updated')]);
 
         return back();

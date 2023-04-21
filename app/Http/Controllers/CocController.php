@@ -103,7 +103,9 @@ class CocController extends Controller
 
 
         $rental->update(['status' => 'COC']);
+        $rental->update(['image_1' => request('image_1')]);
         $rental->vehicles()->update(['location' => 'Dock']);
+        $rental->vehicles()->update(['current_Hours' => request('coc_hours')]);
         $rental->update(['cleared_by' => request('cleared_by')]);
         $rental->update(['cleared_time' => request('cleared_time')]);
 //        Coc::rentals()->attach(request('rental'));
@@ -117,10 +119,10 @@ class CocController extends Controller
         $rental->update(['incident' => request('description')]);
         $rental->update(['last_four' => request('last_four')]);
         $inputs = request()->validate([
-            'image_1' => [''],
+            'image' => [''],
         ]);
         if(request('image_1')) {
-            $inputs['image_1'] = request('image_1')->store('coc-images');
+            $inputs['image'] = request('image_1')->store('coc-images');
         }
         $rental->update($inputs);
 
@@ -135,7 +137,8 @@ class CocController extends Controller
             'description' => request('description'),
             'is_active' => request('maint_active'),
             'service_type' => request('service_type'),
-            'service_hours' => request('current_hours')
+            'service_hours' => request('coc_hours'),
+            'image' => request('image_1')
         ]);
 
         return back();
@@ -143,6 +146,7 @@ class CocController extends Controller
 
     public function attachRental(Rental $rental) {
         $rental->maintenances()->attach(request('maintenance'));
+        $rental->maintenances()->update(['service_hours' => request('coc_hours')]);
         $rental->maintenances()->update(['image' => request('image')]);
         return back();
     }

@@ -20,6 +20,7 @@ class AdminsController extends Controller
         $today = Carbon::now('PST')->toDateString();
         $vehicles = Vehicle::all();
         $maintenances = Maintenance::all();
+        $rentals = Rental::where('coc_status', '!=', 'Completed')->get();
         $users = User::all();
         $vehicleSeaDoo = Vehicle::where('vehicle_type', '=', 'SeaDoo')->get();
         $vehiclePontoon = Vehicle::where('vehicle_type', '=', 'Pontoon')->get();
@@ -31,8 +32,8 @@ class AdminsController extends Controller
         $serviceReqAcceptCount = Maintenance::where('is_active', '=', '0')->where('status', '=', 'Created')->orderBy('updated_at', 'asc')->get()->count();
         $serviceReqInvoice = Maintenance::where('is_active', '=', '1')->where('status', '=', 'Invoice Submitted')->orderBy('updated_at', 'asc')->get();
         $serviceReqInvoiceCount = Maintenance::where('is_active', '=', '1')->where('status', '=', 'Invoice Submitted')->orderBy('updated_at', 'asc')->get()->count();
-        $serviceReqRejected = Maintenance::where('status', '=', 'Rejected')->where('is_active', '=', '1')->orderby('updated_at', 'asc')->get();
-        $serviceReqRejectedCount = Maintenance::where('status', '=', 'Rejected')->where('is_active', '=', '1')->orderby('updated_at', 'asc')->get()->count();
+        $serviceReqRejected = Maintenance::where('is_active', '=', '1')->where('status', '=', 'Rejected')->orderby('updated_at', 'asc')->get();
+        $serviceReqRejectedCount = Maintenance::where('is_active', '=', '1')->where('status', '=', 'Rejected')->orderby('updated_at', 'asc')->get()->count();
 
         $serviceReqCocNew = Rental::where('status', '=', 'COC')->where('coc_status', 'New')->orderby('updated_at', 'asc')->get();
         $serviceReqCocNewCount = Rental::where('status', '=', 'COC')->where('coc_status', 'New')->orderby('updated_at', 'asc')->get()->count();
@@ -55,6 +56,7 @@ class AdminsController extends Controller
         return view('admin.index', [
             'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
+            'rentals' => $rentals,
             'vehicleSeaDoo' => $vehicleSeaDoo,
             'vehiclePontoon' => $vehiclePontoon,
             'vehicleScarab' => $vehicleScarab,

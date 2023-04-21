@@ -121,8 +121,13 @@
                                         </div>
                                         <div class="col-3">
                                             <button class="btn btn-primary" data-toggle="modal" data-target="#to_service_modal{{$vehicle->id}}"
-                                                    @if($vehicle->location == 'Service')
-                                                    disabled
+                                                @if($vehicle->location == 'Service')
+                                                    hidden
+                                                    @elseif($vehicle->location == 'On Water')
+                                                    hidden
+                                                    @elseif($vehicle->location == 'Incoming')
+                                                    hidden
+                                                    @else
                                                 @endif
                                             >To Service</button>
                                         </div>
@@ -136,9 +141,11 @@
 
                                                 <button class="btn btn-secondary" type="submit"
                                                         @if($vehicle->location == 'Dock')
-                                                        disabled
+                                                        hidden
+                                                        @elseif($vehicle->location == 'On Water')
+                                                        hidden
                                                     @endif
-                                                >To Dock</button>
+                                                >&nbsp;To Dock&nbsp;</button>
                                             </form>
                                         </div>
                                         <div class="col-3">
@@ -147,6 +154,8 @@
 
                                         <hr class="rounded mt-3 text-lt-red" />
                                     </div>
+
+                                    <hr>
                                 @endforeach
 
                             </div>
@@ -161,7 +170,12 @@
                                         <div class="col-3">
                                             <button class="btn btn-primary" data-toggle="modal" data-target="#to_service_modal{{$vehicle->id}}"
                                                     @if($vehicle->location == 'Service')
-                                                    disabled
+                                                    hidden
+                                                    @elseif($vehicle->location == 'On Water')
+                                                    hidden
+                                                    @elseif($vehicle->location == 'Incoming')
+                                                    hidden
+                                            @else
                                                 @endif
                                             >To Service</button>
                                         </div>
@@ -175,9 +189,12 @@
 
                                                 <button class="btn btn-secondary" type="submit"
                                                         @if($vehicle->location == 'Dock')
-                                                        disabled
-                                                    @endif
-                                                >To Dock</button>
+                                                        hidden
+                                                        @elseif($vehicle->location == 'On Water')
+                                                        hidden
+                                                        @else
+                                                        @endif
+                                                >&nbsp;To Dock&nbsp;</button>
                                             </form>
                                         </div>
                                         <div class="col-3">
@@ -186,6 +203,10 @@
 
                                         <hr class="rounded mt-3 text-lt-red" />
                                     </div>
+
+
+
+                                    <hr>
                                 @endforeach
                             </div>
                             <div class="tab-pane fade show active" id="seadoo-tab" role="tabpanel" aria-labelledby="seadoo-tab">
@@ -198,8 +219,13 @@
                                         </div>
                                         <div class="col-3">
                                             <button class="btn btn-primary" data-toggle="modal" data-target="#to_service_modal{{$vehicle->id}}"
-                                               @if($vehicle->location == 'Service')
-                                               disabled
+                                                    @if($vehicle->location == 'Service')
+                                                    hidden
+                                                    @elseif($vehicle->location == 'On Water')
+                                                    hidden
+                                                    @elseif($vehicle->location == 'Incoming')
+                                                    hidden
+                                            @else
                                                 @endif
                                             >To Service</button>
                                         </div>
@@ -213,17 +239,24 @@
 
                                                 <button class="btn btn-secondary" type="submit"
                                                         @if($vehicle->location == 'Dock')
-                                                        disabled
+                                                        hidden
+                                                        @elseif($vehicle->location == 'On Water')
+                                                        hidden
+                                                @else
                                                     @endif
-                                                >To Dock</button>
+                                                >&nbsp;To Dock&nbsp;</button>
                                             </form>
                                         </div>
                                         <div class="col-3">
-                                            <h4 class="text-white">{{$vehicle->location}}</h4>
+                                            <h4 class="text-gray-400 bold">{{$vehicle->location}}</h4>
                                         </div>
 
                                         <hr class="rounded mt-3 text-lt-red" />
                                     </div>
+
+
+
+                                    <hr>
                                 @endforeach
                             </div>
                         </div>

@@ -210,7 +210,6 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     @if($maintenance->image == '')
-                                        <img class="img-responsive" src="{{asset('storage/images/no-image.jpg')}}" height="auto" width="100%" />
                                     @else
                                         <img class="img-responsive" src="{{asset('storage/' . $maintenance->image)}}" height="auto" width="100%" />
                                     @endif
@@ -249,7 +248,7 @@
                                                     <small>( Vehicle Hours at last check on {{\Carbon\Carbon::parse($vehicle->hours_updated)->format('M d, Y')}} )</small>
                                                 @endif
                                             @endforeach
-                                        @elseif($maintenance->service_hours == '')
+                                        @elseif($maintenance->service_hours != '')
                                             {{$maintenance->service_hours}}
                                         @else
                                             No Hours Recorded...
@@ -321,7 +320,7 @@
                                                         </form>
                                                     </div>
                                                     <div class="col-6">
-                                                        <a href="#" class="btn btn-secondary width-100 p-3" data-toggle="modal" data-target="#reject_modal{{$maintenance->id}}">No</a>
+                                                        <a href="#" class="btn btn-secondary width-100 p-3" data-dismiss="modal" data-toggle="modal" data-target="#reject_modal{{$maintenance->id}}">No</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -411,18 +410,23 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="modal-body">
-                                    @if($maintenance->image == '')
-                                        <img class="img-responsive" src="{{asset('storage/images/no-image.jpg')}}" height="auto" width="100%" />
-                                    @else
-                                        <img class="img-responsive" src="{{asset('storage/' . $maintenance->image)}}" height="auto" width="100%" />
-                                    @endif
-
-                                        <div class="form-group">
-                                            <label for="serv_deny_reason">
-                                                <h3 class="mt-3">Rejection Explanation</h3>
-                                            </label>
-                                            <textarea class="form-control" name="serv_deny_reason" id="serv_deny_reason" width="100%" rows="10" placeholder="Enter reason for denial"></textarea>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            @if($maintenance->image == '')
+                                                <img class="img-responsive" src="{{asset('storage/images/no-image.jpg')}}" height="auto" width="100%" />
+                                            @else
+                                                <img class="img-responsive" src="{{asset('storage/' . $maintenance->image)}}" height="auto" width="100%" />
+                                            @endif
                                         </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="serv_deny_reason">
+                                                    <h3 class="mt-3">Rejection Explanation</h3>
+                                                </label>
+                                                <textarea class="form-control" name="serv_deny_reason" id="serv_deny_reason" width="100%" rows="10" placeholder="Enter reason for denial"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
                                     <input type="hidden" class="form-control" name="denied_by" value="{{auth()->user()->id}}">
