@@ -741,8 +741,8 @@
                                                         </h6>
                                                     @endif
                                                 @endforeach
-                                                <h6> <span class="text-white">Descripion: &nbsp; </span>{{$maintenance->description}}</h6>
-                                                <h6> <span class="text-white">Service Invoice #: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
+                                                <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
+                                                <h6> <span class="text-white">RO: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
                                                 <h6> <span class="text-white">Submitted By: &nbsp; </span>
                                                     @foreach($users as $user)
                                                         @if($user->id == $maintenance->submitted_by)
@@ -761,20 +761,20 @@
                                                             @endif
                                                         @endforeach
                                                     </h6>
-                                                    <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                    <h6> <span class="text-white">RO Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                                 @endif
 
                                                 @if($maintenance->approved_by == '')
 
                                                 @else
-                                                    <h6> <span class="text-white">Approved Invoice: &nbsp; </span>
+                                                    <h6> <span class="text-white">Approved RO: &nbsp; </span>
                                                         @foreach($users as $user)
                                                             @if($user->id == $maintenance->approved_by)
                                                                 {{$user->firstname}} {{$user->lastname}}
                                                             @endif
                                                         @endforeach
                                                     </h6>
-                                                    <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
+                                                    <h6> <span class="text-white">Accepted By: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                                 @endif
 
                                             </div>
@@ -915,22 +915,26 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <div class="row mt-2">
+                                                            <div class="row mt-2 width-100">
                                                                 {{--                                                                        TODO - QuickBooks - COC - Create Customer Invoice--}}
-                                                                <form action="" method="post" class="width-100">
-                                                                    @csrf
-                                                                    @method('PUT')
+{{--                                                                <form action="" method="post" class="width-100">--}}
+{{--                                                                    @csrf--}}
+{{--                                                                    @method('PUT')--}}
 
-                                                                    <div class="form-group">
-                                                                        <label for="" class="hidden"></label>
-                                                                        <input type="hidden" class="form-group" name=""/>
-                                                                        <button class="btn btn-outline-primary btn-right width-100 mr-3" type="submit">Create Customer Invoice</button>
-                                                                    </div>
-                                                                </form>
-                                                                <a href="#" class="btn btn-secondary btn-right">
-                                                                    Reject
-                                                                </a>
-                                                                <button class="btn btn-primary width-100 btn-right" type="submit">Intake COC</button>
+{{--                                                                    <div class="form-group">--}}
+{{--                                                                        <label for="" class="hidden"></label>--}}
+{{--                                                                        <input type="hidden" class="form-group" name=""/>--}}
+{{--                                                                        <button class="btn btn-outline-primary btn-right width-100 mr-3" type="submit">Create Customer Invoice</button>--}}
+{{--                                                                    </div>--}}
+{{--                                                                </form>--}}
+                                                                <div class="col-6">
+                                                                    <a href="#" class="btn btn-outline-primary btn-right width-100 font-bold text-gray-400">
+                                                                        Reject
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <button class="btn btn-primary width-100 btn-right" type="submit">Intake COC</button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </form>
