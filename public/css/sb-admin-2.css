@@ -6376,6 +6376,11 @@ hr.light {
 .modal.right .modal-body {
     padding: 0px 10px;
 }
+.btn-left {
+    display: block;
+    margin-left: 0px !important;
+    margin-right: auto !important;
+}
 .btn-right {
     display: block;
     margin-left: auto !important;
@@ -12685,4 +12690,7 @@ footer img.img-square {
 }
 .pt-05rem {
     padding-top: .5rem;
+}
+.checkin-accordian {
+
 }
