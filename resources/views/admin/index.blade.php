@@ -179,7 +179,15 @@
                 <!-- Service Requests TODO - Complete if statements for different buttons on modals -->
                 <div class="card shadow mb-4">
                     <div class="card-header">
-                        <h3><span>Service </span>Request Actions</h3>
+                        <div class="row">
+                            <div class="col-9">
+                                <h3><span>Service </span>Request Actions</h3>
+                            </div>
+                            <div class="col-3">
+                                <a href="{{route('maintenance.index')}}" class="btn btn-outline-primary">All Requests</a>
+
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body p-3">
 
@@ -324,7 +332,7 @@
                                             <div class="col-8 col-sm-2">
                                                 <h6 class="mt-2">
                                                     @foreach($vehicles as $vehicle)
-                                                        @if($vehicle->id == $rental->vehicle_id)
+                                                        @if($vehicle->id == $rental->coc_vehicle)
                                                             {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
                                                         @endif
                                                     @endforeach
@@ -711,6 +719,10 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h3><span>Service Invoice: </span>{{$rental->incident}}</h3>
+                                        @if($maintenance->service_invoice != '')
+                                            <span>R / O: {{$maintenance->service_invoice}} </span>
+                                        @else
+                                        @endif
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
@@ -749,32 +761,35 @@
                                                             {{$user->firstname}} {{$user->lastname}}
                                                         @endif
                                                     @endforeach
+                                                    &nbsp;
+                                                    ( {{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}} )
                                                 </h6>
-                                                <h6> <span class="text-white">Date Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}}</h6>
                                                 @if($maintenance->invoiced_by == '')
 
                                                 @else
-                                                    <h6> <span class="text-white">Invoiced By: &nbsp; </span>
+                                                    <h6> <span class="text-white">RO Submitted: &nbsp; </span>
                                                         @foreach($users as $user)
                                                             @if($user->id == $maintenance->invoiced_by)
                                                                 {{$user->firstname}} {{$user->lastname}}
                                                             @endif
                                                         @endforeach
+                                                        &nbsp;
+                                                       ( {{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}} )
                                                     </h6>
-                                                    <h6> <span class="text-white">RO Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                                 @endif
 
                                                 @if($maintenance->approved_by == '')
 
                                                 @else
-                                                    <h6> <span class="text-white">Approved RO: &nbsp; </span>
+                                                    <h6> <span class="text-white">Accepted By: &nbsp; </span>
                                                         @foreach($users as $user)
                                                             @if($user->id == $maintenance->approved_by)
                                                                 {{$user->firstname}} {{$user->lastname}}
                                                             @endif
                                                         @endforeach
+                                                        &nbsp;
+                                                        ( {{Carbon\Carbon::parse($maintenance->date_approved)->format('m / d / y')}} )
                                                     </h6>
-                                                    <h6> <span class="text-white">Accepted By: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                                 @endif
 
                                             </div>
@@ -785,7 +800,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary btn-right btn-modal" type="button" data-dismiss="modal">CANCEL</button>
-                                        <form action="{{route('maintenance.acceptMaintInvoice', $maintenance)}}" method="post" class="width-100" enctype="multipart/form-data">
+                                        <form action="#" method="post" class="width-100" enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
 
@@ -793,7 +808,7 @@
                                                 <input type="hidden" class="form-group" name="approved_by" value="{{auth()->user()->id}}"/>
                                                 <input type="hidden" class="form-group" name="date_approved" value="{{$dateNow}}"/>
                                                 <input type="hidden" class="form-group" name="status" value="Completed"/>
-                                                <button class="btn btn-primary btn-modal btn-right" type="submit">Accept Invoice & Close</button>
+                                                <button class="btn btn-primary btn-modal btn-right" type="submit">Completed</button>
                                             </div>
                                         </form>
                                     </div>
@@ -1001,6 +1016,8 @@
                         <div class="modal-content">
 
                             <div class="modal-header">
+
+
                                 <h3>
                                     @foreach($vehicles as $vehicle)
                                         @if($vehicle->id == $maintenance->vehicle_id)
@@ -1008,15 +1025,21 @@
                                         @endif
                                     @endforeach
                                     <span>
-                                                @if($maintenance->is_active == '0' && $maintenance->status == 'Created')
+                                        @if($maintenance->is_active == '0' && $maintenance->status == 'Created')
                                             {{$maintenance->service_type}} <span class="font-weight-lighter">| {{$maintenance->status}}</span>
-                                        @elseif($maintenance->is_active == '1' && $maintenance->status == 'Invoice Submitted')
-                                            <span>{{$maintenance->service_type}} <span>| Review Invoice</span>
-                                                            @else
-                                                    <span>{{$maintenance->service_type}} <span>| {{$maintenance->status}}</span>
-                                                                    @endif
-                                                </span>
+
+                                            @elseif($maintenance->is_active == '1' && $maintenance->status == 'Invoice Submitted')
+                                            {{$maintenance->service_type}} <span>| Review Invoice</span>
+                                            @else
+                                            {{$maintenance->service_type}} <span>| {{$maintenance->status}}</span>
+                                        @endif
+                                    </span>
                                 </h3>
+                                @if($maintenance->service_invoice != '')
+                                    <span>R / O: {{$maintenance->service_invoice}} </span>
+                                @else
+                                @endif
+
                             </div>
                             <div class="modal-body">
                                 <div class="row">
@@ -1028,6 +1051,24 @@
                                         @endif
                                     </div>
                                     <div class="col-6">
+                                        @foreach($vehicles as $vehicle)
+                                            @if($maintenance->vehicle_id == $vehicle->id)
+                                                <h6>
+                                                    <span class="text-white">Vehicle: &nbsp; </span>
+                                                    {{$vehicle->vehicle_type}}
+                                                    {{$vehicle->internal_vehicle_id}}
+                                                </h6>
+                                                <h6>
+                                                    <span class="text-white">VIN: &nbsp; </span>
+                                                    {{$vehicle->vin}}
+                                                </h6>
+                                                <h6>
+                                                    <span class="text-white">Hours:: &nbsp; </span>
+                                                    {{$vehicle->current_hours}}
+                                                </h6>
+                                            @endif
+                                        @endforeach
+                                        <h6> <span class="text-white">RO: &nbsp; </span>{{$maintenance->service_invoice}}</h6>
                                         <h6> <span class="text-white">Description: &nbsp; </span>{{$maintenance->description}}</h6>
                                         <h6> <span class="text-white">Submitted By: &nbsp; </span>
                                             @foreach($users as $user)
@@ -1035,18 +1076,19 @@
                                                     {{$user->firstname}} {{$user->lastname}}
                                                 @endif
                                             @endforeach
+                                            &nbsp;
+                                            ( {{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}} )
                                         </h6>
-                                        <h6> <span class="text-white">Submitted Date: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_sumitted)->format('m / d / y')}}</h6>
 
                                         @if($maintenance->denied_by != '')
-                                            <h6> <span class="text-white">Request Rejected: &nbsp; </span>{{\Carbon\Carbon::parse($maintenance->deny_date)->format('M d, Y')}}</h6>
-
                                             <h6> <span class="text-white">Rejected By: &nbsp; </span>
                                                 @foreach($users as $user)
                                                     @if($user->id == $maintenance->denied_by)
                                                         <span>{{$user->firstname}} {{$user->lastname}}</span>
                                                     @endif
                                                 @endforeach
+                                                &nbsp;
+                                                ( {{Carbon\Carbon::parse($maintenance->deny_date)->format('m / d / y')}} )
                                             </h6>
 
 
@@ -1062,8 +1104,9 @@
                                                             {{$user->firstname}} {{$user->lastname}}
                                                         @endif
                                                     @endforeach
+                                                    &nbsp;
+                                                    ( {{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}} )
                                                 </h6>
-                                                <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                             @endif
 
                                             @if($maintenance->service_notes == '')
@@ -1082,8 +1125,9 @@
                                                             {{$user->firstname}} {{$user->lastname}}
                                                         @endif
                                                     @endforeach
+                                                    &nbsp;
+                                                    ( {{Carbon\Carbon::parse($maintenance->date_approved)->format('m / d / y')}} )
                                                 </h6>
-                                                <h6> <span class="text-white">Invoice Submitted: &nbsp; </span>{{Carbon\Carbon::parse($maintenance->date_invoiced)->format('m / d / y')}}</h6>
                                             @endif
 
                                         @endif
