@@ -13141,67 +13141,135 @@
                                        <div class="modal-body">
 
                                            <div class="row">
-                                               <div class="col-sm-6 mt-3">
+                                               <div class="col-sm-1">&nbsp;</div>
+                                               <div class="col-sm-4">
                                                    <div class="form-group">
-                                                       <label for="cleaning_fee"><h6>Cleaning Fee &nbsp;</h6></label>
-                                                       <input type="text" name="cleaning_fee" placeholder="Enter Amount, no $" value="{{$rental->cleaning_fee}}">
+                                                       <label for="cleaning_fee"><h5>Cleaning Fee&nbsp;</h5></label>
                                                    </div>
                                                </div>
-                                               <div class="col-sm-6">
-                                                   <label for="cleaning_fee_type"> Payment Type </label><br />
-                                                   <input type="checkbox" class="" name="cleaning_fee_type" value="Card" @if($rental->late_fee_type == 'Card')checked @endif /> &nbsp; <span class="text-white">Card</span> <span class="ml-4"></span>
-                                                   <input type="checkbox" class="" name="cleaning_fee_type" value="Cash" @if($rental->late_fee_type == 'Cash')checked @endif /> &nbsp; <span class="text-white">Cash</span> <span class="ml-4"></span>
-                                                   <input type="checkbox" class="" name="cleaning_fee_type" value="Check" @if($rental->late_fee_type == 'Check')checked @endif /> &nbsp; <span class="text-white">Check</span> <span class="ml-4"></span>
+                                               <div class="col-sm-4">
+                                                   <div class="form-group">
+                                                         <div class="row">
+                                                             <div class="col-2">
+                                                                 <h5 class="text-right">
+                                                                     <span>$</span>
+                                                                 </h5>
+                                                             </div>
+                                                             <div class="col-8">
+                                                                 <input type="text" name="cleaning_fee" placeholder="75-$150">
+                                                             </div>
+                                                         </div>
+                                                   </div>
                                                </div>
+                                               <div class="col-sm-2">
+                                                   <select id="cleaning_fee_type" name="cleaning_fee_type" style="width: 100%;">
+                                                       <option value="blank" default> Payment Type</option>
+                                                       <option value="Visa">Visa</option>
+                                                       <option value="MasterCard">MasterCard</option>
+                                                       <option value="Cash">Cash</option>
+                                                   </select>
+                                               </div>
+                                               <div class="col-sm-1">&nbsp;</div>
                                            </div>
 
                                            <div class="row">
-                                               <div class="col-sm-6 mt-3">
+                                               <div class="col-sm-1">&nbsp;</div>
+                                               <div class="col-sm-4">
                                                    <div class="form-group">
-                                                       <label for="late_fee"><h6>Late Fee &nbsp;</h6></label>
-                                                       <input type="text" name="late_fee" placeholder="Enter Amount, no $" value="{{$rental->late_fee}}">
+                                                       <label for="late_fee"><h5>Late Fee &nbsp;</h5></label>
                                                    </div>
                                                </div>
-                                               <div class="col-sm-6">
+                                               <div class="col-sm-4">
                                                    <div class="form-group">
-                                                       <label for="late_fee_type"> Payment Type </label><br />
-                                                       <input type="checkbox" class="" name="late_fee_type" value="Card" @if($rental->late_fee_type == 'Card')checked @endif /> &nbsp; <span class="text-white">Card</span> <span class="ml-4"></span>
-                                                       <input type="checkbox" class="" name="late_fee_type" value="Cash" @if($rental->late_fee_type == 'Cash')checked @endif /> &nbsp; <span class="text-white">Cash</span> <span class="ml-4"></span>
-                                                       <input type="checkbox" class="" name="late_fee_type" value="Check" @if($rental->late_fee_type == 'Check')checked @endif /> &nbsp; <span class="text-white">Check</span> <span class="ml-4"></span>
+                                                       <div class="row">
+                                                           <div class="col-2">
+                                                               <h5 class="text-right">
+                                                                   <span>$</span>
+                                                               </h5>
+                                                           </div>
+                                                           <div class="col-8">
+                                                               <input type="text" name="late_fee" placeholder="135/hr">
+                                                           </div>
+                                                       </div>
                                                    </div>
                                                </div>
+                                               <div class="col-sm-2">
+                                                   <div class="form-group">
+                                                       <select id="late_fee_type" name="late_fee_type" style="width: 100%;">
+                                                           <option value="blank" default> Payment Type</option>
+                                                           <option value="Visa">Visa</option>
+                                                           <option value="MasterCard">MasterCard</option>
+                                                           <option value="Cash">Cash</option>
+                                                       </select>
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-1">&nbsp;</div>
                                            </div>
 
                                            <div class="row">
-                                               <div class="col-sm-6 mt-3">
+                                               <div class="col-sm-1">&nbsp;</div>
+                                               <div class="col-sm-4">
                                                    <div class="form-group">
-                                                       <label for="no_wake_fee"><h6>No Wake Fee &nbsp;</h6></label>
-                                                       <input type="text" name="no_wake_fee" placeholder="Enter Amount, no $" value="{{$rental->no_wake_fee}}">
+                                                       <label for="no_wake_fee"><h5>No Wake Fee   &nbsp;</h5></label>
                                                    </div>
                                                </div>
-                                               <div class="col-sm-6">
+                                               <div class="col-sm-4">
                                                    <div class="form-group">
-                                                       <label for="late_fee_type"> Payment Type </label><br />
-                                                       <input type="checkbox" class="" name="no_wake_fee_type" value="Card" @if($rental->late_fee_type == 'Card')checked @endif /> &nbsp; <span class="text-white">Card</span> <span class="ml-4"></span>
-                                                       <input type="checkbox" class="" name="no_wake_fee_type" value="Cash" @if($rental->late_fee_type == 'Cash')checked @endif /> &nbsp; <span class="text-white">Cash</span> <span class="ml-4"></span>
-                                                       <input type="checkbox" class="" name="no_wake_fee_type" value="Check" @if($rental->late_fee_type == 'Check')checked @endif /> &nbsp; <span class="text-white">Check</span> <span class="ml-4"></span>
+                                                       <div class="row">
+                                                           <div class="col-2">
+                                                               <h5 class="text-right">
+                                                                   <span>$</span>
+                                                               </h5>
+                                                           </div>
+                                                           <div class="col-8">
+                                                               <input type="text" name="no_wake_fee" placeholder="100">
+                                                           </div>
+                                                       </div>
                                                    </div>
                                                </div>
+                                               <div class="col-sm-2">
+                                                   <div class="form-group">
+                                                       <select id="no_wake_fee_type" name="no_wake_fee_type" style="width: 100%;">
+                                                           <option value="blank" default> Payment Type</option>
+                                                           <option value="Visa">Visa</option>
+                                                           <option value="MasterCard">MasterCard</option>
+                                                           <option value="Cash">Cash</option>
+                                                       </select>
+                                                   </div>
+                                               </div>
+                                               <div class="col-sm-1">&nbsp;</div>
                                            </div>
 
                                            <div class="row">
-                                               <div class="col-sm-6 mt-3">
+                                               <div class="col-sm-1">&nbsp;</div>
+                                               <div class="col-sm-4">
                                                    <div class="form-group">
-                                                       <label for="sar_fee"><h6>Search & Rescue Fee &nbsp;</h6></label>
-                                                       <input type="text" name="sar_fee" placeholder="Enter Amount, no $" value="{{$rental->sar_fee}}">
+                                                       <label for="sar_fee"><h5>Search & Rescue Fee &nbsp;</h5></label>
                                                    </div>
                                                </div>
-                                               <div class="col-sm-6">
-                                                   <label for="sar_fee_type"> Payment Type </label><br />
-                                                   <input type="checkbox" class="" name="sar_fee_type" value="Card" @if($rental->late_fee_type == 'Card')checked @endif /> &nbsp; <span class="text-white">Card</span> <span class="ml-4"></span>
-                                                   <input type="checkbox" class="" name="sar_fee_type" value="Cash" @if($rental->late_fee_type == 'Cash')checked @endif /> &nbsp; <span class="text-white">Cash</span> <span class="ml-4"></span>
-                                                   <input type="checkbox" class="" name="sar_fee_type" value="Check" @if($rental->late_fee_type == 'Check')checked @endif /> &nbsp; <span class="text-white">Check</span> <span class="ml-4"></span>
+                                               <div class="col-sm-4">
+                                                   <div class="form-group">
+                                                       <div class="row">
+                                                           <div class="col-2">
+                                                               <h5 class="text-right">
+                                                                   <span>$</span>
+                                                               </h5>
+                                                           </div>
+                                                           <div class="col-6">
+                                                               <input type="text" name="sar_fee" placeholder="135/hr">
+                                                           </div>
+                                                       </div>
+                                                   </div>
                                                </div>
+                                               <div class="col-sm-2">
+                                                   <select id="sar_fee_type" name="sar_fee_type" style="width: 100%;">
+                                                       <option value="blank" default> Payment Type</option>
+                                                       <option value="Visa">Visa</option>
+                                                       <option value="MasterCard">MasterCard</option>
+                                                       <option value="Cash">Cash</option>
+                                                   </select>
+                                               </div>
+                                               <div class="col-sm-1">&nbsp;</div>
                                            </div>
 
 
