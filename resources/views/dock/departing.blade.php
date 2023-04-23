@@ -2198,135 +2198,134 @@
 
     @section('sidebar')
 
-        @foreach($rentalDepart as $rental)
-            <!-- Launch Modal // Controller 2 -->
+    @foreach($rentalDepart as $rental)
+        <!-- Launch Modal // Controller 2 -->
+        <form method="post" action="{{route('dock.launchRental', $rental)}}">
+            @csrf
+            @method('PUT')
+
+            <!-- Launch Modal - Step 1 - Staff Info -->
             <div class="modal fade" id="launchModal{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="launchModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="launchModalLabel">
-                                {{$rental->first_name}} {{$rental->last_name}}
-                                <span>
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="launchModalLabel">
+                                    {{$rental->first_name}} {{$rental->last_name}}
+                                    <span>
                                                     |
-                                    <!-- Rental Duration UPDATED -->
+                                        <!-- Rental Duration UPDATED -->
                                     @if(strpos($rental->ticket_list, '1 Hour') !== false)
-                                        1 Hr
-                                    @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-                                        1 Hr
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '2 hour') !== false)
-                                        2 Hr
-                                    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-                                        2 Hr
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '3 Hour') !== false)
-                                        3 Hr
-                                    @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-                                        3 Hr
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '4 Hour') !== false)
-                                        HD
-                                    @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-                                        HD
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '8 Hour') !== false)
-                                        FD
-                                    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-                                        FD
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '9 Hour') !== false)
-                                        FD
-                                    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-                                        FD
-                                    @endif
-                                    @if(strpos($rental->ticket_list, 'Full Day') !== false)
-                                        FD
-                                    @endif
-                                    @if(strpos($rental->ticket_list, 'Half Day') !== false)
-                                        HD
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '1 Day') !== false)
-                                        1 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '2 Day') !== false)
-                                        2 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '3 Day') !== false)
-                                        3 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '4 Day') !== false)
-                                        4 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '5 Day') !== false)
-                                        5 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '6 Day') !== false)
-                                        6 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '7 Day') !== false)
-                                        7 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '8 Day') !== false)
-                                        8 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '9 Day') !== false)
-                                        9 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '10 Day') !== false)
-                                        10 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '11 Day') !== false)
-                                        11 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '12 Day') !== false)
-                                        12 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '13 Day') !== false)
-                                        13 D
-                                    @endif
-                                    @if(strpos($rental->ticket_list, '14 Day') !== false)
-                                        14 D
-                                    @endif
+                                            1 Hr
+                                        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                            1 Hr
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                            2 Hr
+                                        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                            2 Hr
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                            3 Hr
+                                        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                            3 Hr
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                            HD
+                                        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                            HD
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                            FD
+                                        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                            FD
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                            FD
+                                        @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                            FD
+                                        @endif
+                                        @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                            FD
+                                        @endif
+                                        @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                            HD
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                            1 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '2 Day') !== false)
+                                            2 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '3 Day') !== false)
+                                            3 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '4 Day') !== false)
+                                            4 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '5 Day') !== false)
+                                            5 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '6 Day') !== false)
+                                            6 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '7 Day') !== false)
+                                            7 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '8 Day') !== false)
+                                            8 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '9 Day') !== false)
+                                            9 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '10 Day') !== false)
+                                            10 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '11 Day') !== false)
+                                            11 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '12 Day') !== false)
+                                            12 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '13 Day') !== false)
+                                            13 D
+                                        @endif
+                                        @if(strpos($rental->ticket_list, '14 Day') !== false)
+                                            14 D
+                                        @endif
 
-                                    @if($rental->activity_item == 'Scarab 215')
-                                        Scarab
-                                    @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                        Pontoon
-                                    @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                        Pontoon
-                                    @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                        Renegade
-                                    @elseif($rental->activity_item == 'Summit 154 SP')
-                                        Summit
-                                    @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                        Aluminum
-                                    @elseif($rental->activity_item == 'Kayak Single')
-                                        Single Kayak
-                                    @elseif($rental->activity_item == 'Double Kayak')
-                                        Double Kayak
-                                    @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                        SUP
-                                    @elseif($rental->activity_item == 'Segway i2')
-                                        Segway
-                                    @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                        Spyder
-                                    @elseif($rental->activity_item == 'SeaDoo')
-                                        SeaDoo
-                                    @else
-                                    @endif
+                                        @if($rental->activity_item == 'Scarab 215')
+                                            Scarab
+                                        @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                            Pontoon
+                                        @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                            Pontoon
+                                        @elseif($rental->activity_item == 'Renegade BC 600ETec')
+                                            Renegade
+                                        @elseif($rental->activity_item == 'Summit 154 SP')
+                                            Summit
+                                        @elseif($rental->activity_item == '14ft. Aluminum Boat')
+                                            Aluminum
+                                        @elseif($rental->activity_item == 'Kayak Single')
+                                            Single Kayak
+                                        @elseif($rental->activity_item == 'Double Kayak')
+                                            Double Kayak
+                                        @elseif($rental->activity_item == 'Stand Up Paddleboard')
+                                            SUP
+                                        @elseif($rental->activity_item == 'Segway i2')
+                                            Segway
+                                        @elseif($rental->activity_item == 'Spyder RT-S SE6')
+                                            Spyder
+                                        @elseif($rental->activity_item == 'SeaDoo')
+                                            SeaDoo
+                                        @else
+                                        @endif
                                                 </span>
-                            </h3>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <form method="post" action="{{route('dock.launchRental', $rental)}}">
-
-                                @csrf
-                                @method('PUT')
-
+                                </h3>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -5078,271 +5077,444 @@
                                                   class="form-control mb-3">{{$rental->customer_notes}}</textarea>
                                     </div>
                                 </div>
-
-
-
-                                {{--                                            <input type="file" accept="image/*" capture="camera" />--}}
-
                                 <input type="hidden" value="On Water" name="status">
+
+
                                 <div class="modal-footer">
                                     <input type="hidden" value="{{$dateNow}}" name="launched_time">
-                                    <button class="btn btn-primary-red" type="submit">LAUNCH</button>
+                                    <button class="btn btn-secondary btn-left" type="button" data-toggle="modal" data-dismiss="modal">CANCEL</button>
+                                    <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#launchModal-2{{$rental->id}}">Next</button>
                                 </div>
-                            </form>
-
-
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <!-- /Launch Modal - Step 1 - Staff Info -->
 
-            <!-- Dock Modal -->
-            <div class="modal fade" id="dock{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="checkinModalLabel" aria-hidden="true">
+            <!-- Launch Modal - Step 2 - Customer Info -->
+            <div class="modal fade" id="launchModal-2{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="launchModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 id="modal_rental_title" class="modal-title"><span>{{$rental->activity_item}}</span> | {{$rental->first_name}} {{$rental->last_name}} &nbsp;
-                                <span class="status">
-                                        |
-                                            &nbsp; {{$rental->status}}</span></h3>
+                            <h3 class="modal-title" id="launchModalLabel">
+                                {{$rental->first_name}} {{$rental->last_name}}
+                                <span>
+                                                |
+                                    <!-- Rental Duration UPDATED -->
+                                @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                        1 Hr
+                                    @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                        1 Hr
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                        2 Hr
+                                    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                        2 Hr
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                        3 Hr
+                                    @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                        3 Hr
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                        HD
+                                    @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                        HD
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                        FD
+                                    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                        FD
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                        FD
+                                    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                        FD
+                                    @endif
+                                    @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                        FD
+                                    @endif
+                                    @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                        HD
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                        1 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '2 Day') !== false)
+                                        2 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '3 Day') !== false)
+                                        3 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '4 Day') !== false)
+                                        4 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '5 Day') !== false)
+                                        5 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '6 Day') !== false)
+                                        6 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '7 Day') !== false)
+                                        7 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '8 Day') !== false)
+                                        8 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '9 Day') !== false)
+                                        9 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '10 Day') !== false)
+                                        10 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '11 Day') !== false)
+                                        11 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '12 Day') !== false)
+                                        12 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '13 Day') !== false)
+                                        13 D
+                                    @endif
+                                    @if(strpos($rental->ticket_list, '14 Day') !== false)
+                                        14 D
+                                    @endif
+
+                                    @if($rental->activity_item == 'Scarab 215')
+                                        Scarab
+                                    @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                        Pontoon
+                                    @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                        Pontoon
+                                    @elseif($rental->activity_item == 'Renegade BC 600ETec')
+                                        Renegade
+                                    @elseif($rental->activity_item == 'Summit 154 SP')
+                                        Summit
+                                    @elseif($rental->activity_item == '14ft. Aluminum Boat')
+                                        Aluminum
+                                    @elseif($rental->activity_item == 'Kayak Single')
+                                        Single Kayak
+                                    @elseif($rental->activity_item == 'Double Kayak')
+                                        Double Kayak
+                                    @elseif($rental->activity_item == 'Stand Up Paddleboard')
+                                        SUP
+                                    @elseif($rental->activity_item == 'Segway i2')
+                                        Segway
+                                    @elseif($rental->activity_item == 'Spyder RT-S SE6')
+                                        Spyder
+                                    @elseif($rental->activity_item == 'SeaDoo')
+                                        SeaDoo
+                                    @else
+                                    @endif
+                                            </span>
+                            </h3>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
                         <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <form class="signature-pad-form" action="#" method="POST">
+                                            <h1>Customer Agrees to: </h1>
 
-                            <!-- /Rental Information -->
-                            <div class="modal-rental-info">
-                                <div class="row">
-                                    <!-- Renter Info -->
-                                    <div class="col-sm-6">
-                                        <div class="area-box">
-                                            <h4 class="modal-section-title">Customer Info</h4>
-                                            <div class="row">
-                                                <!-- Item -->
-                                                <div class="col-6 col-sm-12">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <p class="modal-item-title">First Name:</p>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <p class="modal-item">{{$rental->first_name}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Item -->
-                                                <!-- Item -->
-                                                <div class="col-6 col-sm-12">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <p class="modal-item-title">Last Name:</p>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <p class="modal-item">{{$rental->last_name}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Item -->
-                                                <!-- Item -->
-                                                <div class="col-6 col-sm-12">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <p class="modal-item-title">Phone:</p>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <p class="modal-item">{{$rental->phone}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Item -->
-                                                <!-- Item -->
-                                                <div class="col-6 col-sm-12">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <p class="modal-item-title">Zip Code:</p>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <p class="modal-item">{{$rental->zip_code}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Item -->
-                                                <!-- Item -->
-                                                <div class="col-6 col-sm-12">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <p class="modal-item-title">Notes:</p>
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <p class="modal-item">{{$rental->customer_notes}}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- /Item -->
-                                            </div>
+                                            <ul class="customer-agree-list">
+                                                <li class="mb-3">
+                                                    <h5>
+                                                        Pay a Damage Deposit which will be applied toward the repair or replacement of any
+                                                        damaged or missing equipment. The customer understands they are fully responsible for
+                                                        the full amount of damage done to the equipment even if it exceeds the deposit.
+                                                    </h5>
+                                                </li>
+                                                <li class="mb-3">
+                                                    <h5>
+                                                        If there is any failure of equipment due to the customer negligence or error the full rental
+                                                        fee will still be charged. We charge $135/hr for a Flooded Engine & $135/hr for a Search & Rescue.
+                                                    </h5>
+                                                </li>
+                                                <li>
+                                                    <h5>
+                                                        Other fees: We charge $100 for breaking the slow no wake zone! We charge $135/hr for returning late or
+                                                        after hours of the business - Ask our staff when you are due back!
+                                                    </h5>
+                                                </li>
+                                            </ul>
 
-                                        </div>
+                                            <p><b>Signature</b></p>
+                                            <canvas height="40" width="300" class="signature-pad"></canvas>
+                                            <p><a href="#" class="clear-button">Clear</a></p>
+                                        </form>
                                     </div>
-                                    <!-- /Renter Info -->
-                                    <!-- Rental Info -->
-                                    <div class="col-sm-6">
-                                        <div class="area-box">
-                                            <h4 class="modal-section-title">Rental Info</h4>
-                                            <div class="row">
-                                                <!-- PreCheck by -->
-                                                @if($rental->precheck_by == '')
-                                                    &nbsp;
-                                                @else
-                                                    @foreach($users as $user)
-                                                        @if($rental->check_in_by == $user->id)
-                                                        <!-- Item -->
-                                                            <div class="col-6 col-sm-12">
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <p class="modal-item-title">Pre-Check By:</p>
-                                                                    </div>
-                                                                    <div class="col-sm-7">
-                                                                        <p class="modal-item">{{$user->firstname}} {{$user->lastname}}</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-                                                            <!-- Item -->
-                                                            <div class="col-6 col-sm-12">
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <p class="modal-item-title">Pre-Check Time:</p>
-                                                                    </div>
-                                                                    <div class="col-sm-7">
-                                                                        <p class="modal-item">
-                                                                            {{ \Carbon\Carbon::parse($rental->precheck_time)->format('h:i A') }}
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-                                                        @endif
-                                                    @endforeach
-                                                @endif
-                                            <!-- /PreCheck by -->
-
-                                                <!-- Checked in by -->
-                                                @if($rental->check_in_by == '')
-                                                    &nbsp;
-                                            @else
-                                                @foreach($users as $user)
-                                                    @if($rental->check_in_by == $user->id)
-                                                        <!-- Item -->
-                                                            <div class="col-6 col-sm-12">
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <p class="modal-item-title">Checked In By:</p>
-                                                                    </div>
-                                                                    <div class="col-sm-7">
-                                                                        <p class="modal-item">{{$user->firstname}} {{$user->lastname}}</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-                                                            <!-- Item -->
-                                                            <div class="col-6 col-sm-12">
-                                                                <div class="row">
-                                                                    <div class="col-sm-5">
-                                                                        <p class="modal-item-title">Check In Time:</p>
-                                                                    </div>
-                                                                    <div class="col-sm-7">
-                                                                        <p class="modal-item">
-                                                                            {{ \Carbon\Carbon::parse($rental->check_in_time)->format('h:i A') }}
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-                                                    @endif
-                                                @endforeach
-                                            @endif
-                                            <!-- /Checked in by -->
-                                            </div>
-                                        </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary-red" type="submit">SUBMIT</button>
                                     </div>
-                                    <!-- /Rental Info -->
                                 </div>
-
                             </div>
-                            <!-- /Rental Information -->
 
-                            <!-- COC Info -->
-                            @if($rental->status == 'COC')
-
-                                <div class="modal-coc-info">
-                                    <!-- Modal Section Title -->
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h4 class="modal-section-title">Change of Condition</h4>
-                                            <hr class="rounded" />
-                                        </div>
-                                    </div>
-                                    <!-- /Modal Section Title -->
-
-                                    <div class="row">
-
-                                        <div class="col-sm-6">
-                                            <img class="img-responsive" src="{{asset('storage/' . $rental->image_1)}}" height="150px" width="auto" alt="COC {{$rental->booking_id}}">
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h3>@foreach($vehicles as $vehicle)
-                                                    @if($rental->coc_vehicle == $vehicle->id)
-                                                        @if($rental->activity_item == 'Scarab 215')
-                                                            Scarab
-                                                        @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                            Pontoon
-                                                        @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                            Pontoon
-                                                        @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                            Renegade
-                                                        @elseif($rental->activity_item == 'Summit 154 SP')
-                                                            Summit
-                                                        @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                            Aluminum
-                                                        @elseif($rental->activity_item == 'Kayak Single')
-                                                            Single Kayak
-                                                        @elseif($rental->activity_item == 'Double Kayak')
-                                                            Double Kayak
-                                                        @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                            SUP
-                                                        @elseif($rental->activity_item == 'Segway i2')
-                                                            Segway
-                                                        @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                            Spyder
-                                                        @elseif($rental->activity_item == 'SeaDoo')
-                                                            SeaDoo
-                                                        @else
-                                                            <br>
-
-                                                        @endif
-                                                        <span>{{$vehicle->internal_vehicle_id}}</span>
-                                                    @endif
-                                                @endforeach</h3>
-                                            <p class="card-text">
-                                                {{$rental->incident}}
-                                            </p>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                        @endif
-                        <!-- /COC Info -->
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">CLOSE</button>
+                            <div class="modal-footer">
+                                <input type="hidden" value="On Water" name="status">
+                                <input type="hidden" value="{{$dateNow}}" name="launched_time">
+                                <button class="btn btn-secondary btn-left" type="button" data-toggle="modal" data-dismiss="modal">CANCEL</button>
+                                <a href="#" class="btn btn-info" type="button" data-toggle="modal" data-dismiss="modal" data-target="#launchModal{{$rental->id}}">Back</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /Dock Modal -->
-        @endforeach
+            <!-- /Launch Modal - Step 2 - Customer Info -->
+
+
+
+        </form>
+
+        <!-- Dock Modal -->
+        <div class="modal fade" id="dock{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="checkinModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="modal_rental_title" class="modal-title"><span>{{$rental->activity_item}}</span> | {{$rental->first_name}} {{$rental->last_name}} &nbsp;
+                            <span class="status">
+                                    |
+                                        &nbsp; {{$rental->status}}</span></h3>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- /Rental Information -->
+                        <div class="modal-rental-info">
+                            <div class="row">
+                                <!-- Renter Info -->
+                                <div class="col-sm-6">
+                                    <div class="area-box">
+                                        <h4 class="modal-section-title">Customer Info</h4>
+                                        <div class="row">
+                                            <!-- Item -->
+                                            <div class="col-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <p class="modal-item-title">First Name:</p>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="modal-item">{{$rental->first_name}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Item -->
+                                            <!-- Item -->
+                                            <div class="col-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <p class="modal-item-title">Last Name:</p>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="modal-item">{{$rental->last_name}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Item -->
+                                            <!-- Item -->
+                                            <div class="col-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <p class="modal-item-title">Phone:</p>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="modal-item">{{$rental->phone}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Item -->
+                                            <!-- Item -->
+                                            <div class="col-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <p class="modal-item-title">Zip Code:</p>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="modal-item">{{$rental->zip_code}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Item -->
+                                            <!-- Item -->
+                                            <div class="col-6 col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <p class="modal-item-title">Notes:</p>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <p class="modal-item">{{$rental->customer_notes}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /Item -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- /Renter Info -->
+                                <!-- Rental Info -->
+                                <div class="col-sm-6">
+                                    <div class="area-box">
+                                        <h4 class="modal-section-title">Rental Info</h4>
+                                        <div class="row">
+                                            <!-- PreCheck by -->
+                                            @if($rental->precheck_by == '')
+                                                &nbsp;
+                                            @else
+                                                @foreach($users as $user)
+                                                    @if($rental->check_in_by == $user->id)
+                                                    <!-- Item -->
+                                                        <div class="col-6 col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <p class="modal-item-title">Pre-Check By:</p>
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <p class="modal-item">{{$user->firstname}} {{$user->lastname}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+                                                        <!-- Item -->
+                                                        <div class="col-6 col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <p class="modal-item-title">Pre-Check Time:</p>
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <p class="modal-item">
+                                                                        {{ \Carbon\Carbon::parse($rental->precheck_time)->format('h:i A') }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        <!-- /PreCheck by -->
+
+                                            <!-- Checked in by -->
+                                            @if($rental->check_in_by == '')
+                                                &nbsp;
+                                        @else
+                                            @foreach($users as $user)
+                                                @if($rental->check_in_by == $user->id)
+                                                    <!-- Item -->
+                                                        <div class="col-6 col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <p class="modal-item-title">Checked In By:</p>
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <p class="modal-item">{{$user->firstname}} {{$user->lastname}}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+                                                        <!-- Item -->
+                                                        <div class="col-6 col-sm-12">
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <p class="modal-item-title">Check In Time:</p>
+                                                                </div>
+                                                                <div class="col-sm-7">
+                                                                    <p class="modal-item">
+                                                                        {{ \Carbon\Carbon::parse($rental->check_in_time)->format('h:i A') }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                        <!-- /Checked in by -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Rental Info -->
+                            </div>
+
+                        </div>
+                        <!-- /Rental Information -->
+
+                        <!-- COC Info -->
+                        @if($rental->status == 'COC')
+
+                            <div class="modal-coc-info">
+                                <!-- Modal Section Title -->
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="modal-section-title">Change of Condition</h4>
+                                        <hr class="rounded" />
+                                    </div>
+                                </div>
+                                <!-- /Modal Section Title -->
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <img class="img-responsive" src="{{asset('storage/' . $rental->image_1)}}" height="150px" width="auto" alt="COC {{$rental->booking_id}}">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h3>@foreach($vehicles as $vehicle)
+                                                @if($rental->coc_vehicle == $vehicle->id)
+                                                    @if($rental->activity_item == 'Scarab 215')
+                                                        Scarab
+                                                    @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                        Pontoon
+                                                    @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                        Pontoon
+                                                    @elseif($rental->activity_item == 'Renegade BC 600ETec')
+                                                        Renegade
+                                                    @elseif($rental->activity_item == 'Summit 154 SP')
+                                                        Summit
+                                                    @elseif($rental->activity_item == '14ft. Aluminum Boat')
+                                                        Aluminum
+                                                    @elseif($rental->activity_item == 'Kayak Single')
+                                                        Single Kayak
+                                                    @elseif($rental->activity_item == 'Double Kayak')
+                                                        Double Kayak
+                                                    @elseif($rental->activity_item == 'Stand Up Paddleboard')
+                                                        SUP
+                                                    @elseif($rental->activity_item == 'Segway i2')
+                                                        Segway
+                                                    @elseif($rental->activity_item == 'Spyder RT-S SE6')
+                                                        Spyder
+                                                    @elseif($rental->activity_item == 'SeaDoo')
+                                                        SeaDoo
+                                                    @else
+                                                        <br>
+
+                                                    @endif
+                                                    <span>{{$vehicle->internal_vehicle_id}}</span>
+                                                @endif
+                                            @endforeach</h3>
+                                        <p class="card-text">
+                                            {{$rental->incident}}
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                    @endif
+                    <!-- /COC Info -->
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">CLOSE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Dock Modal -->
+    @endforeach
 
 
     <!-- Office Pre-Check Modal -->
@@ -5547,6 +5719,7 @@
 
         <!-- Page level custom scripts -->
         <script src="{{asset('js/demo/datatables-scripts.js')}}"></script>
+        <script src="{{asset('js/custom.js')}}"></script>
     @endsection
 
 </x-dock-master>

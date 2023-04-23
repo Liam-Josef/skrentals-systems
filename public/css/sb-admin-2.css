@@ -2765,14 +2765,14 @@ fieldset:disabled a.btn {
 
 .btn-info {
     color: #fff;
-    background-color: #36b9cc;
-    border-color: #36b9cc;
+    background-color: rgba(81, 4, 5, 0.8);
+    border-color: rgba(81, 4, 5, 0.8);
 }
 
 .btn-info:hover {
     color: #fff;
-    background-color: #2c9faf;
-    border-color: #2a96a5;
+    background-color: rgba(81, 4, 5, 1);
+    border-color: rgba(81, 4, 5, 1);
 }
 
 .btn-info:focus, .btn-info.focus {
@@ -6375,6 +6375,11 @@ hr.light {
 .modal.left .modal-body,
 .modal.right .modal-body {
     padding: 0px 10px;
+}
+.btn-left {
+    display: block;
+    margin-left: 0px !important;
+    margin-right: auto !important;
 }
 .btn-right {
     display: block;
@@ -12685,4 +12690,38 @@ footer img.img-square {
 }
 .pt-05rem {
     padding-top: .5rem;
+}
+.checkin-accordian {
+
+}
+
+/*Signature Pad*/
+:root {
+    --primary-color: #000;
+}
+.signature-pad-form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+.signature-pad {
+    cursor: url(pen.png) 1 26, pointer;
+    border: 2px solid var(--primary-color);
+    border-radius: 4px;
+}
+.clear-button {
+    color: var(--primary-color);
+}
+.submit-button {
+    width: 100%;
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+@media (pointer: coarse) {
+    body {
+        overflow: hidden; /* Needed to prevent the vertical scroll on touch devices */
+    }
 }
