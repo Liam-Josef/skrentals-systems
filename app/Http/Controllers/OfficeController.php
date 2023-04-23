@@ -68,7 +68,7 @@ class OfficeController extends Controller
             'rentalDepart' => $rentalDepart,
             'posts' => $posts,
             'vehicles' => $vehicles,
-            'customers' => Customer::where('attached', '=', '1')->where('activity_date', 'like', '%'.$today.'%')->get(),
+            'customers' => Customer::where('attached', '=', '1')->where('attached_date', 'like', '%'.$today.'%')->get(),
             'today' => $today,
             'cocs' => $cocs,
             'users' => $users,
