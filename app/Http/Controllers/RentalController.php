@@ -101,11 +101,14 @@ class RentalController extends Controller
 
     public function attachCustomer(Rental $rental) {
         $rental->customers()->attach(request('customer'));
+        $rental->customers()->update(['attached' => '1']);
+        $rental->customers()->update(['attached_date' => Carbon::now('PST')->toDateString()]);
         return back();
     }
 
     public function detachCustomer(Rental $rental) {
         $rental->customers()->detach(request('customer'));
+        $rental->customers()->update(['attached' => '0']);
         return back();
     }
 
@@ -211,6 +214,7 @@ class RentalController extends Controller
         $rental->update(['status' => 'Cancelled']);
         $rental->update(['check_in_by' => request('check_in_by')]);
         $rental->update(['check_in_time' => request('check_in_time')]);
+        $rental->customers()->update(['attached' => '0']);
 
         $rental->update($inputs);
 
@@ -223,6 +227,8 @@ class RentalController extends Controller
         $rental->update(['status' => 'Checked In']);
         $rental->update(['security_deposit' => request('security_deposit')]);
         $rental->update(['security_deposit_type' => request('security_deposit_type')]);
+        $rental->update(['security_deposit_2' => request('security_deposit_2')]);
+        $rental->update(['security_deposit_type_2' => request('security_deposit_type_2')]);
         $rental->update(['fuel_deposit' => request('fuel_deposit')]);
         $rental->update(['fuel_count' => request('fuel_count')]);
         $rental->update(['fuel_deposit_type' => request('fuel_deposit_type')]);

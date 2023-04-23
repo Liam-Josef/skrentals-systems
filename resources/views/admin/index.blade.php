@@ -208,7 +208,9 @@
                                                 </h6>
                                             </div>
                                             <div class="col-4 col-sm-2">
-                                                <h6 class="mt-2 text-red">{{$rental->coc_status}}</h6>
+                                                <h6 class="mt-2 text-red">
+                                                    {{$rental->coc_status}}
+                                                </h6>
                                             </div>
                                             <div class="col-12 col-sm-4">
                                                 <h6 class="coc-incident mt-2">{{$rental->incident}}</h6>
@@ -243,6 +245,7 @@
                                                             @endforeach
                                                         >Submit</button>
                                                     </form>
+
                                                 @endif
                                             </div>
                                         </div>
@@ -417,7 +420,13 @@
                                                 </h6>
                                             </div>
                                             <div class="col-4 col-sm-2">
-                                                <h6 class="mt-2 text-red">{{$maintenance->status}}</h6>
+                                                <h6 class="mt-2 text-red">
+                                                    @if($maintenance->status == 'Invoice Submitted')
+                                                        Review
+                                                        @else
+                                                        {{$maintenance->status}}
+                                                    @endif
+                                                </h6>
                                             </div>
                                             <div class="col-12 col-sm-4">
                                                 <h6 class="coc-incident mt-2">{{$maintenance->description}}</h6>
