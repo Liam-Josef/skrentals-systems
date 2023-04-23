@@ -56,10 +56,10 @@ class TeamController extends Controller
         $pontoonCount = Rental::where('activity_item', '=', '23ft. Pontoon Boat')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $seadooCount = Rental::where('activity_item', '=', 'SeaDoo')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $supCount = Rental::where('activity_item', '=', 'Stand Up Paddleboard')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $kayakCount = Rental::where('activity_item', '=', 'Kayak Single, Double Kayak')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $kayakCount = Rental::where('activity_item', 'like', '%Kayak%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $spyderCount = Rental::where('activity_item', '=', 'Spyder RT-S SE6')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $segwayCount = Rental::where('activity_item', '=', 'Segway i2')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $backcountryCount = Rental::where('activity_item', '=', 'Renegade BC 600ETec')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $segwayCount = Rental::where('activity_item', 'like', '%Segway%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $backcountryCount = Rental::where('activity_item', 'like', '%Renegade%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $summitCount = Rental::where('activity_item', '=', 'Summit 154 SP')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $alumCount = Rental::where('activity_item', '=', '14ft. Aluminum Boat')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
 
