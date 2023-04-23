@@ -104,6 +104,7 @@
                     </li>
                 @endif
 
+
                 @if($rentalTypeKayak)
                     <li class="nav-item">
                         <a class="nav-link" id="view-kayak-tab" data-toggle="tab" href="#kayak-tab" role="tab" aria-controls="kayak-tab"

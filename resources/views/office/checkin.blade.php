@@ -1919,7 +1919,27 @@
                                 </p>
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
 
-                                <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Next</button>
+                                <!-- Here -->
+                                @if($rental->activity_item == 'Scarab 215' or $rental->activity_item == 'Spyder RT-S SE6' or $rental->activity_item == 'Renegade BC 600ETec' or $rental->activity_item == 'Summit 154 SP')
+                                    <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Next</button>
+                                @elseif($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, 'Full Day') !== false)
+                                    <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Next</button>
+                                @elseif($rental->activity_item == 'SeaDoo')
+                                    @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
+                                        <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Next</button>
+                                    @endif
+
+                                @else
+
+                                    <input type="hidden" value="Checked In" name="status">
+                                    @if(Auth::check())
+                                        <input type="hidden" value="{{auth()->user()->id}}" name="check_in_by">
+                                    @endif
+                                    <input type="hidden" value="{{$dateNow}}" name="check_in_time">
+
+                                    <button class="btn btn-primary-red btn-modal" type="submit">CHECK IN</button>
+
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -2190,7 +2210,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary btn-left" type="button" data-toggle="modal" data-dismiss="modal">CANCEL</button>
-                            <a href="#" class="btn btn-secondary" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin{{$rental->id}}">Back</a>
+                            <a href="#" class="btn btn-info" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin{{$rental->id}}">Back</a>
 
                             <input type="hidden" value="Checked In" name="status">
 
@@ -2374,7 +2394,7 @@
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary btn-left" type="button" data-toggle="modal" data-dismiss="modal">CANCEL</button>
-                            <a href="#" class="btn btn-secondary" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Back</a>
+                            <a href="#" class="btn btn-info" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Back</a>
 
                             <input type="hidden" value="Checked In" name="status">
                             @if(Auth::check())

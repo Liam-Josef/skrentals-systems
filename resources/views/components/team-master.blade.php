@@ -121,7 +121,6 @@
 
 <!-- Page level custom scripts -->
 @yield('scripts')
-
 </body>
 
 </html>
