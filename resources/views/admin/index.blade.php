@@ -157,7 +157,7 @@
                     </div>
 
                     <div class="col-12 col-sm-3">
-                        <a href="{{route('rental.index')}}">
+                        <a href="{{route('rental.today')}}">
                             <div class="card shadow my-3">
                                 <div class="card-header pl-0 pr-0">
                                     <h6 class="text-center text-white mt-1">Rentals</h6>
@@ -171,6 +171,7 @@
                                     @endif
                                 </div>
                             </div>
+
                         </a>
                     </div>
 
