@@ -231,8 +231,8 @@ class OfficeController extends Controller
             'rentalSup' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Stand Up Paddleboard')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
             'rentalTypeSup' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Stand Up Paddleboard')->where('status', '=', '')->get()->count(),
 
-            'rentalKayak' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', ['Kayak Single', 'Double Kayak'])->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeKayak' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', ['Kayak Single', 'Double Kayak'])->where('status', '=', '')->get()->count(),
+            'rentalKayak' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', 'like', '%Kayak%')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeKayak' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', 'like', '%Kayak%')->where('status', '=', '')->get()->count(),
 
             'rentalSpyder' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Spyder RT-S SE6')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
             'rentalTypeSpyder' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Spyder RT-S SE6')->where('status', '=', '')->get()->count(),
