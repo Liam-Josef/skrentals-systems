@@ -99,6 +99,33 @@ class RentalController extends Controller
         return back();
     }
 
+
+    public function store() {
+        Rental::create([
+            'booking_id' => request('booking_id'),
+            'purchase_date' => request('purchase_date'),
+            'activity_date' => request('activity_date'),
+            'activity_item' => request('activity_item'),
+            'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
+            'zip_code' => request('zip_code'),
+            'payment_status' => request('payment_status'),
+            'ticket_list' => request('ticket_list'),
+            'email' => request('email'),
+            'phone' => request('phone'),
+            'source' => request('source'),
+            'purchase_type' => request('purchase_type'),
+            'payment_type' => request('payment_type'),
+            'list_price' => request('list_price'),
+            'total_discount_amount' => request('total_discount_amount'),
+            'customer_fees' => request('customer_fees'),
+            'total_charge' => request('total_charge'),
+        ]);
+        return back();
+    }
+
+
+
     public function attachCustomer(Rental $rental) {
         $rental->customers()->attach(request('customer'));
         $rental->customers()->update(['attached' => '1']);

@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('zip_code');
             $table->string('payment_type');
-            $table->string('payment_status');
             $table->string('ticket_list');
             $table->string('email');
             $table->string('phone');

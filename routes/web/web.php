@@ -22,6 +22,9 @@ Auth::routes();
 Route::group(['middleware' => 'guest'], function(){
 
 });
+Route::get('/zap-this-shiznit-beotch', [App\Http\Controllers\HomeController::class, 'zap'])->name('home.zap');
+
+
 Route::get('/', [App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
 Route::post('signature_pad', [SignaturePadController::class, 'store'])->name('signature_pad.store');

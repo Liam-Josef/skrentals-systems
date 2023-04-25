@@ -25,15 +25,7 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2HB7CGVTH"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-V2HB7CGVTH');
-    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics - DO NOT USE FOR ZAPIER -->
 </head>
 
 <body>

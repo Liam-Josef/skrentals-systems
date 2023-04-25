@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\RentalController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
-
+Auth::routes();
+Route::post('home/zap-rental', [RentalController::class, 'store'])->name('rental.store');
+Zao
 Route::middleware(['role:zapier'])->group(function() {
     Route::put('team/add-rental', [RentalController::class, 'addRental'])->name('rental.addRental');
 });
