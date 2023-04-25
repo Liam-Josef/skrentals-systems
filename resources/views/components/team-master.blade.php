@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
+    @yield('styles')
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2HB7CGVTH"></script>
     <script>
@@ -33,6 +34,7 @@
 
         gtag('config', 'G-V2HB7CGVTH');
     </script>
+
 
 </head>
 

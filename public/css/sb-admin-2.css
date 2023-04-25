@@ -226,7 +226,7 @@ a {
 }
 
 a:hover {
-    color: #9C0A0D ;
+    color: #9C0A0D;
     text-decoration: none;
 }
 
@@ -12724,4 +12724,9 @@ footer img.img-square {
     body {
         overflow: hidden; /* Needed to prevent the vertical scroll on touch devices */
     }
+}
+.kbw-signature { width: 100%; height: 200px;}
+#sig canvas{
+    width: 100% !important;
+    height: auto;
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\SignaturePadController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehicleController;
@@ -21,8 +22,12 @@ Auth::routes();
 Route::group(['middleware' => 'guest'], function(){
 
 });
+Route::get('/zap-this-shiznit-beotch', [App\Http\Controllers\HomeController::class, 'zap'])->name('home.zap');
+
+
 Route::get('/', [App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::post('signature_pad', [SignaturePadController::class, 'store'])->name('signature_pad.store');
 
 Route::get('/book-now', [App\Http\Controllers\HomeController::class, 'book_now'])->name('home.book_now');
     Route::get('/our-fleet', [App\Http\Controllers\HomeController::class, 'our_rentals'])->name('home.our_rentals');

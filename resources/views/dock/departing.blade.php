@@ -5093,7 +5093,7 @@
 
             <!-- Launch Modal - Step 2 - Customer Info -->
             <div class="modal fade" id="launchModal-2{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="launchModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h3 class="modal-title" id="launchModalLabel">
@@ -5217,7 +5217,7 @@
                                 <div class="col-sm-12">
                                     <div class="row">
                                         <form class="signature-pad-form" action="#" method="POST">
-                                            <h1>Customer Agrees to: </h1>
+                                            <h3>Customer Agrees to: </h3>
 
                                             <ul class="customer-agree-list">
                                                 <li class="mb-3">
