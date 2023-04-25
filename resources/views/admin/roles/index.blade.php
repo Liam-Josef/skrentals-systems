@@ -24,6 +24,7 @@
         @endsection
 
         @section('logo_horizontal_1')
+        @section('logo_horizontal_1')
             {{asset('storage/'. $application->logo_horizontal_1)}}
         @endsection
         @section('logo_horizontal_2')

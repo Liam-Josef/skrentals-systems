@@ -106,6 +106,7 @@ class CocController extends Controller
         $rental->update(['image_1' => request('image_1')]);
         $rental->vehicles()->update(['location' => 'Dock']);
         $rental->vehicles()->update(['current_Hours' => request('coc_hours')]);
+        $rental->vehicles()->update(['hours_updated' =>  Carbon::now('PST')->toDateString());
         $rental->update(['cleared_by' => request('cleared_by')]);
         $rental->update(['cleared_time' => request('cleared_time')]);
 //        Coc::rentals()->attach(request('rental'));

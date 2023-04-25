@@ -27,6 +27,19 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function zap() {
+        $posts = Post::latest()->get();
+        $applications = Website::where('id', '=', '1')->get();
+
+        return view('home.zap-this-shiznit-beotch', [
+            'websites' => Website::where('id', '=', '1')->get(),
+            'posts'=>$posts,
+            'applications' => $applications
+        ]);
+    }
+
+
+
     public function index()
     {
         $posts = Post::latest()->get();

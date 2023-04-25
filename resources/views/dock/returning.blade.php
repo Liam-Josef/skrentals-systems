@@ -8007,7 +8007,7 @@
 
                                              @endif
                                              @foreach($rental->vehicles as $rental_vehicle)
-                                                 {{$rental_vehicle->internal_vehicle_id}}
+                                                {{$rental_vehicle->vehicle_type}} {{$rental_vehicle->internal_vehicle_id}}
                                                  <input type="hidden" name="coc_vehicle" value="{{$rental_vehicle->id}}">
                                              @endforeach
                                                     </span>
