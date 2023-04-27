@@ -3,7 +3,7 @@
 
     @section('content')
 
-               <form action="{{route('rental.store')}}" method="post" enctype="multipart/form-data" accept-charset="UTF-8" _lpchecked="1">
+               <form action="{{route('rental.store')}}" method="post" enctype="multipart/form-data">
                    @method('POST')
                    @csrf
 
@@ -34,7 +34,7 @@
                    <input type="text" class="hidden" name="total_discount_amount" id="total_discount_amount" value="$0.00">
                    <input type="text" class="hidden" name="customer_fees" id="customer_fees" value="$0.00">
                    <input type="text" class="hidden" name="total_charge" id="total_charge" value="$0.00">
-                   <button class="btn btn-primary" type="submit">Submit</button>
+                   <input type="submit" value="Submit"/>
                </form>
 
     @endsection
