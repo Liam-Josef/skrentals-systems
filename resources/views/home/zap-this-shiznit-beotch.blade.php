@@ -68,18 +68,18 @@
                        <label for="booking_id">Booking ID</label>
                        <input type="text" class="form-control" name="booking_id" id="booking_id">
                    </div>
-                   <div class="form-group">
-                       <label for="purchase_date">Purchase Date</label>
-                       <input type="text" class="form-control" name="purchase_date" id="purchase_date">
-                   </div>
+{{--                   <div class="form-group">--}}
+{{--                       <label for="purchase_date">Purchase Date</label>--}}
+{{--                       <input type="text" class="form-control" name="purchase_date" id="purchase_date">--}}
+{{--                   </div>--}}
 {{--                   <div class="form-group">--}}
 {{--                       <label for="activity_date">Activity Date</label>--}}
 {{--                       <input type="text" class="form-control" name="activity_date" id="activity_date">--}}
 {{--                   </div>--}}
-{{--                   <div class="form-group">--}}
-{{--                       <label for="activity_item">Activity Item</label>--}}
-{{--                       <input type="text" class="form-control" name="activity_item" id="activity_item">--}}
-{{--                   </div>--}}
+                   <div class="form-group">
+                       <label for="activity_item">Activity Item</label>
+                       <input type="text" class="form-control" name="activity_item" id="activity_item">
+                   </div>
                    <div class="form-group">
                        <label for="first_name">First Name</label>
                        <input type="text" class="form-control" name="first_name" id="first_name">
