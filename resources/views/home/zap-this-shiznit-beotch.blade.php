@@ -72,14 +72,14 @@
                        <label for="purchase_date">Purchase Date</label>
                        <input type="text" class="form-control" name="purchase_date" id="purchase_date">
                    </div>
-                   <div class="form-group">
-                       <label for="activity_date">Activity Date</label>
-                       <input type="text" class="form-control" name="activity_date" id="activity_date">
-                   </div>
-                   <div class="form-group">
-                       <label for="activity_item">Activity Item</label>
-                       <input type="text" class="form-control" name="activity_item" id="activity_item">
-                   </div>
+{{--                   <div class="form-group">--}}
+{{--                       <label for="activity_date">Activity Date</label>--}}
+{{--                       <input type="text" class="form-control" name="activity_date" id="activity_date">--}}
+{{--                   </div>--}}
+{{--                   <div class="form-group">--}}
+{{--                       <label for="activity_item">Activity Item</label>--}}
+{{--                       <input type="text" class="form-control" name="activity_item" id="activity_item">--}}
+{{--                   </div>--}}
                    <div class="form-group">
                        <label for="first_name">First Name</label>
                        <input type="text" class="form-control" name="first_name" id="first_name">
@@ -112,6 +112,8 @@
                        <label for="source">Source</label>
                        <input type="text" class="form-control" name="source" id="source">
                    </div>
+                   <input type="text" class="hidden" name="activity_date" id="activity_date" value="2023-04-26 18:0:0">
+                   <input type="text" class="hidden" name="purchase_date" id="purchase_date" value="2023-04-24 18:0:0">
                    <input type="text" class="hidden" name="purchase_type" id="purchase_type" value="Peek">
                    <input type="text" class="hidden" name="payment_type" id="payment_type" value="Peek">
                    <input type="text" class="hidden" name="list_price" id="list_price" value="$0.00">
