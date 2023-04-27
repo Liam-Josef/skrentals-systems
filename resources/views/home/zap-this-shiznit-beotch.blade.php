@@ -17,15 +17,15 @@
 {{--                       <label for="activity_date">Activity Date</label>--}}
 {{--                       <input type="text" class="form-control" name="activity_date" id="activity_date">--}}
 {{--                   </div>--}}
-                       <input type="text" class="form-control" name="activity_item" id="activity_item">
+                   <input type="text" class="form-control" name="email" id="email">
                        <input type="text" class="form-control" name="first_name" id="first_name">
                        <input type="text" class="form-control" name="last_name" id="last_name">
                        <input type="text" class="form-control" name="zip_code" id="zip_code">
-                       <input type="text" class="form-control" name="payment_status" id="payment_status">
-                       <input type="text" class="form-control" name="ticket_list" id="ticket_list">
-                       <input type="text" class="form-control" name="email" id="email">
-                       <input type="text" class="form-control" name="phone" id="phone">
-                       <input type="text" class="form-control" name="source" id="source">
+                   <input type="text" class="form-control" name="activity_item" id="activity_item" value="sometrhing">
+                   <input type="text" class="form-control" name="ticket_list" id="ticket_list" value="something">
+                       <input type="text" class="form-control" name="payment_status" id="payment_status" value="Paid">
+                       <input type="text" class="form-control" name="phone" id="phone" value="502-333-4533">
+                       <input type="text" class="form-control" name="source" id="source" value="Widget">
                    <input type="text" class="hidden" name="activity_date" id="activity_date" value="2023-04-26 18:0:0">
                    <input type="text" class="hidden" name="purchase_date" id="purchase_date" value="2023-04-24 18:0:0">
                    <input type="text" class="hidden" name="purchase_type" id="purchase_type" value="Peek">
