@@ -26,7 +26,7 @@
 @endsection
 
 @section('browser_title')
-    <title>Login | RentalGuru</title>
+    <title>Login | SK Watercraft Rentals</title>
 @endsection
 
 @section('content')
