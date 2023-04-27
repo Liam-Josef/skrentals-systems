@@ -60,6 +60,7 @@
     @if(!auth()->user()->userHasRole('Service'))
 
     @section('content')
+
     <!-- Today's Rentals -->
         <div class="card shadow mt-4 my-3">
             <!-- Bar Chart -->
