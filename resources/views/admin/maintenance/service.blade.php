@@ -75,7 +75,8 @@
     @section('content')
         <div class="row">
             <div class="col-12">
-                <h1>Service <span class="small text-gray-700">(Writer View)</span></h1>
+                <h1>Service <span class="small text-gray-700">(This is the View the Service Writer see's)</span></h1>
+{{--                <h1>Service <span class="small text-gray-700">(Writer View)</span></h1>--}}
             </div>
         </div>
 

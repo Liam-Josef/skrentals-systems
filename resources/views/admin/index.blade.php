@@ -483,11 +483,9 @@
                         <!--  /RO Rejected - Maintenance -->
 
 
-                        @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount)
-                            @if(!$serviceReqCocServCount && !$serviceReqInvoiceCount)
+                        @if(!$serviceReqCocNewCount && !$serviceReqCocBillingCount && !$serviceReqCocServCount && !$serviceReqInvoiceCount && !$serviceReqRejectedCount && !$serviceReqAcceptCount)
                             <h1 class="text-center text-gray">...nothing to do</h1>
-                            @endif
-                            @else
+                        @else
                             &nbsp;
                         @endif
 
