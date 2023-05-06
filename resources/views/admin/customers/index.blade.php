@@ -5,7 +5,7 @@
     @endsection
 
 
-        @foreach($applications as $application)
+        @foreach($websites as $application)
 
         @section('page_title')
             <h1>Customers</h1>
