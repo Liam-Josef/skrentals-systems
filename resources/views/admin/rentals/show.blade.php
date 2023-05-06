@@ -1174,7 +1174,7 @@
                                             @if($maintenance->invoice)
                                                 <div class="row">
                                                     <div class="col-6">
-                                                        <p class="item-title">Service Invoice #:</p>
+                                                        <p class="item-title">R/O: </p>
                                                     </div>
                                                     <div class="col-6">
                                                         <p class="item">{{$maintenance->service_invoice}}</p>
