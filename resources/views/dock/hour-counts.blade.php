@@ -73,8 +73,8 @@
 
 
        <div class="row">
-           <div class="col-1"></div>
-           <div class="col-10">
+           <div class="col-12 col-sm-1"></div>
+           <div class="col-12 col-sm-10">
                <div class="card shadow card-dark mb-4">
                    <div class="card-header">
                        <!-- Departing Tablist -->
