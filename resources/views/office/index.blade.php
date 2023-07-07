@@ -132,7 +132,7 @@
                     </li>
                 @endif
 
-                @if($rentalTypeSkiDoo)
+                @if($rentalTypeRenegade or $rentalTypeSummit)
                     <li class="nav-item">
                         <a class="nav-link" id="view-skidoo-tab" data-toggle="tab" href="#skidoo-tab" role="tab" aria-controls="skidoo-tab"
                            aria-selected="true">
@@ -183,27 +183,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -217,9 +235,9 @@
                                                             @elseif(strpos($rental->ticket_list, '1 hour') !== false)
                                                                 1 Hr
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
                                                                 2 Hr
-                                                            @elseif(strpos($rental->ticket_list, '2 hour') !== false)
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
                                                                 2 Hr
                                                             @endif
                                                             @if(strpos($rental->ticket_list, '3 Hour') !== false)
@@ -248,46 +266,74 @@
                                                             @if(strpos($rental->ticket_list, 'Half Day') !== false)
                                                                 HD
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
                                                                 1 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '2 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
                                                                 2 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '3 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
                                                                 3 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '4 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
                                                                 4 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '5 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
                                                                 5 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '6 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
                                                                 6 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '7 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
                                                                 7 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '8 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
                                                                 8 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '9 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
                                                                 9 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '10 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
                                                                 10 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '11 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
                                                                 11 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '12 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
                                                                 12 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '13 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
                                                                 13 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '14 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
                                                                 14 D
                                                         @endif
                                                         <!-- /Rental Duration -->
@@ -432,27 +478,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -497,47 +561,75 @@
                                                             @if(strpos($rental->ticket_list, 'Half Day') !== false)
                                                                 HD
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
                                                                 1 D
+                                                                @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                    1 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '2 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
                                                                 2 D
+                                                                @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                    2 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '3 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
                                                                 3 D
+                                                                @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                    3 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '4 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
                                                                 4 D
+                                                                @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                    4 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '5 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
                                                                 5 D
+                                                                @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                    5 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '6 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
                                                                 6 D
+                                                                @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                    6 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '7 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
                                                                 7 D
+                                                                @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                    7 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '8 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
                                                                 8 D
+                                                                @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                    8 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '9 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
                                                                 9 D
+                                                                @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                    9 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '10 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
                                                                 10 D
+                                                                @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                    10 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '11 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
                                                                 11 D
+                                                                @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                    11 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '12 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
                                                                 12 D
+                                                                @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                    12 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '13 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
                                                                 13 D
+                                                                @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                    13 D
                                                             @endif
-                                                            @if(strpos($rental->ticket_list, '14 Day') !== false)
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
                                                                 14 D
+                                                                @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                    14 D
                                                             @endif
                                                         <!-- /Rental Duration -->
                                                         </h2>
@@ -599,47 +691,75 @@
                                                 @if(strpos($rental->ticket_list, 'Half Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                                @if(strpos($rental->ticket_list, '1 day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                                    @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '2 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '3 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '4 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '5 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '6 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '7 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '8 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '9 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '10 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '11 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '12 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '13 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '14 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                                    @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
                                                 @endif
                                                 <!-- /UPDATED -->
                                             <!-- /Duration Add Time -->
@@ -685,27 +805,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -777,44 +915,70 @@
                                                 @if(strpos($rental->ticket_list, '1 Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '2 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '3 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '4 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '5 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '6 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '7 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '8 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '9 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '10 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '11 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '12 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '13 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '14 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
                                                 @endif
                                                 <!-- /UPDATED -->
                                                 <!-- /Duration Add Time -->
@@ -853,27 +1017,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -903,38 +1085,38 @@
                                             <div class="body-right returning">
                                                 <h4 class="text-center">
                                                     <!-- Duration Add Time -->
-                                                    {{ $launchTime = \Carbon\Carbon::parse($rental->launched_time)->format('h:i A') }}
+                                                    {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                     -
-                                                <!-- UPDATED -->
+                                                    <!-- UPDATED -->
                                                 @if(strpos($rental->ticket_list, '1 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '2 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '3 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '4 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '8 Hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '9 Hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, 'Full Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
@@ -942,50 +1124,78 @@
                                                 @if(strpos($rental->ticket_list, 'Half Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                                @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '1 Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '2 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '3 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '4 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '5 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '6 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '7 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '8 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '9 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '10 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '11 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '12 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '13 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '14 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
                                                 @endif
                                                 <!-- /UPDATED -->
-                                                <!-- /Duration Add Time -->
+                                                    <!-- /Duration Add Time -->
                                                 </h4>
                                             </div>
                                         </div>
@@ -1021,27 +1231,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -1071,38 +1299,38 @@
                                             <div class="body-right returning">
                                                 <h4 class="text-center">
                                                     <!-- Duration Add Time -->
-                                                    {{ $launchTime = \Carbon\Carbon::parse($rental->launched_time)->format('h:i A') }}
+                                                    {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                     -
-                                                <!-- UPDATED -->
+                                                    <!-- UPDATED -->
                                                 @if(strpos($rental->ticket_list, '1 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '2 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '3 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '4 hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '8 Hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '9 Hour') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-                                                    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-                                                        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
                                                 @endif
                                                 @if(strpos($rental->ticket_list, 'Full Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
@@ -1110,50 +1338,78 @@
                                                 @if(strpos($rental->ticket_list, 'Half Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                                @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                                @elseif(strpos($rental->ticket_list, '1 Day') !== false)
                                                     {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '2 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '3 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '4 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '5 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '6 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '7 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '8 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '9 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '10 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '11 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '12 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '13 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '14 Day') !== false)
-                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
+                                                @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                                @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
                                                 @endif
                                                 <!-- /UPDATED -->
-                                                <!-- /Duration Add Time -->
+                                                    <!-- /Duration Add Time -->
                                                 </h4>
                                             </div>
                                         </div>
@@ -1367,27 +1623,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -1396,84 +1670,114 @@
                                                         </h4>
                                                         <h2 class="card-duration text-center">
                                                              <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -1496,87 +1800,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -1615,27 +1947,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -1643,85 +1993,114 @@
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -1744,87 +2123,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -2548,27 +2955,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -2576,85 +3001,114 @@
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -2677,91 +3131,116 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
                                             <!-- /Duration Add Time -->
                                             </h4>
-                                            <!-- /Departing Time -->
-
-
                                         </div>
                                     </div>
                                 @endif
@@ -2796,27 +3275,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -2824,85 +3321,114 @@
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -2925,91 +3451,116 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
-                                            <!-- /Departing Time -->
-
-
                                         </div>
                                     </div>
                                 @endif
@@ -3729,27 +4280,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -3757,85 +4326,114 @@
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -3858,91 +4456,116 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
-                                            <!-- /Departing Time -->
-
-
                                         </div>
                                     </div>
                                 @endif
@@ -3977,27 +4600,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -4005,85 +4646,114 @@
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -4106,87 +4776,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -4910,27 +5608,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -4938,85 +5654,114 @@
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -5039,91 +5784,117 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
-
-
                                         </div>
                                     </div>
                                 @endif
@@ -5158,27 +5929,45 @@
                                                         <h4 class="card-title text-center">
                                                             @if($rental->activity_item == 'Scarab 215')
                                                                 Scarab
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                                Scarab
                                                             @elseif($rental->activity_item == '23ft. Pontoon Boat')
                                                                 Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                                                                 Pontoon
                                                             @elseif($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @elseif($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                                                                 Summit
                                                             @elseif($rental->activity_item == '14ft. Aluminum Boat')
                                                                 Aluminum
                                                             @elseif($rental->activity_item == 'Kayak Single')
                                                                 Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                                Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
+                                                                Double Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                                                                 Double Kayak
                                                             @elseif($rental->activity_item == 'Stand Up Paddleboard')
                                                                 SUP
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                                SUP
                                                             @elseif($rental->activity_item == 'Segway i2')
+                                                                Segway
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                                                                 Segway
                                                             @elseif($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @elseif($rental->activity_item == 'SeaDoo')
+                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
                                                                 SeaDoo
                                                             @else
                                                                 <br>
@@ -5186,85 +5975,114 @@
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -5287,87 +6105,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -6089,115 +6935,128 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                                Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
+                                                            @if($rental->activity_item == 'Kayak Single')
+                                                                Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
                                                                 Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
                                                                 Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
-                                                                Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                                Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
+                                                                Double Kayak
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -6220,87 +7079,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -6337,115 +7224,128 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                                Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
+                                                            @if($rental->activity_item == 'Kayak Single')
+                                                                Single Kayak
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
                                                                 Single Kayak
                                                             @elseif($rental->activity_item == 'Double Kayak')
                                                                 Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
-                                                                Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                                Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
+                                                                Double Kayak
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -6468,87 +7368,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -7270,115 +8198,124 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                                Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
-                                                                Single Kayak
-                                                            @elseif($rental->activity_item == 'Double Kayak')
-                                                                Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
-                                                                Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
+                                                            @if($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -7401,87 +8338,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -7518,115 +8483,124 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                                Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
-                                                                Single Kayak
-                                                            @elseif($rental->activity_item == 'Double Kayak')
-                                                                Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
-                                                                Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
+                                                            @if($rental->activity_item == 'Spyder RT-S SE6')
                                                                 Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                                Spyder
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -7649,87 +8623,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -8451,115 +9453,124 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                                Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
-                                                                Single Kayak
-                                                            @elseif($rental->activity_item == 'Double Kayak')
-                                                                Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
+                                                            @if($rental->activity_item == 'Segway i2')
                                                                 Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                                Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
+                                                                Segway
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -8582,87 +9593,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -8699,115 +9738,124 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                                Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
-                                                                Single Kayak
-                                                            @elseif($rental->activity_item == 'Double Kayak')
-                                                                Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
+                                                            @if($rental->activity_item == 'Segway i2')
                                                                 Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                                Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
+                                                                Segway
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -8830,87 +9878,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -9603,7 +10679,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <h2 class="section-title">Departing <span><small>(Snowmobiles)</small></span></h2>
-                            @foreach($rentalDepartSkiDoo as $rental)
+                            @foreach($rentalDepartRenegade as $rental)
                                 @if($rental->status == 'Pre-Check' && strpos($rental->activity_date, $today) !== false)
                                     <div class="card mb-4 shadow card-od card-dark">
                                         <div class="card-header">
@@ -9632,115 +10708,124 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
+                                                            @if($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
-                                                                Single Kayak
-                                                            @elseif($rental->activity_item == 'Double Kayak')
-                                                                Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
-                                                                Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                                Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -9763,87 +10848,115 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -9851,7 +10964,295 @@
                                         </div>
                                     </div>
                                 @endif
+                            @endforeach
+                            @foreach($rentalDepartSummit as $rental)
+                                @if($rental->status == 'Pre-Check' && strpos($rental->activity_date, $today) !== false)
+                                    <div class="card mb-4 shadow card-od card-dark">
+                                        <div class="card-header">
+                                            <h3>
+                                                <a href="#"
+                                                   class="rental-modal"
+                                                   data-toggle="modal"
+                                                   data-target="#rental_checkin{{$rental->id}}"
+                                                   data-id="{{$rental->id}}" >
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="header-left">
 
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <div class="header-right">
+                                                                {{$rental->last_name}}, {{$rental->first_name}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></h3>
+                                        </div>
+                                        <div class="office card-body">
+                                            <div class="row">
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="body-left">
+                                                        <h4 class="card-title text-center">
+                                                            @if($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
+                                                                Summit
+                                                            @else
+                                                                <br>
+
+                                                            @endif
+                                                        </h4>
+                                                        <h2 class="card-duration text-center">
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="body-center">
+                                                        <h3 class="text-center text-uppercase">{{$rental->status}}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="body-right">
+                                                        <a class="btn-tel" href="tel:{{$rental->phone}}">{{$rental->phone = substr($rental->phone, 2)}}</a>
+                                                        <a href="{{route('office.show', $rental->id)}}" class="btn btn-primary-red btn-modal" >Check In</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <!-- Departing Time TODO get rid of (0)4:30 PM -->
+                                            <h4>
+                                                <!-- Duration Add Time -->
+                                                {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
+                                                -
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
+                                            </h4>
+                                            <!-- /Departing Time -->
+
+
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+
+                            @foreach($rentalDepartRenegade as $rental)
                                 @if($rental->status == '' && strpos($rental->activity_date, $today) !== false)
                                     <div class="card mb-4 shadow card-od card-dark">
                                         <div class="card-header">
@@ -9880,115 +11281,124 @@
                                                 <div class="col-6 col-sm-4">
                                                     <div class="body-left">
                                                         <h4 class="card-title text-center">
-                                                            @if($rental->activity_item == 'Scarab 215')
-                                                                Scarab
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                Pontoon
-                                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
+                                                            @if($rental->activity_item == 'Renegade BC 600ETec')
                                                                 Renegade
-                                                            @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                Summit
-                                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                Aluminum
-                                                            @elseif($rental->activity_item == 'Kayak Single')
-                                                                Single Kayak
-                                                            @elseif($rental->activity_item == 'Double Kayak')
-                                                                Double Kayak
-                                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                SUP
-                                                            @elseif($rental->activity_item == 'Segway i2')
-                                                                Segway
-                                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                                Spyder
-                                                            @elseif($rental->activity_item == 'SeaDoo')
-                                                                SeaDoo
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                                Renegade
                                                             @else
                                                                 <br>
 
                                                             @endif
                                                         </h4>
                                                         <h2 class="card-duration text-center">
-                                                             <!-- Rental Duration UPDATED -->
-@if(strpos($rental->ticket_list, '1 Hour') !== false)
-    1 Hr
-        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-            1 Hr
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    2 Hr
-        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-            2 Hr
-@endif
-@if(strpos($rental->ticket_list, '3 Hour') !== false)
-    3 Hr
-        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-            3 Hr
-@endif
-@if(strpos($rental->ticket_list, '4 Hour') !== false)
-    HD
-        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-            HD
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    FD
-        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-            FD
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    FD
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        FD
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    FD
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    HD
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    1 D
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    2 D
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    3 D
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    4 D
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    5 D
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    6 D
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    7 D
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    8 D
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    9 D
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    10 D
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    11 D
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    12 D
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    13 D
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    14 D
-@endif
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
                                                         </h2>
                                                     </div>
                                                 </div>
@@ -10011,87 +11421,401 @@
                                                 <!-- Duration Add Time -->
                                                 {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
                                                 -
-                                            <!-- UPDATED -->
-@if(strpos($rental->ticket_list, '1 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Hour') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-    @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-        {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Full Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, 'Half Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '1 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '2 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '3 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '4 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '5 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '6 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '7 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '8 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '9 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '10 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '11 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '12 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '13 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A')}}
-@endif
-@if(strpos($rental->ticket_list, '14 Day') !== false)
-    {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A')}}
-@endif
-<!-- /UPDATED -->
-                                            <!-- /Duration Add Time -->
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
+                                            </h4>
+                                            <!-- /Departing Time -->
+
+
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                            @foreach($rentalDepartSummit as $rental)
+                                @if($rental->status == '' && strpos($rental->activity_date, $today) !== false)
+                                    <div class="card mb-4 shadow card-od card-dark">
+                                        <div class="card-header">
+                                            <h3>
+                                                <a href="#"
+                                                   class="rental-modal"
+                                                   data-toggle="modal"
+                                                   data-target="#rental_checkin{{$rental->id}}"
+                                                   data-id="{{$rental->id}}" >
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <div class="header-left">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-9">
+                                                            <div class="header-right">
+                                                                {{$rental->last_name}}, {{$rental->first_name}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a></h3>
+                                        </div>
+                                        <div class="office card-body">
+                                            <div class="row">
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="body-left">
+                                                        <h4 class="card-title text-center">
+                                                            @if($rental->activity_item == 'Summit 154 SP')
+                                                                Summit
+                                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
+                                                                Summit
+                                                            @else
+                                                                <br>
+
+                                                            @endif
+                                                        </h4>
+                                                        <h2 class="card-duration text-center">
+                                                            <!-- Rental Duration UPDATED -->
+                                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                                1 Hr
+                                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                                1 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                                2 Hr
+                                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                                2 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                                3 Hr
+                                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                                3 Hr
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                                HD
+                                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                                FD
+                                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                                FD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                                HD
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '1 d') !== false)
+                                                                1 D
+                                                            @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                                                                1 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2 d') !== false)
+                                                                2 D
+                                                            @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                                                                2 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3 d') !== false)
+                                                                3 D
+                                                            @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                                                                3 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4 d') !== false)
+                                                                4 D
+                                                            @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                                                                4 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5 d') !== false)
+                                                                5 D
+                                                            @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                                                                5 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6 d') !== false)
+                                                                6 D
+                                                            @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                                                                6 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7 d') !== false)
+                                                                7 D
+                                                            @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                                                                7 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8 d') !== false)
+                                                                8 D
+                                                            @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                                                                8 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9 d') !== false)
+                                                                9 D
+                                                            @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                                                                9 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10 d') !== false)
+                                                                10 D
+                                                            @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                                                                10 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '11 d') !== false)
+                                                                11 D
+                                                            @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                                                                11 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '12 d') !== false)
+                                                                12 D
+                                                            @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                                                                12 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '13 d') !== false)
+                                                                13 D
+                                                            @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                                                                13 D
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '14 d') !== false)
+                                                                14 D
+                                                            @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                                                                14 D
+                                                        @endif
+                                                        <!-- /Rental Duration -->
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-sm-4">
+                                                    <div class="body-center">
+                                                        <h3 class="text-center text-uppercase">{{$rental->status}}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-4">
+                                                    <div class="body-right">
+                                                        <a class="btn-tel" href="tel:{{$rental->phone}}">{{$rental->phone = substr($rental->phone, 2)}}</a>
+                                                        <a href="{{route('office.show', $rental->id)}}" class="btn btn-primary-red btn-modal" >Check In</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            <!-- Departing Time TODO get rid of (0)4:30 PM -->
+                                            <h4>
+                                                <!-- Duration Add Time -->
+                                                {{ $launchTime = \Carbon\Carbon::parse($rental->activity_date)->format('h:i A') }}
+                                                -
+                                                <!-- UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(1)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(2)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(3)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(9)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(8)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(4)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @elseif(strpos($rental->ticket_list, '1 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addHours(24)->format('h:i A')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '2 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(2)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '3 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(3)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '4 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(4)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '5 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(5)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '6 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(6)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '7 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(7)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '8 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(8)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '9 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(9)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '10 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(10)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '11 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(11)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '12 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(12)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '13 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(13)->format('h:i A (m/d)')}}
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @elseif(strpos($rental->ticket_list, '14 Day') !== false)
+                                                {{ $newLaunch = \Carbon\Carbon::parse($launchTime)->addDays(14)->format('h:i A (m/d)')}}
+                                            @endif
+                                            <!-- /UPDATED -->
+                                                <!-- /Duration Add Time -->
                                             </h4>
                                             <!-- /Departing Time -->
 
@@ -10780,6 +12504,7 @@
                     </div>
                 </div>
 
+{{--                TODO - Did not do multi-day--}}
                 <div class="tab-pane fade show" id="aluminum-tab" role="tabpanel" aria-labelledby="aluminum-tab">
                     <div class="row">
                         <div class="col-sm-6">
@@ -11967,435 +13692,432 @@
 
         <div class="row">
 
-
-
-
                 @foreach($rentalDepart as $rental)
 
-                        <!-- Check in Modal -->
-                        <div class="modal fade" id="rental_checkin{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="checkinModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 id="modal_rental_title" class="modal-title"><span>Check In: </span>
-                                            <small>
-                                                <!-- Rental Duration UPDATED -->
-                                                @if(strpos($rental->ticket_list, '1 Hour') !== false)
-                                                    1 Hr
-                                                @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-                                                    1 Hr
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '2 hour') !== false)
-                                                    2 Hr
-                                                @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-                                                    2 Hr
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '3 Hour') !== false)
-                                                    3 Hr
-                                                @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-                                                    3 Hr
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '4 Hour') !== false)
-                                                    HD
-                                                @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-                                                    HD
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '8 Hour') !== false)
-                                                    FD
-                                                @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-                                                    FD
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '9 Hour') !== false)
-                                                    FD
-                                                @elseif(strpos($rental->ticket_list, '9 hour') !== false)
-                                                    FD
-                                                @endif
-                                                @if(strpos($rental->ticket_list, 'Full Day') !== false)
-                                                    FD
-                                                @endif
-                                                @if(strpos($rental->ticket_list, 'Half Day') !== false)
-                                                    HD
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '1 Day') !== false)
-                                                    1 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '2 Day') !== false)
-                                                    2 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '3 Day') !== false)
-                                                    3 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '4 Day') !== false)
-                                                    4 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '5 Day') !== false)
-                                                    5 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '6 Day') !== false)
-                                                    6 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '7 Day') !== false)
-                                                    7 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '8 Day') !== false)
-                                                    8 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '9 Day') !== false)
-                                                    9 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '10 Day') !== false)
-                                                    10 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '11 Day') !== false)
-                                                    11 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '12 Day') !== false)
-                                                    12 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '13 Day') !== false)
-                                                    13 D
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '14 Day') !== false)
-                                                    14 D
-                                                @endif
-                                            </small>
-                                            {{$rental->activity_item}} | {{$rental->first_name}} {{$rental->last_name}} &nbsp;
-                                            <span class="status">
-                                                    @if($rental->status == 'Pre-Check')
-                                                    |
-                                                @endif
-                                                    &nbsp; {{$rental->status}}</span></h3>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
+                    <!-- Check in Modal -->
+                    <div class="modal fade" id="rental_checkin{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="checkinModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 id="modal_rental_title" class="modal-title"><span>Check In: </span>
+                                        <small>
+                                            <!-- Rental Duration UPDATED -->
+                                            @if(strpos($rental->ticket_list, '1 Hour') !== false)
+                                                1 Hr
+                                            @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                                                1 Hr
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 hour') !== false)
+                                                2 Hr
+                                            @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                                                2 Hr
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                                                3 Hr
+                                            @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                                                3 Hr
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                                                HD
+                                            @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                                                HD
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                                                FD
+                                            @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                                                FD
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                                                FD
+                                            @elseif(strpos($rental->ticket_list, '9 hour') !== false)
+                                                FD
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                                                FD
+                                            @endif
+                                            @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                                                HD
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '1 Day') !== false)
+                                                1 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2 Day') !== false)
+                                                2 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3 Day') !== false)
+                                                3 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4 Day') !== false)
+                                                4 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5 Day') !== false)
+                                                5 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '6 Day') !== false)
+                                                6 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '7 Day') !== false)
+                                                7 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '8 Day') !== false)
+                                                8 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '9 Day') !== false)
+                                                9 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '10 Day') !== false)
+                                                10 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '11 Day') !== false)
+                                                11 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '12 Day') !== false)
+                                                12 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '13 Day') !== false)
+                                                13 D
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '14 Day') !== false)
+                                                14 D
+                                            @endif
+                                        </small>
+                                        {{$rental->activity_item}} | {{$rental->first_name}} {{$rental->last_name}} &nbsp;
+                                        <span class="status">
+                                                @if($rental->status == 'Pre-Check')
+                                                |
+                                            @endif
+                                                &nbsp; {{$rental->status}}</span></h3>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+                                    <!-- Rental Information -->
+                                    <!-- Modal Section Title -->
+                                    <div class="row mt-3">
+                                        <div class="col-sm-12">
+                                            <h4 class="modal-section-title">Rental Information</h4>
+                                            <hr class="rounded" />
+                                        </div>
                                     </div>
-                                    <div class="modal-body">
+                                    <!-- /Modal Section Title -->
 
-                                        <!-- Rental Information -->
-                                        <!-- Modal Section Title -->
-                                        <div class="row mt-3">
-                                            <div class="col-sm-12">
-                                                <h4 class="modal-section-title">Rental Information</h4>
-                                                <hr class="rounded" />
-                                            </div>
-                                        </div>
-                                        <!-- /Modal Section Title -->
-
-                                        <!-- /Rental Information -->
-                                        <div class="modal-rental-info">
-                                            <div class="row">
-                                                <!-- Renter Info -->
-                                                <div class="col-6">
-                                                    <div class="area-box">
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">First Name:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->first_name}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Last Name:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->last_name}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Email:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->email}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Phone:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->phone}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Zip Code:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->zip_code}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Notes:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->customer_notes}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                    </div>
-                                                </div>
-                                                <!-- /Renter Info -->
-                                                <!-- Rental Info -->
-                                                <div class="col-6 mobile-border">
-                                                    <div class="area-box">
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Booking ID:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->booking_id}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Vehicle:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->activity_item}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-                                                        <!-- Item -->
-                                                        <div class="row">
-                                                            <div class="col-sm-4">
-                                                                <p class="modal-item-title">Payment Status:</p>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                                <p class="modal-item">{{$rental->payment_status}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /Item -->
-
-                                                        <!-- PreCheck by -->
-                                                            @foreach($users as $user)
-                                                                @if($rental->precheck_by == $user->id)
-                                                                    <!-- Item -->
-                                                                        <div class="row">
-                                                                            <div class="col-sm-4">
-                                                                                <p class="modal-item-title">Pre-Checked By:</p>
-                                                                            </div>
-                                                                            <div class="col-sm-8">
-                                                                                @if($rental->precheck_by !== '')
-                                                                                 <p class="modal-item">{{$user->firstname}} {{$user->lastname}}</p>
-                                                                                    @else
-                                                                                    <p class="modal-title">Not Pre-Checked</p>
-                                                                                @endif
-                                                                            </div>
-                                                                        </div>
-                                                                    <!-- /Item -->
-                                                                    <!-- Item -->
-                                                                        <div class="row">
-                                                                            <div class="col-sm-4">
-                                                                                <p class="modal-item-title">Pre-Checked Time:</p>
-                                                                            </div>
-                                                                            <div class="col-sm-8">
-                                                                                <p class="modal-item">
-                                                                                    {{ \Carbon\Carbon::parse($rental->precheck_time)->format('h:i A') }}
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    <!-- /Item -->
-                                                                @endif
-                                                            @endforeach
-                                                        <!-- /PreCheck by -->
-                                                    </div>
-                                                </div>
-                                                <!-- /Rental Info -->
-                                            </div>
-
-                                        </div>
-                                        <!-- /Rental Information -->
-
-
-                                        <!-- Customer Info -->
-                                        @foreach($rental->customers as $rental_customer)
-                                            <div class="modal-customer-info mt-5">
-                                                    <!-- Modal Section Title -->
+                                    <!-- /Rental Information -->
+                                    <div class="modal-rental-info">
+                                        <div class="row">
+                                            <!-- Renter Info -->
+                                            <div class="col-6">
+                                                <div class="area-box">
+                                                    <!-- Item -->
                                                     <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <h4 class="modal-section-title">Customer Info</h4>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <a href="{{route('office.customerProfile', $rental_customer->id)}}" class="btn btn-primary btn-right">View Customer</a>
-                                                        </div>
-                                                        <div class="col-sm-12">
-                                                            <hr class="rounded" />
-                                                        </div>
-                                                    </div>
-                                                    <!-- /Modal Section Title -->
-
-                                                    <div class="row">
-                                                        <div class="col-6 col-sm-4">
-
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-
-                                                                    <!-- Item -->
-                                                                    <div class="row">
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item-title">
-                                                                                First Name
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item">
-                                                                                {{$rental_customer->first_name}}
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- /Item -->
-
-                                                                    <!-- Item -->
-                                                                    <div class="row">
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item-title">
-                                                                                Last Name
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item">
-                                                                                {{$rental_customer->last_name}}
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- /Item -->
-
-                                                                    <!-- Item -->
-                                                                    <div class="row">
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item-title">
-                                                                                Phone
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item">
-                                                                                {{$rental_customer->phone}}
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- /Item -->
-
-                                                                    <!-- Item -->
-                                                                    <div class="row">
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item-title">
-                                                                                Email
-                                                                            </p>
-                                                                        </div>
-                                                                        <div class="col-sm-5">
-                                                                            <p class="modal-item">
-                                                                                {{$rental_customer->email}}
-                                                                            </p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!-- /Item -->
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="col-6 mobile-border col-sm-4">
-
-                                                            <!-- Item -->
-                                                            <div class="row">
-                                                                <div class="col-sm-5">
-                                                                    <p class="modal-item-title">
-                                                                        License State
-                                                                    </p>
-                                                                </div>
-                                                                <div class="col-sm-5">
-                                                                    <p class="modal-item">
-                                                                        {{$rental_customer->driver_license_state}}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-
-                                                            <!-- Item -->
-                                                            <div class="row">
-                                                                <div class="col-sm-5">
-                                                                    <p class="modal-item-title">
-                                                                        License Number
-                                                                    </p>
-                                                                </div>
-                                                                <div class="col-sm-5">
-                                                                    <p class="modal-item">
-                                                                        {{$rental_customer->driver_license_number}}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-
-                                                            <!-- Item -->
-                                                            <div class="row">
-                                                                <div class="col-sm-5">
-                                                                    <p class="modal-item-title">
-                                                                        D.O.B
-                                                                    </p>
-                                                                </div>
-                                                                <div class="col-sm-5">
-                                                                    <p class="modal-item">
-                                                                        {{\Carbon\Carbon::parse($rental_customer->birth_date)->format('m/d/Y')}}
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-
-                                                        </div>
-
                                                         <div class="col-sm-4">
-
-                                                            <!-- Item -->
-                                                            <div class="row">
-                                                                <div class="col-sm-12">
-                                                                    <img class="img-responsive" src="{{asset('storage/' . $rental_customer->license_front)}}" height="auto" width="100%">
-                                                                </div>
-                                                            </div>
-                                                            <!-- /Item -->
-
+                                                            <p class="modal-item-title">First Name:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->first_name}}</p>
                                                         </div>
                                                     </div>
-
-
+                                                    <!-- /Item -->
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Last Name:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->last_name}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Email:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->email}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Phone:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->phone}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Zip Code:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->zip_code}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Notes:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->customer_notes}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
                                                 </div>
-                                       @endforeach
-                                    <!-- /Customer Info -->
+                                            </div>
+                                            <!-- /Renter Info -->
+                                            <!-- Rental Info -->
+                                            <div class="col-6 mobile-border">
+                                                <div class="area-box">
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Booking ID:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->booking_id}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Vehicle:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->activity_item}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
+                                                    <!-- Item -->
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <p class="modal-item-title">Payment Status:</p>
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <p class="modal-item">{{$rental->payment_status}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /Item -->
+
+                                                    <!-- PreCheck by -->
+                                                        @foreach($users as $user)
+                                                            @if($rental->precheck_by == $user->id)
+                                                                <!-- Item -->
+                                                                    <div class="row">
+                                                                        <div class="col-sm-4">
+                                                                            <p class="modal-item-title">Pre-Checked By:</p>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            @if($rental->precheck_by !== '')
+                                                                             <p class="modal-item">{{$user->firstname}} {{$user->lastname}}</p>
+                                                                                @else
+                                                                                <p class="modal-title">Not Pre-Checked</p>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                <!-- /Item -->
+                                                                <!-- Item -->
+                                                                    <div class="row">
+                                                                        <div class="col-sm-4">
+                                                                            <p class="modal-item-title">Pre-Checked Time:</p>
+                                                                        </div>
+                                                                        <div class="col-sm-8">
+                                                                            <p class="modal-item">
+                                                                                {{ \Carbon\Carbon::parse($rental->precheck_time)->format('h:i A') }}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                <!-- /Item -->
+                                                            @endif
+                                                        @endforeach
+                                                    <!-- /PreCheck by -->
+                                                </div>
+                                            </div>
+                                            <!-- /Rental Info -->
+                                        </div>
 
                                     </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
-                                        <a href="{{route('office.show', $rental->id)}}" class="btn btn-primary-red btn-modal">CHECK IN</a>
-                                    </div>
+                                    <!-- /Rental Information -->
+
+
+                                    <!-- Customer Info -->
+                                    @foreach($rental->customers as $rental_customer)
+                                        <div class="modal-customer-info mt-5">
+                                                <!-- Modal Section Title -->
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <h4 class="modal-section-title">Customer Info</h4>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <a href="{{route('office.customerProfile', $rental_customer->id)}}" class="btn btn-primary btn-right">View Customer</a>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <hr class="rounded" />
+                                                    </div>
+                                                </div>
+                                                <!-- /Modal Section Title -->
+
+                                                <div class="row">
+                                                    <div class="col-6 col-sm-4">
+
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+
+                                                                <!-- Item -->
+                                                                <div class="row">
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item-title">
+                                                                            First Name
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item">
+                                                                            {{$rental_customer->first_name}}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /Item -->
+
+                                                                <!-- Item -->
+                                                                <div class="row">
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item-title">
+                                                                            Last Name
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item">
+                                                                            {{$rental_customer->last_name}}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /Item -->
+
+                                                                <!-- Item -->
+                                                                <div class="row">
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item-title">
+                                                                            Phone
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item">
+                                                                            {{$rental_customer->phone}}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /Item -->
+
+                                                                <!-- Item -->
+                                                                <div class="row">
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item-title">
+                                                                            Email
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-sm-5">
+                                                                        <p class="modal-item">
+                                                                            {{$rental_customer->email}}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /Item -->
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-6 mobile-border col-sm-4">
+
+                                                        <!-- Item -->
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <p class="modal-item-title">
+                                                                    License State
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <p class="modal-item">
+                                                                    {{$rental_customer->driver_license_state}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+
+                                                        <!-- Item -->
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <p class="modal-item-title">
+                                                                    License Number
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <p class="modal-item">
+                                                                    {{$rental_customer->driver_license_number}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+
+                                                        <!-- Item -->
+                                                        <div class="row">
+                                                            <div class="col-sm-5">
+                                                                <p class="modal-item-title">
+                                                                    D.O.B
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-sm-5">
+                                                                <p class="modal-item">
+                                                                    {{\Carbon\Carbon::parse($rental_customer->birth_date)->format('m/d/Y')}}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+
+                                                    </div>
+
+                                                    <div class="col-sm-4">
+
+                                                        <!-- Item -->
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <img class="img-responsive" src="{{asset('storage/' . $rental_customer->license_front)}}" height="auto" width="100%">
+                                                            </div>
+                                                        </div>
+                                                        <!-- /Item -->
+
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                   @endforeach
+                                <!-- /Customer Info -->
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
+                                    <a href="{{route('office.show', $rental->id)}}" class="btn btn-primary-red btn-modal">CHECK IN</a>
                                 </div>
                             </div>
                         </div>
-                        <!-- /Check in Modal -->
+                    </div>
+                    <!-- /Check in Modal -->
 
                 @endforeach
                 @foreach($rentalReturn as $rental)
 
 
-                   <!-- Returning Modal -->
+                    <!-- Returning Modal -->
                     <div class="modal fade" id="returning{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="returningModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-xl" role="document">
                             <div class="modal-content">
@@ -13127,167 +14849,167 @@
                     <!-- /Returning Modal -->
 
 
-                       <!-- Update Rental Modal -->
-                       <div class="modal fade" id="rentalUpdate{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="rentalUpdateModalLabel" aria-hidden="true">
-                           <div class="modal-dialog modal-lg" role="document">
-                               <div class="modal-content">
-                                   <div class="modal-header">
-                                       <h3><span>Update: </span> Rental</h3>
-                                   </div>
-                                   <form action="{{route('rental.updateRental', $rental)}}" method="post" enctype="multipart/form-data">
-                                       @csrf
-                                       @method('PUT')
-
-                                       <div class="modal-body">
-
-                                           <div class="row">
-                                               <div class="col-sm-1">&nbsp;</div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                       <label for="cleaning_fee"><h5>Cleaning Fee&nbsp;</h5></label>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                         <div class="row">
-                                                             <div class="col-2">
-                                                                 <h5 class="text-right">
-                                                                     <span>$</span>
-                                                                 </h5>
-                                                             </div>
-                                                             <div class="col-8">
-                                                                 <input type="text" name="cleaning_fee" placeholder="75-$150">
-                                                             </div>
-                                                         </div>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-2">
-                                                   <select id="cleaning_fee_type" name="cleaning_fee_type" style="width: 100%;">
-                                                       <option value="blank" default> Payment Type</option>
-                                                       <option value="Visa">Visa</option>
-                                                       <option value="MasterCard">MasterCard</option>
-                                                       <option value="Cash">Cash</option>
-                                                   </select>
-                                               </div>
-                                               <div class="col-sm-1">&nbsp;</div>
-                                           </div>
-
-                                           <div class="row">
-                                               <div class="col-sm-1">&nbsp;</div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                       <label for="late_fee"><h5>Late Fee &nbsp;</h5></label>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                       <div class="row">
-                                                           <div class="col-2">
-                                                               <h5 class="text-right">
-                                                                   <span>$</span>
-                                                               </h5>
-                                                           </div>
-                                                           <div class="col-8">
-                                                               <input type="text" name="late_fee" placeholder="135/hr">
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-2">
-                                                   <div class="form-group">
-                                                       <select id="late_fee_type" name="late_fee_type" style="width: 100%;">
-                                                           <option value="blank" default> Payment Type</option>
-                                                           <option value="Visa">Visa</option>
-                                                           <option value="MasterCard">MasterCard</option>
-                                                           <option value="Cash">Cash</option>
-                                                       </select>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-1">&nbsp;</div>
-                                           </div>
-
-                                           <div class="row">
-                                               <div class="col-sm-1">&nbsp;</div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                       <label for="no_wake_fee"><h5>No Wake Fee   &nbsp;</h5></label>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                       <div class="row">
-                                                           <div class="col-2">
-                                                               <h5 class="text-right">
-                                                                   <span>$</span>
-                                                               </h5>
-                                                           </div>
-                                                           <div class="col-8">
-                                                               <input type="text" name="no_wake_fee" placeholder="100">
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-2">
-                                                   <div class="form-group">
-                                                       <select id="no_wake_fee_type" name="no_wake_fee_type" style="width: 100%;">
-                                                           <option value="blank" default> Payment Type</option>
-                                                           <option value="Visa">Visa</option>
-                                                           <option value="MasterCard">MasterCard</option>
-                                                           <option value="Cash">Cash</option>
-                                                       </select>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-1">&nbsp;</div>
-                                           </div>
-
-                                           <div class="row">
-                                               <div class="col-sm-1">&nbsp;</div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                       <label for="sar_fee"><h5>Search & Rescue Fee &nbsp;</h5></label>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-4">
-                                                   <div class="form-group">
-                                                       <div class="row">
-                                                           <div class="col-2">
-                                                               <h5 class="text-right">
-                                                                   <span>$</span>
-                                                               </h5>
-                                                           </div>
-                                                           <div class="col-6">
-                                                               <input type="text" name="sar_fee" placeholder="135/hr">
-                                                           </div>
-                                                       </div>
-                                                   </div>
-                                               </div>
-                                               <div class="col-sm-2">
-                                                   <select id="sar_fee_type" name="sar_fee_type" style="width: 100%;">
-                                                       <option value="blank" default> Payment Type</option>
-                                                       <option value="Visa">Visa</option>
-                                                       <option value="MasterCard">MasterCard</option>
-                                                       <option value="Cash">Cash</option>
-                                                   </select>
-                                               </div>
-                                               <div class="col-sm-1">&nbsp;</div>
-                                           </div>
-
-
-
-                                       </div>
-                                       <div class="modal-footer">
-                                           <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
-                                           <button class="btn btn-primary" type="submit">update Rental</button>
-                                       </div>
-                                   </form>
+                   <!-- Update Rental Modal -->
+                   <div class="modal fade" id="rentalUpdate{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="rentalUpdateModalLabel" aria-hidden="true">
+                       <div class="modal-dialog modal-lg" role="document">
+                           <div class="modal-content">
+                               <div class="modal-header">
+                                   <h3><span>Update: </span> Rental</h3>
                                </div>
+                               <form action="{{route('rental.updateRental', $rental)}}" method="post" enctype="multipart/form-data">
+                                   @csrf
+                                   @method('PUT')
+
+                                   <div class="modal-body">
+
+                                       <div class="row">
+                                           <div class="col-sm-1">&nbsp;</div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                   <label for="cleaning_fee"><h5>Cleaning Fee&nbsp;</h5></label>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                     <div class="row">
+                                                         <div class="col-2">
+                                                             <h5 class="text-right">
+                                                                 <span>$</span>
+                                                             </h5>
+                                                         </div>
+                                                         <div class="col-8">
+                                                             <input type="text" name="cleaning_fee" placeholder="75-$150">
+                                                         </div>
+                                                     </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-2">
+                                               <select id="cleaning_fee_type" name="cleaning_fee_type" style="width: 100%;">
+                                                   <option value="blank" default> Payment Type</option>
+                                                   <option value="Visa">Visa</option>
+                                                   <option value="MasterCard">MasterCard</option>
+                                                   <option value="Cash">Cash</option>
+                                               </select>
+                                           </div>
+                                           <div class="col-sm-1">&nbsp;</div>
+                                       </div>
+
+                                       <div class="row">
+                                           <div class="col-sm-1">&nbsp;</div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                   <label for="late_fee"><h5>Late Fee &nbsp;</h5></label>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                   <div class="row">
+                                                       <div class="col-2">
+                                                           <h5 class="text-right">
+                                                               <span>$</span>
+                                                           </h5>
+                                                       </div>
+                                                       <div class="col-8">
+                                                           <input type="text" name="late_fee" placeholder="135/hr">
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-2">
+                                               <div class="form-group">
+                                                   <select id="late_fee_type" name="late_fee_type" style="width: 100%;">
+                                                       <option value="blank" default> Payment Type</option>
+                                                       <option value="Visa">Visa</option>
+                                                       <option value="MasterCard">MasterCard</option>
+                                                       <option value="Cash">Cash</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-1">&nbsp;</div>
+                                       </div>
+
+                                       <div class="row">
+                                           <div class="col-sm-1">&nbsp;</div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                   <label for="no_wake_fee"><h5>No Wake Fee   &nbsp;</h5></label>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                   <div class="row">
+                                                       <div class="col-2">
+                                                           <h5 class="text-right">
+                                                               <span>$</span>
+                                                           </h5>
+                                                       </div>
+                                                       <div class="col-8">
+                                                           <input type="text" name="no_wake_fee" placeholder="100">
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-2">
+                                               <div class="form-group">
+                                                   <select id="no_wake_fee_type" name="no_wake_fee_type" style="width: 100%;">
+                                                       <option value="blank" default> Payment Type</option>
+                                                       <option value="Visa">Visa</option>
+                                                       <option value="MasterCard">MasterCard</option>
+                                                       <option value="Cash">Cash</option>
+                                                   </select>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-1">&nbsp;</div>
+                                       </div>
+
+                                       <div class="row">
+                                           <div class="col-sm-1">&nbsp;</div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                   <label for="sar_fee"><h5>Search & Rescue Fee &nbsp;</h5></label>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-4">
+                                               <div class="form-group">
+                                                   <div class="row">
+                                                       <div class="col-2">
+                                                           <h5 class="text-right">
+                                                               <span>$</span>
+                                                           </h5>
+                                                       </div>
+                                                       <div class="col-6">
+                                                           <input type="text" name="sar_fee" placeholder="135/hr">
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <div class="col-sm-2">
+                                               <select id="sar_fee_type" name="sar_fee_type" style="width: 100%;">
+                                                   <option value="blank" default> Payment Type</option>
+                                                   <option value="Visa">Visa</option>
+                                                   <option value="MasterCard">MasterCard</option>
+                                                   <option value="Cash">Cash</option>
+                                               </select>
+                                           </div>
+                                           <div class="col-sm-1">&nbsp;</div>
+                                       </div>
+
+
+
+                                   </div>
+                                   <div class="modal-footer">
+                                       <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
+                                       <button class="btn btn-primary" type="submit">update Rental</button>
+                                   </div>
+                               </form>
                            </div>
                        </div>
+                   </div>
+                    <!-- /Update Rental Modal -->
 
 
-
-                       <!-- Update COC Modal -->
-                       <div class="modal fade" id="cocUpdate{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="cocUpdateModalLabel" aria-hidden="true">
+                   <!-- Update COC Modal -->
+                   <div class="modal fade" id="cocUpdate{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="cocUpdateModalLabel" aria-hidden="true">
                            <div class="modal-dialog modal-sm" role="document">
                                <div class="modal-content">
                                    <div class="modal-header">
@@ -13318,6 +15040,7 @@
                                </div>
                            </div>
                        </div>
+                    <!-- /Update COC Modal -->
                 @endforeach
             </div>
         </div>
