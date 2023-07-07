@@ -86,15 +86,15 @@
                                </a>
                            </li>
                            <li class="nav-item mb-0">
-                               <a class="nav-link" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
-                                  aria-selected="true">
-                                   Pontoon
-                               </a>
-                           </li>
-                           <li class="nav-item mb-0">
                                <a class="nav-link" id="view-scarab-tab" data-toggle="tab" href="#scarab-tab" role="tab" aria-controls="scarab-tab"
                                   aria-selected="true">
                                    Scarab
+                               </a>
+                           </li>
+                           <li class="nav-item mb-0">
+                               <a class="nav-link" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
+                                  aria-selected="true">
+                                  Pontoon
                                </a>
                            </li>
                        </ul>
