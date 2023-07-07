@@ -80,7 +80,7 @@
         </div>
 
         <!-- Hour Counts -->
-        <div class="row">
+        <div class="row" >
             <div class="col-12">
                 <div class="card shadow card-dark mb-4">
                     <div class="card-header">
@@ -89,7 +89,7 @@
                             <li class="nav-item mb-0">
                                 <a class="nav-link active" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
                                    aria-selected="true">
-                                    Pont<span class="hidden-xs-inline">oon</span>
+                                    Pont<span class="hidden-xs-inline">oon </span>
                                 </a>
                             </li>
                             <li class="nav-item mb-0">
