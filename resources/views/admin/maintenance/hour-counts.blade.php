@@ -124,7 +124,7 @@
                                                 </div>
                                             @else
                                                 <div class="col-6 col-sm-1">
-                                                    <input type="text" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                    <input type="number" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
                                                     <input type="hidden" class="form-control" name="hours_updated" value="{{$dateNow}}" />
                                                     <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
                                                 </div>
@@ -159,7 +159,7 @@
                                                 </div>
                                             @else
                                                 <div class="col-6 col-sm-1">
-                                                    <input type="text" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                    <input type="number" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
                                                     <input type="hidden" class="form-control" name="hours_updated" value="{{Carbon\Carbon::now('PST')}}" />
                                                     <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
                                                 </div>
@@ -193,7 +193,7 @@
                                                 </div>
                                             @else
                                                 <div class="col-6 col-sm-1">
-                                                    <input type="text" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                    <input type="number" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
                                                     <input type="hidden" class="form-control" name="hours_updated" value="{{Carbon\Carbon::now('PST')}}" />
                                                     <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
                                                 </div>
