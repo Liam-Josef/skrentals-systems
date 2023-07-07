@@ -94,7 +94,7 @@
                            <li class="nav-item mb-0">
                                <a class="nav-link" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
                                   aria-selected="true">
-                                  Pontoon
+                                  Pont<span class="hidden-xs-inline">oon</span>
                                </a>
                            </li>
                        </ul>

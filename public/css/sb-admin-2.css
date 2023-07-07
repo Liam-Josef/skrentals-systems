@@ -6627,6 +6627,7 @@ h4.modal-section-title {
 hr.rounded {
     border-top: 1px solid #2b2b2b;
     border-radius: 5px;
+    max-width: 97.5%;
 }
 .modal-footer > :not(:first-child) {
     margin-left: .25rem;
