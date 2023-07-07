@@ -80,16 +80,16 @@
         </div>
 
         <!-- Hour Counts -->
-        <div class="row">
+        <div class="row" >
             <div class="col-12">
                 <div class="card shadow card-dark mb-4">
                     <div class="card-header">
                         <!-- Departing Tablist -->
                         <ul class="nav nav-tabs nav-justified dock-depart" id="runnerView" role="tablist">
                             <li class="nav-item mb-0">
-                                <a class="nav-link active" id="view-seadoo-tab" data-toggle="tab" href="#seadoo-tab" role="tab" aria-controls="seadoo-tab"
+                                <a class="nav-link active" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
                                    aria-selected="true">
-                                    SeaDoo
+                                    Pont<span class="hidden-xs-inline">oon </span>
                                 </a>
                             </li>
                             <li class="nav-item mb-0">
@@ -99,9 +99,9 @@
                                 </a>
                             </li>
                             <li class="nav-item mb-0">
-                                <a class="nav-link" id="view-pontoon-tab" data-toggle="tab" href="#pontoon-tab" role="tab" aria-controls="pontoon-tab"
+                                <a class="nav-link" id="view-seadoo-tab" data-toggle="tab" href="#seadoo-tab" role="tab" aria-controls="seadoo-tab"
                                    aria-selected="true">
-                                    Pont<span class="hidden-xs-inline">oon</span>
+                                    SeaDoo
                                 </a>
                             </li>
                         </ul>
@@ -144,7 +144,7 @@
                                 @endforeach
 
                             </div>
-                            <div class="tab-pane fade show" id="pontoon-tab" role="tabpanel" aria-labelledby="pontoon-tab">
+                            <div class="tab-pane fade show active" id="pontoon-tab" role="tabpanel" aria-labelledby="pontoon-tab">
                                 @foreach($vehiclePontoon as $vehicle)
                                     <form method="post" action="{{route('vehicle.updateHours', $vehicle)}}">
                                         @csrf
@@ -178,7 +178,7 @@
                                     </form>
                                 @endforeach
                             </div>
-                            <div class="tab-pane fade show active" id="seadoo-tab" role="tabpanel" aria-labelledby="seadoo-tab">
+                            <div class="tab-pane fade show" id="seadoo-tab" role="tabpanel" aria-labelledby="seadoo-tab">
                                 @foreach($vehicleSeaDoo as $vehicle)
                                     <form method="post" action="{{route('vehicle.updateHours', $vehicle)}}">
                                         @csrf
