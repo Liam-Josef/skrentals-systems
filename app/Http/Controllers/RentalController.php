@@ -254,15 +254,32 @@ class RentalController extends Controller
         $rental->update(['status' => 'Checked In']);
         $rental->update(['security_deposit' => request('security_deposit')]);
         $rental->update(['security_deposit_type' => request('security_deposit_type')]);
-        $rental->update(['security_deposit_2' => request('security_deposit_2')]);
-        $rental->update(['security_deposit_type_2' => request('security_deposit_type_2')]);
-        $rental->update(['fuel_deposit' => request('fuel_deposit')]);
-        $rental->update(['fuel_count' => request('fuel_count')]);
-        $rental->update(['fuel_deposit_type' => request('fuel_deposit_type')]);
-        $rental->update(['fuel_deposit_type' => request('fuel_deposit_type')]);
+        if(request('security_deposit_2')) {
+            $rental->update(['security_deposit_2' => request('security_deposit_2')]);
+            $rental->update(['security_deposit_type_2' => request('security_deposit_type_2')]);
+        }
+        if(request('security_deposit_3')) {
+            $rental->update(['security_deposit_3' => request('security_deposit_3')]);
+            $rental->update(['security_deposit_type_3' => request('security_deposit_type_3')]);
+        }
+        if(request('fuel_count')) {
+            $rental->update(['fuel_count' => request('fuel_count')]);
+        }
+        if(request('fuel_deposit')) {
+            $rental->update(['fuel_deposit' => request('fuel_deposit')]);
+            $rental->update(['fuel_deposit_type' => request('fuel_deposit_type')]);
+        }
+        if(request('second_fuel_deposit')) {
+            $rental->update(['second_fuel_deposit' => request('second_fuel_deposit')]);
+            $rental->update(['second_fuel_deposit_type' => request('second_fuel_deposit_type')]);
+        }
         if(request('toy_fee')) {
             $rental->update(['toy_fee' => request('toy_fee')]);
             $rental->update(['toy_fee_type' => request('fuel_deposit_type')]);
+        }
+        if(request('second_toy_fee')) {
+            $rental->update(['second_toy_fee' => request('second_toy_fee')]);
+            $rental->update(['second_toy_fee_type' => request('second_toy_fee_type')]);
         }
         if(request('trailer_fee')) {
             $rental->update(['trailer_fee' => request('trailer_fee')]);

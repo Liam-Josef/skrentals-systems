@@ -48,112 +48,158 @@
     @section('page_title')
             <h1>Check In: <span>
                  <!-- Rental Duration UPDATED -->
-                @if(strpos($rental->ticket_list, '1 Hour') !== false)
-                    1 Hr
-                        @elseif(strpos($rental->ticket_list, '1 hour') !== false)
-                            1 Hr
-                @endif
-                @if(strpos($rental->ticket_list, '2 hour') !== false)
-                    2 Hr
-                        @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
-                            2 Hr
-                @endif
-                @if(strpos($rental->ticket_list, '3 Hour') !== false)
-                    3 Hr
-                        @elseif(strpos($rental->ticket_list, '3 hour') !== false)
-                            3 Hr
-                @endif
-                @if(strpos($rental->ticket_list, '4 Hour') !== false)
-                    HD
-                        @elseif(strpos($rental->ticket_list, '4 hour') !== false)
-                            HD
-                @endif
-                @if(strpos($rental->ticket_list, '8 Hour') !== false)
-                    FD
-                        @elseif(strpos($rental->ticket_list, '8 hour') !== false)
-                            FD
-                @endif
-                @if(strpos($rental->ticket_list, '9 Hour') !== false)
-                    FD
+@if(strpos($rental->ticket_list, '1 Hour') !== false)
+                        1 Hr
+                    @elseif(strpos($rental->ticket_list, '1 hour') !== false)
+                        1 Hr
+                    @endif
+                    @if(strpos($rental->ticket_list, '2 hour') !== false)
+                        2 Hr
+                    @elseif(strpos($rental->ticket_list, '2 Hour') !== false)
+                        2 Hr
+                    @endif
+                    @if(strpos($rental->ticket_list, '3 Hour') !== false)
+                        3 Hr
+                    @elseif(strpos($rental->ticket_list, '3 hour') !== false)
+                        3 Hr
+                    @endif
+                    @if(strpos($rental->ticket_list, '4 Hour') !== false)
+                        HD
+                    @elseif(strpos($rental->ticket_list, '4 hour') !== false)
+                        HD
+                    @endif
+                    @if(strpos($rental->ticket_list, '8 Hour') !== false)
+                        FD
+                    @elseif(strpos($rental->ticket_list, '8 hour') !== false)
+                        FD
+                    @endif
+                    @if(strpos($rental->ticket_list, '9 Hour') !== false)
+                        FD
                     @elseif(strpos($rental->ticket_list, '9 hour') !== false)
                         FD
-                @endif
-                @if(strpos($rental->ticket_list, 'Full Day') !== false)
-                    FD
-                @endif
-                @if(strpos($rental->ticket_list, 'Half Day') !== false)
-                    HD
-                @endif
-                @if(strpos($rental->ticket_list, '1 Day') !== false)
-                    1 D
-                @endif
-                @if(strpos($rental->ticket_list, '2 Day') !== false)
-                    2 D
-                @endif
-                @if(strpos($rental->ticket_list, '3 Day') !== false)
-                    3 D
-                @endif
-                @if(strpos($rental->ticket_list, '4 Day') !== false)
-                    4 D
-                @endif
-                @if(strpos($rental->ticket_list, '5 Day') !== false)
-                    5 D
-                @endif
-                @if(strpos($rental->ticket_list, '6 Day') !== false)
-                    6 D
-                @endif
-                @if(strpos($rental->ticket_list, '7 Day') !== false)
-                    7 D
-                @endif
-                @if(strpos($rental->ticket_list, '8 Day') !== false)
-                    8 D
-                @endif
-                @if(strpos($rental->ticket_list, '9 Day') !== false)
-                    9 D
-                @endif
-                @if(strpos($rental->ticket_list, '10 Day') !== false)
-                    10 D
-                @endif
-                @if(strpos($rental->ticket_list, '11 Day') !== false)
-                    11 D
-                @endif
-                @if(strpos($rental->ticket_list, '12 Day') !== false)
-                    12 D
-                @endif
-                @if(strpos($rental->ticket_list, '13 Day') !== false)
-                    13 D
-                @endif
-                @if(strpos($rental->ticket_list, '14 Day') !== false)
-                    14 D
-                @endif
+                    @endif
+                    @if(strpos($rental->ticket_list, 'Full Day') !== false)
+                        FD
+                    @endif
+                    @if(strpos($rental->ticket_list, 'Half Day') !== false)
+                        HD
+                    @endif
+                    @if(strpos($rental->ticket_list, '1 d') !== false)
+                        1 Day
+                    @elseif(strpos($rental->ticket_list, '1 D') !== false)
+                        1 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '2 d') !== false)
+                        2 Day
+                    @elseif(strpos($rental->ticket_list, '2 D') !== false)
+                        2 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '3 d') !== false)
+                        3 Day
+                    @elseif(strpos($rental->ticket_list, '3 D') !== false)
+                        3 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '4 d') !== false)
+                        4 Day
+                    @elseif(strpos($rental->ticket_list, '4 D') !== false)
+                        4 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '5 d') !== false)
+                        5 Day
+                    @elseif(strpos($rental->ticket_list, '5 D') !== false)
+                        5 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '6 d') !== false)
+                        6 Day
+                    @elseif(strpos($rental->ticket_list, '6 D') !== false)
+                        6 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '7 d') !== false)
+                        7 Day
+                    @elseif(strpos($rental->ticket_list, '7 D') !== false)
+                        7 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '8 d') !== false)
+                        8 Day
+                    @elseif(strpos($rental->ticket_list, '8 D') !== false)
+                        8 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '9 d') !== false)
+                        9 Day
+                    @elseif(strpos($rental->ticket_list, '9 D') !== false)
+                        9 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '10 d') !== false)
+                        10 Day
+                    @elseif(strpos($rental->ticket_list, '10 D') !== false)
+                        10 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '11 d') !== false)
+                        11 Day
+                    @elseif(strpos($rental->ticket_list, '11 D') !== false)
+                        11 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '12 d') !== false)
+                        12 Day
+                    @elseif(strpos($rental->ticket_list, '12 D') !== false)
+                        12 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '13 d') !== false)
+                        13 Day
+                    @elseif(strpos($rental->ticket_list, '13 D') !== false)
+                        13 Day
+                    @endif
+                    @if(strpos($rental->ticket_list, '14 d') !== false)
+                        14 Day
+                    @elseif(strpos($rental->ticket_list, '14 D') !== false)
+                        14 Day
+                    @endif
+                <!-- /Rental Duration -->
 
-                @if($rental->activity_item == 'Scarab 215')
+                    @if($rental->activity_item == 'Scarab 215')
+                        Scarab
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
                         Scarab
                     @elseif($rental->activity_item == '23ft. Pontoon Boat')
                         Pontoon
-                    @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
                         Pontoon
                     @elseif($rental->activity_item == 'Renegade BC 600ETec')
                         Renegade
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                        Renegade
                     @elseif($rental->activity_item == 'Summit 154 SP')
+                        Summit
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
                         Summit
                     @elseif($rental->activity_item == '14ft. Aluminum Boat')
                         Aluminum
                     @elseif($rental->activity_item == 'Kayak Single')
                         Single Kayak
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                        Single Kayak
                     @elseif($rental->activity_item == 'Double Kayak')
+                        Double Kayak
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
                         Double Kayak
                     @elseif($rental->activity_item == 'Stand Up Paddleboard')
                         SUP
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                        SUP
                     @elseif($rental->activity_item == 'Segway i2')
+                        Segway
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
                         Segway
                     @elseif($rental->activity_item == 'Spyder RT-S SE6')
                         Spyder
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                        Spyder
                     @elseif($rental->activity_item == 'SeaDoo')
                         SeaDoo
+                    @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
+                        SeaDoo
                     @else
-                        <br />
-
+                        <br>
                     @endif
                     | {{$rental->first_name}} {{$rental->last_name}}</span></h1>
     @endsection
@@ -195,7 +241,53 @@
                                         <p class="item-title">Vehicle:</p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <p class="item">{{$rental->activity_item}}</p>
+                                        <p class="item">
+                                            @if($rental->activity_item == 'Scarab 215')
+                                                Scarab
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Scarab') !== false)
+                                                Scarab
+                                            @elseif($rental->activity_item == '23ft. Pontoon Boat')
+                                                Pontoon
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Pontoon') !== false)
+                                                Pontoon
+                                            @elseif($rental->activity_item == 'Renegade BC 600ETec')
+                                                Renegade
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Renegade') !== false)
+                                                Renegade
+                                            @elseif($rental->activity_item == 'Summit 154 SP')
+                                                Summit
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Summit') !== false)
+                                                Summit
+                                            @elseif($rental->activity_item == '14ft. Aluminum Boat')
+                                                Aluminum
+                                            @elseif($rental->activity_item == 'Kayak Single')
+                                                Single Kayak
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Kayak Single') !== false)
+                                                Single Kayak
+                                            @elseif($rental->activity_item == 'Double Kayak')
+                                                Double Kayak
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Double Kayak') !== false)
+                                                Double Kayak
+                                            @elseif($rental->activity_item == 'Stand Up Paddleboard')
+                                                SUP
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Stand Up') !== false)
+                                                SUP
+                                            @elseif($rental->activity_item == 'Segway i2')
+                                                Segway
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Segway') !== false)
+                                                Segway
+                                            @elseif($rental->activity_item == 'Spyder RT-S SE6')
+                                                Spyder
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- Spyder') !== false)
+                                                Spyder
+                                            @elseif($rental->activity_item == 'SeaDoo')
+                                                SeaDoo
+                                            @elseif(strpos($rental->activity_item, '**Multi-Day Rental-- SeaDoo') !== false)
+                                                SeaDoo
+                                            @else
+                                                <br>
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
                                 <!-- /Item -->
@@ -315,6 +407,7 @@
                                     </div>
                                 </div>
                                 <!-- /Item -->
+
                             </div>
                         </div>
                         <!-- /Rental Info -->
@@ -1010,1404 +1103,1558 @@
             @csrf
             @method('PUT')
 
-            <!-- Check In - Step 1 - Security Deposit -->
+
             <div class="modal fade" id="checkin{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="checkinModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3><span>Security</span> Deposit</h3>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                            <div class="modal-body">
 
-                                <!-- Security Deposit -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4>Either:</h4>
-                                        <ul>
-                                            <li>
-                                                <h5>
-                                                    @if($rental->activity_item == 'Scarab 215')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $5000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $7000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $9000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $10000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == '23ft. Pontoon Boat')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $5000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $7000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $9000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $10000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'SeaDoo')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $5000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $7000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $9000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $10000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == '14ft. Aluminum Boat')
-                                                        $500
-                                                    @endif
-                                                    @if($rental->activity_item == 'Segway i2')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $1500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $2500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $3500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $4500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $5000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Spyder RT-S SE6')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $5000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $7000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $9000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $10000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Renegade BC 600ETec')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $5000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $7000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $9000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $10000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Summit 154 SP')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $5000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $7000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $9000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $10000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Kayak Single')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $100
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $300
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $700
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $900
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $1000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Double Kayak')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $100
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $300
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $700
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $900
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $1000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Stand Up Paddleboard')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $100
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $300
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $500
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $700
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $900
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $1000
-                                                        @endif
-                                                    @endif
+                    <div class="tab-content" id="myTabContent">
+                        <!-- Check In - Step 1 - Security Deposit -->
+                        <div class="tab-pane fade show active" id="security-tab" role="tabpanel" aria-labelledby="security-tab">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3><span>Security</span> Deposit</h3>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
 
-                                                    (raised card - Pre-Auth)
-                                                </h5>
-                                            </li>
-                                            <li>
-                                                <h5>
-                                                    @if($rental->activity_item == 'Scarab 215')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $2000
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4><span class="text-light font-weight-lighter">NO AMEX...</span> Either:</h4>
+                                            <ul>
+                                                <li>
+                                                    <h5>
+                                                        @if(strpos($rental->activity_item, 'Scarab'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $5000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $7000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $9000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $10000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Pontoon'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $5000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $7000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $9000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $10000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'SeaDoo'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $5000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $7000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $9000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $10000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Aluminum'))
+                                                            $500
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Segway'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $1500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $2500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $3500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $4500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $5000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Spyder'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $5000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $7000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $9000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $10000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Renegade'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $5000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $7000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $9000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $10000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Summit'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $5000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $7000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $9000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $10000
+                                                            @endif
+                                                        @endif
+                                                        @if($rental->activity_item == 'Kayak Single')
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $100
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $300
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $700
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $900
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $1000
+                                                            @endif
+                                                        @endif
+                                                        @if($rental->activity_item == 'Double Kayak')
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $100
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $300
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $700
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $900
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $1000
+                                                            @endif
+                                                        @endif
+                                                        @if($rental->activity_item == 'Stand Up Paddleboard')
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $100
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $300
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $500
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $700
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $900
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $1000
+                                                            @endif
                                                         @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $10000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $12000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $14000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $16000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $18000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $20000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == '23ft. Pontoon Boat')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $10000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $12000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $14000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $16000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $18000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $20000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'SeaDoo')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $10000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $12000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $14000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $16000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $18000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $20000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == '14ft. Aluminum Boat')
-                                                        $1000
-                                                    @endif
-                                                    @if($rental->activity_item == 'Segway i2')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $3000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $5000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $7000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $9000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $10000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Spyder RT-S SE6')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $10000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $12000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $14000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $16000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $18000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $20000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Renegade BC 600ETec')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $10000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $12000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $14000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $16000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $18000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $20000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Summit 154 SP')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $2000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $4000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $6000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $8000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $10000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $12000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $14000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $16000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $18000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $20000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Kayak Single')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $1200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $1400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $1600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $1800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $2000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Double Kayak')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $1200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $1400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $1600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $1800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $2000
-                                                        @endif
-                                                    @endif
-                                                    @if($rental->activity_item == 'Stand Up Paddleboard')
-                                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                                            $200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                                            $400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                                            $600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                                            $800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                                            $1000
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '6x') !== false)
-                                                            $1200
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '7x') !== false)
-                                                            $1400
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '8x') !== false)
-                                                            $1600
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '9x') !== false)
-                                                            $1800
-                                                        @endif
-                                                        @if(strpos($rental->ticket_list, '10x') !== false)
-                                                            $2000
-                                                        @endif
-                                                    @endif
 
-                                                    (flat - Sale)
-                                                </h5>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-12">
-                                        <h5 class="text-gray-300 mt-4">Please enter amounts and type of payment(s) collected...</h5>
-                                        <div class="col-sm-10 offset-sm-1 mt-4">
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="security_deposit"> Security Deposit (Required)</label>
-                                                        <input type="text" class="form-control" name="security_deposit" placeholder="Numbers Only" required>
+                                                        (raised card - Pre-Auth)
+                                                    </h5>
+                                                </li>
+                                                <li>
+                                                    <h5>
+                                                        @if(strpos($rental->activity_item, 'Scarab'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $10000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $12000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $14000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $16000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $18000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $20000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Pontoon'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $10000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $12000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $14000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $16000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $18000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $20000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'SeaDoo'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $10000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $12000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $14000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $16000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $18000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $20000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Aluminum'))
+                                                            $1000
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Segway'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $3000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $5000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $7000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $9000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $10000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Spyder'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $10000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $12000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $14000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $16000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $18000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $20000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Renegade'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $10000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $12000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $14000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $16000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $18000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $20000
+                                                            @endif
+                                                        @endif
+                                                        @if(strpos($rental->activity_item, 'Summit'))
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $2000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $4000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $6000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $8000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $10000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $12000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $14000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $16000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $18000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $20000
+                                                            @endif
+                                                        @endif
+                                                        @if($rental->activity_item == 'Kayak Single')
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $1200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $1400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $1600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $1800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $2000
+                                                            @endif
+                                                        @endif
+                                                        @if($rental->activity_item == 'Double Kayak')
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $1200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $1400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $1600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $1800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $2000
+                                                            @endif
+                                                        @endif
+                                                        @if($rental->activity_item == 'Stand Up Paddleboard')
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $1000
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $1200
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $1400
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $1600
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $1800
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $2000
+                                                            @endif
+                                                        @endif
+
+                                                        (flat - Sale)
+                                                    </h5>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <h5 class="text-gray-300 mt-4">Please enter amounts and type of payment(s) collected...</h5>
+                                            <div class="col-sm-10 offset-sm-1 mt-4">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="security_deposit"> Security Deposit (Required)</label>
+                                                            <input type="text" class="form-control" name="security_deposit" placeholder="Numbers Only" required>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="security_deposit_type">Deposit Type  (Required)</label>
-                                                        <select id="security_deposit_type" name="security_deposit_type" style="width: 100%;" required>
-                                                            <option value="blank" default>Select One</option>
-                                                            <option value="Sale">Sale</option>
-                                                            <option value="Pre-Auth">Pre-Auth</option>
-                                                            <option value="Cash">Cash</option>
-                                                            <option value="Check">Check</option>
-                                                        </select>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="security_deposit_type">Deposit Type  (Required)</label>
+                                                            <select id="security_deposit_type" name="security_deposit_type" style="width: 100%;" required>
+                                                                <option value="blank" default>Select One</option>
+                                                                <option value="Sale">Sale</option>
+                                                                <option value="Pre-Auth">Pre-Auth</option>
+                                                                <option value="Cash">Cash</option>
+                                                                <option value="Check">Check</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <ul class="navbar-nav accordion" id="deposit2">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <ul class="navbar-nav accordion" id="deposit2">
 
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseAnnouncements" aria-expanded="true" aria-controls="collapseAnnouncements">
-                                                            <span>
-                                                                <h5 class="text-right">Add Deposit Type</h5>
-                                                            </span>
-                                                        </a>
-                                                        <div id="collapseAnnouncements" class="collapse" aria-labelledby="headingAnnouncements" data-parent="#deposit2">
-                                                            <div class="col-sm-10 offset-sm-1">
-                                                                <div class="row">
-                                                                    <div class="col-sm-6">
-                                                                        <div class="form-group">
-                                                                            <label for="security_deposit_2"> Security Deposit </label>
-                                                                            <input type="text" class="form-control" name="security_deposit_2" placeholder="Enter $$" />
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseAnnouncements" aria-expanded="true" aria-controls="collapseAnnouncements">
+                                                        <span>
+                                                            <h5 class="text-right">Add Payment Type</h5>
+                                                        </span>
+                                                            </a>
+                                                            <div id="collapseAnnouncements" class="collapse" aria-labelledby="headingAnnouncements" data-parent="#deposit2">
+                                                                <div class="col-sm-10 offset-sm-1">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="security_deposit_2"> Security Deposit </label>
+                                                                                <input type="text" class="form-control" name="security_deposit_2" placeholder="Numbers Only" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="security_deposit_type_2">Deposit Type:</label>
+                                                                                <select id="security_deposit_type_2" name="security_deposit_type_2" style="width: 100%;">
+                                                                                    <option value="blank" default>Select One</option>
+                                                                                    <option value="Sale">Sale</option>
+                                                                                    <option value="Pre-Auth">Pre-Auth</option>
+                                                                                    <option value="Cash">Cash</option>
+                                                                                    <option value="Check">Check</option>
+                                                                                </select>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-sm-6">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                    <ul class="navbar-nav accordion" id="deposit3">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseSecurity3" aria-expanded="true" aria-controls="collapseSecurity3">
+                                                        <span>
+                                                            <h5 class="text-right">Add Payment Type</h5>
+                                                        </span>
+                                                            </a>
+                                                            <div id="collapseSecurity3" class="collapse" aria-labelledby="headingSecurity3" data-parent="#deposit3">
+                                                                <div class="col-sm-10 offset-sm-1">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="security_deposit_3"> Security Deposit </label>
+                                                                                <input type="text" class="form-control" name="security_deposit_3" placeholder="Numbers Only" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="security_deposit_type_3">Deposit Type:</label>
+                                                                                <select id="security_deposit_type_3" name="security_deposit_type_3" style="width: 100%;">
+                                                                                    <option value="blank" default>Select One</option>
+                                                                                    <option value="Sale">Sale</option>
+                                                                                    <option value="Pre-Auth">Pre-Auth</option>
+                                                                                    <option value="Cash">Cash</option>
+                                                                                    <option value="Check">Check</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <p>Next: Fuel & Additions</p>
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">CLOSE</button>
+                                    <a class="btn btn-primary" id="view-additional-tab" data-toggle="tab" href="#additional-tab" role="tab" aria-controls="additional-tab"
+                                       aria-selected="true">
+                                        Next</span>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Check In - Step 1 - Security Deposit -->
+
+                        <!-- Check In - Step 2 - Fuel / Additional -->
+                        <div class="tab-pane fade show" id="additional-tab" role="tabpanel" aria-labelledby="additional-tab">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3><span>Fuel</span> & <span>Additions</span></h3>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Fuel / Toys -->
+                                    <div class="row">
+                                        <div class="col-sm-10 offset-sm-1">
+                                            <h4 class="text-center">Amount:</h4>
+                                            <div class="deposit-amt">
+                                                <h3 class="text-center">
+
+                                                    @if(strpos($rental->activity_item, 'Scarab') !== false)
+                                                        @if(strpos($rental->ticket_list, '1x') !== false)
+                                                            $308
+                                                            <input type="hidden" name="fuel_count" value="44">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '2x') !== false)
+                                                            $924
+                                                            <input type="hidden" name="fuel_count" value="88">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '3x') !== false)
+                                                            $1232
+                                                            <input type="hidden" name="fuel_count" value="132">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '4x') !== false)
+                                                            $1540
+                                                            <input type="hidden" name="fuel_count" value="176">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '5x') !== false)
+                                                            $1848
+                                                            <input type="hidden" name="fuel_count" value="120">
+                                                        @endif
+                                                    @endif
+
+
+                                                    @if(strpos($rental->activity_item, 'Pontoon') !== false && strpos($rental->ticket_list, 'Half Day') == false)
+                                                        @if(strpos($rental->ticket_list, '1x') !== false)
+                                                            $273
+                                                            <input type="hidden" name="fuel_count" value="39">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '2x') !== false)
+                                                            $546
+                                                            <input type="hidden" name="fuel_count" value="78">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '3x') !== false)
+                                                            $819
+                                                            <input type="hidden" name="fuel_count" value="117">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '4x') !== false)
+                                                            $1092
+                                                            <input type="hidden" name="fuel_count" value="156">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '5x') !== false)
+                                                            $1365
+                                                            <input type="hidden" name="fuel_count" value="195">
+                                                        @endif
+                                                    @elseif($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, '4 hour') !== false)
+                                                        $0
+                                                    @endif
+
+
+                                                    @if(strpos($rental->activity_item, 'SeaDoo') !== false)
+                                                        @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
+                                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                                $133
+                                                                <input type="hidden" name="fuel_count" value="19">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                                $266
+                                                                <input type="hidden" name="fuel_count" value="38">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                                $399
+                                                                <input type="hidden" name="fuel_count" value="57">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                                $532
+                                                                <input type="hidden" name="fuel_count" value="76">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                                $665
+                                                                <input type="hidden" name="fuel_count" value="95">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '6x') !== false)
+                                                                $798
+                                                                <input type="hidden" name="fuel_count" value="114">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '7x') !== false)
+                                                                $913
+                                                                <input type="hidden" name="fuel_count" value="133">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '8x') !== false)
+                                                                $1064
+                                                                <input type="hidden" name="fuel_count" value="152">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '9x') !== false)
+                                                                $1197
+                                                                <input type="hidden" name="fuel_count" value="171">
+                                                            @endif
+                                                            @if(strpos($rental->ticket_list, '10x') !== false)
+                                                                $1330
+                                                                <input type="hidden" name="fuel_count" value="190">
+                                                            @endif
+                                                        @else
+                                                            $0
+                                                        @endif
+
+                                                    @endif
+
+
+                                                    @if($rental->activity_item == '14ft. Aluminum Boat')
+                                                        $42
+                                                        <input type="hidden" name="fuel_count" value="6">
+                                                    @endif
+
+
+                                                    @if(strpos($rental->activity_item, 'Spyder') !== false)
+                                                        @if(strpos($rental->ticket_list, '1x') !== false)
+                                                            $49
+                                                            <input type="hidden" name="fuel_count" value="7">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '2x') !== false)
+                                                            $98
+                                                            <input type="hidden" name="fuel_count" value="14">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '3x') !== false)
+                                                            $147
+                                                            <input type="hidden" name="fuel_count" value="21">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '4x') !== false)
+                                                            $196
+                                                            <input type="hidden" name="fuel_count" value="28">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '5x') !== false)
+                                                            $245
+                                                            <input type="hidden" name="fuel_count" value="35">
+                                                        @endif
+                                                    @endif
+
+
+                                                    @if(strpos($rental->activity_item, 'Renegade') !== false or strpos($rental->activity_item, 'Summit') !== false)
+                                                        @if(strpos($rental->ticket_list, '1x') !== false)
+                                                            $77
+                                                            <input type="hidden" name="fuel_count" value="11">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '2x') !== false)
+                                                            $154
+                                                            <input type="hidden" name="fuel_count" value="22">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '3x') !== false)
+                                                            $231
+                                                            <input type="hidden" name="fuel_count" value="33">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '4x') !== false)
+                                                            $308
+                                                            <input type="hidden" name="fuel_count" value="44">
+                                                        @endif
+                                                        @if(strpos($rental->ticket_list, '5x') !== false)
+                                                            $385
+                                                            <input type="hidden" name="fuel_count" value="55">
+                                                        @endif
+                                                    @endif
+
+
+                                                    @if($rental->activity_item == 'Kayak Single' or $rental->activity_item == 'Double Kayak' or $rental->activity_item == 'Stand Up Paddleboard' or $rental->activity_item == 'Segway i2')
+                                                        $0
+                                                    @endif
+
+                                                </h3>
+                                            </div>
+                                            <h5 class="text-gray-300 mt-4">Please select payment type...</h5>
+
+                                            @if(strpos($rental->activity_item, 'Scarab') !== false)
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="fuel_deposit"> Deposit Amount </label>
+                                                            <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="fuel_deposit_type">Deposit Type:</label>
+                                                            <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
+                                                                <option value="blank" default>Select One</option>
+                                                                <option value="Visa">Visa</option>
+                                                                <option value="MasterCard">MasterCard</option>
+                                                                <option value="Cash">Cash</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <ul class="navbar-nav accordion" id="fuel2">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseFuel2" aria-expanded="true" aria-controls="headingFuel2">
+                                                            <span>
+                                                                <h5 class="text-right">Add Payment Type</h5>
+                                                            </span>
+                                                            </a>
+                                                            <div id="collapseFuel2" class="collapse" aria-labelledby="headingFuel2" data-parent="#fuel2">
+                                                                <div class="col-sm-12">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="second_fuel_deposit"> Deposit Amount </label>
+                                                                                <input type="text" class="form-control" name="second_fuel_deposit" placeholder="Numbers Only" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="second_fuel_deposit_type">Deposit Type:</label>
+                                                                                <select id="second_fuel_deposit_type" name="second_fuel_deposit_type" style="width: 100%;">
+                                                                                    <option value="blank" default>Select One</option>
+                                                                                    <option value="Visa">Visa</option>
+                                                                                    <option value="MasterCard">MasterCard</option>
+                                                                                    <option value="Cash">Cash</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-sm-10 offset-sm-1 mt-4">
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <label for="toy_fee"><h4>Add <span>Toy?</span></h4></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <input type="checkbox" class="radio" name="toy_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
+                                                                        <option value="blank" default>Payment Type</option>
+                                                                        <option value="Visa">Visa</option>
+                                                                        <option value="MasterCard">MasterCard</option>
+                                                                        <option value="Cash">Cash</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <ul class="navbar-nav accordion" id="toy2">
+
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsetoy2" aria-expanded="true" aria-controls="headingtoy2">
+                                                            <span>
+                                                                <h5 class="text-right">Add Second Toy</h5>
+                                                            </span>
+                                                                </a>
+                                                                <div id="collapsetoy2" class="collapse" aria-labelledby="headingtoy2" data-parent="#toy2">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-4">
+                                                                            <div class="form-group">
+                                                                                <label for="second_toy_fee"><h4>2nd <span>Toy</span></h4></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="form-group">
+                                                                                <input type="checkbox" class="radio" name="second_toy_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <div class="form-group">
+                                                                                <select id="second_toy_fee_type" name="second_toy_fee_type" style="width: 100%;">
+                                                                                    <option value="blank" default>Payment Type</option>
+                                                                                    <option value="Visa">Visa</option>
+                                                                                    <option value="MasterCard">MasterCard</option>
+                                                                                    <option value="Cash">Cash</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                @if(strpos($rental->ticket_list, '2 day') !== false or strpos($rental->ticket_list, '3 day') !== false or strpos($rental->ticket_list, '4 day') !== false or strpos($rental->ticket_list, '5 day') !== false or strpos($rental->ticket_list, '6 day') !== false or strpos($rental->ticket_list, '7 day') !== false or strpos($rental->ticket_list, '8 day') !== false or strpos($rental->ticket_list, '9 day') !== false or strpos($rental->ticket_list, '10 day') !== false or strpos($rental->ticket_list, '11 day') !== false or strpos($rental->ticket_list, '12 day') !== false or strpos($rental->ticket_list, '13 day') !== false or strpos($rental->ticket_list, '14 day') !== false)
+                                                    <div class="row mt-3">
+                                                        <div class="col-sm-10 offset-sm-1 mt-4">
+                                                            <div class="row">
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <label for="trailer_fee"><h4><span>Trailer?</span></h4></label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <input type="checkbox" class="radio" name="trailer_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="form-group">
+                                                                        <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
+                                                                            <option value="blank" default>Payment Type</option>
+                                                                            <option value="Visa">Visa</option>
+                                                                            <option value="MasterCard">MasterCard</option>
+                                                                            <option value="Cash">Cash</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @elseif(strpos($rental->activity_item, 'Spyder') !== false)
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="fuel_deposit"> Deposit Amount </label>
+                                                            <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="fuel_deposit_type">Deposit Type:</label>
+                                                            <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
+                                                                <option value="blank" default>Select One</option>
+                                                                <option value="Visa">Visa</option>
+                                                                <option value="MasterCard">MasterCard</option>
+                                                                <option value="Cash">Cash</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <ul class="navbar-nav accordion" id="fuel2">
+
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseFuel2" aria-expanded="true" aria-controls="headingFuel2">
+                                                            <span>
+                                                                <h5 class="text-right">Add Payment Type</h5>
+                                                            </span>
+                                                            </a>
+                                                            <div id="collapseFuel2" class="collapse" aria-labelledby="headingFuel2" data-parent="#fuel2">
+                                                                <div class="col-sm-12">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="second_fuel_deposit"> Deposit Amount </label>
+                                                                                <input type="text" class="form-control" name="second_fuel_deposit" placeholder="Numbers Only" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="second_fuel_deposit_type">Deposit Type:</label>
+                                                                                <select id="second_fuel_deposit_type" name="second_fuel_deposit_type" style="width: 100%;">
+                                                                                    <option value="blank" default>Select One</option>
+                                                                                    <option value="Visa">Visa</option>
+                                                                                    <option value="MasterCard">MasterCard</option>
+                                                                                    <option value="Cash">Cash</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                                @elseif(strpos($rental->activity_item, 'Pontoon') !== false && strpos($rental->ticket_list, 'Half Day') == false)
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="fuel_deposit"> Fuel Deposit </label>
+                                                                <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="fuel_deposit_type">Deposit Type:</label>
+                                                                <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
+                                                                    <option value="blank" default>Select One</option>
+                                                                    <option value="Visa">Visa</option>
+                                                                    <option value="MasterCard">MasterCard</option>
+                                                                    <option value="Cash">Cash</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @elseif(strpos($rental->activity_item, 'SeaDoo') !== false)
+                                                    @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="fuel_deposit"> Deposit Amount </label>
+                                                                <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="fuel_deposit_type">Deposit Type:</label>
+                                                                <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
+                                                                    <option value="blank" default>Select One</option>
+                                                                    <option value="Visa">Visa</option>
+                                                                    <option value="MasterCard">MasterCard</option>
+                                                                    <option value="Cash">Cash</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <ul class="navbar-nav accordion" id="fuel2">
+
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseFuel2" aria-expanded="true" aria-controls="headingFuel2">
+                                                            <span>
+                                                                <h5 class="text-right">Add Payment Type</h5>
+                                                            </span>
+                                                                </a>
+                                                                <div id="collapseFuel2" class="collapse" aria-labelledby="headingFuel2" data-parent="#fuel2">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="second_fuel_deposit"> Deposit Amount </label>
+                                                                                    <input type="text" class="form-control" name="second_fuel_deposit" placeholder="Numbers Only" />
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label for="second_fuel_deposit_type">Deposit Type:</label>
+                                                                                    <select id="second_fuel_deposit_type" name="second_fuel_deposit_type" style="width: 100%;">
+                                                                                        <option value="blank" default>Select One</option>
+                                                                                        <option value="Visa">Visa</option>
+                                                                                        <option value="MasterCard">MasterCard</option>
+                                                                                        <option value="Cash">Cash</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                    @elseif(strpos($rental->ticket_list, '2 day') !== false or strpos($rental->ticket_list, '3 day') !== false or strpos($rental->ticket_list, '4 day') !== false or strpos($rental->ticket_list, '5 day') !== false or strpos($rental->ticket_list, '6 day') !== false or strpos($rental->ticket_list, '7 day') !== false or strpos($rental->ticket_list, '8 day') !== false or strpos($rental->ticket_list, '9 day') !== false or strpos($rental->ticket_list, '10 day') !== false or strpos($rental->ticket_list, '11 day') !== false or strpos($rental->ticket_list, '12 day') !== false or strpos($rental->ticket_list, '13 day') !== false or strpos($rental->ticket_list, '14 day') !== false)
+                                                        <div class="row mt-3">
+                                                            <div class="col-sm-10 offset-sm-1 mt-4">
+                                                                <div class="row">
+                                                                    <div class="col-sm-4">
                                                                         <div class="form-group">
-                                                                            <label for="security_deposit_type_2">Deposit Type:</label>
-                                                                            <select id="security_deposit_type_2" name="security_deposit_type_2" style="width: 100%;">
-                                                                                <option value="blank" default>Select One</option>
-                                                                                <option value="Sale">Sale</option>
-                                                                                <option value="Pre-Auth">Pre-Auth</option>
+                                                                            <label for="trailer_fee"><h4><span>Trailer?</span></h4></label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group">
+                                                                            <input type="checkbox" class="radio" name="trailer_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="form-group">
+                                                                            <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
+                                                                                <option value="blank" default>Payment Type</option>
+                                                                                <option value="Visa">Visa</option>
+                                                                                <option value="MasterCard">MasterCard</option>
                                                                                 <option value="Cash">Cash</option>
-                                                                                <option value="Check">Check</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </li>
+                                                    @endif
+                                                @elseif(strpos($rental->activity_item, 'Renegade') !== false or strpos($rental->activity_item, 'Summit') !== false)
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="fuel_deposit"> Deposit Amount </label>
+                                                            <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="fuel_deposit_type">Deposit Type:</label>
+                                                            <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
+                                                                <option value="blank" default>Select One</option>
+                                                                <option value="Visa">Visa</option>
+                                                                <option value="MasterCard">MasterCard</option>
+                                                                <option value="Cash">Cash</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <ul class="navbar-nav accordion" id="fuel2">
 
-                                                </ul>
-                                            </div>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseFuel2" aria-expanded="true" aria-controls="headingFuel2">
+                                                            <span>
+                                                                <h5 class="text-right">Add Payment Type</h5>
+                                                            </span>
+                                                            </a>
+                                                            <div id="collapseFuel2" class="collapse" aria-labelledby="headingFuel2" data-parent="#fuel2">
+                                                                <div class="col-sm-12">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="second_fuel_deposit"> Deposit Amount </label>
+                                                                                <input type="text" class="form-control" name="second_fuel_deposit" placeholder="Numbers Only" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-group">
+                                                                                <label for="second_fuel_deposit_type">Deposit Type:</label>
+                                                                                <select id="second_fuel_deposit_type" name="second_fuel_deposit_type" style="width: 100%;">
+                                                                                    <option value="blank" default>Select One</option>
+                                                                                    <option value="Visa">Visa</option>
+                                                                                    <option value="MasterCard">MasterCard</option>
+                                                                                    <option value="Cash">Cash</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+
+                                                    <div class="row mt-3">
+                                                    <div class="col-sm-10 offset-sm-1 mt-4">
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <label for="trailer_fee"><h4>Four-Place <span>Trailer?</span></h4></label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <input type="checkbox" class="radio" name="trailer_fee" value="100"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <div class="form-group">
+                                                                    <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
+                                                                        <option value="blank" default>Payment Type</option>
+                                                                        <option value="Visa">Visa</option>
+                                                                        <option value="MasterCard">MasterCard</option>
+                                                                        <option value="Cash">Cash</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    @else
+                                                        none
+                                                @endif
+
 
                                         </div>
                                     </div>
+                                    <!-- Fuel / Toys -->
                                 </div>
-                                <!-- /Security Deposit -->
+                                <div class="modal-footer">
 
-                            </div>
-                            <div class="modal-footer">
-                                <p>Next: Fuel Deposit</p>
-                                <p class="mr-2 text-bold">
-                                    @if($rental->activity_item == 'Scarab 215')
-                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                            $308
-                                            <input type="hidden" name="fuel_count" value="44">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                            $924
-                                            <input type="hidden" name="fuel_count" value="88">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                            $1232
-                                            <input type="hidden" name="fuel_count" value="132">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                            $1540
-                                            <input type="hidden" name="fuel_count" value="176">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                            $1848
-                                            <input type="hidden" name="fuel_count" value="120">
-                                        @endif
-                                    @endif
-
-
-                                    @if($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, 'Full Day') !== false)
-                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                            $273
-                                            <input type="hidden" name="fuel_count" value="39">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                            $546
-                                            <input type="hidden" name="fuel_count" value="78">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                            $819
-                                            <input type="hidden" name="fuel_count" value="117">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                            $1092
-                                            <input type="hidden" name="fuel_count" value="156">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                            $1365
-                                            <input type="hidden" name="fuel_count" value="195">
-                                        @endif
-                                    @elseif($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, '4 hour') !== false)
-                                        $0
-                                    @endif
-
-
-                                    @if($rental->activity_item == 'SeaDoo')
-                                        @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
+                                    <p class="mr-2 text-bold">
+                                        @if($rental->activity_item == 'Scarab 215')
                                             @if(strpos($rental->ticket_list, '1x') !== false)
-                                                $133
-                                                <input type="hidden" name="fuel_count" value="19">
+                                                $308
+                                                <input type="hidden" name="fuel_count" value="44">
                                             @endif
                                             @if(strpos($rental->ticket_list, '2x') !== false)
-                                                $266
-                                                <input type="hidden" name="fuel_count" value="38">
+                                                $924
+                                                <input type="hidden" name="fuel_count" value="88">
                                             @endif
                                             @if(strpos($rental->ticket_list, '3x') !== false)
-                                                $399
-                                                <input type="hidden" name="fuel_count" value="57">
+                                                $1232
+                                                <input type="hidden" name="fuel_count" value="132">
                                             @endif
                                             @if(strpos($rental->ticket_list, '4x') !== false)
-                                                $532
-                                                <input type="hidden" name="fuel_count" value="76">
+                                                $1540
+                                                <input type="hidden" name="fuel_count" value="176">
                                             @endif
                                             @if(strpos($rental->ticket_list, '5x') !== false)
-                                                $665
-                                                <input type="hidden" name="fuel_count" value="95">
+                                                $1848
+                                                <input type="hidden" name="fuel_count" value="120">
                                             @endif
-                                            @if(strpos($rental->ticket_list, '6x') !== false)
-                                                $798
-                                                <input type="hidden" name="fuel_count" value="114">
+                                        @endif
+
+
+                                        @if($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, 'Full Day') !== false)
+                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                $273
+                                                <input type="hidden" name="fuel_count" value="39">
                                             @endif
-                                            @if(strpos($rental->ticket_list, '7x') !== false)
-                                                $913
-                                                <input type="hidden" name="fuel_count" value="133">
+                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                $546
+                                                <input type="hidden" name="fuel_count" value="78">
                                             @endif
-                                            @if(strpos($rental->ticket_list, '8x') !== false)
-                                                $1064
-                                                <input type="hidden" name="fuel_count" value="152">
+                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                $819
+                                                <input type="hidden" name="fuel_count" value="117">
                                             @endif
-                                            @if(strpos($rental->ticket_list, '9x') !== false)
-                                                $1197
-                                                <input type="hidden" name="fuel_count" value="171">
+                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                $1092
+                                                <input type="hidden" name="fuel_count" value="156">
                                             @endif
-                                            @if(strpos($rental->ticket_list, '10x') !== false)
-                                                $1330
-                                                <input type="hidden" name="fuel_count" value="190">
+                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                $1365
+                                                <input type="hidden" name="fuel_count" value="195">
                                             @endif
-                                        @else
+                                        @elseif($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, '4 hour') !== false)
                                             $0
                                         @endif
 
-                                    @endif
 
-
-                                    @if($rental->activity_item == '14ft. Aluminum Boat')
-                                        $42
-                                        <input type="hidden" name="fuel_count" value="6">
-                                    @endif
-
-
-                                    @if($rental->activity_item == 'Spyder RT-S SE6')
-                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                            $49
-                                            <input type="hidden" name="fuel_count" value="7">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                            $98
-                                            <input type="hidden" name="fuel_count" value="14">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                            $147
-                                            <input type="hidden" name="fuel_count" value="21">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                            $196
-                                            <input type="hidden" name="fuel_count" value="28">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                            $245
-                                            <input type="hidden" name="fuel_count" value="35">
-                                        @endif
-                                    @endif
-
-
-                                    @if($rental->activity_item == 'Renegade BC 600ETec' or $rental->activity_item == 'Summit 154 SP')
-                                        @if(strpos($rental->ticket_list, '1x') !== false)
-                                            $77
-                                            <input type="hidden" name="fuel_count" value="11">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '2x') !== false)
-                                            $154
-                                            <input type="hidden" name="fuel_count" value="22">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '3x') !== false)
-                                            $231
-                                            <input type="hidden" name="fuel_count" value="33">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '4x') !== false)
-                                            $308
-                                            <input type="hidden" name="fuel_count" value="44">
-                                        @endif
-                                        @if(strpos($rental->ticket_list, '5x') !== false)
-                                            $385
-                                            <input type="hidden" name="fuel_count" value="55">
-                                        @endif
-                                    @endif
-
-
-                                    @if($rental->activity_item == 'Kayak Single' or $rental->activity_item == 'Double Kayak' or $rental->activity_item == 'Stand Up Paddleboard' or $rental->activity_item == 'Segway i2')
-                                        $0
-                                    @endif
-
-                                </p>
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
-
-                                <!-- Here -->
-                                @if($rental->activity_item == 'Scarab 215' or $rental->activity_item == 'Spyder RT-S SE6' or $rental->activity_item == 'Renegade BC 600ETec' or $rental->activity_item == 'Summit 154 SP')
-                                    <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Next</button>
-                                @elseif($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, 'Full Day') !== false)
-                                    <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Next</button>
-                                @elseif($rental->activity_item == 'SeaDoo')
-                                    @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
-                                        <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Next</button>
-                                    @endif
-
-                                @else
-
-                                    <input type="hidden" value="Checked In" name="status">
-                                    @if(Auth::check())
-                                        <input type="hidden" value="{{auth()->user()->id}}" name="check_in_by">
-                                    @endif
-                                    <input type="hidden" value="{{$dateNow}}" name="check_in_time">
-
-                                    <button class="btn btn-primary-red btn-modal" type="submit">CHECK IN</button>
-
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <!-- /Check In - Step 1 - Security Deposit -->
-
-            <!-- Check In - Step 2 - Fuel Deposit -->
-            <div class="modal fade" id="checkin-2{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="checkinModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3><span>Fuel</span> Deposit</h3>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <!-- Fuel Deposit Amount -->
-                            <div class="row">
-                                <div class="col-sm-10 offset-sm-1">
-                                    <h4 class="text-center">Amount:</h4>
-                                    <div class="deposit-amt">
-                                        <h3 class="text-center">
-
-                                            @if($rental->activity_item == 'Scarab 215')
+                                        @if($rental->activity_item == 'SeaDoo')
+                                            @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
                                                 @if(strpos($rental->ticket_list, '1x') !== false)
-                                                    $308
-                                                    <input type="hidden" name="fuel_count" value="44">
+                                                    $133
+                                                    <input type="hidden" name="fuel_count" value="19">
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '2x') !== false)
-                                                    $924
-                                                    <input type="hidden" name="fuel_count" value="88">
+                                                    $266
+                                                    <input type="hidden" name="fuel_count" value="38">
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '3x') !== false)
-                                                    $1232
-                                                    <input type="hidden" name="fuel_count" value="132">
+                                                    $399
+                                                    <input type="hidden" name="fuel_count" value="57">
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '4x') !== false)
-                                                    $1540
-                                                    <input type="hidden" name="fuel_count" value="176">
+                                                    $532
+                                                    <input type="hidden" name="fuel_count" value="76">
                                                 @endif
                                                 @if(strpos($rental->ticket_list, '5x') !== false)
-                                                    $1848
-                                                    <input type="hidden" name="fuel_count" value="120">
+                                                    $665
+                                                    <input type="hidden" name="fuel_count" value="95">
                                                 @endif
-                                            @endif
-
-
-                                            @if($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, 'Full Day') !== false)
-                                                @if(strpos($rental->ticket_list, '1x') !== false)
-                                                    $273
-                                                    <input type="hidden" name="fuel_count" value="39">
+                                                @if(strpos($rental->ticket_list, '6x') !== false)
+                                                    $798
+                                                    <input type="hidden" name="fuel_count" value="114">
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '2x') !== false)
-                                                    $546
-                                                    <input type="hidden" name="fuel_count" value="78">
+                                                @if(strpos($rental->ticket_list, '7x') !== false)
+                                                    $913
+                                                    <input type="hidden" name="fuel_count" value="133">
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '3x') !== false)
-                                                    $819
-                                                    <input type="hidden" name="fuel_count" value="117">
+                                                @if(strpos($rental->ticket_list, '8x') !== false)
+                                                    $1064
+                                                    <input type="hidden" name="fuel_count" value="152">
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '4x') !== false)
-                                                    $1092
-                                                    <input type="hidden" name="fuel_count" value="156">
+                                                @if(strpos($rental->ticket_list, '9x') !== false)
+                                                    $1197
+                                                    <input type="hidden" name="fuel_count" value="171">
                                                 @endif
-                                                @if(strpos($rental->ticket_list, '5x') !== false)
-                                                    $1365
-                                                    <input type="hidden" name="fuel_count" value="195">
+                                                @if(strpos($rental->ticket_list, '10x') !== false)
+                                                    $1330
+                                                    <input type="hidden" name="fuel_count" value="190">
                                                 @endif
-                                            @elseif($rental->activity_item == '23ft. Pontoon Boat' && strpos($rental->ticket_list, '4 hour') !== false)
+                                            @else
                                                 $0
                                             @endif
 
-
-                                            @if($rental->activity_item == 'SeaDoo')
-                                                @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
-                                                    @if(strpos($rental->ticket_list, '1x') !== false)
-                                                        $133
-                                                        <input type="hidden" name="fuel_count" value="19">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '2x') !== false)
-                                                        $266
-                                                        <input type="hidden" name="fuel_count" value="38">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '3x') !== false)
-                                                        $399
-                                                        <input type="hidden" name="fuel_count" value="57">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '4x') !== false)
-                                                        $532
-                                                        <input type="hidden" name="fuel_count" value="76">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '5x') !== false)
-                                                        $665
-                                                        <input type="hidden" name="fuel_count" value="95">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '6x') !== false)
-                                                        $798
-                                                        <input type="hidden" name="fuel_count" value="114">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '7x') !== false)
-                                                        $913
-                                                        <input type="hidden" name="fuel_count" value="133">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '8x') !== false)
-                                                        $1064
-                                                        <input type="hidden" name="fuel_count" value="152">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '9x') !== false)
-                                                        $1197
-                                                        <input type="hidden" name="fuel_count" value="171">
-                                                    @endif
-                                                    @if(strpos($rental->ticket_list, '10x') !== false)
-                                                        $1330
-                                                        <input type="hidden" name="fuel_count" value="190">
-                                                    @endif
-                                                @else
-                                                    $0
-                                                @endif
-
-                                            @endif
-
-
-                                            @if($rental->activity_item == '14ft. Aluminum Boat')
-                                                $42
-                                                <input type="hidden" name="fuel_count" value="6">
-                                            @endif
-
-
-                                            @if($rental->activity_item == 'Spyder RT-S SE6')
-                                                @if(strpos($rental->ticket_list, '1x') !== false)
-                                                    $49
-                                                    <input type="hidden" name="fuel_count" value="7">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '2x') !== false)
-                                                    $98
-                                                    <input type="hidden" name="fuel_count" value="14">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '3x') !== false)
-                                                    $147
-                                                    <input type="hidden" name="fuel_count" value="21">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '4x') !== false)
-                                                    $196
-                                                    <input type="hidden" name="fuel_count" value="28">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '5x') !== false)
-                                                    $245
-                                                    <input type="hidden" name="fuel_count" value="35">
-                                                @endif
-                                            @endif
-
-
-                                            @if($rental->activity_item == 'Renegade BC 600ETec' or $rental->activity_item == 'Summit 154 SP')
-                                                @if(strpos($rental->ticket_list, '1x') !== false)
-                                                    $77
-                                                    <input type="hidden" name="fuel_count" value="11">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '2x') !== false)
-                                                    $154
-                                                    <input type="hidden" name="fuel_count" value="22">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '3x') !== false)
-                                                    $231
-                                                    <input type="hidden" name="fuel_count" value="33">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '4x') !== false)
-                                                    $308
-                                                    <input type="hidden" name="fuel_count" value="44">
-                                                @endif
-                                                @if(strpos($rental->ticket_list, '5x') !== false)
-                                                    $385
-                                                    <input type="hidden" name="fuel_count" value="55">
-                                                @endif
-                                            @endif
-
-
-                                            @if($rental->activity_item == 'Kayak Single' or $rental->activity_item == 'Double Kayak' or $rental->activity_item == 'Stand Up Paddleboard' or $rental->activity_item == 'Segway i2')
-                                                $0
-                                            @endif
-
-                                        </h3>
-                                    </div>
-                                    <h5 class="text-gray-300 mt-4">Please select payment type...</h5>
-
-                                    @if($rental->activity_item == 'Scarab 215' or $rental->activity_item == 'Spyder RT-S SE6' or $rental->activity_item == 'Renegade BC 600ETec' or $rental->activity_item == 'Summit 154 SP')
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="fuel_deposit"> Fuel Deposit </label>
-                                                    <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label for="fuel_deposit_type">Deposit Type:</label>
-                                                    <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
-                                                        <option value="blank" default>Select One</option>
-                                                        <option value="Visa">Visa</option>
-                                                        <option value="MasterCard">MasterCard</option>
-                                                        <option value="Cash">Cash</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-
-                                    @if($rental->activity_item == '23ft. Pontoon Boat')
-                                        @if(strpos($rental->ticket_list, 'Full Day') !== false)
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="fuel_deposit"> Fuel Deposit </label>
-                                                        <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="fuel_deposit_type">Deposit Type:</label>
-                                                        <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
-                                                            <option value="blank" default>Select One</option>
-                                                            <option value="Visa">Visa</option>
-                                                            <option value="MasterCard">MasterCard</option>
-                                                            <option value="Cash">Cash</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @else
-
                                         @endif
 
-                                    @endif
 
-                                    @if($rental->activity_item == 'SeaDoo')
-                                        @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '4 hour') !== false or strpos($rental->ticket_list, '8 hour') !== false or strpos($rental->ticket_list, '9 hour') !== false)
-                                            <div class="row">
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="fuel_deposit"> Fuel Deposit </label>
-                                                        <input type="text" class="form-control" name="fuel_deposit" placeholder="Numbers Only" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label for="fuel_deposit_type">Deposit Type:</label>
-                                                        <select id="fuel_deposit_type" name="fuel_deposit_type" style="width: 100%;">
-                                                            <option value="blank" default>Select One</option>
-                                                            <option value="Visa">Visa</option>
-                                                            <option value="MasterCard">MasterCard</option>
-                                                            <option value="Cash">Cash</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @else
-
+                                        @if($rental->activity_item == '14ft. Aluminum Boat')
+                                            $42
+                                            <input type="hidden" name="fuel_count" value="6">
                                         @endif
 
-                                    @endif
 
+                                        @if($rental->activity_item == 'Spyder RT-S SE6')
+                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                $49
+                                                <input type="hidden" name="fuel_count" value="7">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                $98
+                                                <input type="hidden" name="fuel_count" value="14">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                $147
+                                                <input type="hidden" name="fuel_count" value="21">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                $196
+                                                <input type="hidden" name="fuel_count" value="28">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                $245
+                                                <input type="hidden" name="fuel_count" value="35">
+                                            @endif
+                                        @endif
+
+
+                                        @if($rental->activity_item == 'Renegade BC 600ETec' or $rental->activity_item == 'Summit 154 SP')
+                                            @if(strpos($rental->ticket_list, '1x') !== false)
+                                                $77
+                                                <input type="hidden" name="fuel_count" value="11">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '2x') !== false)
+                                                $154
+                                                <input type="hidden" name="fuel_count" value="22">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '3x') !== false)
+                                                $231
+                                                <input type="hidden" name="fuel_count" value="33">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '4x') !== false)
+                                                $308
+                                                <input type="hidden" name="fuel_count" value="44">
+                                            @endif
+                                            @if(strpos($rental->ticket_list, '5x') !== false)
+                                                $385
+                                                <input type="hidden" name="fuel_count" value="55">
+                                            @endif
+                                        @endif
+
+
+                                        @if($rental->activity_item == 'Kayak Single' or $rental->activity_item == 'Double Kayak' or $rental->activity_item == 'Stand Up Paddleboard' or $rental->activity_item == 'Segway i2')
+                                            $0
+                                        @endif
+
+                                    </p>
+                                    <button class="btn btn-secondary" type="button" onClick="window.location.reload();">CLOSE</button>
+
+                                        <input type="hidden" value="Checked In" name="status">
+                                        @if(Auth::check())
+                                            <input type="hidden" value="{{auth()->user()->id}}" name="check_in_by">
+                                        @endif
+                                        <input type="hidden" value="{{$dateNow}}" name="check_in_time">
+
+                                        <button class="btn btn-primary-red btn-modal" type="submit">CHECK IN</button>
 
                                 </div>
                             </div>
-                            <!-- /Fuel Deposit Amount -->
-
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary btn-left" type="button" data-toggle="modal" data-dismiss="modal">CANCEL</button>
-                            <a href="#" class="btn btn-info" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin{{$rental->id}}">Back</a>
-
-                            <input type="hidden" value="Checked In" name="status">
-
-
-                            <button class="btn btn-primary-red btn-modal" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-3{{$rental->id}}">Next</button>
-                        </div>
+                        <!-- /Check In - Step 2 - Fuel / Additional -->
                     </div>
+
                 </div>
             </div>
-            <!-- /Check In - Step 2 - Fuel Deposit -->
-
-            <!-- Check In - Step 3 - Additional -->
-            <div class="modal fade" id="checkin-3{{$rental->id}}" tabindex="-1" role="dialog" aria-labelledby="checkinModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3><span>Options</span>...</h3>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Options -->
-                            @if($rental->activity_item == 'Scarab 215')
-                                <div class="row mt-3">
-                                    <div class="col-sm-10 offset-sm-1 mt-4">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="toy_fee"><h4>Add <span>Toy?</span></h4></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <input type="checkbox" class="radio" name="toy_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
-                                                        <option value="blank" default>Payment Type</option>
-                                                        <option value="Visa">Visa</option>
-                                                        <option value="MasterCard">MasterCard</option>
-                                                        <option value="Cash">Cash</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                            @if($rental->activity_item == 'Scarab 215')
-                                @if(strpos($rental->ticket_list, 'Full Day')!== false or strpos($rental->ticket_list, '2 day') !== false or strpos($rental->ticket_list, '3 day') !== false or strpos($rental->ticket_list, '4 day') !== false or strpos($rental->ticket_list, '5 day') !== false or strpos($rental->ticket_list, '6 day') !== false or strpos($rental->ticket_list, '7 day') !== false or strpos($rental->ticket_list, '8 day') !== false or strpos($rental->ticket_list, '9 day') !== false or strpos($rental->ticket_list, '10 day') !== false or strpos($rental->ticket_list, '11 day') !== false or strpos($rental->ticket_list, '12 day') !== false or strpos($rental->ticket_list, '13 day') !== false or strpos($rental->ticket_list, '14 day') !== false)
-                                    <div class="row mt-3">
-                                        <div class="col-sm-10 offset-sm-1 mt-4">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="trailer_fee"><h4>Add <span>Trailer?</span></h4></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <input type="checkbox" class="radio" name="trailer_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
-                                                        <option value="blank" default>Payment Type</option>
-                                                        <option value="Visa">Visa</option>
-                                                        <option value="MasterCard">MasterCard</option>
-                                                        <option value="Cash">Cash</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        @endif
-
-                            @if($rental->activity_item == 'SeaDoo')
-                                @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '2 day') !== false or strpos($rental->ticket_list, '3 day') !== false or strpos($rental->ticket_list, '4 day') !== false or strpos($rental->ticket_list, '5 day') !== false or strpos($rental->ticket_list, '6 day') !== false or strpos($rental->ticket_list, '7 day') !== false or strpos($rental->ticket_list, '8 day') !== false or strpos($rental->ticket_list, '9 day') !== false or strpos($rental->ticket_list, '10 day') !== false or strpos($rental->ticket_list, '11 day') !== false or strpos($rental->ticket_list, '12 day') !== false or strpos($rental->ticket_list, '13 day') !== false or strpos($rental->ticket_list, '14 day') !== false)
-                                    <div class="row mt-3">
-                                        <div class="col-sm-10 offset-sm-1 mt-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <label for="trailer_fee"><h4>Add <span>Trailer?</span></h4></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <input type="checkbox" class="radio" name="trailer_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
-                                                            <option value="blank" default>Payment Type</option>
-                                                            <option value="Visa">Visa</option>
-                                                            <option value="MasterCard">MasterCard</option>
-                                                            <option value="Cash">Cash</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-
-                                @endif
-                            @endif
-
-                            @if($rental->activity_item == '14ft. Aluminum Boat')
-                                @if(strpos($rental->ticket_list, 'Full Day') !== false or strpos($rental->ticket_list, '2 day') !== false or strpos($rental->ticket_list, '3 day') !== false or strpos($rental->ticket_list, '4 day') !== false or strpos($rental->ticket_list, '5 day') !== false or strpos($rental->ticket_list, '6 day') !== false or strpos($rental->ticket_list, '7 day') !== false or strpos($rental->ticket_list, '8 day') !== false or strpos($rental->ticket_list, '9 day') !== false or strpos($rental->ticket_list, '10 day') !== false or strpos($rental->ticket_list, '11 day') !== false or strpos($rental->ticket_list, '12 day') !== false or strpos($rental->ticket_list, '13 day') !== false or strpos($rental->ticket_list, '14 day') !== false)
-                                    <div class="row mt-3">
-                                        <div class="col-sm-10 offset-sm-1 mt-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <label for="trailer_fee"><h4>Add <span>Trailer?</span></h4></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <input type="checkbox" class="radio" name="trailer_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="form-group">
-                                                        <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
-                                                            <option value="blank" default>Payment Type</option>
-                                                            <option value="Visa">Visa</option>
-                                                            <option value="MasterCard">MasterCard</option>
-                                                            <option value="Cash">Cash</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-
-                                @endif
-                            @endif
-
-                            @if($rental->activity_item == 'Renegade BC 600ETec' or $rental->activity_item == 'Summit 154 SP')
-                                <div class="row mt-3">
-                                    <div class="col-sm-10 offset-sm-1 mt-4">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <label for="trailer_fee"><h4>Add <span>Trailer?</span></h4></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <input type="checkbox" class="radio" name="trailer_fee" value="50"> &nbsp; <span class="text-white">Yes</span> <span class="ml-4"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="form-group">
-                                                    <select id="toy_fee_type" name="toy_fee_type" style="width: 100%;">
-                                                        <option value="blank" default>Payment Type</option>
-                                                        <option value="Visa">Visa</option>
-                                                        <option value="MasterCard">MasterCard</option>
-                                                        <option value="Cash">Cash</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
-
-                            <!-- /Options -->
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary btn-left" type="button" data-toggle="modal" data-dismiss="modal">CANCEL</button>
-                            <a href="#" class="btn btn-info" type="button" data-toggle="modal" data-dismiss="modal" data-target="#checkin-2{{$rental->id}}">Back</a>
-
-                            <input type="hidden" value="Checked In" name="status">
-                            @if(Auth::check())
-                                <input type="hidden" value="{{auth()->user()->id}}" name="check_in_by">
-                            @endif
-                            <input type="hidden" value="{{$dateNow}}" name="check_in_time">
-
-                            <button class="btn btn-primary-red btn-modal" type="submit">CHECK IN</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /Check In - Step 4 - Additional  -->
 
         </form>
 
