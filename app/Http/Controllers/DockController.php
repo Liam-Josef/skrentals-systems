@@ -83,6 +83,7 @@ class DockController extends Controller
             'vehicleScarab' => Vehicle::where('vehicle_type','=', 'Scarab')->where('location', '!=', 'Service')->get(),
             'vehiclePontoon' => Vehicle::where('vehicle_type','=', 'Pontoon')->where('location', '!=', 'Service')->get(),
             'vehicleSeaDoo' => Vehicle::where('vehicle_type','=', 'SeaDoo')->where('location', '!=', 'Service')->get(),
+            'vehicleSkiDoo' => Vehicle::where('vehicle_type','=', 'SkiDoo')->where('location', '!=', 'Service')->get(),
             'dateNow' => $dateNow,
             'today' => $today,
         ]);
