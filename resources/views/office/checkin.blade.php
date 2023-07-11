@@ -1318,6 +1318,8 @@
                                                             @endif
                                                             @if(strpos($rental->ticket_list, '10x') !== false)
                                                                 $10000
+                                                                @else
+                                                                Doesn't work
                                                             @endif
                                                         @endif
                                                         @if(strpos($rental->activity_item, 'Summit'))
