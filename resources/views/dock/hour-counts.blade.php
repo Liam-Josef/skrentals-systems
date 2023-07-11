@@ -97,6 +97,12 @@
                                    SeaDoo
                                </a>
                            </li>
+                           <li class="nav-item mb-0">
+                               <a class="nav-link" id="view-skidoo-tab" data-toggle="tab" href="#skidoo-tab" role="tab" aria-controls="skidoo-tab"
+                                  aria-selected="true">
+                                   SkiDoo
+                               </a>
+                           </li>
                        </ul>
                    </div>
                    <div class="card-body">
@@ -117,7 +123,8 @@
                                                 </div>
                                                @else
                                                <div class="col-6 col-sm-1">
-                                                   <input type="number" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                   <input type="number" class="form-control visible-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                   <input type="text" class="form-control hidden-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
                                                    <input type="hidden" class="form-control" name="hours_updated" value="{{$dateNow}}" />
                                                    <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
                                                </div>
@@ -152,7 +159,8 @@
                                            </div>
                                        @else
                                            <div class="col-6 col-sm-1">
-                                               <input type="number" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                               <input type="number" class="form-control visible-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                               <input type="text" class="form-control hidden-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
                                                <input type="hidden" class="form-control" name="hours_updated" value="{{Carbon\Carbon::now('PST')}}" />
                                                <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
                                            </div>
@@ -186,7 +194,8 @@
                                            </div>
                                        @else
                                            <div class="col-6 col-sm-1">
-                                               <input type="number" class="form-control" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                               <input type="number" class="form-control visible-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                               <input type="text" class="form-control hidden-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
                                                <input type="hidden" class="form-control" name="hours_updated" value="{{Carbon\Carbon::now('PST')}}" />
                                                <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
                                            </div>
@@ -203,6 +212,41 @@
                                        <hr class="rounded mt-3" />
                                    </div>
                                </form>
+                               @endforeach
+                           </div>
+                           <div class="tab-pane fade show" id="skidoo-tab" role="tabpanel" aria-labelledby="skidoo-tab">
+                               @foreach($vehicleSkiDoo as $vehicle)
+                                   <form method="post" action="{{route('vehicle.updateHours', $vehicle)}}">
+                                       @csrf
+                                       @method('PUT')
+                                       <div class="row">
+                                           <div class="col-sm-1"></div>
+                                           <div class="col-sm-5"><h3 class="text-white text-center mt-1">{{$vehicle->model}} {{$vehicle->internal_vehicle_id}}</h3></div>
+                                           <span class="hidden">{{$updatedDate = \Carbon\Carbon::now()->addDay()}}</span>
+                                           @if(strpos($vehicle->hours_updated, $today) !== false)
+                                               <div class="col-sm-3">
+                                                   <h3 class="mt-1">  {{$vehicle->current_hours}}</h3>
+                                               </div>
+                                           @else
+                                               <div class="col-6 col-sm-1">
+                                                   <input type="number" class="form-control visible-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                   <input type="text" class="form-control hidden-sm" name="current_hours" value="{{$vehicle->current_hours}}" />
+                                                   <input type="hidden" class="form-control" name="hours_updated" value="{{Carbon\Carbon::now('PST')}}" />
+                                                   <input type="hidden" class="form-control" name="id" value="{{$vehicle->id}}" />
+                                               </div>
+                                               <div class="col-6 col-sm-2">
+                                                   <button type="submit" class="btn btn-primary-red">Update</button>
+                                               </div>
+                                           @endif
+
+                                           <div class="col-sm-2">
+                                               @if($vehicle->launched == '1')
+                                                   <h4 class="mt-2">( On Rental )</h4>
+                                               @endif
+                                           </div>
+                                           <hr class="rounded mt-3" />
+                                       </div>
+                                   </form>
                                @endforeach
                            </div>
                        </div>
