@@ -725,6 +725,14 @@ pre code {
         display: none !important;
     }
 }
+.visible-sm {
+    display:block;
+}
+@media screen and (min-width: 1000px) {
+    .visible-sm {
+        display: none !important;
+    }
+}
 .hidden-xs {
     display:none;
 }
