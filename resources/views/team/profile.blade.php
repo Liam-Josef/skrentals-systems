@@ -95,7 +95,7 @@
                 <h3>Update Information</h3>
             </div>
             <div class="card-body">
-                <form action="{{route('team.updateUser', $user->id)}}" method="post">
+                <form action="{{route('team.updateUser', $user->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -135,7 +135,21 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit">Update Info</button>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="format-div">
+                                    <div class="mb-4">
+                                        <img class="img-profile" src="{{$user->avatar}}" width="60%" height="auto">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="file" name="avatar" class="form-control-file" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <button class="btn btn-primary btn-right" type="submit">Update Info</button>
+                        </div>
                     </div>
 
 
