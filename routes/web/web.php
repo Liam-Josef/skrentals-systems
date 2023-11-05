@@ -22,7 +22,7 @@ Auth::routes();
 Route::group(['middleware' => 'guest'], function(){
 
 });
-Route::get('/zap-this-shiznit-beotch', [App\Http\Controllers\HomeController::class, 'zap'])->name('home.zap');
+Route::post('/receive-peekpro-reservation', [App\Http\Controllers\PeekProController::class, 'receiveReservation'])->name('receiveReservation');
 
 
 Route::get('/', [App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
