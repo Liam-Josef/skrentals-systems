@@ -1,92 +1,50 @@
 <?php
 
-namespace App\Http\Controllers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use App\Models\Application;
-use App\Models\Post;
-use App\Models\Website;
-use Illuminate\Http\Request;
-
-class ApplicationController extends Controller
+return new class extends Migration
 {
     /**
-     * Display a listing of the resource.
+     * Run the migrations.
      *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
+     * @return void
      */
-    public function index() {
-        $posts = Post::latest()->get();
-
-        return view('admin.dev.update', [
-            'applications' => Website::where('id', '=', '1')->get(),
-            'websites' => Website::where('id', '=', '1')->get(),
-            'posts' => $posts
-        ]);
+    public function up()
+    {
+        Schema::create('maintenances', function (Blueprint $table) {
+            $table->id();
+            $table->boolean('is_active')->nullable();
+            $table->string('vehicle_id');
+            $table->string('vehicle_type');
+            $table->string('internal_vehicle_id');
+            $table->string('rental_invoice')->nullable();
+            $table->string('status');
+            $table->text('description')->nullable();
+            $table->string('service_type')->nullable();
+            $table->string('invoice')->nullable();
+            $table->string('image')->nullable();
+            $table->string('service_invoice')->nullable();
+            $table->string('date_submitted')->nullable();
+            $table->string('submitted_by')->nullable();
+            $table->string('date_invoiced')->nullable();
+            $table->string('invoiced_by')->nullable();
+            $table->string('date_approved')->nullable();
+            $table->string('approved_by')->nullable();
+            $table->string('date_completed')->nullable();
+            $table->string('completed_by')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Reverse the migrations.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function create()
+    public function down()
     {
-        //
+        Schema::dropIfExists('maintenances');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-}
+};
