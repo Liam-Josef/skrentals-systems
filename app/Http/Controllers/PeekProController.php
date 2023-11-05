@@ -19,10 +19,9 @@ class PeekProController extends Controller
 
         // Sample code to save the reservation data to a database
         // Replace 'Reservation' with your actual model name
-        dd($reservationData);
-//        $reservation = new Rental();
-//        $reservation->fill($reservationData);
-//        $reservation->save();
+        $reservation = new Rental();
+        $reservation->fill($reservationData);
+        $reservation->save();
 
         return response('Reservation data received and processed.', 200);
     }
