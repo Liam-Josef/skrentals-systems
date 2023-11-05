@@ -36,103 +36,115 @@
     </script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    @yield('analytic_tag')
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V2HB7CGVTH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-V2HB7CGVTH');
+    </script>
 
 </head>
 
 <body id="page-top" style="padding-top: 0px;">
-<!-- Page Wrapper -->
-<div id="wrapper">
+@if(auth()->user(['role:admin']))
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion wow animated animated-fade-in"  style="animation-delay: 2s;
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion wow animated animated-fade-in"  style="animation-delay: 2s;
     animation-name: fadeIn; " id="accordionSidebar">
 
-        <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-3" href="{{route('team.index')}}">
-            <div class="sidebar-brand-icon">
-                <img src="@yield('logo_horizontal_2')" alt="SK Logo" class="img-responsive" />
-            </div>
-        </a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-3" href="{{route('home.index')}}">
+                <div class="sidebar-brand-icon">
+                    <img src="@yield('logo_horizontal_2')" alt="RentalGuru Admin Logo" class="img-responsive" />
+                </div>
+            </a>
 
-        <div class="sidebar-container-scroll">
-            <hr class="sidebar-divider my-0 mt-2 hidden-xs">
+            <div class="sidebar-container-scroll">
+                <hr class="sidebar-divider my-0 mt-2 hidden-xs">
 
-            <x-admin.sidebar.dashboard></x-admin.sidebar.dashboard>
+                <x-admin.sidebar.dashboard></x-admin.sidebar.dashboard>
 
-            <hr class="sidebar-divider hidden-xs">
+                <hr class="sidebar-divider hidden-xs">
 
-            <x-admin.sidebar.operations></x-admin.sidebar.operations>
+                <x-admin.sidebar.operations></x-admin.sidebar.operations>
 
-            <hr class="sidebar-divider hidden-xs">
+                <hr class="sidebar-divider hidden-xs">
 
-            <x-admin.sidebar.vehicles></x-admin.sidebar.vehicles>
+                <x-admin.sidebar.employees></x-admin.sidebar.employees>
 
-            <hr class="sidebar-divider hidden-xs">
+                <hr class="sidebar-divider hidden-xs">
 
-            <x-admin.sidebar.employees></x-admin.sidebar.employees>
+                <x-admin.sidebar.vehicles></x-admin.sidebar.vehicles>
 
-            <x-admin.sidebar.website></x-admin.sidebar.website>
+                <hr class="sidebar-divider hidden-xs">
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-{{--            @yield('analytic_links')--}}
+                <x-admin.sidebar.application></x-admin.sidebar.application>
 
-        </div>
 
-         <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
-    </ul>
-
-    <x-admin.modals.create-post></x-admin.modals.create-post>
-    <x-admin.modals.add-vehicle></x-admin.modals.add-vehicle>
-    <x-admin.modals.add-customer></x-admin.modals.add-customer>
-    <x-admin.modals.add-employee></x-admin.modals.add-employee>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-        <!-- Main Content -->
-        <div id="content">
-
-            <!-- Topbar -->
-            <x-admin.header.admin-header></x-admin.header.admin-header>
-            <!-- End of Topbar -->
-
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-
-                <!-- Page Heading -->
-                @yield('content')
+                <!-- Nav Item - Utilities Collapse Menu -->
+                @yield('analytic_links')
 
             </div>
-            <!-- /.container-fluid -->
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+
+        <x-admin.modals.create-post></x-admin.modals.create-post>
+        <x-admin.modals.add-vehicle></x-admin.modals.add-vehicle>
+        <x-admin.modals.add-customer></x-admin.modals.add-customer>
+        <x-admin.modals.add-employee></x-admin.modals.add-employee>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <x-admin.header.admin-header></x-admin.header.admin-header>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    @yield('content')
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <x-admin.footer.admin-footer></x-admin.footer.admin-footer>
+            <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <x-admin.footer.admin-footer></x-admin.footer.admin-footer>
-        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Content Wrapper -->
+    <!-- End of Page Wrapper -->
 
-</div>
-<!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<x-modal.logout></x-modal.logout>
+    <!-- Logout Modal-->
+    <x-modal.logout></x-modal.logout>
+@endif
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
