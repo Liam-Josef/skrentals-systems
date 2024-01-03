@@ -1034,12 +1034,12 @@
                                     @endforeach
                                     <span>
                                         @if($maintenance->is_active == '0' && $maintenance->status == 'Created')
-                                            {{$maintenance->service_type}} <span class="font-weight-lighter">| {{$maintenance->status}}</span>
+                                           <span class="text-red"> {{$maintenance->service_type}}</span> <span class="font-weight-lighter">| {{$maintenance->status}}</span>
 
                                             @elseif($maintenance->is_active == '1' && $maintenance->status == 'Invoice Submitted')
-                                            {{$maintenance->service_type}} <span>| Review Invoice</span>
+                                            <span class="text-gray-400"> {{$maintenance->service_type}} |</span>  <span> Review Invoice</span>
                                             @else
-                                            {{$maintenance->service_type}} <span>| {{$maintenance->status}}</span>
+                                            <span class="text-gray-400"> {{$maintenance->service_type}} |</span>  <span> {{$maintenance->status}}</span>
                                         @endif
                                     </span>
                                 </h3>

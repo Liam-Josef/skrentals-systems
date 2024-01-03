@@ -157,7 +157,7 @@
                     </li>
                 @endif
 
-                @if($rentalTypeSkiDoo)
+                @if($rentalTypeRenegade or $rentalTypeSummit)
                     <li class="nav-item">
                         <a class="nav-link" id="view-skidoo-tab" data-toggle="tab" href="#skidoo-tab" role="tab" aria-controls="skidoo-tab"
                            aria-selected="true">

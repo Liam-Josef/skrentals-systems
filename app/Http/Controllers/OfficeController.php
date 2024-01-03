@@ -29,9 +29,9 @@ class OfficeController extends Controller
         $vehicles = Vehicle::all();
         $today = Carbon::now('PST')->toDateString();
         $rentalDepart = Rental::where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
-        $rentalDepartScarab = Rental::where('activity_item', '=', 'Scarab 215')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
-        $rentalDepartPontoon = Rental::where('activity_item', '=', '23ft. Pontoon Boat')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
-        $rentalDepartSeaDoo = Rental::where('activity_item', '=', 'SeaDoo')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
+        $rentalDepartScarab = Rental::where('activity_item', 'like', '%Scarab%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
+        $rentalDepartPontoon = Rental::where('activity_item', 'like', '%Pontoon%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
+        $rentalDepartSeaDoo = Rental::where('activity_item', 'like', '%SeaDoo%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
         $rentalDepartSup = Rental::where('activity_item', '=', 'Stand Up Paddleboard')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
         $rentalDepartKayak = Rental::where('activity_item', 'like', '%Kayak%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
         $rentalDepartSpyder = Rental::where('activity_item', '=', 'Spyder RT-S SE6')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get();
@@ -50,14 +50,16 @@ class OfficeController extends Controller
         $rentalReturnSegway = Rental::where('activity_item', '=', 'Segway i2')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
         $rentalReturnSkiDoo = Rental::where('activity_item', '=', ['Renegade BC 600ETec', 'Summit 154 SP'])->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
         $rentalReturnAluminum = Rental::where('activity_item', '=', '14ft. Aluminum Boat')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
-        $rentalTypeScarab = Rental::where('activity_item', '=', 'Scarab 215')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $rentalTypePontoon = Rental::where('activity_item', '=', '23ft. Pontoon Boat')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $rentalTypeSeaDoo = Rental::where('activity_item', '=', 'SeaDoo')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $rentalTypeScarab = Rental::where('activity_item', 'like', '%Scarab%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $rentalTypePontoon = Rental::where('activity_item', 'like', '%Pontoon%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $rentalTypeSeaDoo = Rental::where('activity_item', 'like', '%SeaDoo%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $rentalTypeSup = Rental::where('activity_item', '=', 'Stand Up Paddleboard')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $rentalTypeKayak = Rental::where('activity_item', 'like', '%Kayak%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $rentalTypeSpyder = Rental::where('activity_item', '=', 'Spyder RT-S SE6')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $rentalTypeSegway = Rental::where('activity_item', '=', 'Segway i2')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $rentalTypeSkiDoo = Rental::where('activity_item', '=', 'Renegade BC 600ETec' or 'Summit 154 SP')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $rentalTypeRenegade = Rental::where('activity_item', '=', 'Renegade BC 600ETec')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $rentalTypeSummit = Rental::where('activity_item', '=', 'Summit 154 SP')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
         $rentalTypeAluminum = Rental::where('activity_item', '=', '14ft. Aluminum Boat')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
 
 
@@ -100,6 +102,8 @@ class OfficeController extends Controller
             'rentalTypeSpyder' => $rentalTypeSpyder,
             'rentalTypeSegway' => $rentalTypeSegway,
             'rentalTypeSkiDoo' => $rentalTypeSkiDoo,
+            'rentalTypeRenegade' => $rentalTypeRenegade,
+            'rentalTypeSummit' => $rentalTypeSummit,
             'rentalTypeAluminum' => $rentalTypeAluminum
         ]);
 
@@ -219,32 +223,34 @@ class OfficeController extends Controller
             'rentalPreCheckShow' => $rentalPreCheckShow,
             'rentalPreCheckShowCount' => $rentalPreCheckShowCount,
             'today' => $today,
-            'rentalScarab' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Scarab 215')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeScarab' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Scarab 215')->where('status', '=', '')->get()->count(),
+            'rentalScarab' => Rental::where('activity_item', 'like', '%Scarab%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeScarab' => Rental::where('activity_item', 'like', '%Scarab%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
-            'rentalPontoon' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', '23ft. Pontoon Boat')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypePontoon' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', '23ft. Pontoon Boat')->where('status', '=', '')->get()->count(),
+            'rentalPontoon' => Rental::where('activity_item', 'like', '%Pontoon%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get(),
+            'rentalTypePontoon' => Rental::where('activity_item', 'like', '%Pontoon%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
-            'rentalSeaDoo' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'SeaDoo')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeSeaDoo' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'SeaDoo')->where('status', '=', '')->get()->count(),
+            'rentalSeaDoo' => Rental::where('activity_item', 'like', '%SeaDoo%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeSeaDoo' => Rental::where('activity_item', 'like', '%SeaDoo%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
             'rentalSup' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Stand Up Paddleboard')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
             'rentalTypeSup' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Stand Up Paddleboard')->where('status', '=', '')->get()->count(),
 
-            'rentalKayak' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', 'like', '%Kayak%')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeKayak' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', 'like', '%Kayak%')->where('status', '=', '')->get()->count(),
+            'rentalKayak' => Rental::where('activity_item', 'like', '%Kayak%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeKayak' => Rental::where('activity_item', 'like', '%Kayak%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
-            'rentalSpyder' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Spyder RT-S SE6')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeSpyder' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Spyder RT-S SE6')->where('status', '=', '')->get()->count(),
+            'rentalSpyder' => Rental::where('activity_item', 'like', '%Spyder%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeSpyder' => Rental::where('activity_item', 'like', '%Spyder%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
-            'rentalSegway' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Segway i2')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeSegway' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Segway i2')->where('status', '=', '')->get()->count(),
+            'rentalSegway' => Rental::where('activity_item', 'like', '%Segway%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeSegway' => Rental::where('activity_item', 'like', '%Segway%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
-            'rentalSkiDoo' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', ['Renegade BC 600ETec', 'Summit 154 SP'])->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeSkiDoo' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', ['Renegade BC 600ETec', 'Summit 154 SP'])->where('status', '=', '')->get()->count(),
+            'rentalSkiDoo' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Renegade BC 600ETec' or 'Summit 154 SP')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeSkiDoo' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', 'Renegade BC 600ETec' or 'Summit 154 SP')->where('status', '=', '')->get()->count(),
+            'rentalTypeRenegade' => Rental::where('activity_item', '=', 'Renegade BC 600ETec')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
+            'rentalTypeSummit' => Rental::where('activity_item', '=', 'Summit 154 SP')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
-            'rentalAluminum' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', '14ft. Aluminum Boat')->where('status', '=', '')->orderBy('activity_date', 'asc')->get(),
-            'rentalTypeAluminum' => Rental::where('activity_date', 'like', '%'.$today.'%')->where('activity_item', '=', '14ft. Aluminum Boat')->where('status', '=', '')->get()->count(),
+            'rentalAluminum' => Rental::where('activity_item', 'like', '%Aluminum%')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->orderBy('activity_date', 'asc')->get(),
+            'rentalTypeAluminum' => Rental::where('activity_item', 'like', '%Aluminum%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count(),
 
         ]);
 

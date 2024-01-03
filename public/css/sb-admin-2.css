@@ -725,6 +725,14 @@ pre code {
         display: none !important;
     }
 }
+.visible-sm {
+    display:block;
+}
+@media screen and (min-width: 1000px) {
+    .visible-sm {
+        display: none !important;
+    }
+}
 .hidden-xs {
     display:none;
 }
@@ -6627,6 +6635,7 @@ h4.modal-section-title {
 hr.rounded {
     border-top: 1px solid #2b2b2b;
     border-radius: 5px;
+    max-width: 97.5%;
 }
 .modal-footer > :not(:first-child) {
     margin-left: .25rem;
@@ -12722,7 +12731,7 @@ footer img.img-square {
 }
 @media (pointer: coarse) {
     body {
-        overflow: hidden; /* Needed to prevent the vertical scroll on touch devices */
+        overflow: auto; /* Needed to prevent the vertical scroll on touch devices */
     }
 }
 .kbw-signature { width: 100%; height: 200px;}
