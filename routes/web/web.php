@@ -18,6 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+//Route::get('/book-now', [App\Http\Controllers\HomeController::class, 'book_now'])->name('home.book_now');
+//Route::get('/our-fleet', [App\Http\Controllers\HomeController::class, 'our_rentals'])->name('home.our_rentals');
+Route::get('/operation-info', [App\Http\Controllers\HomeController::class, 'about_us'])->name('home.about_us');
+Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact'])->name('home.contact');
+
+
+
+
 Auth::routes();
 Route::group(['middleware' => 'guest'], function(){
 
@@ -25,14 +34,10 @@ Route::group(['middleware' => 'guest'], function(){
 Route::post('/receive-peekpro-reservation', [App\Http\Controllers\PeekProController::class, 'receiveReservation'])->name('receiveReservation');
 
 
-Route::get('/', [App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.index');
+Route::get('/team', [App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
 Route::post('signature_pad', [SignaturePadController::class, 'store'])->name('signature_pad.store');
 
-Route::get('/book-now', [App\Http\Controllers\HomeController::class, 'book_now'])->name('home.book_now');
-    Route::get('/our-fleet', [App\Http\Controllers\HomeController::class, 'our_rentals'])->name('home.our_rentals');
-    Route::get('/about-us', [App\Http\Controllers\HomeController::class, 'about_us'])->name('home.about_us');
-    Route::get('/contact-us', [App\Http\Controllers\HomeController::class, 'contact'])->name('home.contact');
+
 
 
 

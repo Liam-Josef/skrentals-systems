@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function __construct()
     {
         // DELETE TO MAKE HOME PAGE - LOGIN REQUIRED
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
