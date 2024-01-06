@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DurationController;
 use App\Http\Controllers\RentalController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,10 @@ Route::middleware(['role:admin'])->group(function() {
     Route::put('admin/rentals/{rental}/rental-coc-update', [RentalController::class, 'rentalCocUpdate'])->name('rental.rentalCocUpdate');
     Route::get('admin/rentals/rentals-today', [RentalController::class, 'rentalToday'])->name('rental.today');
     Route::get('admin/rentals/rental-history', [RentalController::class, 'rentalHistory'])->name('rental.history');
+    Route::get('admin/rentals/rental-settings', [RentalController::class, 'rentalSettings'])->name('rental.settings');
+    Route::put('team/rental-type/store', [TypeController::class, 'store'])->name('type.store');
+    Route::put('team/rental-duration/store', [DurationController::class, 'store'])->name('duration.store');
+    Route::put('team/duration-price/store', [PriceController::class, 'store'])->name('price.store');
 
 
 ////    // AJAX Rental Modal (office.index)

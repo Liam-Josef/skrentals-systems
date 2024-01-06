@@ -15,6 +15,7 @@
             <a class="inactive collapse-item {{ Request::is('admin/rentals/index*') ? 'active' : '' }}" href="{{route('rental.index')}}">Rentals Main</a>
             <a class="collapse-item {{ Request::is('admin/rentals/rentals-today*') ? 'active' : '' }}" href="{{route('rental.today')}}">Rentals Today</a>
             <a class="collapse-item {{ Request::is('admin/rentals/rental-history*') ? 'active' : '' }}" href="{{route('rental.history')}}">Rental History</a>
+            <a class="collapse-item {{ Request::is('admin/rentals/rental-settings*') ? 'active' : '' }}" href="{{route('rental.settings')}}">Rental Settings</a>
         </div>
     </div>
 </li>

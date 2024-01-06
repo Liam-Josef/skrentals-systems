@@ -25,34 +25,34 @@
 
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item smaller {{ Request::is('team/index*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{route('team.index')}}">Home</a>
+                    <li class="nav-item smaller {{ Request::is('home/index*') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{route('home.index')}}">Home</a>
                     </li>
                     <li class="nav-item smaller dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="rentalsDropdown" href="#">Rentals</a>
                         <!-- Dropdown - Rental Menu -->
-                        <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="rentalsDropdown">
-                            <a class="dropdown-item" href="#">
+                        <div class="dropdown-menu dropdown-menu-left shadow animated-grow-in" aria-labelledby="rentalsDropdown">
+                            <a href="{{route('home.seadoo')}}" class="dropdown-item {{ Request::is('/rentals/sea-doo-rentals*') ? 'active' : '' }}">
 {{--                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>--}}
                                 SeaDoo Rentals
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.boat')}}" class="dropdown-item {{ Request::is('/rentals/boat-rentals*') ? 'active' : '' }}">
 {{--                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>--}}
                                 Boat Rentals
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.segway')}}" class="dropdown-item {{ Request::is('/rentals/sea-doo-rentals*') ? 'active' : '' }}">
 {{--                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>--}}
                                 Segway Rentals
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.spyder')}}" class="dropdown-item {{ Request::is('/rentals/spyder-rentals*') ? 'active' : '' }}">
 {{--                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>--}}
                                 Spyder Rentals
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.snowmobile')}}" class="dropdown-item {{ Request::is('/rentals/snowmobile-rentals*') ? 'active' : '' }}">
 {{--                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>--}}
                                 Snowmobile Rentals
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.kayak')}}" class="dropdown-item {{ Request::is('/rentals/kayak-paddleboard-rentals*') ? 'active' : '' }}">
 {{--                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>--}}
                                 Kayak & Paddleboard Rentals
                             </a>
@@ -62,10 +62,10 @@
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="operationsDropdown" href="#">Operation Info</a>
                         <!-- Dropdown - Rental Menu -->
                         <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="operationsDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.about_us')}}" class="dropdown-item {{ Request::is('/operation-info/about-us*') ? 'active' : '' }}">
                                 About Us
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.maps')}}" class="dropdown-item {{ Request::is('/operation-info/map-hours*') ? 'active' : '' }}">
                                 SK Rentals Maps & Hours
                             </a>
                         </div>
@@ -74,16 +74,16 @@
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="customersDropdown" href="#">Customer Corner</a>
                         <!-- Dropdown - Rental Menu -->
                         <div class="dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="customersDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.gallery')}}" class="dropdown-item {{ Request::is('/customer-corner/photo-gallery*') ? 'active' : '' }}">
                                 Photo Gallery
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.survey')}}" class="dropdown-item {{ Request::is('/customer-corner/customer-survey*') ? 'active' : '' }}">
                                 Customer Survey
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.testimonials')}}" class="dropdown-item {{ Request::is('/customer-corner/testimonials*') ? 'active' : '' }}">
                                 Testimonials
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a href="{{route('home.know')}}" class="dropdown-item {{ Request::is('/customer-corner/know-before-you-go*') ? 'active' : '' }}">
                                 Know Before You Go
                             </a>
                         </div>

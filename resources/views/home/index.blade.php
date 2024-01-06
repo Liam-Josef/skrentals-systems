@@ -1,4 +1,4 @@
-<x-home-nh-master>
+<x-home-master>
 
     @section('styles')
         <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
@@ -12,7 +12,11 @@
 {{--        @endsection--}}
 
         @section('browser_title')
-            <title> {{$application->name}} </title>
+            {{$application->name}}
+        @endsection
+
+        @section('meta_description')
+
         @endsection
 
         @section('navbar_rental_type')
@@ -64,22 +68,22 @@
             <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{asset('/storage/app-images/people-riding-seadoo.jpg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('/storage/app-images/people-riding-seadoo.jpg')}}" class="d-block w-100" alt="People riding on a SeaDoo">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('/storage/app-images/people-on-pontoon.jpg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('/storage/app-images/people-on-pontoon.jpg')}}" class="d-block w-100" alt="People riding on a Pontoon Boat">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('/storage/app-images/scarab-on-water.jpg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('/storage/app-images/scarab-on-water.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('/storage/app-images/snowmobile.jpg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('/storage/app-images/snowmobile.jpg')}}" class="d-block w-100" alt="A man riding on a snowmobile">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('/storage/app-images/women-on-kayaks.jpg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('/storage/app-images/women-on-kayaks.jpg')}}" class="d-block w-100" alt="2 women sitting on kayaks">
                     </div>
                     <div class="carousel-item">
-                        <img src="{{asset('/storage/app-images/spyders-driving-on-road.jpg')}}" class="d-block w-100" alt="...">
+                        <img src="{{asset('/storage/app-images/spyders-driving-on-road.jpg')}}" class="d-block w-100" alt="3 Spyder motorcycles driving down the road">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-target="#carouselIndicators" data-slide="prev">
@@ -119,27 +123,23 @@
                     background-image: url("{{asset('/storage/app-images/sled.jpg')}}");
                 }
                 .main-body {
-                    background-color: #000000;
                     background-image: url("{{asset('/storage/app-images/home-background.jpg')}}");
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    background-position: fixed;
                 }
             </style>
         <div class="main-body">
-            <div class="container">
+            <div class="container main home">
                 <div class="cont-top">
                     <div class="row">
                         <div class="col-12">
                             <h3>
                                 <i class="fa fa-map-marker"></i>
-                                250 SE Division Pl</h3>
+                                250 SE Division Place</h3>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 img">
-                        <a class="img-back img-1" href="#">
+                        <a class="img-back img-1" href="{{route('home.seadoo')}}">
                             <div class="overlay"></div>
                             <span class="img-text">
                                 Sea-Doo
@@ -151,7 +151,7 @@
                         </a>
                     </div>
                     <div class="col-6 img">
-                        <a class="img-back img-2" href="#">
+                        <a class="img-back img-2" href="{{route('home.boat')}}">
                             <div class="overlay"></div>
                             <span class="img-text">
                                 Jet Boat
@@ -163,7 +163,7 @@
                         </a>
                     </div>
                     <div class="col-6 img">
-                        <a class="img-back img-3" href="#">
+                        <a class="img-back img-3" href="{{route('home.kayak')}}">
                             <div class="overlay"></div>
                             <span class="img-text">
                                 Kayak/Stand-up Paddleboard
@@ -175,7 +175,7 @@
                         </a>
                     </div>
                     <div class="col-6 img">
-                        <a class="img-back img-4" href="#">
+                        <a class="img-back img-4" href="{{route('home.boat')}}">
                             <div class="overlay"></div>
                             <span class="img-text">
                                 Pontoon Boat
@@ -187,7 +187,7 @@
                         </a>
                     </div>
                     <div class="col-6 img">
-                        <a class="img-back img-5" href="#">
+                        <a class="img-back img-5" href="{{route('home.spyder')}}">
                             <div class="overlay"></div>
                             <span class="img-text">
                                 2 Wheel On-Road
@@ -199,7 +199,7 @@
                         </a>
                     </div>
                     <div class="col-6 img">
-                        <a class="img-back img-6" href="#">
+                        <a class="img-back img-6" href="{{route('home.snowmobile')}}">
                             <div class="overlay"></div>
                             <span class="img-text">
                                 Snowmobile
@@ -211,7 +211,7 @@
                         </a>
                     </div>
                     <div class="col-12 img">
-                        <a class="img-back map" href="#">
+                        <a class="img-back map" href="{{route('home.maps')}}">
                             <div class="overlay"></div>
                             <span class="img-text">
                                 Map &
@@ -268,7 +268,7 @@
                     </div>
                     <div class="col-sm-6">
 
-                        <a href="#" class="btn btn-large btn-primary width-100 mt-5">
+                        <a href="{{route('home.snowmobile')}}" class="btn btn-large btn-primary width-100 mt-5">
                             <h1>Book Now</h1>
                         </a>
                         <a href="#" class="btn btn-large btn-primary width-100 mt-5">
@@ -293,4 +293,4 @@
         <script src="{{asset('js/demo/datatables-scripts.js')}}"></script>
     @endsection
 
-</x-home-nh-master>
+</x-home-master>

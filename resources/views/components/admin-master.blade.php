@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     @yield('browser_title')
+    <meta name="robots" content="noindex, nofollow">
 
     <link rel="icon" href="@yield('favicon')">
     <!-- Custom fonts for this template-->
