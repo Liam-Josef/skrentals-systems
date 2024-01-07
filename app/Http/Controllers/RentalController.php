@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Availabil;
 use App\Models\Coc;
 use App\Models\Customer;
+use App\Models\Duration;
 use App\Models\Maintenance;
+use App\Models\Price;
 use App\Models\Rental;
+use App\Models\Type;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\RentalHistory;
@@ -69,6 +73,25 @@ class RentalController extends Controller
            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals
+        ]);
+    }
+
+    public function rentalSettings() {
+        $rentals = Rental::all();
+        $types = Type::all();
+        $durations = Duration::all();
+        $prices = Price::all();
+        $availabil = Availabil::all();
+        $today = Carbon::now('PST')->toDateString();
+        return view('admin.rentals.rental-settings', [
+            'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'rentals' => $rentals,
+            'today' => $today,
+            'types' => $types,
+            'durations' => $durations,
+            'prices' => $prices,
+            'availabil' => $availabil,
         ]);
     }
 

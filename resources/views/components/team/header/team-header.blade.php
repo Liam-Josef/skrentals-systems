@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-secondary fixed-top team-header">
     <div class="container-fluid">
         <div class="team-header">
-            <a class="navbar-brand" href="{{route('team.index')}}">
-                <img src="@yield('logo-horizontal-2')" alt="SK Logo Light" />
+            <a class="navbar-brand" href="{{route('home.index')}}">
+                <img src="@yield('logo-square-1')" alt="SK Logo Light" />
             </a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,7 +73,7 @@
                 <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle nav-user-link pt-1" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 smaller">
+                            <span class="mr-2 d-none name-format text-gray-600 large">
                                 @if(Auth::check())
                                     {{auth()->user()->firstname}}
                                 @endif

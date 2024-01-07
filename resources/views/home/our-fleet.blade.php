@@ -4,11 +4,12 @@
         <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     @endsection
 
+    @section('browser_title')
+        Our Fleet | {{$application->name}}
+    @endsection
 
+    @section('meta_description')
 
-    @foreach($applications as $application)
-    @section('page_title')
-        <h1>Our Fleet</h1>
     @endsection
 
     @section('browser_title')

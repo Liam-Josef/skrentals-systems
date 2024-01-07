@@ -1,19 +1,17 @@
 <x-home-master>
 
     @section('styles')
-        <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
     @endsection
-
-
 
     @foreach($applications as $application)
-    @section('page_title')
-        <h1>Contact Us</h1>
-    @endsection
 
     @section('browser_title')
-        <title>Contact Us | {{$application->name}}
-        </title>
+        Contact Us | {{$application->name}}
+    @endsection
+
+    @section('meta_description')
+
     @endsection
 
     @section('navbar_rental_type')
@@ -56,72 +54,234 @@
             {{$application->operations_name}}
         @endif
     @endsection
-
     @endforeach
 
     @section('content')
-        @yield('page_title')
+        <style>
+            .main-body {
+                background-image: url("{{asset('/storage/app-images/home-background.jpg')}}");
+            }
+        </style>
 
+        <div class="main-body">
+            <div class="container main">
 
+                <!-- Title -->
+                <h1 class="page-title">Contact Us</h1>
+                <div class="breadcrumbs">
+                    <p>
+                        <a href="{{route('home.index')}}" class="link">Home </a>
+                        <i class="fa fa-chevron-right"></i>  Contact Us
+                    </p>
+                </div>
+                <!-- /Title -->
 
+                <!-- Contact Us -->
+                    <div class="row">
+                        <div class="col-sm-8">
 
-    @endsection
+                            <p>
+                                Contact SK Watercraft Rentals for more information about SeaDoo, Scarab JetBoats,
+                                Starcraft Pontoons, SkiDoo Snowmobiles, Segways, & more for rent in Portland,
+                                Oregon. Call <a href="tel:503-284-6447">503-284-6447</a> for more information.
+                            </p>
 
-    @section('sidebar-post')
-        <ul class="navbar-nav sidebar-post accordion my-4 shadow" id="accordionSidebar">
+                            <form action="#">
+                                @csrf
+                                @method('PUT')
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            @foreach($posts as $post)
-                <li class="nav-item bg-gradient-secondary">
-                    <a class="nav-link collapsed bg-gradient-secondary" href="#" data-toggle="collapse" data-target="#collapseAnnouncements{{$post->id}}" aria-expanded="true" aria-controls="collapseAnnouncements{{$post->id}}">
-                        <span>{{$post->title}}</span>
-                    </a>
-                    <div id="collapseAnnouncements{{$post->id}}" class="collapse" aria-labelledby="headingAnnouncements" data-parent="#accordionSidebar">
-                        <div class="bg-white pt-2 collapse-inner rounded">
-                            <div class="collapse-body">
-                                {{Str::limit($post->body, '200', '...')}}
+                                <div class="form-group">
+                                    <label for="name" class="hidden">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Full Name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone" class="hidden">Phone</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="hidden">Email</label>
+                                    <input type="text" class="form-control" id="email" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip" class="hidden">Zip Code</label>
+                                    <input type="text" class="form-control" id="zip" placeholder="Zip Code">
+                                </div>
+                                <div class="form-group">
+                                    <label for="comments" class="hidden">Zip Code</label>
+                                    <textarea name="comments" id="comments" cols="30" rows="5" placeholder="Comments"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="comments" class="hidden">Zip Code</label>
+                                    <input type="checkbox"> Subscribe to our Newsletter for special offers and promotions!
+                                </div>
 
-                                <img class="card-img-top mt-2" src="{{$post->post_image}}" alt="{{$post->title}}">
+                                <button class="btn btn-primary">Submie</button>
 
-                                <a href="{{route('post', $post->id)}}" class="btn btn-primary btn-100 mt-2">Read More</a>
+                            </form>
+                        </div>
+                        <div class="col-sm-4">
 
-                            </div>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.2580059083953!2d-122.66595542326291!3d45.50488463072251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5495a6741f42449f%3A0x8c31bef24cb809db!2sSK%20Watercraft%20Rentals!5e0!3m2!1sen!2sus!4v1704523560579!5m2!1sen!2sus"
+                                    width="100%" height="150" style="border:0; margin-bottom: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                            <div class="collapse-footer mt-2">
-                                <div class="row">
-                                    <div class="col-xs-7 col-sm-7 col-md-7">
-                                        <span>{{$post->created_at->diffForHumans()}}</span>
+                            <!-- Company Info -->
+                            <div class="card side-card">
+                                <div class="card-header">
+                                    <h3>Store Information</h3>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="gray b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Address:
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    250 SE Division Pl
+                                                    <br>
+                                                    Portland, OR 97202
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-5 col-xs-5 col-md-5">
-                                        <span class="text-primary">{{$post->user->firstname}} {{$post->user->lastname}}</span>
+                                    <div class="white b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Phone:
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    <a href="tel:503-284-6447">(503)284-6447</a>
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- /Company Info -->
+
+                            <!-- Store Hours -->
+                            <div class="card side-card mt-3">
+                                <div class="card-header">
+                                    <h3>Store Information</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="gray b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Mon
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    9:30 AM - 7:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="white b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Tue
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    9:30 AM - 7:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="gray b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Wed
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    9:30 AM - 7:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="white b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Thurs
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    9:30 AM - 7:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="gray b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Fri
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    9:30 AM - 7:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="white b-bottom">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Sat
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    9:30 AM - 7:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="gray">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>
+                                                    Sun
+                                                </p>
+                                            </div>
+                                            <div class="col-8">
+                                                <p>
+                                                    9:30 AM - 7:00 PM
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Store Hours -->
                         </div>
                     </div>
-                </li>
-            @endforeach
-
-        </ul>
-
-
-        <!-- Side Widget -->
-        <div class="card my-4 shadow">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-                You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                <!-- /Contact Us -->
             </div>
-        </div>
-
     @endsection
 
-    @section('scripts')
-    <!-- Page level plugins -->
-        <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="{{asset('js/demo/datatables-scripts.js')}}"></script>
+
+    @section('scripts')
+
     @endsection
 
 </x-home-master>
