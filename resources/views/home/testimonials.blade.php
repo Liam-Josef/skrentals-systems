@@ -97,3 +97,4 @@
     @endsection
 
 </x-home-master>
+<a aria-label="286 reviews" target="_blank" jstcache="30" href="https://search.google.com/local/reviews?placeid=ChIJn0RCH3SmlVQR2wm4TPK-MYw&q=SK+Watercraft+Rentals&hl=en&gl=US" jsaction="mouseup:placeCard.reviews" class="review-box-link" jsan="0.aria-label,7.review-box-link,8.href,0.target,22.jsaction">286 reviews</a>

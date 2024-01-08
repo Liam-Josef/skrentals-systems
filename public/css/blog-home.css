@@ -5,6 +5,7 @@
  */
 body {
   padding-top: 56px;
+    background-image: none !important;
 }
 
 nav.home-header {
@@ -90,13 +91,16 @@ nav.home-header .lower-header nav.navbar li.nav-item .dropdown-menu .dropdown-it
 .main-body {
     background-color: #000000;
     background-repeat: no-repeat;
-    background-size: contain;
-    background-position: fixed;
-    padding: 20px 0;
+    background-size: auto;
+    background-position: 0px 125px;
+    padding: 0px 0;
+    min-height: 100vh;
 }
 .main-body .container.main {
     background-color: rgba(0,0,0,0.8);
     font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    padding-bottom: 30px;
 }
 .main-body .container.main.home {
     position:relative;
@@ -467,3 +471,105 @@ a.btn-book:hover {
         padding-right: 1.1rem;
     }
 }
+
+/*Sidebar*/
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 999;
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    transition: all 0.3s;
+    margin-right: -250px;
+}
+
+#sidebar.active {
+    margin-right: 0px;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: transparent;
+}
+#sidebar .sidebar-header a {
+    color: #ffffff !important;
+    font-size: 130%;
+}
+#sidebar .sidebar-header a .name-format {
+    display: block !important;
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    z-index: 9999;
+}
+#sidebar .sidebar-header a img.img-profile {
+    height: 125px;
+    width: 125px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+}
+
+#sidebar ul.components p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul.components li a {
+    color:#ffffff;
+}
+#sidebar ul.components li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+#sidebar ul.components li a:hover {
+    color: #ffffff;
+    background: #d01519;
+}
+#sidebar ul.right li {
+    text-align: right;
+}
+
+#sidebar ul.components li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #d01519;
+}
+#sidebar form {
+    margin-top: 60%;
+    padding: 10px;
+}
+
+
+
