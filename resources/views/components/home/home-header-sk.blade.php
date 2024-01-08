@@ -1,5 +1,12 @@
 <nav class="home-header">
     <section class="upper-header">
+        <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-outline-primary" style="position: absolute; right: 10px; ">
+                <i class="fas fa-align-right"></i>
+            </button>
+
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">

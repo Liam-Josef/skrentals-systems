@@ -19,7 +19,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/';
 
-    public const USERS = '/';
+    public const USERS = '/team';
 
     /**
      * Define your route model bindings, pattern filters, etc.

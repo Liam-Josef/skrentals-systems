@@ -16,8 +16,43 @@
                     </li>
                 @endif
                 @if(auth()->user()->userHasRole('Office'))
-                    <li class="nav-item smaller mt-1 {{ Request::is('team/office*') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{route('office.index')}}">Office</a>
+                    <li class="nav-item smaller dropdown no-arrow mt-1 {{ Request::is('team/office*') ? 'active' : '' }}">
+                        <a class="nav-link dropdown-toggle" href="#" id="officeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Office
+                        </a>
+                        <!-- Dropdown - Office -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="officeDropdown">
+
+                            <a class="dropdown-item" href="{{route('office.index')}}">
+                                Schedule
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{route('office.precheckin')}}">
+                                Pre-Check In
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{route('office.rentalHistory')}}">
+                                Rental History
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{route('office.customers')}}">
+                                Customers
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{route('office.coc')}}">
+                                Change of Condition
+                            </a>
+
+
+                        </div>
                     </li>
                 @endif
                 @if(auth()->user()->userHasRole('Dock'))
@@ -25,7 +60,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="operationsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dock
                         </a>
-                        <!-- Dropdown - User Information -->
+                        <!-- Dropdown - Dock -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="operationsDropdown">
 
                                 <a class="dropdown-item" href="{{route('dock.departing')}}">

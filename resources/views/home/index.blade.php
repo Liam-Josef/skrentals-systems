@@ -97,6 +97,8 @@
             </div>
 
 
+
+
             <style>
                 .img-1 {
                     background-image: url("{{asset('/storage/app-images/sm-1-people-riding-seadoo.jpg')}}");
@@ -274,6 +276,7 @@
                         <a href="#" class="btn btn-large btn-primary width-100 mt-5">
                             <h1>Gift Card</h1>
                         </a>
+
                     </div>
                 </div>
             </div>
@@ -285,12 +288,7 @@
 
 
     @section('scripts')
-    <!-- Page level plugins -->
-        <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="{{asset('js/demo/datatables-scripts.js')}}"></script>
     @endsection
 
 </x-home-master>
