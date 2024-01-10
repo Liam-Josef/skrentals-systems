@@ -118,7 +118,7 @@
                         <!-- Renegade Info -->
                         @foreach($renegade as $renegade)
                             <img src="{{asset('/storage/app-images/renegade.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
-                            <h2 class="section-header">{{$summit->name}}</h2>
+                            <h2 class="section-header">{{$renegade->name}}</h2>
 
                             @if($renegade->has('durations'))
                                 @foreach($renegade->durations as $duration)
