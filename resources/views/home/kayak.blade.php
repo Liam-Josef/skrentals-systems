@@ -81,7 +81,11 @@
                         <!-- Single Info -->
                         @foreach($single_kayak as $kayak)
                             <img src="{{asset('/storage/app-images/single-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img" />
-                            <h2 class="section-header">{{$kayak->name}}</h2>
+                            @if($kayak->description != '')
+                                <h2 class="section-header">{{$kayak->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$kayak->name}}</h2>
+                            @endif
 
                             @if($kayak->has('durations'))
                                 @foreach($kayak->durations as $duration)
@@ -116,7 +120,11 @@
                         <!-- Double Info -->
                         @foreach($double_kayak as $kayak)
                             <img src="{{asset('/storage/app-images/double-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img" />
-                            <h2 class="section-header">{{$kayak->name}}</h2>
+                            @if($kayak->description != '')
+                                <h2 class="section-header">{{$kayak->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$kayak->name}}</h2>
+                            @endif
 
                             @if($kayak->has('durations'))
                                 @foreach($kayak->durations as $duration)
@@ -151,7 +159,11 @@
                         <!-- Paddleboard Info -->
                         @foreach($paddleboard as $kayak)
                             <img src="{{asset('/storage/app-images/paddleboard.jpg')}}" alt="A single kayak with a white background" class="page-img" />
-                            <h2 class="section-header">{{$kayak->name}}</h2>
+                            @if($kayak->description != '')
+                                <h2 class="section-header">{{$kayak->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$kayak->name}}</h2>
+                            @endif
 
                             @if($kayak->has('durations'))
                                 @foreach($kayak->durations as $duration)

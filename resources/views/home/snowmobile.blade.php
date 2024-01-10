@@ -81,7 +81,11 @@
                         <!-- Summit Info -->
                         @foreach($summit as $summit)
                             <img src="{{asset('/storage/app-images/summit.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
-                            <h2 class="section-header">{{$summit->name}}</h2>
+                            @if($summit->description != '')
+                                <h2 class="section-header">{{$summit->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$summit->name}}</h2>
+                            @endif
 
                             @if($summit->has('durations'))
                                 @foreach($summit->durations as $duration)
@@ -118,7 +122,11 @@
                         <!-- Renegade Info -->
                         @foreach($renegade as $renegade)
                             <img src="{{asset('/storage/app-images/renegade.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
-                            <h2 class="section-header">{{$renegade->name}}</h2>
+                            @if($renegade->description != '')
+                                <h2 class="section-header">{{$renegade->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$renegade->name}}</h2>
+                            @endif
 
                             @if($renegade->has('durations'))
                                 @foreach($renegade->durations as $duration)
