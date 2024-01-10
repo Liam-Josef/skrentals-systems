@@ -81,7 +81,11 @@
                         <!-- Segway Info -->
                         @foreach($segway as $segway)
                             <img src="{{asset('/storage/app-images/segway.jpg')}}" alt="A two-wheel Segway with a white background" class="page-img-60" />
-                            <h2 class="section-header">{{$segway->name}}</h2>
+                            @if($segway->description != '')
+                                <h2 class="section-header">{{$segway->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$segway->name}}</h2>
+                            @endif
 
                             @if($segway->has('durations'))
                                 @foreach($segway->durations as $duration)
