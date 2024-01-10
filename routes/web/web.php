@@ -76,3 +76,5 @@ Route::middleware(['can:view,user'])->group(function() {
     Route::get('admin/users/{user}/profile', [UserController::class, 'show'])->name('user.profile.show');
 
 });
+
+Route::apiResource('clients', \App\Http\Controllers\ClientController::class);
