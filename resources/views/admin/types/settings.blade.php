@@ -156,7 +156,7 @@
                                             <h2 >{{$duration->name}}</h2>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-4">
                                             @if($duration->has('prices'))
 
                                                 @foreach($duration->prices as $price)
@@ -207,11 +207,38 @@
                                             </form>
                                         </div>
 
+                                        <div class="col-sm-4">
+                                            @if($duration->has('prices'))
+
+                                                @foreach($duration->prices as $price)
+                                                    @if($duration->id == $price->duration_id && $type->id == $price->type_id)
+                                                        <form method="post" action="{{route('price.note', $price)}}">
+                                                            @method('PUT')
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <input type="text" name="notes" placeholder="Add price note..." class="form-control" value="{{$price->notes}}" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    @if($price->notes != '')
+                                                                        <button class="btn btn-outline-secondary" type="submit">Update Note</button>
+                                                                    @else
+                                                                        <button class="btn btn-outline-secondary" type="submit">Add Note</button>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+
+                                                        </form>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        </div>
+
 
                                         <div class="col-sm-1">
                                             @foreach($prices as $price)
                                                 @if($price->duration_id == $duration->id && $price->type_id == $type->id)
-                                                    <h3 class="mt-2">
+                                                    <h3 class="mt-2 text-primary">
                                                         ${{$price->amount}}
                                                     </h3>
                                                 @else

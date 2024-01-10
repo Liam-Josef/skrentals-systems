@@ -90,15 +90,15 @@
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $scarab->id == $price->type_id)
                                                     ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
                                                 @endif
                                             @endforeach
                                         @endif
-                                        {{$duration->name}} ( {{$duration->hour}} hour )
-
-
                                     </p>
-
-
                                 @endforeach
                             @else
                                 No Duration
@@ -152,7 +152,6 @@
                             <img src="{{asset('/storage/app-images/pontoon.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
                             <h2 class="section-header mt-3">{{$pontoon->description}}</h2>
 
-
                             @if($pontoon->has('durations'))
                                 @foreach($pontoon->durations as $duration)
                                     <p class="text-center">
@@ -160,10 +159,14 @@
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $pontoon->id == $price->type_id)
                                                     ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
                                                 @endif
                                             @endforeach
                                         @endif
-                                        {{$duration->name}} ( {{$duration->hour}} hour )
                                     </p>
                                 @endforeach
                             @else
