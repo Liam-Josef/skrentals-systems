@@ -82,17 +82,18 @@
 
 
         <!-- Rental Types -->
-        <form action="{{route('type.store')}}" method="post" enctype="multipart/form-data">
-                <div class="card shadow mb-3">
-                    <div class="card-header">
-                        <h3 class="mb-0">Rental Types</h3>
-                    </div>
-                    <div class="card-body">
-                        @csrf
-                        @method('PUT')
+        <div class="card shadow mb-3">
+                <div class="card-header">
+                    <h3 class="mb-0">Rental Types</h3>
+                </div>
+                <div class="card-body">
 
-                        <div class="row">
-                            <div class="col-sm-6">
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <form action="{{route('type.store')}}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="name" class="form-control" name="name" id="name" value="{{$website->name}}">
@@ -105,71 +106,15 @@
                                     </select>
                                 </div>
                                 <button class="btn btn-primary btn-right" type="submit">Add</button>
-                            </div>
-                            <div class="col-sm-6">
-                                @foreach($types as $type)
-                                    <div class="card shadow mt-0 my-2">
-                                        <a href="#" class="card-link nav-link " id="view-type-tab" data-toggle="tab" href="#type-tab{{$type->id}}" role="tab" aria-controls="type-tab{{$type->id}}"
-                                           aria-selected="true">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <h1>{{$type->name}}</h1>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-
-                    </div>
-                </div>
-
-
-
-
-
-
-
-            </form>
-        <!-- /Rental Types -->
-
-        <!-- Rental Durations -->
-        <form action="{{route('duration.store')}}" method="post" enctype="multipart/form-data">
-            <div class="card shadow mb-3">
-                <div class="card-header">
-                    <h3 class="mb-0">Rental Durations</h3>
-                </div>
-                <div class="card-body">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="name" class="form-control" name="name" id="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="is_active">Is Active</label>
-                                <select name="is_active" id="is_active">
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select>
-                            </div>
-                            <button class="btn btn-primary btn-right" type="submit">Add</button>
+                            </form>
                         </div>
                         <div class="col-sm-6">
-                            @foreach($durations as $duration)
+                            @foreach($types as $type)
                                 <div class="card shadow mt-0 my-2">
-                                    <a href="#" class="card-link nav-link " id="view-type-tab" data-toggle="tab" href="#type-tab{{$duration->id}}" role="tab" aria-controls="type-tab{{$duration->id}}"
-                                       aria-selected="true">
+                                    <a href="{{route('type.settings', $type->id)}}" class="card-link nav-link">
                                         <div class="card-body">
                                             <div class="row">
-                                                <h1>{{$duration->name}}</h1>
+                                                <h1>{{$type->name}}</h1>
                                             </div>
                                         </div>
                                     </a>
@@ -183,18 +128,57 @@
 
                 </div>
             </div>
+        <!-- /Rental Types -->
+
+        <!-- Rental Durations -->
+        <div class="card shadow mb-3">
+            <div class="card-header">
+                <h3 class="mb-0">Rental Durations</h3>
+            </div>
+            <div class="card-body">
 
 
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form action="{{route('duration.store')}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="name" class="form-control" name="name" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="is_active">Is Active</label>
+                                <select name="is_active" id="is_active">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-right" type="submit">Add</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        @foreach($durations as $duration)
+                            <div class="card shadow mt-0 my-2">
+                                <a href="#" class="card-link nav-link " id="view-type-tab" data-toggle="tab" href="#type-tab{{$duration->id}}" role="tab" aria-controls="type-tab{{$duration->id}}"
+                                   aria-selected="true">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h1>{{$duration->name}}</h1>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
 
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
 
-
-
-
-        </form>
+            </div>
+        </div>
         <!-- /Rental Durations -->
-
-
-
 
 
     @endsection

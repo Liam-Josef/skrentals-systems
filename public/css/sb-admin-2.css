@@ -12749,3 +12749,6 @@ footer img.img-square {
     display: block;
     margin-top: 0; /* remove the gap so it doesn't close */
 }
+.duration-list {
+    list-style: none !important;
+}
