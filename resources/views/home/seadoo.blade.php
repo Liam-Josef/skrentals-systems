@@ -77,7 +77,7 @@
 
                 <!-- SeaDoo Info -->
                 @foreach($seadoo as $seadoo)
-                    <img src="{{asset('storage/' . $seadoo->image)}}" alt="{{$seadoo->img_alt}}" class="page-img-60" />
+                    <img src="{{asset('storage/' . $seadoo->image)}}" alt="{{$seadoo->img_alt}}" class="page-img" />
                     @if($seadoo->description != '')
                         <h2 class="section-header">{{$seadoo->description}}</h2>
                     @else
