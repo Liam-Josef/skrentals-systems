@@ -79,46 +79,58 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <!-- Segway Info -->
-                        <img src="{{asset('/storage/app-images/segway.jpg')}}" alt="A two-wheel Segway with a white background" class="page-img-60" />
-                        <h2 class="section-header mt-3">SEGWAY I2</h2>
+                        @foreach($segway as $segway)
+                            <img src="{{asset('/storage/app-images/segway.jpg')}}" alt="A two-wheel Segway with a white background" class="page-img-60" />
+                            <h2 class="section-header">{{$segway->name}}</h2>
 
-                        <p class="text-center">
-                            2hr - $75
-                        </p>
-                        <p class="text-center">
-                            4hr - $125
-                        </p>
-                        <p class="text-center">
-                            Full Day - $200
-                        </p>
-                        <p class="text-center">
-                            Ask us about multiple day discount
-                        </p>
-                        <p class="text-center">
-                            For Corporate Events - Please ask for Quote
-                        </p>
-                        <p class="text-center">
-                            $500 Damage Deposit
-                        </p>
-                        <p class="text-center">
-                            Bike Helmets are provided
-                        </p>
-                        <p class="text-center">
-                            1 person per Segway
-                        </p>
-                        <p class="text-center">
-                            20-24 miles on one battery charge
-                        </p>
-                        <a href="#" class="btn btn-book">Click to Book Now</a>
+                            @if($segway->has('durations'))
+                                @foreach($segway->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $segway->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
+                            <p class="text-center">
+                                Ask us about multiple day discount
+                            </p>
+                            <p class="text-center">
+                                For Corporate Events - Please ask for Quote
+                            </p>
+                            <p class="text-center">
+                                $500 Damage Deposit
+                            </p>
+                            <p class="text-center">
+                                Bike Helmets are provided
+                            </p>
+                            <p class="text-center">
+                                1 person per Segway
+                            </p>
+                            <p class="text-center">
+                                20-24 miles on one battery charge
+                            </p>
+                            <a href="#" class="btn btn-book">Click to Book Now</a>
 
-                        <p class="text-center">
-                            All segway tours/rentals are located at: <br>
-                            250 SE Division Place, Portland, OR
-                        </p>
+                            <p class="text-center">
+                                All segway tours/rentals are located at: <br>
+                                250 SE Division Place, Portland, OR
+                            </p>
 
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/ioNctElzaas?si=XavlzQDRvk_6qIo0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                        <!-- /Segway Carousel -->
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/ioNctElzaas?si=XavlzQDRvk_6qIo0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <!-- /Segway Carousel -->
+                    @endforeach
                         <!-- /Segway Info -->
                     </div>
                 </div>

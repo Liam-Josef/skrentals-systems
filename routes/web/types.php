@@ -13,6 +13,7 @@ Route::middleware(['role:admin'])->group(function() {
     Route::put('admin/types/{type}/type-duration', [TypeController::class, 'type_duration'])->name('type.duration');
     Route::put('admin/duration/{duration}/duration-price', [DurationController::class, 'duration_price'])->name('price.store.attach');
     Route::put('admin/price/{price}/update', [PriceController::class, 'update'])->name('price.update');
+    Route::put('admin/price/{price}/update-note', [PriceController::class, 'note'])->name('price.note');
 
 
 

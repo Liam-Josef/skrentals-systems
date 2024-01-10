@@ -79,56 +79,76 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <!-- Spyder Info -->
-                        <img src="{{asset('/storage/app-images/Spyder.jpg')}}" alt="A group\ three-wheel Spyder motorcycle driving down the road" class="page-img-60" />
-                        <h2 class="section-header mt-3">RT-S SE6</h2>
+                        @foreach($spyder as $spyder)
+                            <img src="{{asset('/storage/app-images/Spyder.jpg')}}" alt="A group\ three-wheel Spyder motorcycle driving down the road" class="page-img-60" />
+                            <h2 class="section-header">{{$spyder->name}}</h2>
 
-                        <p class="text-center">
-                            $275 Full Day
-                            <br>
-                            + $25/per day motorcycle insurance
-                            <br>
-                            Ask Us About Our Multiple Day Discounts
-                        </p>
+                            @if($spyder->has('durations'))
+                                @foreach($spyder->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $spyder->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
+                            <p class="text-center">
+                                + $25/per day motorcycle insurance
+                                <br>
+                                Ask Us About Our Multiple Day Discounts
+                            </p>
 
-                        <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <a href="#" class="btn btn-book">Click to Book Now</a>
 
-                        <p class="text-center">
-                            $2000 Damage Deposit per Unit <br>
-                            All Half Day and Full Day rentals do not include fuel
-                        </p>
+                            <p class="text-center">
+                                $2000 Damage Deposit per Unit <br>
+                                All Half Day and Full Day rentals do not include fuel
+                            </p>
 
-                        <p class="text-center">
-                            To Rent:
-                            <br>
-                            Must have Motorcycle Endorsement
-                            <br>
-                            Must be 18 years of age
-                            <br>
-                            Call <a href="tel:503-284-6447">(503) 284-6447</a> to setup Reservation or for further questions
-                        </p>
+                            <p class="text-center">
+                                To Rent:
+                                <br>
+                                Must have Motorcycle Endorsement
+                                <br>
+                                Must be 18 years of age
+                                <br>
+                                Call <a href="tel:503-284-6447">(503) 284-6447</a> to setup Reservation or for further questions
+                            </p>
 
-                        <img src="{{asset('/storage/app-images/3-Spyders.jpg')}}" alt="A group\ three-wheel Spyder motorcycle driving down the road" class="page-img-60" />
+                            <img src="{{asset('/storage/app-images/3-Spyders.jpg')}}" alt="A group\ three-wheel Spyder motorcycle driving down the road" class="page-img-60" />
 
-                        <h3 class="section-header mt-3 mb-3">SPECS</h3>
-                        <p class="text-center">
-                            6.6 gallon tank
+                            <h3 class="section-header mt-3 mb-3">SPECS</h3>
+                            <p class="text-center">
+                                6.6 gallon tank
+                                <br>
+                                100HP engine
+                                <br>
+                                Semi-auto Transmission
+                                <br>
+                                Adjustable Rear Air Suspension
+                                <br>
+                                Rider Floorboards
+                                <br>
+                                Ultra comfort saddle
+                                <br>
+                                Roadster Touring
+                            </p>
                             <br>
-                            100HP engine
-                            <br>
-                            Semi-auto Transmission
-                            <br>
-                            Adjustable Rear Air Suspension
-                            <br>
-                            Rider Floorboards
-                            <br>
-                            Ultra comfort saddle
-                            <br>
-                            Roadster Touring
-                        </p>
-                        <br>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/m7BAxf5NtBA?si=nBuC3xbypu-vU5fB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/m7BAxf5NtBA?si=nBuC3xbypu-vU5fB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-                        <!-- /Spyder Carousel -->
+                            <!-- /Spyder Carousel -->
+                        @endforeach
                         <!-- /Spyder Info -->
                     </div>
                 </div>

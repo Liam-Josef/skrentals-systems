@@ -95,17 +95,6 @@ class HomeController extends Controller
         $scarab = Type::where('id', '=', '3')->get();
         $pontoon = Type::where('id', '=', '2')->get();
         $durations = Duration::all();
-//        $scarab_id = Type::where('id', '=', '3')->get();
-//            foreach($scarab_id->durations as $duration) {
-//                echo $duration->pivot->id;
-//            }
-
-//        if($scarab->has('durations')){
-//            foreach($scarab->durations as $duration){
-//                echo $duration->id;
-//            }
-//        }
-
 
         return view('home.boat', [
             'posts'=>$posts,
@@ -119,17 +108,21 @@ class HomeController extends Controller
 
     public function segway() {
         $posts = Post::latest()->get();
+        $segway = Type::where('id', '=', '4')->get();
         return view('home.segway', [
-            'posts'=>$posts,
+           'posts'=>$posts,
+           'segway'=>$segway,
            'applications' => Website::where('id', '=', '1')->get(),
-            'websites' => Website::where('id', '=', '1')->get(),
+           'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 
     public function spyder() {
         $posts = Post::latest()->get();
+        $spyder = Type::where('id', '=', '5')->get();
         return view('home.spyder', [
             'posts'=>$posts,
+            'spyder'=>$spyder,
            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
         ]);
@@ -137,18 +130,28 @@ class HomeController extends Controller
 
     public function snowmobile() {
         $posts = Post::latest()->get();
+        $summit = Type::where('id', '=', '6')->get();
+        $renegade = Type::where('id', '=', '7')->get();
         return view('home.snowmobile', [
             'posts'=>$posts,
-           'applications' => Website::where('id', '=', '1')->get(),
+            'summit'=>$summit,
+            'renegade'=>$renegade,
+            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
 
     public function kayak() {
         $posts = Post::latest()->get();
+        $single_kayak = Type::where('id', '=', '8')->get();
+        $double_kayak = Type::where('id', '=', '9')->get();
+        $paddleboard = Type::where('id', '=', '10')->get();
         return view('home.kayak', [
             'posts'=>$posts,
-           'applications' => Website::where('id', '=', '1')->get(),
+            'single_kayak'=>$single_kayak,
+            'double_kayak'=>$double_kayak,
+            'paddleboard'=>$paddleboard,
+            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
         ]);
     }
