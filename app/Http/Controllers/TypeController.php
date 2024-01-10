@@ -50,6 +50,65 @@ class TypeController extends Controller
         return back();
     }
 
+    public function update(Type $type) {
+//        $type->name = request('name');
+//        $type->description = request('name');
+//        $type->quantity = request('name');
+//        $type->capacity_count = request('name');
+//        $type->weight_capacity = request('name');
+//        $type->cancel_policy = request('cancel_policy');
+//        $type->pickup_details = request('pickup_details');
+//        $type->pickup_address = request('pickup_address');
+//        $type->what_to_know = request('what_to_know');
+//        $type->what_to_bring = request('what_to_bring');
+//        $type->suggested_attire = request('suggested_attire');
+//        $type->booking_buffer = request('booking_buffer');
+//        $type->is_active = request('is_active');
+
+
+        $inputs = request()->validate([
+            'name' => ['required'],
+            'is_active' => ['required'],
+            'booking_buffer_hr' => ['required'],
+            'archive' => ['required']
+        ]);
+        if(request('image')) {
+            $inputs['image'] = request('image')->store('app-images');
+        }
+        if(request('description')) {
+            $inputs['description'] = request('description');
+        }
+        if(request('quantity')) {
+            $inputs['quantity'] = request('quantity');
+        }
+        if(request('capacity_count')) {
+            $inputs['capacity_count'] = request('capacity_count');
+        }
+        if(request('weight_capacity')) {
+            $inputs['weight_capacity'] = request('weight_capacity');
+        }
+        if(request('cancel_policy')) {
+            $inputs['cancel_policy'] = request('cancel_policy');
+        }
+        if(request('pickup_details')) {
+            $inputs['pickup_details'] = request('pickup_details');
+        }
+        if(request('pickup_address')) {
+            $inputs['pickup_address'] = request('pickup_address');
+        }
+        if(request('what_to_know')) {
+            $inputs['what_to_know'] = request('what_to_know');
+        }
+        if(request('what_to_bring')) {
+            $inputs['what_to_bring'] = request('what_to_bring');
+        }
+        if(request('suggested_attire')) {
+            $inputs['suggested_attire'] = request('suggested_attire');
+        }
+        $type->update($inputs);
+        return back();
+    }
+
     public function type_duration(Type $type) {
         $duration = new Duration();
         $duration->name = request('name');

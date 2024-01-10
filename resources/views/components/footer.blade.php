@@ -46,9 +46,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div class="row">
                 <p class="m-0 text-center text-white"><span>@yield('app_name')</span> | Copyright &copy; {{Carbon\Carbon::now()->format('Y')}}</p>
-            </div>
         </div>
     </div>
 </footer>
