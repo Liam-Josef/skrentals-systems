@@ -23,12 +23,12 @@ return new class extends Migration
             $table->integer('quantity')->nullable();
             $table->integer('capacity_count')->nullable();
             $table->string('weight_capacity')->nullable();
-            $table->string('cancel_policy')->nullable();
-            $table->string('pickup_details')->nullable();
+            $table->text('cancel_policy')->nullable();
+            $table->text('pickup_details')->nullable();
             $table->string('pickup_address')->nullable();
-            $table->string('what_to_know')->nullable();
-            $table->string('what_to_bring')->nullable();
-            $table->string('suggested_attire')->nullable();
+            $table->text('what_to_know')->nullable();
+            $table->text('what_to_bring')->nullable();
+            $table->text('suggested_attire')->nullable();
             $table->integer('booking_buffer_hr')->default('0');
             $table->boolean('archive')->default('0');
             $table->timestamps();

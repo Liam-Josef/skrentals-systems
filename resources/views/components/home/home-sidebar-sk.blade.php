@@ -1,13 +1,13 @@
 <div class="wrapper">
     <!-- Sidebar -->
     <nav id="sidebar">
-        <button type="button" id="sidebarCollapseInt" class="btn btn-outline-primary" style="position: absolute; right: 10px; ">
+        <button type="button" id="sidebarCollapseInt" class="btn btn-outline-primary" style="position: absolute; right: 10px; top: 10px ">
             <i class="fas fa-align-right"></i>
         </button>
         @if(Auth::check())
             <div class="sidebar-header">
                 <!-- Nav Item - User Information -->
-                <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="">
                         <span class="mr-2 d-none name-format text-gray-600 large">
                             @if(Auth::check())
                                 {{auth()->user()->firstname}}

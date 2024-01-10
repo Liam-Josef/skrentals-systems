@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['role:admin'])->group(function() {
 
     Route::get('admin/types/{type}/settings', [TypeController::class, 'settings'])->name('type.settings');
+    Route::put('admin/types/{type}/update', [TypeController::class, 'update'])->name('type.update');
     Route::put('admin/types/{type}/attach-duration', [TypeController::class, 'attach_duration'])->name('attach.duration');
     Route::put('admin/types/{type}/type-duration', [TypeController::class, 'type_duration'])->name('type.duration');
     Route::put('admin/duration/{duration}/duration-price', [DurationController::class, 'duration_price'])->name('price.store.attach');
