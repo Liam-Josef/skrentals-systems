@@ -80,7 +80,7 @@
                     <div class="col-sm-4">
                         <!-- Single Info -->
                         @foreach($single_kayak as $kayak)
-                            <img src="{{asset('/storage/app-images/single-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img-80" />
+                            <img src="{{asset('/storage/app-images/single-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img" />
                             <h2 class="section-header">{{$kayak->name}}</h2>
 
                             @if($kayak->has('durations'))
@@ -89,7 +89,7 @@
                                         @if($duration->has('prices'))
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $kayak->id == $price->type_id)
-                                                    ${{$price->amount}}
+                                                    ${{$price->amount}} -
                                                     {{$duration->name}} ( {{$duration->hour}} hour
                                                     @if($price->notes != '')
                                                         - {{$price->notes}}
@@ -115,7 +115,7 @@
                     <div class="col-sm-4">
                         <!-- Double Info -->
                         @foreach($double_kayak as $kayak)
-                            <img src="{{asset('/storage/app-images/double-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img-80" />
+                            <img src="{{asset('/storage/app-images/double-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img" />
                             <h2 class="section-header">{{$kayak->name}}</h2>
 
                             @if($kayak->has('durations'))
@@ -124,7 +124,7 @@
                                         @if($duration->has('prices'))
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $kayak->id == $price->type_id)
-                                                    ${{$price->amount}}
+                                                    ${{$price->amount}} -
                                                     {{$duration->name}} ( {{$duration->hour}} hour
                                                     @if($price->notes != '')
                                                         - {{$price->notes}}
@@ -150,7 +150,7 @@
                     <div class="col-sm-4">
                         <!-- Paddleboard Info -->
                         @foreach($paddleboard as $kayak)
-                            <img src="{{asset('/storage/app-images/paddleboard.jpg')}}" alt="A single kayak with a white background" class="page-img-80" />
+                            <img src="{{asset('/storage/app-images/paddleboard.jpg')}}" alt="A single kayak with a white background" class="page-img" />
                             <h2 class="section-header">{{$kayak->name}}</h2>
 
                             @if($kayak->has('durations'))
@@ -159,7 +159,7 @@
                                         @if($duration->has('prices'))
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $kayak->id == $price->type_id)
-                                                    ${{$price->amount}}
+                                                    ${{$price->amount}} -
                                                     {{$duration->name}} ( {{$duration->hour}} hour
                                                     @if($price->notes != '')
                                                         - {{$price->notes}}
