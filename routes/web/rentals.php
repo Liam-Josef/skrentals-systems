@@ -24,7 +24,6 @@ Route::middleware(['role:admin'])->group(function() {
     Route::get('admin/rentals/rental-settings', [RentalController::class, 'rentalSettings'])->name('rental.settings');
     Route::put('team/rental-type/store', [TypeController::class, 'store'])->name('type.store');
     Route::put('team/rental-duration/store', [DurationController::class, 'store'])->name('duration.store');
-    Route::put('team/duration-price/store', [PriceController::class, 'store'])->name('price.store');
 
 
 ////    // AJAX Rental Modal (office.index)

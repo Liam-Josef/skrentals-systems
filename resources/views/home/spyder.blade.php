@@ -80,7 +80,7 @@
                     <div class="col-sm-12">
                         <!-- Spyder Info -->
                         @foreach($spyder as $spyder)
-                            <img src="{{asset('/storage/app-images/Spyder.jpg')}}" alt="A group\ three-wheel Spyder motorcycle driving down the road" class="page-img-60" />
+                            <img src="{{asset('storage/' . $spyder->image)}}" alt="{{$spyder->img_alt}}" class="page-img-60" />
                             @if($spyder->description != '')
                                 <h2 class="section-header">{{$spyder->description}}</h2>
                             @else

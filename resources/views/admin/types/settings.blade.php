@@ -91,6 +91,7 @@
 
                 <div class="row">
                     <div class="col-sm-6">
+                        <h3>Add Duration</h3>
                         <form action="{{route('type.duration', $type)}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -109,6 +110,7 @@
                         </form>
                     </div>
                     <div class="col-sm-6">
+                        <h3>Select Duration</h3>
                         @foreach($durations as $duration)
 
                             <form method="post" action="{{route('attach.duration', $type)}}" class="
@@ -123,7 +125,7 @@
                                 <button class="card shadow mt-0 my-2 width-100" type="submit">
                                     <div class="card-body">
                                         <div class="row">
-                                            <h1>{{$duration->name}}</h1>
+                                            <h3 class="mb-0">{{$duration->name}}</h3>
                                         </div>
                                     </div>
                                 </button>
@@ -271,64 +273,86 @@
 
                         <div class="row">
                             <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" value="{{$type->name}}">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" name="name" id="name" value="{{$type->name}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Description</label>
+                                            <input type="text" class="form-control" name="description" id="description" value="{{$type->description}}">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="booking_buffer_hr">Hour Buffer</label>
+                                            <div class="row">
+                                                <div class="col-9 pr-0">
+                                                    <input type="number" class="form-control" name="booking_buffer_hr" id="booking_buffer_hr" value="{{$type->booking_buffer_hr}}">
+                                                </div>
+                                                <div class="col-3">
+                                                    <h3>hrs</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="quantity">Quantity</label>
+                                            <input type="number" class="form-control" name="quantity" id="quantity" value="{{$type->quantity}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="capacity_count">Capacity Count</label>
+                                            <div class="row">
+                                                <div class="col-9 pr-0">
+                                                    <input type="number" class="form-control" name="capacity_count" id="capacity_count" value="{{$type->capacity_count}}">
+                                                </div>
+                                                <div class="col-3">
+                                                    <h3>lbs</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="weight_capacity">Weight Capacity</label>
+                                            <div class="row">
+                                                <div class="col-9 pr-0">
+                                                    <input type="number" class="form-control" name="weight_capacity" id="weight_capacity" value="{{$type->weight_capacity}}">
+                                                </div>
+                                                <div class="col-3">
+                                                    <h3>lbs</h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="description">Description</label>
-                                    <input type="text" class="form-control" name="description" id="description" value="{{$type->description}}">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="image">{{$type->name}} Image</label>
+                                            <input type="file" class="form-control-file" name="image">
+                                        </div>
+                                        <div class="col-6">
+                                            <img class="img-center mt-3" src="{{asset('storage/' . $type->image)}}" width="60%" height="auto">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="img_alt">Image Alt Text</label>
+                                    <input type="text" class="form-control" name="img_alt" value="{{$type->img_alt}}">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label for="booking_buffer_hr">Hour Buffer</label>
-                                    <div class="row">
-                                        <div class="col-9 pr-0">
-                                            <input type="number" class="form-control" name="booking_buffer_hr" id="booking_buffer_hr" value="{{$type->booking_buffer_hr}}">
-                                        </div>
-                                        <div class="col-3">
-                                            <h3>hrs</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label for="quantity">Quantity</label>
-                                    <input type="number" class="form-control" name="quantity" id="quantity" value="{{$type->quantity}}">
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label for="capacity_count">Capacity Count</label>
-                                    <div class="row">
-                                        <div class="col-9 pr-0">
-                                            <input type="number" class="form-control" name="capacity_count" id="capacity_count" value="{{$type->capacity_count}}">
-                                        </div>
-                                        <div class="col-3">
-                                            <h3>lbs</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label for="weight_capacity">Weight Capacity</label>
-                                    <div class="row">
-                                        <div class="col-9 pr-0">
-                                            <input type="number" class="form-control" name="weight_capacity" id="weight_capacity" value="{{$type->weight_capacity}}">
-                                        </div>
-                                        <div class="col-3">
-                                            <h3>lbs</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-12">
                                 <h3 class="mt-4">Additional Info</h3>
                             </div>
@@ -373,6 +397,7 @@
 
                         <div class="row">
                             <div class="col-6">
+                                <label for="is_active">Active </label>
                                 <select name="is_active" id="is_active">
                                     <option value="1"
                                         @if($type->is_active == '1')
