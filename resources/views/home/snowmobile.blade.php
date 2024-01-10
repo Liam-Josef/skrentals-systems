@@ -89,7 +89,7 @@
                                         @if($duration->has('prices'))
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $summit->id == $price->type_id)
-                                                    ${{$price->amount}}
+                                                    ${{$price->amount}} -
                                                     {{$duration->name}} ( {{$duration->hour}} hour
                                                     @if($price->notes != '')
                                                         - {{$price->notes}}
@@ -105,7 +105,6 @@
                             @endif
 
                             <p class="text-center">
-                                <br>
                                 Single Seat
                                 <br>
                                 Ask Us About Our Multiple Day Discounts
@@ -127,7 +126,7 @@
                                         @if($duration->has('prices'))
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $renegade->id == $price->type_id)
-                                                    ${{$price->amount}}
+                                                    ${{$price->amount}} -
                                                     {{$duration->name}} ( {{$duration->hour}} hour
                                                     @if($price->notes != '')
                                                         - {{$price->notes}}
@@ -143,7 +142,6 @@
                             @endif
 
                             <p class="text-center">
-                                <br>
                                 Two Seater
                                 <br>
                                 Ask Us About Our Multiple Day Discounts
