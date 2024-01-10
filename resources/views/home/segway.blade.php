@@ -80,7 +80,7 @@
                     <div class="col-sm-12">
                         <!-- Segway Info -->
                         @foreach($segway as $segway)
-                            <img src="{{asset('storage/' . $segway->image)}}" alt="{{$segway->img_alt}}" class="page-img-80" />
+                            <img src="{{asset('storage/' . $segway->image)}}" alt="{{$segway->img_alt}}" class="page-img-60" />
                             @if($segway->description != '')
                                 <h2 class="section-header">{{$segway->description}}</h2>
                             @else
