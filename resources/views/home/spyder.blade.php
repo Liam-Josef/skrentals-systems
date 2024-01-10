@@ -89,7 +89,7 @@
                                         @if($duration->has('prices'))
                                             @foreach($duration->prices as $price)
                                                 @if($duration->id == $price->duration_id && $spyder->id == $price->type_id)
-                                                    ${{$price->amount}}
+                                                    ${{$price->amount}} -
                                                     {{$duration->name}} ( {{$duration->hour}} hour
                                                     @if($price->notes != '')
                                                         - {{$price->notes}}
