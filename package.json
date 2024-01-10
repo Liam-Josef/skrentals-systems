@@ -21,6 +21,7 @@
         "sass-loader": "^11.0.1"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
         "zapier-platform-core": "15.5.1"
     }
 }

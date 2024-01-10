@@ -7,13 +7,16 @@
 
 
     @foreach($applications as $application)
-        @section('page_title')
-            <h1>{{$application->name}}</h1>
-        @endsection
+{{--        @section('page_title')--}}
+{{--            <h1>{{$application->name}}</h1>--}}
+{{--        @endsection--}}
 
         @section('browser_title')
-            <title>Dashboard | {{$application->name}}
-            </title>
+            {{$application->name}}
+        @endsection
+
+        @section('meta_description')
+
         @endsection
 
         @section('navbar_rental_type')
@@ -62,129 +65,230 @@
     @section('content')
         @yield('page_title')
 
-        <div class="card mb-4 shadow">
-            <div class="card-header">
-                <h3>Announcement Title Teext</h3>
+            <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{asset('/storage/app-images/people-riding-seadoo.jpg')}}" class="d-block w-100" alt="People riding on a SeaDoo">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('/storage/app-images/people-on-pontoon.jpg')}}" class="d-block w-100" alt="People riding on a Pontoon Boat">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('/storage/app-images/scarab-on-water.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('/storage/app-images/snowmobile.jpg')}}" class="d-block w-100" alt="A man riding on a snowmobile">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('/storage/app-images/women-on-kayaks.jpg')}}" class="d-block w-100" alt="2 women sitting on kayaks">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{asset('/storage/app-images/spyders-driving-on-road.jpg')}}" class="d-block w-100" alt="3 Spyder motorcycles driving down the road">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselIndicators" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselIndicators" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </button>
             </div>
-            <img class="card-img-top" src="" alt="Card image cap">
-            <div class="card-body">
-                <h2 class="card-title">Something Title</h2>
-                <p class="card-text">ASHDOJASDO WDIAD AIDS OSJDO ASDO JSODJAS:DO JSO S</p>
-            </div>
-            <div class="card-footer text-muted">
-                Posted on 1/1/111
-                <a href="#">Link Text</a>
-            </div>
-        </div>
 
 
-    @endsection
 
-    @section('sidebar-post')
-        <ul class="navbar-nav sidebar-post accordion my-4 shadow" id="accordionSidebar">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            @foreach($posts as $post)
-                <li class="nav-item bg-gradient-secondary">
-                    <a class="nav-link collapsed bg-gradient-secondary" href="#" data-toggle="collapse" data-target="#collapseAnnouncements{{$post->id}}" aria-expanded="true" aria-controls="collapseAnnouncements{{$post->id}}">
-                        <span>{{$post->title}}</span>
-                    </a>
-                    <div id="collapseAnnouncements{{$post->id}}" class="collapse" aria-labelledby="headingAnnouncements" data-parent="#accordionSidebar">
-                        <div class="bg-white pt-2 collapse-inner rounded">
-                            <div class="collapse-body">
-                                {{Str::limit($post->body, '200', '...')}}
-
-                                <img class="card-img-top mt-2" src="{{$post->post_image}}" alt="{{$post->title}}">
-
-                                <a href="{{route('post', $post->id)}}" class="btn btn-primary btn-100 mt-2">Read More</a>
-
-                            </div>
-
-                            <div class="collapse-footer mt-2">
-                                <div class="row">
-                                    <div class="col-xs-7 col-sm-7 col-md-7">
-                                        <span>{{$post->created_at->diffForHumans()}}</span>
-                                    </div>
-                                    <div class="col-xs-5 col-xs-5 col-md-5">
-                                        <span class="text-primary">{{$post->user->firstname}} {{$post->user->lastname}}</span>
-                                    </div>
-                                </div>
-                            </div>
+            <style>
+                .img-1 {
+                    background-image: url("{{asset('/storage/app-images/sm-1-people-riding-seadoo.jpg')}}");
+                }
+                .img-2 {
+                    background-image: url("{{asset('/storage/app-images/sm-2-scarab.jpg')}}");
+                }
+                .img-3 {
+                    background-image: url("{{asset('/storage/app-images/sm-3-kayaks.jpg')}}");
+                }
+                .img-4 {
+                    background-image: url("{{asset('/storage/app-images/sm-4-pontoons.jpg')}}");
+                }
+                .img-5 {
+                    background-image: url("{{asset('/storage/app-images/sm-5-segways.jpg')}}");
+                }
+                .img-6 {
+                    background-image: url("{{asset('/storage/app-images/sm-6-snowmobile.jpg')}}");
+                }
+                .map {
+                    background-image: url("{{asset('/storage/app-images/map.jpg')}}");
+                }
+                .sled {
+                    background-image: url("{{asset('/storage/app-images/sled.jpg')}}");
+                }
+                .main-body {
+                    background-image: url("{{asset('/storage/app-images/home-background.jpg')}}");
+                }
+            </style>
+        <div class="main-body">
+            <div class="container main home">
+                <div class="cont-top">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3>
+                                <i class="fa fa-map-marker"></i>
+                                250 SE Division Place</h3>
                         </div>
                     </div>
-                </li>
-            @endforeach
-
-        </ul>
-
-
-
-
-        <!-- Search Widget -->
-        <div class="card my-4 shadow">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
-              </span>
                 </div>
-            </div>
-        </div>
-
-        <!-- Categories Widget -->
-        <div class="card my-4 shadow">
-            <h5 class="card-header">Categories</h5>
-            <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#">Web Design</a>
-                            </li>
-                            <li>
-                                <a href="#">HTML</a>
-                            </li>
-                            <li>
-                                <a href="#">Freebies</a>
-                            </li>
-                        </ul>
+                    <div class="col-6 img">
+                        <a class="img-back img-1" href="{{route('home.seadoo')}}">
+                            <div class="overlay"></div>
+                            <span class="img-text">
+                                Sea-Doo
+                                <span class="hover-text">
+                                    Rentals
+                                    <i class="fa fa-angle-double-right"></i>
+                                </span>
+                            </span>
+                        </a>
                     </div>
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#">JavaScript</a>
-                            </li>
-                            <li>
-                                <a href="#">CSS</a>
-                            </li>
-                            <li>
-                                <a href="#">Tutorials</a>
-                            </li>
-                        </ul>
+                    <div class="col-6 img">
+                        <a class="img-back img-2" href="{{route('home.boat')}}">
+                            <div class="overlay"></div>
+                            <span class="img-text">
+                                Jet Boat
+                                <span class="hover-text">
+                                    Rentals
+                                    <i class="fa fa-angle-double-right"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-6 img">
+                        <a class="img-back img-3" href="{{route('home.kayak')}}">
+                            <div class="overlay"></div>
+                            <span class="img-text">
+                                Kayak/Stand-up Paddleboard
+                                <span class="hover-text">
+                                    Rentals
+                                    <i class="fa fa-angle-double-right"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-6 img">
+                        <a class="img-back img-4" href="{{route('home.boat')}}">
+                            <div class="overlay"></div>
+                            <span class="img-text">
+                                Pontoon Boat
+                                <span class="hover-text">
+                                    Rentals
+                                    <i class="fa fa-angle-double-right"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-6 img">
+                        <a class="img-back img-5" href="{{route('home.spyder')}}">
+                            <div class="overlay"></div>
+                            <span class="img-text">
+                                2 Wheel On-Road
+                                <span class="hover-text">
+                                    Rentals
+                                    <i class="fa fa-angle-double-right"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-6 img">
+                        <a class="img-back img-6" href="{{route('home.snowmobile')}}">
+                            <div class="overlay"></div>
+                            <span class="img-text">
+                                Snowmobile
+                                <span class="hover-text">
+                                    Rentals
+                                    <i class="fa fa-angle-double-right"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-12 img">
+                        <a class="img-back map" href="{{route('home.maps')}}">
+                            <div class="overlay"></div>
+                            <span class="img-text">
+                                Map &
+                                <span class="hover-text">
+                                    Hours
+                                    <i class="fa fa-angle-double-right"></i>
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="border-bottom-5">Welcome to SK Watercraft Rentals</h1>
+                        <p class="text-center">
+                            SK Watercraft Rentals - <a href="tel:503-284-6447">503-284-6447</a>
+                        </p>
+                        <p>
+                            We offer Watercraft Rentals, Jet Ski's Rentals / WaveRunner Rentals / Sea-Doo Rentals.
+                        </p>
+                        <p>
+                            We Rent Pontoon Boats, Ski Boats, Fishing Boats.  Pontoon Boat Rentals, Runabout Boat Rentals, Aluminum Fishing Boat rentals near downtown Portland Oregon.  Walk down to our dock and Go!
+                        </p>
+                        <p>
+                            Located in Portland Oregon on the Willamette River. We are open 7 days a week from 9:30am-7:00pm during the summer (Mid-June - Mid-Sept).  We still rent early and late season by appointment only. We also offer rentals of Pontoon Boats, Ski Boats, Fishing Boats!  Stand up Paddle Boards SUPs, Kayak Rentals.
+                        </p>
+                        <p>
+                            Snowmobile Rentals are offered during the winter. Trailer a Snowmobile up to a snow covered winter wonderland and make tracks where ever your adventure takes you.  We also rent the Can-am Spyder Roadsters.
+                        </p>
+                        <p class="yellow text-center">
+                            We Do Corporate & Group Events!
+                        </p>
+                        <p class="text-center">
+                            COME JOIN THE FUN ANY TIME OF YEAR!!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-sm-6 img">
+                        <a class="img-back sled" href="mailto:info@skwatercraftrentals.com">
+                            <div class="overlay"></div>
+                            <span class="sled-text">
+                               <h3> Reservation & Info Request</h3>
+                               <h4>
+                                   Click to email us
+                                <br><br>or
+                                <br><br>call us at
+                                <br><br><i class="fa fa-phone"></i> (503)284-6447</h4>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6">
+
+                        <a href="{{route('home.snowmobile')}}" class="btn btn-large btn-primary width-100 mt-5">
+                            <h1>Book Now</h1>
+                        </a>
+                        <a href="#" class="btn btn-large btn-primary width-100 mt-5">
+                            <h1>Gift Card</h1>
+                        </a>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Side Widget -->
-        <div class="card my-4 shadow">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-                You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-            </div>
-        </div>
 
     @endsection
 
-    @section('scripts')
-    <!-- Page level plugins -->
-        <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="{{asset('js/demo/datatables-scripts.js')}}"></script>
+
+    @section('scripts')
+
     @endsection
 
 </x-home-master>
