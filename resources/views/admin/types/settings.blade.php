@@ -79,155 +79,294 @@
 
     @section('content')
 
-            <h1><span class="text-primary">{{$type->name}}</span> Settings</h1>
+        <h1><span class="text-primary">{{$type->name}}</span> Settings</h1>
 
-            <!-- Rental Durations -->
-            <div class="card shadow mb-3">
-                <div class="card-header">
-                    <h3 class="mb-0">{{$type->name}} Durations</h3>
-                </div>
-                <div class="card-body">
+        <!-- Rental Durations -->
+        <div class="card shadow mb-3">
+            <div class="card-header">
+                <h3 class="mb-0">{{$type->name}} Durations</h3>
+            </div>
+            <div class="card-body">
 
 
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <form action="{{route('type.duration', $type)}}" method="post" enctype="multipart/form-data">
-                                @csrf
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form action="{{route('type.duration', $type)}}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="name" class="form-control" name="name" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="is_active">Is Active</label>
+                                <select name="is_active" id="is_active">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary btn-right" type="submit">Add</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-6">
+                        @foreach($durations as $duration)
+
+                            <form method="post" action="{{route('attach.duration', $type)}}" class="
+                                @if($type->durations->contains($duration))
+                                    hidden
+                                @endif
+                                ">
                                 @method('PUT')
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="name" class="form-control" name="name" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="is_active">Is Active</label>
-                                    <select name="is_active" id="is_active">
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
-                                    </select>
-                                </div>
-                                <button class="btn btn-primary btn-right" type="submit">Add</button>
-                            </form>
-                        </div>
-                        <div class="col-sm-6">
-                            @foreach($durations as $duration)
+                                @csrf
+                                <input type="hidden" name="duration" value="{{$duration->id}}">
 
-                                <form method="post" action="{{route('attach.duration', $type)}}" class="
-                                    @if($type->durations->contains($duration))
-                                        hidden
-                                    @endif
-                                    ">
-                                    @method('PUT')
-                                    @csrf
-                                    <input type="hidden" name="duration" value="{{$duration->id}}">
-
-                                    <button class="card shadow mt-0 my-2 width-100" type="submit">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <h1>{{$duration->name}}</h1>
-                                            </div>
+                                <button class="card shadow mt-0 my-2 width-100" type="submit">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <h1>{{$duration->name}}</h1>
                                         </div>
-                                    </button>
+                                    </div>
+                                </button>
 
 
-                                </form>
+                            </form>
 
-                            @endforeach
+                        @endforeach
 
-                        </div>
                     </div>
                 </div>
             </div>
-            <!-- /Rental Durations -->
+        </div>
+        <!-- /Rental Durations -->
 
 
-            <!-- Rental Pricing -->
-            <div class="card shadow mb-3">
-                <div class="card-header">
-                    <h3 class="mb-0">{{$type->name}} Duration Pricing</h3>
-                </div>
-                <div class="card-body">
-                        <div class="row">
-                               @foreach($durations as $duration)
-                                   @if($type->durations->contains($duration))
-                                    <div class="card shadow mt-0 my-2 width-100">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-sm-3">
-                                                    <h2 >{{$duration->name}}</h2>
-                                                </div>
+        <!-- Rental Pricing -->
+        <div class="card shadow mb-3">
+            <div class="card-header">
+                <h3 class="mb-0">{{$type->name}} Duration Pricing</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                   @foreach($durations as $duration)
+                           @if($type->durations->contains($duration))
+                            <div class="card shadow mt-0 my-2 width-100">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h2 >{{$duration->name}}</h2>
+                                        </div>
 
-                                                <div class="col-sm-6">
-                                                    @if($duration->has('prices'))
+                                        <div class="col-sm-6">
+                                            @if($duration->has('prices'))
 
-                                                        @foreach($duration->prices as $price)
-                                                            @if($duration->id == $price->duration_id && $type->id == $price->type_id)
-                                                                <form method="post" action="{{route('price.update', $price)}}"
+                                                @foreach($duration->prices as $price)
+                                                    @if($duration->id == $price->duration_id && $type->id == $price->type_id)
+                                                        <form method="post" action="{{route('price.update', $price)}}"
 
-                                                                >
-                                                                    @method('PUT')
-                                                                    @csrf
-                                                                    <div class="row">
-                                                                        <div class="col-6">
-                                                                            <input type="number" min="0.00" step="0.01" name="amount" placeholder="$$" class="form-control" value="{{$price->amount}}" />
-                                                                        </div>
-                                                                        <div class="col-6">
-                                                                            <input type="text" class="hidden" name="duration_id" value="{{$duration->id}}">
-                                                                            <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
-                                                                            <button class="btn btn-secondary" type="submit">Update Price</button>
-                                                                        </div>
-                                                                    </div>
+                                                        >
+                                                            @method('PUT')
+                                                            @csrf
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <input type="number" min="0.00" step="0.01" name="amount" placeholder="$$" class="form-control" value="{{$price->amount}}" />
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <input type="text" class="hidden" name="duration_id" value="{{$duration->id}}">
+                                                                    <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
+                                                                    <button class="btn btn-secondary" type="submit">Update Price</button>
+                                                                </div>
+                                                            </div>
 
-                                                                </form>
-                                                            @endif
-                                                        @endforeach
+                                                        </form>
                                                     @endif
+                                                @endforeach
+                                            @endif
 
-                                                    <form method="post" action="{{route('price.store.attach', $duration)}}" class="
-                                                         @if($duration->has('prices'))
-                                                            @foreach($duration->prices as $price)
-                                                                @if($duration->id == $price->duration_id && $type->id == $price->type_id)
-                                                                    hidden
-                                                                @endif
-                                                            @endforeach
-                                                        @endif
-                                                        ">
-                                                        @method('PUT')
-                                                        @csrf
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <input type="number" min="0.00" step="0.50" name="amount" placeholder="Enter Price" class="form-control" />
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <input type="hidden" name="duration_id" value="{{$duration->id}}">
-                                                                <input type="hidden" name="type_id" value="{{$type->id}}">
-                                                                <button class="btn btn-primary" type="submit">Add Price</button>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-
-
-                                                <div class="col-sm-1">
-                                                    @foreach($prices as $price)
-                                                        @if($price->duration_id == $duration->id && $price->type_id == $type->id)
-                                                            <h3 class="mt-2">
-                                                                ${{$price->amount}}
-                                                            </h3>
-                                                        @else
+                                            <form method="post" action="{{route('price.store.attach', $duration)}}" class="
+                                                 @if($duration->has('prices'))
+                                                    @foreach($duration->prices as $price)
+                                                        @if($duration->id == $price->duration_id && $type->id == $price->type_id)
+                                                            hidden
                                                         @endif
                                                     @endforeach
+                                                @endif
+                                                ">
+                                                @method('PUT')
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <input type="number" min="0.00" step="0.50" name="amount" placeholder="Enter Price" class="form-control" />
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input type="hidden" name="duration_id" value="{{$duration->id}}">
+                                                        <input type="hidden" name="type_id" value="{{$type->id}}">
+                                                        <button class="btn btn-primary" type="submit">Add Price</button>
+                                                    </div>
                                                 </div>
-                                            </div>
+
+                                            </form>
+                                        </div>
+
+
+                                        <div class="col-sm-1">
+                                            @foreach($prices as $price)
+                                                @if($price->duration_id == $duration->id && $price->type_id == $type->id)
+                                                    <h3 class="mt-2">
+                                                        ${{$price->amount}}
+                                                    </h3>
+                                                @else
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
-                                   @endif
-                               @endforeach
+                                </div>
+                            </div>
+                           @endif
+                       @endforeach
+                </div>
+
+            </div>
+        </div>
+        <!-- /Rental Pricing -->
+
+        <!-- Rental Type Info -->
+        <div class="card shadow mb-3">
+            <div class="card-header">
+                <h3 class="mb-0">{{$type->name}} Info</h3>
+            </div>
+            <div class="card-body">
+
+
+                <div class="row">
+                    <form action="{{route('type.update', $type)}}" method="post" enctype="multipart/form-data" class="width-100">
+                        @csrf
+                        @method('PUT')
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{$type->name}}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" class="form-control" name="description" id="description" value="{{$type->description}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="booking_buffer_hr">Hour Buffer</label>
+                                    <div class="row">
+                                        <div class="col-9 pr-0">
+                                            <input type="number" class="form-control" name="booking_buffer_hr" id="booking_buffer_hr" value="{{$type->booking_buffer_hr}}">
+                                        </div>
+                                        <div class="col-3">
+                                            <h3>hrs</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="quantity">Quantity</label>
+                                    <input type="number" class="form-control" name="quantity" id="quantity" value="{{$type->quantity}}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="capacity_count">Capacity Count</label>
+                                    <div class="row">
+                                        <div class="col-9 pr-0">
+                                            <input type="number" class="form-control" name="capacity_count" id="capacity_count" value="{{$type->capacity_count}}">
+                                        </div>
+                                        <div class="col-3">
+                                            <h3>lbs</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="weight_capacity">Weight Capacity</label>
+                                    <div class="row">
+                                        <div class="col-9 pr-0">
+                                            <input type="number" class="form-control" name="weight_capacity" id="weight_capacity" value="{{$type->weight_capacity}}">
+                                        </div>
+                                        <div class="col-3">
+                                            <h3>lbs</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <h3 class="mt-4">Additional Info</h3>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="cancel_policy">Cancellation Policy</label>
+                                    <textarea name="cancel_policy" id="cancel_policy" cols="30" rows="5">{{$type->cancel_policy}}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group mt-3">
+                                    <label for="pickup_details">Pickup Details</label>
+                                    <input type="text" class="form-control" name="pickup_details" id="pickup_details" value="{{$type->pickup_details}}">
+                                </div>
+                                <div class="form-group mt-3">
+                                    <label for="pickup_address">Pickup Address</label>
+                                    <input type="text" class="form-control" name="pickup_address" id="pickup_address" value="{{$type->pickup_address}}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="what_to_know">What to Know</label>
+                                    <textarea name="what_to_know" id="what_to_know" cols="30" rows="5">{{$type->what_to_know}}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="what_to_bring">What to Bring</label>
+                                    <textarea name="what_to_bring" id="what_to_bring" cols="30" rows="5">{{$type->what_to_bring}}</textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="suggested_attire">Suggested Attire</label>
+                                    <textarea name="suggested_attire" id="suggested_attire" cols="30" rows="2">{{$type->suggested_attire}}</textarea>
+                                </div>
+                            </div>
+
+
                         </div>
 
+
+                        <div class="row">
+                            <div class="col-6">
+                                <select name="is_active" id="is_active">
+                                    <option value="1"
+                                        @if($type->is_active == '1')
+                                            selected
+                                        @endif
+                                    >Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="hidden" name="archive" value="0">
+                                <button class="btn btn-primary btn-right" type="submit">Update</button>
+                            </div>
+                        </div>
+
+                    </form>
                 </div>
             </div>
-            <!-- /Rental Pricing -->
+        </div>
+        <!-- /Rental Type Info -->
+
 
 
     @endsection
