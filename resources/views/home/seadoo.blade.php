@@ -78,7 +78,11 @@
                 <!-- SeaDoo Info -->
                 @foreach($seadoo as $seadoo)
                     <img src="{{asset('/storage/app-images/two-people-riding-seadoo-about-page.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
-                    <h2 class="section-header">{{$seadoo->name}}</h2>
+                    @if($seadoo->description != '')
+                        <h2 class="section-header">{{$seadoo->description}}</h2>
+                    @else
+                        <h2 class="section-header">{{$seadoo->name}}</h2>
+                    @endif
 
                     @if($seadoo->has('durations'))
                         @foreach($seadoo->durations as $duration)

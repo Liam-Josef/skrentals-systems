@@ -81,7 +81,11 @@
                         <!-- Spyder Info -->
                         @foreach($spyder as $spyder)
                             <img src="{{asset('/storage/app-images/Spyder.jpg')}}" alt="A group\ three-wheel Spyder motorcycle driving down the road" class="page-img-60" />
-                            <h2 class="section-header">{{$spyder->name}}</h2>
+                            @if($spyder->description != '')
+                                <h2 class="section-header">{{$spyder->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$spyder->name}}</h2>
+                            @endif
 
                             @if($spyder->has('durations'))
                                 @foreach($spyder->durations as $duration)

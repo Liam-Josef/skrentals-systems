@@ -80,7 +80,11 @@
                         <!-- Scarab Info -->
                         @foreach($scarab as $scarab)
                             <img src="{{asset('/storage/app-images/scarab215.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
-                            <h2 class="section-header mt-3">{{$scarab->description}}</h2>
+                            @if($scarab->description != '')
+                                <h2 class="section-header">{{$scarab->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$scarab->name}}</h2>
+                            @endif
 
 
                             @if($scarab->has('durations'))
@@ -150,7 +154,11 @@
                         <!-- Pontoon Info -->
                         @foreach($pontoon as $pontoon)
                             <img src="{{asset('/storage/app-images/pontoon.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
-                            <h2 class="section-header mt-3">{{$pontoon->description}}</h2>
+                            @if($pontoon->description != '')
+                                <h2 class="section-header">{{$pontoon->description}}</h2>
+                            @else
+                                <h2 class="section-header">{{$pontoon->name}}</h2>
+                            @endif
 
                             @if($pontoon->has('durations'))
                                 @foreach($pontoon->durations as $duration)
