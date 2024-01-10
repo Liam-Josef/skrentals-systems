@@ -80,7 +80,7 @@
                     <div class="col-sm-4">
                         <!-- Single Info -->
                         @foreach($single_kayak as $kayak)
-                            <img src="{{asset('/storage/app-images/single-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img" />
+                            <img src="{{asset('storage/' . $kayak->image)}}" alt="{{$spyder->img_alt}}" class="page-img-60" />
                             @if($kayak->description != '')
                                 <h2 class="section-header">{{$kayak->description}}</h2>
                             @else
@@ -119,7 +119,7 @@
                     <div class="col-sm-4">
                         <!-- Double Info -->
                         @foreach($double_kayak as $kayak)
-                            <img src="{{asset('/storage/app-images/double-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img" />
+                            <img src="{{asset('storage/' . $kayak->image)}}" alt="{{$kayak->img_alt}}" class="page-img-60" />
                             @if($kayak->description != '')
                                 <h2 class="section-header">{{$kayak->description}}</h2>
                             @else
@@ -158,7 +158,7 @@
                     <div class="col-sm-4">
                         <!-- Paddleboard Info -->
                         @foreach($paddleboard as $kayak)
-                            <img src="{{asset('/storage/app-images/paddleboard.jpg')}}" alt="A single kayak with a white background" class="page-img" />
+                            <img src="{{asset('storage/' . $kayak->image)}}" alt="{{$kayak->img_alt}}" class="page-img-60" />
                             @if($kayak->description != '')
                                 <h2 class="section-header">{{$kayak->description}}</h2>
                             @else

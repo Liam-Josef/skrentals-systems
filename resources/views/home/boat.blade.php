@@ -79,7 +79,7 @@
                     <div class="col-sm-6">
                         <!-- Scarab Info -->
                         @foreach($scarab as $scarab)
-                            <img src="{{asset('/storage/app-images/scarab215.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+                            <img src="{{asset('storage/' . $scarab->image)}}" alt="{{$scarab->img_alt}}" class="page-img-60" />
                             @if($scarab->description != '')
                                 <h2 class="section-header">{{$scarab->description}}</h2>
                             @else
@@ -153,7 +153,7 @@
                     <div class="col-sm-6">
                         <!-- Pontoon Info -->
                         @foreach($pontoon as $pontoon)
-                            <img src="{{asset('/storage/app-images/pontoon.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+                            <img src="{{asset('storage/' . $pontoon->image)}}" alt="{{$pontoon->img_alt}}" class="page-img-60" />
                             @if($pontoon->description != '')
                                 <h2 class="section-header">{{$pontoon->description}}</h2>
                             @else

@@ -91,12 +91,13 @@
 
                     <div class="row">
                         <div class="col-sm-6">
+                            <h3>Add Rental Type</h3>
                             <form action="{{route('type.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="name" class="form-control" name="name" id="name" value="{{$website->name}}">
+                                    <input type="name" class="form-control" name="name" value="{{$website->name}}" aria-label="type_name">
                                 </div>
                                 <div class="form-group">
                                     <label for="is_active">Is Active</label>
@@ -109,12 +110,13 @@
                             </form>
                         </div>
                         <div class="col-sm-6">
+                            <h3>Select for Settings</h3>
                             @foreach($types as $type)
                                 <div class="card shadow mt-0 my-2">
                                     <a href="{{route('type.settings', $type->id)}}" class="card-link nav-link">
-                                        <div class="card-body">
+                                        <div class="card-body p-2">
                                             <div class="row">
-                                                <h1>{{$type->name}}</h1>
+                                                <h3 class="mb-0">{{$type->name}}</h3>
                                             </div>
                                         </div>
                                     </a>
@@ -133,38 +135,49 @@
         <!-- Rental Durations -->
         <div class="card shadow mb-3">
             <div class="card-header">
-                <h3 class="mb-0">Rental Durations</h3>
+                <h3 class="mb-0">Rental Duration Settings</h3>
             </div>
             <div class="card-body">
 
 
                 <div class="row">
                     <div class="col-sm-6">
+                        <h3>Add Duration</h3>
                         <form action="{{route('duration.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="name" class="form-control" name="name" id="name">
+                                <input type="name" class="form-control" name="name">
                             </div>
-                            <div class="form-group">
-                                <label for="is_active">Is Active</label>
-                                <select name="is_active" id="is_active">
-                                    <option value="0">No</option>
-                                    <option value="1">Yes</option>
-                                </select>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="hour">Hour Duration</label>
+                                        <input type="hour" class="form-control" name="hour">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form- mt-4">
+                                        <label for="is_active">Is Active</label>
+                                        <select name="is_active" id="is_active">
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <button class="btn btn-primary btn-right" type="submit">Add</button>
                         </form>
                     </div>
                     <div class="col-sm-6">
+                        <h3>Edit Duration</h3>
                         @foreach($durations as $duration)
                             <div class="card shadow mt-0 my-2">
-                                <a href="#" class="card-link nav-link " id="view-type-tab" data-toggle="tab" href="#type-tab{{$duration->id}}" role="tab" aria-controls="type-tab{{$duration->id}}"
-                                   aria-selected="true">
+                                <a href="#" class="card-link nav-link " id="view-type-tab" data-toggle="modal" data-target="#duration{{$duration->id}}">
                                     <div class="card-body">
                                         <div class="row">
-                                            <h1>{{$duration->name}}</h1>
+                                            <h2 class="mb-0">{{$duration->name}}</h2>
                                         </div>
                                     </div>
                                 </a>
@@ -180,7 +193,83 @@
         </div>
         <!-- /Rental Durations -->
 
+    @foreach($durations as $duration)
+    <!-- Service Request Modal -- Rental -->
+        <div class="modal fade" id="duration{{$duration->id}}" tabindex="-1" role="dialog" aria-labelledby="durationModal" aria-hidden="true">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                       <h3>Edit: <span> {{$duration->name}} </span> </h3>
+                    </div>
+                    <form action="{{route('duration.update', $duration)}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="modal-body">
 
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="name" class="">Name</label>
+                                        <input type="text" class="form-control" name="name" value="{{$duration->name}}" aria-label="duration_name">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="hour" class="">Hours</label>
+                                        <input type="number" class="form-control" name="hour" value="{{$duration->hour}}">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="day" class="">Days</label>
+                                        <input type="number" class="form-control" name="day" value="{{$duration->day}}">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="night" class="">Nights</label>
+                                        <input type="number" class="form-control" name="night" value="{{$duration->night}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="before_hour" class="">Buffer Before Hours</label>
+                                        <input type="number" class="form-control" name="before_hour" value="{{$duration->before_hour}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="before_minute" class="">Buffer Before Minutes</label>
+                                        <input type="number" class="form-control" name="before_minute" value="{{$duration->before_minute}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="after_hour" class="">Buffer After Hours</label>
+                                        <input type="number" class="form-control" name="after_hour" value="{{$duration->after_hour}}">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="after_minute" class="">Buffer After Minutes</label>
+                                        <input type="number" class="form-control" name="after_minute" value="{{$duration->after_minute}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel </button>
+                            <button class="btn btn-primary" type="submit">Update </button>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+<!-- /Service Modal -- Rental  -->
+@endforeach
     @endsection
 
 
