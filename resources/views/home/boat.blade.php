@@ -78,108 +78,140 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <!-- Scarab Info -->
-                        <img src="{{asset('/storage/app-images/scarab215.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
-                        <h2 class="section-header mt-3">SCARAB 215 SKI BOAT</h2>
-
-                        <p class="text-center">
-                            $360 Half Day (4hrs)
-                        </p>
-                        <p class="text-center">
-                            $600 Full Day (10am-Close)
-                        </p>
-                        <p class="text-center">
-                            Ask Us About Our Multiple Day Discounts
-                        </p>
-                        <a href="#" class="btn btn-book">Click to Book Now</a>
-
-                        <p class="text-center">
-                            $2000 Damage Deposit Required.  Fuel is NOT included.  Drivers License or Picture Identification with address required.  MUST BE 18 or OVER to rent.  We encourage the customer to use On-Site but will allow 'trailer aways' for multi-day rentals.  Boaters Education Cards are NOT Required.
-                        </p>
-
-                        <p class="text-center">
-                            Alcohol consumption while operating a motor vehicle is PROHIBITED on the water. A designated driver is required on all vehicles with alcohol.
-                        </p>
+                        @foreach($scarab as $scarab)
+                            <img src="{{asset('/storage/app-images/scarab215.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+                            <h2 class="section-header mt-3">{{$scarab->description}}</h2>
 
 
-                        <img src="{{asset('/storage/app-images/215-red-top-boat-pg.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+                            @if($scarab->has('durations'))
+                                @foreach($scarab->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $scarab->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                        {{$duration->name}} ( {{$duration->hour}} hour )
 
-                        <p class="large text-center">
-                            SPECS
-                        </p>
-                        <p class="text-center">
-                            10 person capacity 310 HP / 44-gallon tank / Bimini Top for shade Swim Platform Built-in Stereo / Radio with USB/Aux/Bluetooth connectivity Capable of pulling towables!
-                        </p>
 
-                        <!-- Scarab Carousel -->
-                        <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{asset('/storage/app-images/scarab-1.jpg')}}" class="d-block w-100" alt="People riding on a SeaDoo">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{asset('/storage/app-images/scarab-2.jpg')}}" class="d-block w-100" alt="People riding on a Pontoon Boat">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{asset('/storage/app-images/scarab-3.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
+                                    </p>
+
+
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
+
+
+                            <p class="text-center">
+                                Ask Us About Our Multiple Day Discounts
+                            </p>
+                            <a href="#" class="btn btn-book">Click to Book Now</a>
+
+                            <p class="text-center">
+                                $2000 Damage Deposit Required.  Fuel is NOT included.  Drivers License or Picture Identification with address required.  MUST BE 18 or OVER to rent.  We encourage the customer to use On-Site but will allow 'trailer aways' for multi-day rentals.  Boaters Education Cards are NOT Required.
+                            </p>
+
+                            <p class="text-center">
+                                Alcohol consumption while operating a motor vehicle is PROHIBITED on the water. A designated driver is required on all vehicles with alcohol.
+                            </p>
+
+
+                            <img src="{{asset('/storage/app-images/215-red-top-boat-pg.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+
+                            <p class="large text-center">
+                                SPECS
+                            </p>
+                            <p class="text-center">
+                                10 person capacity 310 HP / 44-gallon tank / Bimini Top for shade Swim Platform Built-in Stereo / Radio with USB/Aux/Bluetooth connectivity Capable of pulling towables!
+                            </p>
+
+                            <!-- Scarab Carousel -->
+                            <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{{asset('/storage/app-images/scarab-1.jpg')}}" class="d-block w-100" alt="People riding on a SeaDoo">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('/storage/app-images/scarab-2.jpg')}}" class="d-block w-100" alt="People riding on a Pontoon Boat">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('/storage/app-images/scarab-3.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /Scarab Carousel -->
+                            <!-- /Scarab Carousel -->
+                        @endforeach
                     <!-- /Scarab Info -->
                     </div>
                     <div class="col-sm-6">
                         <!-- Pontoon Info -->
-                        <img src="{{asset('/storage/app-images/pontoon.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
-                        <h2 class="section-header mt-3">23 FOOT PONTOON BOAT</h2>
-
-                        <p class="text-center">
-                            $300 Half-Day (4hrs) Fuel Included
-                        </p>
-                        <p class="text-center">
-                            $440 Full-Day (10am-Close)
-                        </p>
-                        <p class="text-center">
-                            Ask Us About Our Multiple Day Discounts
-                        </p>
-                        <a href="#" class="btn btn-book">Click to Book Now</a>
-
-                        <p class="text-center">
-                            $2000 Damage Deposit Required.  Fuel is included on half-day rentals, but NOT on full-day rentals.  Drivers License or Picture Identification with address required.  MUST BE 18 or OVER to rent.  Boaters Education Cards are NOT Required.
-                        </p>
-
-                        <p class="text-center">
-                            Alcohol consumption while operating a motor vehicle is PROHIBITED on the water. A designated driver is required on all vehicles with alcohol.
-                        </p>
+                        @foreach($pontoon as $pontoon)
+                            <img src="{{asset('/storage/app-images/pontoon.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+                            <h2 class="section-header mt-3">{{$pontoon->description}}</h2>
 
 
-                        <img src="{{asset('/storage/app-images/pontoon-overhead.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+                            @if($pontoon->has('durations'))
+                                @foreach($pontoon->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $pontoon->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                        {{$duration->name}} ( {{$duration->hour}} hour )
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
+                            <p class="text-center">
+                                Ask Us About Our Multiple Day Discounts
+                            </p>
+                            <a href="#" class="btn btn-book">Click to Book Now</a>
 
-                        <p class="large text-center">
-                            SPECS
-                        </p>
-                        <p class="text-center">
-                            12 person capacity 60 HP engine 39-gallon tank Built-in Radio with USB/Aux/Bluetooth Bimini Top for shade.
-                        </p>
+                            <p class="text-center">
+                                $2000 Damage Deposit Required.  Fuel is included on half-day rentals, but NOT on full-day rentals.  Drivers License or Picture Identification with address required.  MUST BE 18 or OVER to rent.  Boaters Education Cards are NOT Required.
+                            </p>
 
-                        <!-- Scarab Carousel -->
-                        <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{asset('/storage/app-images/pontoon-1.jpg')}}" class="d-block w-100" alt="People riding on a SeaDoo">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{asset('/storage/app-images/pontoon-2.jpg')}}" class="d-block w-100" alt="People riding on a Pontoon Boat">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{asset('/storage/app-images/pontoon-3.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{asset('/storage/app-images/pontoon-4.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
+                            <p class="text-center">
+                                Alcohol consumption while operating a motor vehicle is PROHIBITED on the water. A designated driver is required on all vehicles with alcohol.
+                            </p>
+
+
+                            <img src="{{asset('/storage/app-images/pontoon-overhead.jpg')}}" alt="Two people riding on a SeaDoo" class="page-img img-responsive" />
+
+                            <p class="large text-center">
+                                SPECS
+                            </p>
+                            <p class="text-center">
+                                12 person capacity 60 HP engine 39-gallon tank Built-in Radio with USB/Aux/Bluetooth Bimini Top for shade.
+                            </p>
+
+                            <!-- Scarab Carousel -->
+                            <div id="carouselIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{{asset('/storage/app-images/pontoon-1.jpg')}}" class="d-block w-100" alt="People riding on a SeaDoo">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('/storage/app-images/pontoon-2.jpg')}}" class="d-block w-100" alt="People riding on a Pontoon Boat">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('/storage/app-images/pontoon-3.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('/storage/app-images/pontoon-4.jpg')}}" class="d-block w-100" alt="People riding on a Scarab Jetboat">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- /Scarab Carousel -->
-                        <!-- /Scarab Info -->
+                            <!-- /Pontoon Carousel -->
+                        @endforeach
+                        <!-- /Pontoon Info -->
                     </div>
                 </div>
 
@@ -241,7 +273,7 @@
                     Customers have up to 5 days / 120 hrs before the rental to cancel. If you cancel before 5 days prior to the rental date we do not charge you any penalty, but once we are within 5 days of the scheduled rental and you decide to cancel we then charge $100 or half of the rental fee which ever one is greater.
                 </p>
 
-                <!-- /SeaDoo Info -->
+                <!-- /Boat Info -->
             </div>
         </div>
     @endsection

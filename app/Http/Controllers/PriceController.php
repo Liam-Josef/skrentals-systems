@@ -9,15 +9,22 @@ use Illuminate\Support\Str;
 
 class PriceController extends Controller
 {
-    public function store() {
-        request()->validate([
-            'amount' => ['required']
-        ]);
-        Price::create([
-            'amount' => request('amount'),
-            'is_multiday' => request('is_multiday'),
-        ]);
+//    public function store() {
+//        request()->validate([
+//            'amount' => ['required']
+//        ]);
+//        Price::create([
+//            'amount' => request('amount'),
+//            'is_multiday' => request('is_multiday'),
+//        ]);
+//
+//        return back();
+//    }
 
+    public function update(Price $price) {
+        $price->update(['amount' => request('amount')]);
         return back();
     }
+
+
 }
