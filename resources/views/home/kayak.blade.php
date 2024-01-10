@@ -80,7 +80,7 @@
                     <div class="col-sm-4">
                         <!-- Single Info -->
                         @foreach($single_kayak as $kayak)
-                            <img src="{{asset('storage/' . $kayak->image)}}" alt="{{$spyder->img_alt}}" class="page-img-60" />
+                            <img src="{{asset('storage/' . $kayak->image)}}" alt="{{$kayak->img_alt}}" class="page-img-60" />
                             @if($kayak->description != '')
                                 <h2 class="section-header">{{$kayak->description}}</h2>
                             @else
