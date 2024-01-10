@@ -4,16 +4,17 @@
         <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
     @endsection
 
-
-
     @foreach($applications as $application)
     @section('page_title')
         <h1>Book Now</h1>
     @endsection
 
     @section('browser_title')
-        <title>Book Now | {{$application->name}}
-        </title>
+        Book Now | {{$application->name}}
+    @endsection
+
+    @section('meta_description')
+
     @endsection
 
     @section('navbar_rental_type')

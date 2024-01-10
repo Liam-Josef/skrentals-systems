@@ -1,19 +1,18 @@
 <x-home-master>
 
     @section('styles')
-        <link href="{{asset('vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+
     @endsection
-
-
 
     @foreach($applications as $application)
-    @section('page_title')
-        <h1>About Us</h1>
-    @endsection
 
     @section('browser_title')
-        <title>About Us | {{$application->name}}
-        </title>
+
+        About Us | {{$application->name}}
+    @endsection
+
+    @section('meta_description')
+
     @endsection
 
     @section('navbar_rental_type')
@@ -56,72 +55,80 @@
             {{$application->operations_name}}
         @endif
     @endsection
-
     @endforeach
 
     @section('content')
-        @yield('page_title')
+        <style>
+            .main-body {
+                background-image: url("{{asset('/storage/app-images/home-background.jpg')}}");
+            }
+        </style>
+        <div class="main-body">
+            <div class="container main">
 
+                <!-- Title -->
+                <h1 class="page-title"> About Us</h1>
+                <div class="breadcrumbs">
+                    <p>
+                        <a href="{{route('home.index')}}" class="link">Home </a>
+                        <i class="fa fa-chevron-right"></i> Operation Info <i class="fa fa-chevron-right"></i>  About Us
+                    </p>
+                </div>
+                <!-- /Title -->
 
+                <div class="row">
 
-
-    @endsection
-
-    @section('sidebar-post')
-        <ul class="navbar-nav sidebar-post accordion my-4 shadow" id="accordionSidebar">
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            @foreach($posts as $post)
-                <li class="nav-item bg-gradient-secondary">
-                    <a class="nav-link collapsed bg-gradient-secondary" href="#" data-toggle="collapse" data-target="#collapseAnnouncements{{$post->id}}" aria-expanded="true" aria-controls="collapseAnnouncements{{$post->id}}">
-                        <span>{{$post->title}}</span>
-                    </a>
-                    <div id="collapseAnnouncements{{$post->id}}" class="collapse" aria-labelledby="headingAnnouncements" data-parent="#accordionSidebar">
-                        <div class="bg-white pt-2 collapse-inner rounded">
-                            <div class="collapse-body">
-                                {{Str::limit($post->body, '200', '...')}}
-
-                                <img class="card-img-top mt-2" src="{{$post->post_image}}" alt="{{$post->title}}">
-
-                                <a href="{{route('post', $post->id)}}" class="btn btn-primary btn-100 mt-2">Read More</a>
-
-                            </div>
-
-                            <div class="collapse-footer mt-2">
-                                <div class="row">
-                                    <div class="col-xs-7 col-sm-7 col-md-7">
-                                        <span>{{$post->created_at->diffForHumans()}}</span>
-                                    </div>
-                                    <div class="col-xs-5 col-xs-5 col-md-5">
-                                        <span class="text-primary">{{$post->user->firstname}} {{$post->user->lastname}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-sm-3">
+                        <img src="{{asset('/storage/app-images/original-location.jpg')}}" alt="Sk Watercraft Rentals second location on Marine Dr" class="img-responsive mt-3">
                     </div>
-                </li>
-            @endforeach
+                    <div class="col-sm-9">
+                        <p class="mt-0">
+                            Our origin into renting personal watercraft began in the Spring of 1994, when Shawn started SK Jet Ski Rentals renting two personal watercraft to his
+                            fraternity at Oregon State University. The business grew from just one fraternity to include many fraternities of both Oregon State and U of O, and
+                            then onto the general public. Our fleet went from two, to six, to eleven, to seventeen, into the mid-thirty’s! By 1998, we were the largest rental
+                            operation in the State of Oregon with three locations around the Portland Area (Columbia River, Hagg Lake, and Wilsonville).
+                        </p>
+                    </div>
 
-        </ul>
+                    <div class="col-12">
+                        <p>
+                            SK Watercraft Rentals, Inc. is the business name today, is still renting personal watercraft on the Columbia River just as we did in the mid-1990's.
+                            But now we have added to our services with rentals of 21ft Ski Boats, Pontoon Boats, Fishing Boats, Can-am Spyder Roadster, and Segway Rentals along
+                            the Portland Waterfront.  In the winter we rent Ski-doo Snowmobiles.  We offer many recreational activities to enjoy the outdoors here in Oregon.
+                        </p>
+                    </div>
 
+                    <div class="col-sm-9">
+                        <p>
+                            We also do Corporate Events!  From the simple gathering of 20 to very large events with thousands with full staff at a site of your choice as well.
+                        </p>
+                        <p>
+                            We have now been in operation for over 25yrs!  Thank you for our customers continued support.
+                        </p>
+                        <p>
+                            In a continuous expansion of services to our customers, we have added another online website to our portfolio.
+                            <br>
+                            <a href="http://www.sourcepowersports.com/" target="_blank">  Source Powersports offers a full selection of BRP replacement parts and accessories for Ski-Doo snowmobiles and Sea-Doo watercraft.</a>
+                        </p>
 
-        <!-- Side Widget -->
-        <div class="card my-4 shadow">
-            <h5 class="card-header">Side Widget</h5>
-            <div class="card-body">
-                You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+                    </div>
+                    <div class="col-sm-3">
+                        ]<img src="{{asset('/storage/app-images/original-sk.jpg')}}" alt="Sk Watercraft Rentals original location on Marine Dr" class="img-responsive mt-3">
+                    </div>
+
+                </div>
+
+                <p class="pb-5">
+                   &nbsp;
+                </p>
             </div>
         </div>
-
     @endsection
 
-    @section('scripts')
-    <!-- Page level plugins -->
-        <script src="{{asset('vendor/datatables/jquery.dataTables.min.js')}}"></script>
-        <script src="{{asset('vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="{{asset('js/demo/datatables-scripts.js')}}"></script>
+
+    @section('scripts')
+
     @endsection
 
 </x-home-master>

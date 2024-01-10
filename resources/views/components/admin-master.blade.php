@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     @yield('browser_title')
+    <meta name="robots" content="noindex, nofollow">
 
     <link rel="icon" href="@yield('favicon')">
     <!-- Custom fonts for this template-->
@@ -59,7 +60,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-3" href="{{route('home.index')}}">
                 <div class="sidebar-brand-icon">
-                    <img src="@yield('logo_horizontal_2')" alt="RentalGuru Admin Logo" class="img-responsive" />
+                    <img src="@yield('logo_square_1')" alt="RentalGuru Admin Logo" class="img-responsive" />
                 </div>
             </a>
 
@@ -80,9 +81,10 @@
 
                 <x-admin.sidebar.vehicles></x-admin.sidebar.vehicles>
 
-                <hr class="sidebar-divider hidden-xs">
 
-                <x-admin.sidebar.application></x-admin.sidebar.application>
+{{--                <x-admin.sidebar.application></x-admin.sidebar.application>--}}
+
+                <x-admin.sidebar.website></x-admin.sidebar.website>
 
 
                 <!-- Nav Item - Utilities Collapse Menu -->

@@ -105,7 +105,7 @@ body {
 }
 @media screen and (max-width:1000px) {
     body {
-        padding-top: 20px;
+        padding-top: 0px;
     }
 }
 /* background-image: url({{route('storage'. 'images/background2.1.jpg')}}); */
@@ -683,7 +683,7 @@ pre code {
 }
 @media screen and (min-width: 1650px) {
     .container-fluid {
-        width: 80% !important;
+        width: 100% !important;
     }
 }
 
@@ -11350,7 +11350,7 @@ nav.bg-gradient-secondary {
     padding-top: 2px;
 }
 .navbar-nav .smaller:nth-child(5) {
-    margin-right: 30px;
+    /*margin-right: 30px;*/
 }
 
 .sidebar {
@@ -12738,4 +12738,14 @@ footer img.img-square {
 #sig canvas{
     width: 100% !important;
     height: auto;
+}
+.name-format {
+    display: block !important;
+    position: absolute;
+    top: 15%;
+    left: 13%
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0; /* remove the gap so it doesn't close */
 }
