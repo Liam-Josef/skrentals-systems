@@ -59,7 +59,7 @@ nav.home-header .lower-header nav.navbar li.nav-item {
 }
 nav.home-header .lower-header nav.navbar li.nav-item a.nav-link {
     color:#ffffff !important;
-    font-size: 180%;
+    font-size: 130%;
     font-weight: bold;
     border-right: 2px solid #000000;
     line-height: .8;
@@ -78,7 +78,7 @@ nav.home-header .lower-header nav.navbar li.nav-item .dropdown-menu .dropdown-it
     border-bottom-width: 1px;
     border-style: solid;
     border-color: #d01519 !important;
-    font-size: 180%;
+    font-size: 130%;
     font-weight: bold;
 }
 nav.home-header .lower-header nav.navbar li.nav-item .dropdown-menu .dropdown-item:hover,
