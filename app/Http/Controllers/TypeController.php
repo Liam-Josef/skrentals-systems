@@ -51,21 +51,6 @@ class TypeController extends Controller
     }
 
     public function update(Type $type) {
-//        $type->name = request('name');
-//        $type->description = request('name');
-//        $type->quantity = request('name');
-//        $type->capacity_count = request('name');
-//        $type->weight_capacity = request('name');
-//        $type->cancel_policy = request('cancel_policy');
-//        $type->pickup_details = request('pickup_details');
-//        $type->pickup_address = request('pickup_address');
-//        $type->what_to_know = request('what_to_know');
-//        $type->what_to_bring = request('what_to_bring');
-//        $type->suggested_attire = request('suggested_attire');
-//        $type->booking_buffer = request('booking_buffer');
-//        $type->is_active = request('is_active');
-
-
         $inputs = request()->validate([
             'name' => ['required'],
             'is_active' => ['required'],
@@ -74,6 +59,9 @@ class TypeController extends Controller
         ]);
         if(request('image')) {
             $inputs['image'] = request('image')->store('app-images');
+        }
+        if(request('img_alt')) {
+            $inputs['img_alt'] = request('img_alt');
         }
         if(request('description')) {
             $inputs['description'] = request('description');

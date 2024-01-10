@@ -80,7 +80,7 @@
                     <div class="col-sm-6">
                         <!-- Summit Info -->
                         @foreach($summit as $summit)
-                            <img src="{{asset('/storage/app-images/summit.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
+                            <img src="{{asset('storage/' . $summit->image)}}" alt="{{$summit->img_alt}}" class="page-img-60" />
                             @if($summit->description != '')
                                 <h2 class="section-header">{{$summit->description}}</h2>
                             @else
@@ -121,7 +121,7 @@
                     <div class="col-sm-6">
                         <!-- Renegade Info -->
                         @foreach($renegade as $renegade)
-                            <img src="{{asset('/storage/app-images/renegade.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
+                            <img src="{{asset('storage/' . $renegade->image)}}" alt="{{$renegade->img_alt}}" class="page-img-60" />
                             @if($renegade->description != '')
                                 <h2 class="section-header">{{$renegade->description}}</h2>
                             @else
