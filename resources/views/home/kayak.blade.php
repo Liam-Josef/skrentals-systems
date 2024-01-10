@@ -79,62 +79,107 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <!-- Single Info -->
-                        <img src="{{asset('/storage/app-images/single-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img-80" />
-                        <h2 class="section-header mt-3">SINGLE KAYAKS</h2>
+                        @foreach($single_kayak as $kayak)
+                            <img src="{{asset('/storage/app-images/single-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img-80" />
+                            <h2 class="section-header">{{$kayak->name}}</h2>
 
-                        <p class="text-center">
-                            2hr - $30/3hr - $40
-                            <br>
-                            4hr - $50
-                            <br>
-                            Full Day - $65
-                            <br>
-                            2 Days - $120
-                            <br>
-                            +$40/day each additional day
-                        </p>
+                            @if($kayak->has('durations'))
+                                @foreach($kayak->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $kayak->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
 
-                        <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                            <p class="text-center">
+                                +$40/day each additional day
+                            </p>
+
+                            <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                        @endforeach
                         <!-- /Single Info -->
                     </div>
                     <div class="col-sm-4">
                         <!-- Double Info -->
-                        <img src="{{asset('/storage/app-images/double-kayak.jpg')}}" alt="A double kayak with a white background" class="page-img-80" />
-                        <h2 class="section-header mt-3">DOUBLE KAYAKS</h2>
+                        @foreach($double_kayak as $kayak)
+                            <img src="{{asset('/storage/app-images/double-kayak.jpg')}}" alt="A single kayak with a white background" class="page-img-80" />
+                            <h2 class="section-header">{{$kayak->name}}</h2>
 
-                        <p class="text-center">
-                            2hr - $45 / 3hr - $60
-                            <br>
-                            4hr - $75
-                            <br>
-                            Full Day - $95
-                            <br>
-                            2 Days - $165
-                            <br>
-                            +$40/day each additional day
-                        </p>
+                            @if($kayak->has('durations'))
+                                @foreach($kayak->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $kayak->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
 
-                        <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                            <p class="text-center">
+                                +$40/day each additional day
+                            </p>
+
+                            <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                        @endforeach
                         <!-- /Double Info -->
                     </div>
                     <div class="col-sm-4">
                         <!-- Paddleboard Info -->
-                        <img src="{{asset('/storage/app-images/paddleboard.jpg')}}" alt="A paddleboard with a white background" class="page-img-80" />
-                        <h2 class="section-header mt-3">PADDLE BOARD</h2>
+                        @foreach($paddleboard as $kayak)
+                            <img src="{{asset('/storage/app-images/paddleboard.jpg')}}" alt="A single kayak with a white background" class="page-img-80" />
+                            <h2 class="section-header">{{$kayak->name}}</h2>
 
-                        <p class="text-center">
-                            2hr - $30/3hr - $40
-                            <br>
-                            4hr - $50
-                            <br>
-                            Full Day - $65
-                            <br>
-                            2 Days - $120
-                            <br>
-                            +$40/day each additional day
-                        </p>
+                            @if($kayak->has('durations'))
+                                @foreach($kayak->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $kayak->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
 
-                        <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                            <p class="text-center">
+                                +$40/day each additional day
+                            </p>
+
+                            <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                    @endforeach
                         <!-- /Paddleboard Info -->
                     </div>
                 </div>

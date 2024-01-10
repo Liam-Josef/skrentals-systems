@@ -79,34 +79,78 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <!-- Summit Info -->
-                        <img src="{{asset('/storage/app-images/summit.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
-                        <h2 class="section-header mt-3">SUMMIT 154 SP</h2>
+                        @foreach($summit as $summit)
+                            <img src="{{asset('/storage/app-images/summit.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
+                            <h2 class="section-header">{{$summit->name}}</h2>
 
-                        <p class="text-center">
-                            $300 Full Day
-                            <br>
-                            Single Seat
-                            <br>
-                            Ask Us About Our Multiple Day Discounts
-                        </p>
+                            @if($summit->has('durations'))
+                                @foreach($summit->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $summit->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
 
-                        <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <p class="text-center">
+                                <br>
+                                Single Seat
+                                <br>
+                                Ask Us About Our Multiple Day Discounts
+                            </p>
+
+                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                        @endforeach
                         <!-- /Summit Info -->
                     </div>
                     <div class="col-sm-6">
                         <!-- Renegade Info -->
-                        <img src="{{asset('/storage/app-images/renegade.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
-                        <h2 class="section-header mt-3">RENEGADE BACKCOUNTRY</h2>
+                        @foreach($renegade as $renegade)
+                            <img src="{{asset('/storage/app-images/renegade.jpg')}}" alt="A group three-wheel Snowmobile motorcycle driving down the road" class="page-img-80" />
+                            <h2 class="section-header">{{$summit->name}}</h2>
 
-                        <p class="text-center">
-                            $325 Full Day
-                            <br>
-                            Two Seater
-                            <br>
-                            Ask Us About Our Multiple Day Discounts
-                        </p>
+                            @if($renegade->has('durations'))
+                                @foreach($renegade->durations as $duration)
+                                    <p class="text-center">
+                                        @if($duration->has('prices'))
+                                            @foreach($duration->prices as $price)
+                                                @if($duration->id == $price->duration_id && $renegade->id == $price->type_id)
+                                                    ${{$price->amount}}
+                                                    {{$duration->name}} ( {{$duration->hour}} hour
+                                                    @if($price->notes != '')
+                                                        - {{$price->notes}}
+                                                    @endif
+                                                 )
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </p>
+                                @endforeach
+                            @else
+                                No Duration
+                            @endif
 
-                        <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <p class="text-center">
+                                <br>
+                                Two Seater
+                                <br>
+                                Ask Us About Our Multiple Day Discounts
+                            </p>
+
+                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                        @endforeach
                         <!-- /Renegade Info -->
                     </div>
                 </div>
