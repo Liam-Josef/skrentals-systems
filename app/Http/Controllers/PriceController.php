@@ -25,6 +25,10 @@ class PriceController extends Controller
         $price->update(['amount' => request('amount')]);
         return back();
     }
+    public function note(Price $price) {
+        $price->update(['notes' => request('notes')]);
+        return back();
+    }
 
 
 }

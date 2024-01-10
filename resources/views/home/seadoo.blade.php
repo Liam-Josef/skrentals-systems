@@ -87,18 +87,14 @@
                                     @foreach($duration->prices as $price)
                                         @if($duration->id == $price->duration_id && $seadoo->id == $price->type_id)
                                             ${{$price->amount}}
+                                            {{$duration->name}} ( {{$duration->hour}} hour
+                                            @if($price->notes != '')
+                                                - {{$price->notes}}
+                                            @endif
+                                         )
                                         @endif
                                     @endforeach
                                 @endif
-                                {{$duration->name}}
-                                    (
-                                    {{$duration->hour}} hour
-                                    @if($duration->notes != '')
-                                        - {{$duration->notes}}
-                                    @endif
-                                    )
-
-
                             </p>
 
 
