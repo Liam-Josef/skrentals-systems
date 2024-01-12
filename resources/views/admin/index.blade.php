@@ -331,8 +331,8 @@
                         @if($serviceReqCocBillingCount > 0)
                             @foreach($serviceReqCocBilling as $rental)
                                 <div class="coc-item">
-                                    <div class="row">
-                                        <a href="#" class="service-link" data-toggle="modal" data-target="#billingModal{{$rental->id}}">
+                                    <a href="#" class="service-link" data-toggle="modal" data-target="#billingModal{{$rental->id}}">
+                                        <div class="row">
                                             <div class="col-8 col-sm-2">
                                                 <h6 class="mt-2">
                                                     @foreach($vehicles as $vehicle)
@@ -361,8 +361,8 @@
                                                     <a href="#" class="btn btn-primary width-100 height-auto" data-toggle="modal" data-target="#billingModal{{$rental->id}}">Billing</a>
                                                 @endif
                                             </div>
-                                        </a>
-                                    </div>
+                                        </div>
+                                    </a>
                                 </div>
                             @endforeach
                         @endif
@@ -373,17 +373,17 @@
                         @if($serviceReqAcceptCount > 0)
                             @foreach($serviceReqAccept as $maintenance)
                                 <div class="coc-item">
-                                    <div class="row">
-                                        <a href="#" class="service-link" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">
+                                    <a href="#" class="service-link" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">
+                                        <div class="row">
                                             <div class="col-8 col-sm-2">
-                                                <h6 class="mt-2">
-                                                    @foreach($vehicles as $vehicle)
-                                                        @if($vehicle->id == $maintenance->vehicle_id)
-                                                                {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
-                                                        @endif
-                                                    @endforeach
-                                                </h6>
-                                            </div>
+                                            <h6 class="mt-2">
+                                                @foreach($vehicles as $vehicle)
+                                                    @if($vehicle->id == $maintenance->vehicle_id)
+                                                            {{$vehicle->vehicle_type}} {{$vehicle->internal_vehicle_id}}
+                                                    @endif
+                                                @endforeach
+                                            </h6>
+                                        </div>
                                             <div class="col-4 col-sm-2">
                                                 <h6 class="mt-2 text-red">{{$maintenance->status}}</h6>
                                             </div>
@@ -396,8 +396,8 @@
                                             <div class="col-6 col-sm-2">
                                                 <a href="#" class="btn btn-primary-red width-100 height-auto" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">Submit</a>
                                             </div>
-                                        </a>
-                                    </div>
+                                        </div>
+                                    </a>
                                 </div>
 
                             @endforeach
@@ -408,8 +408,8 @@
                         @if($serviceReqInvoiceCount > 0)
                             @foreach($serviceReqInvoice as $maintenance)
                                 <div class="coc-item">
-                                    <div class="row">
-                                        <a href="#" class="service-link" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">
+                                    <a href="#" class="service-link" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">
+                                        <div class="row">
                                             <div class="col-8 col-sm-2">
                                                 <h6 class="mt-2">
                                                     @foreach($vehicles as $vehicle)
@@ -434,12 +434,12 @@
                                             <div class="col-12 col-sm-2">
                                                 <h6 class="mt-2 text-gray-500">{{$maintenance->service_type}}</h6>
                                             </div>
-                                        </a>
-                                        <div class="col-6 col-sm-2">
-                                            {{--                                            TODO - Maintenance Invoice Button--}}
-                                            <a href="#" class="btn btn-sec-secondary  width-100 height-auto" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">Invoice</a>
+                                            <div class="col-6 col-sm-2">
+                                                {{--                                            TODO - Maintenance Invoice Button--}}
+                                                <a href="#" class="btn btn-sec-secondary  width-100 height-auto" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">Invoice</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             @endforeach
                         @endif
@@ -449,8 +449,8 @@
                         @if($serviceReqRejectedCount > 0)
                             @foreach($serviceReqRejected as $maintenance)
                                 <div class="coc-item">
-                                    <div class="row">
-                                        <a href="#" class="service-link" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">
+                                    <a href="#" class="service-link" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">
+                                        <div class="row">
                                             <div class="col-8 col-sm-2">
                                                 <h6 class="mt-2">
                                                     @foreach($vehicles as $vehicle)
@@ -469,12 +469,12 @@
                                             <div class="col-12 col-sm-2">
                                                 <h6 class="mt-2 text-gray-500">{{$maintenance->service_type}}</h6>
                                             </div>
-                                        </a>
-                                        <div class="col-6 col-sm-2">
-                                            {{--                                            TODO - Maintenance Invoice Button--}}
-                                            <a href="#" class="btn btn-primary-red width-100 height-auto" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">Review</a>
+                                            <div class="col-6 col-sm-2">
+                                                {{--                                            TODO - Maintenance Invoice Button--}}
+                                                <a href="#" class="btn btn-primary-red width-100 height-auto" data-toggle="modal" data-target="#servReqModal{{$maintenance->id}}">Review</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
 
 

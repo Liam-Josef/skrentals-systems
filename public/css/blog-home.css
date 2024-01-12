@@ -130,7 +130,6 @@ nav.home-header .lower-header nav.navbar li.nav-item .dropdown-menu .dropdown-it
 }
 .main-body .img a.img-back {
     display: block;
-    display: block;
     border: 1px solid #d01519;
     height: 160px;
     background-size: cover;
@@ -167,19 +166,30 @@ nav.home-header .lower-header nav.navbar li.nav-item .dropdown-menu .dropdown-it
 .main-body .img a.img-back span.img-text {
     position: absolute;
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 150%;
     text-transform: uppercase;
-    padding-left: 8px;
+    padding-left: 2px;
     bottom: 10px;
     line-height: 1;
     text-shadow: 3px 3px 12pc #000000;
 }
+@media screen and (min-width: 760px) {
+    .main-body .img a.img-back span.img-text {
+        font-size: 200%;
+        padding-left: 8px;
+    }
+}
 .main-body .img a.img-back span.img-text span.hover-text {
     display: block;
     color: #ffffff;
-    font-size: 2.5rem;
+    font-size: 150%;
     text-transform: uppercase;
     font-weight: 900;
+}
+@media screen and (min-width: 760px) {
+    .main-body .img a.img-back span.img-text span.hover-text {
+        font-size: 150%;
+    }
 }
 .main-body .img a.img-back span.sled-text {
     position: absolute;

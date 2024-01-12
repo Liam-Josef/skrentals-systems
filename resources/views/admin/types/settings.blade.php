@@ -342,7 +342,7 @@
                                             <input type="file" class="form-control-file" name="image">
                                         </div>
                                         <div class="col-6">
-                                            <img class="img-center mt-3" src="{{asset('storage/' . $type->image)}}" width="60%" height="auto">
+                                            <img class="img-center mt-3" src="{{asset('storage/' . $type->image)}}" width="60%" height="auto" />
                                         </div>
                                     </div>
                                 </div>
