@@ -44,7 +44,7 @@ class TypeController extends Controller
         Type::create([
             'name' => Str::ucfirst(request('name')),
             'is_active' => request('is_active'),
-//            'slug' => Str::of(Str::lower(request('name')))->slug('-'),
+            'slug' => Str::of(Str::lower(request('name')))->slug('-'),
         ]);
 
         return back();

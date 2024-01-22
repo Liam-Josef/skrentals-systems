@@ -125,7 +125,7 @@
                             <p class="text-center">
                                 20-24 miles on one battery charge
                             </p>
-                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <a href={{route('home.book_rental', $segway)}}#" class="btn btn-book">Click to Book Now</a>
 
                             <p class="text-center">
                                 All segway tours/rentals are located at: <br>

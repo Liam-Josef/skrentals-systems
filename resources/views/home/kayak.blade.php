@@ -112,7 +112,7 @@
                                 +$40/day each additional day
                             </p>
 
-                            <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $kayak)}}" class="btn btn-book-3">Click to Book Now</a>
                         @endforeach
                         <!-- /Single Info -->
                     </div>
@@ -151,7 +151,7 @@
                                 +$40/day each additional day
                             </p>
 
-                            <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $kayak)}}" class="btn btn-book-3">Click to Book Now</a>
                         @endforeach
                         <!-- /Double Info -->
                     </div>
@@ -190,7 +190,7 @@
                                 +$40/day each additional day
                             </p>
 
-                            <a href="#" class="btn btn-book-3">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $kayak)}}" class="btn btn-book-3">Click to Book Now</a>
                     @endforeach
                         <!-- /Paddleboard Info -->
                     </div>

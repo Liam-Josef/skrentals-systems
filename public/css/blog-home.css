@@ -16,7 +16,7 @@ nav.home-header {
     width: 100%;
     z-index: 2000;
     padding: 10px 0 0 0;
-    background-image: url("http://127.0.0.1:8000/storage/app-images/header-background.jpg");
+    background-image: url("http://127.0.0.1:8000/storage/app-images/header-background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
@@ -311,7 +311,7 @@ nav.home-header .lower-header nav.navbar li.nav-item .dropdown-menu .dropdown-it
 }
 
 footer.home-footer {
-    background-image: url("http://127.0.0.1:8000/storage/app-images/header-background.jpg");
+    background-image: url("http://127.0.0.1:8000/storage/app-images/header-background.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;

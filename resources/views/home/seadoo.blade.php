@@ -76,20 +76,20 @@
                 <!-- /Title -->
 
                 <!-- SeaDoo Info -->
-                @foreach($seadoo as $seadoo)
-                    <img src="{{asset('storage/' . $seadoo->image)}}" alt="{{$seadoo->img_alt}}" class="page-img" />
-                    @if($seadoo->description != '')
-                        <h2 class="section-header">{{$seadoo->description}}</h2>
+                @foreach($type as $type)
+                    <img src="{{asset('storage/' . $type->image)}}" alt="{{$type->img_alt}}" class="page-img" />
+                    @if($type->description != '')
+                        <h2 class="section-header">{{$type->description}}</h2>
                     @else
-                        <h2 class="section-header">{{$seadoo->name}}</h2>
+                        <h2 class="section-header">{{$type->name}}</h2>
                     @endif
 
-                    @if($seadoo->has('durations'))
-                        @foreach($seadoo->durations as $duration)
+                    @if($type->has('durations'))
+                        @foreach($type->durations as $duration)
                             <p class="text-center">
                                 @if($duration->has('prices'))
                                     @foreach($duration->prices as $price)
-                                        @if($duration->id == $price->duration_id && $seadoo->id == $price->type_id)
+                                        @if($duration->id == $price->duration_id && $type->id == $price->type_id)
                                             ${{$price->amount}} -
                                             {{$duration->name}} ( {{$duration->hour}} hour
                                             @if($price->notes != '')
@@ -110,7 +110,8 @@
                     <p class="text-center">
                         Ask Us About Our Multiple Day Discounts
                     </p>
-                    <a href="#" class="btn btn-book" data-toggle="modal" data-target="#booknow">Click to Book Now</a>
+{{--                    <a href="#" class="btn btn-book" data-toggle="modal" data-target="#booknow{{$type->id}}">Click to Book Now</a>--}}
+                    <a href="{{route('home.book_rental', $type)}}" class="btn btn-book">Click to Book Now</a>
 
                     <p class="text-center">
                         $2000 Damage Deposit per unit.  Life Vests and required Safety items are provided.  Capacity 2 adults 1 child maximum 19 gallon fuel tank.  All Hourly rentals include fuel.  Half Day and Full Day rentals DO NOT include fuel.
@@ -191,6 +192,107 @@
                     <p class="pb-5 mb-0">
                         Customers have up to 5 days / 120 hrs before the rental to cancel. If you cancel before 5 days prior to the rental date we do not charge you any penalty, but once we are within 5 days of the scheduled rental and you decide to cancel we then charge $100 or half of the rental fee which ever one is greater.
                     </p>
+
+
+
+{{--                TODO - Need to finish dynamic modal--}}
+                    <div class="modal fade mt-5" id="booknow{{$type->id}}" tabindex="-1" role="dialog" aria-labelledby="bookNow" aria-hidden="true">
+                        <div class="modal-dialog modal-xl" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3>Book a <span>{{$type->name}}</span></h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="rental_date">Rental Date</label>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <input type="text" id="alternate" class="form-control-plaintext">
+                                                    </div>
+                                                </div>
+                                                <input type="text" class="form-control datepicker rentalDate" id="datepicker">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div id="div1" class="dynamicAvail">
+                                                <div class="results"></div>
+                                                <div class="row">
+
+
+                                                    {{$seadooHD}}
+
+
+
+
+                                                    <?php
+
+//                                                    $unit_id = (isset($_POST['name'])) ? $_POST['name'] : 'Not Yet...';
+
+                                                    if (isset($_POST["name"])):
+                                                        $unit_id = $_POST["name"];
+                                                    else:
+                                                        $unit_id = 'Not Yet...';
+                                                    endif;
+
+                                                    $unit_id
+
+                                                    ?>
+                                                    <div id="<?= $unit_id; ?>">
+                                                        <?= $unit_id; ?>
+                                                    </div>
+
+
+
+                                                    @foreach($buckets as $bucket)
+                                                        @if($bucket->rental_date == $unit_id )
+                                                            {{$seadooHD}}
+                                                        @endif
+                                                    @endforeach
+
+
+{{--                                                    @foreach($seadooHD as $type)--}}
+{{--                                                        @foreach($buckets as $bucket)--}}
+{{--                                                            @if($bucket->rental_date == Form::input('type', 'datepicker', ['class'=>'datepicker']) )--}}
+{{--                                                                <div class="col-4">--}}
+
+
+
+
+{{--    --}}{{--                                                                @foreach($buckets as $bucket)--}}
+{{--    --}}{{--                                                                    {{$bucket->rental_date}}--}}
+{{--    --}}{{--                                                                    $rental->status == 'Pre-Check' && strpos($rental->activity_date, $today) !== false)--}}
+{{--    --}}{{--                                                                    @if($bucket->rental_date == '2024-01-02')--}}
+{{--    --}}{{--                                                                        {{$seadooHD}}--}}
+{{--    --}}{{--                                                                    @else--}}
+{{--    --}}{{--                                                                        Nothing--}}
+{{--    --}}{{--                                                                    @endif--}}
+{{--    --}}{{--                                                                @endforeach--}}
+
+{{--    --}}{{--                                                                {{$seadooHD}}--}}
+{{--                                                                </div>--}}
+{{--                                                            @endif--}}
+{{--                                                        @endforeach--}}
+{{--                                                    @endforeach--}}
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
                 @endforeach
 
                 <!-- /SeaDoo Info -->
@@ -203,6 +305,50 @@
 
     @section('scripts')
         <script src="{{asset('js/sb-admin-2.js')}}"></script>
+
+        <script>
+            $(document).ready(function() {
+
+                $('.datepicker').datepicker('show');
+                $('.dynamicAvail').addClass('hidden');
+            });
+            $(function() {
+                $date = $( "#datepicker" ).datepicker("getDate");
+                $('#datepicker').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    numberOfMonths: 3,
+                    showButtonPanel: true,
+                    dateFormat: "yy-m-dd",
+                    altField: "#alternate",
+                    altFormat: "DD, MM d, yy",
+                    onSelect: function() {
+                        $date = $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val();
+
+                        $('.results').html($date);
+
+                        $('.dynamicAvail').append('<div id= ' + $date  + '>');
+
+                        var unit_id = $date;
+
+                        console.log(unit_id);
+                        $.ajax({
+                            url: '/rentals/sea-doo-rentals',
+                            type: 'POST',
+                            data: {name: unit_id},
+                            success: function(data){
+                                console.log(data);
+                            }
+                        });
+
+                    }
+                });
+            });
+
+
+
+
+        </script>
     @endsection
 
 </x-home-master>

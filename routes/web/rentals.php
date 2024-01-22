@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\DurationController;
 use App\Http\Controllers\RentalController;
 use App\Http\Controllers\TypeController;
@@ -22,8 +23,13 @@ Route::middleware(['role:admin'])->group(function() {
     Route::get('admin/rentals/rentals-today', [RentalController::class, 'rentalToday'])->name('rental.today');
     Route::get('admin/rentals/rental-history', [RentalController::class, 'rentalHistory'])->name('rental.history');
     Route::get('admin/rentals/rental-settings', [RentalController::class, 'rentalSettings'])->name('rental.settings');
+    Route::get('admin/rentals/rental-settings/{duration}/duration', [RentalController::class, 'duration_settings'])->name('rental.duration_settings');
     Route::put('team/rental-type/store', [TypeController::class, 'store'])->name('type.store');
     Route::put('team/rental-duration/store', [DurationController::class, 'store'])->name('duration.store');
+    Route::put('team/{duration}/duration-availabil/store', [AvailabilityController::class, 'store'])->name('availabil.store');
+    Route::put('team/{duration}/attach-availability/', [AvailabilityController::class, 'attachAvail'])->name('duration.attachAvail');
+    Route::put('team/{duration}/detach-availability/', [AvailabilityController::class, 'detachAvail'])->name('duration.detachAvail');
+    Route::put('team/{availabil}/update-availability/', [AvailabilityController::class, 'update'])->name('availabil.update');
 
 
 ////    // AJAX Rental Modal (office.index)

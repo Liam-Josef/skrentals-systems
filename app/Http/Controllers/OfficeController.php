@@ -121,7 +121,6 @@ class OfficeController extends Controller
             'rental'=>$rental,
             'customers' => Customer::all(),
             'dateNow' => $dateNow
-
         ]);
     }
 
