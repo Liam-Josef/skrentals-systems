@@ -112,7 +112,7 @@
                             <p class="text-center">
                                 Ask Us About Our Multiple Day Discounts
                             </p>
-                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $scarab)}}" class="btn btn-book">Click to Book Now</a>
 
                             <p class="text-center">
                                 $2000 Damage Deposit Required.  Fuel is NOT included.  Drivers License or Picture Identification with address required.  MUST BE 18 or OVER to rent.  We encourage the customer to use On-Site but will allow 'trailer aways' for multi-day rentals.  Boaters Education Cards are NOT Required.
@@ -183,7 +183,7 @@
                             <p class="text-center">
                                 Ask Us About Our Multiple Day Discounts
                             </p>
-                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $pontoon)}}" class="btn btn-book">Click to Book Now</a>
 
                             <p class="text-center">
                                 $2000 Damage Deposit Required.  Fuel is included on half-day rentals, but NOT on full-day rentals.  Drivers License or Picture Identification with address required.  MUST BE 18 or OVER to rent.  Boaters Education Cards are NOT Required.

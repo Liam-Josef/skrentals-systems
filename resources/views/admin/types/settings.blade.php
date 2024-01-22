@@ -113,26 +113,108 @@
                         <h3>Select Duration</h3>
                         @foreach($durations as $duration)
 
-                            <form method="post" action="{{route('attach.duration', $type)}}" class="
-                                @if($type->durations->contains($duration))
-                                    hidden
-                                @endif
-                                ">
-                                @method('PUT')
-                                @csrf
-                                <input type="hidden" name="duration" value="{{$duration->id}}">
-
-                                <button class="card shadow mt-0 my-2 width-100" type="submit">
+                                <a href="#" class="card shadow mt-0 my-2 width-100
+                                    @if($type->durations->contains($duration))
+                                        hidden
+                                    @endif
+                                    " type="submit" data-toggle="modal" data-target="#durationModal{{$duration->id}}">
                                     <div class="card-body">
                                         <div class="row">
-                                            <h3 class="mb-0">{{$duration->name}}</h3>
+                                           <div class="col-4">
+                                               <h3 class="mb-0">{{$duration->name}}</h3>
+                                           </div>
+                                            <div class="col-8">
+                                                <span class="text-secondary">
+                                                    @foreach($duration->availabils as $availabil)
+                                                        Repeats
+                                                        @if($availabil->repeat_day == '1')
+                                                            DAILY
+                                                        @elseif($availabil->repeat_day == '0')
+                                                            WEEKLY
+                                                        @endif
+                                                        every {{$availabil->start_min_increm}} min
+                                                        from {{\Carbon\Carbon::parse($availabil->start_time)->format('h:i A')}}
+                                                        to {{\Carbon\Carbon::parse($availabil->end_time)->format('h:i A')}}
+                                                        <br>
+                                                    @endforeach
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                </button>
+                                </a>
+
+                            <!-- Duration Modal -->
+                            <div class="modal fade mt-5" id="durationModal{{$duration->id}}" tabindex="-1" role="dialog" aria-labelledby="durationModal" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3>
+                                                {{$duration->name}}
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body">
+                                           <div class="row">
+                                               <div class="col-sm-6">
+                                                   <h4>Availabilities:</h4>
+                                                   <ul>
+                                                       @foreach($duration->availabils as $availabil)
+                                                           <li>
+                                                               Repeats
+                                                               @if($availabil->repeat_day == '1')
+                                                                   DAILY
+                                                               @elseif($availabil->repeat_day == '0')
+                                                                   WEEKLY
+                                                               @endif
+                                                               every {{$availabil->start_min_increm}} min
+                                                               from {{\Carbon\Carbon::parse($availabil->start_time)->format('h:i A')}}
+                                                               to {{\Carbon\Carbon::parse($availabil->end_time)->format('h:i A')}}
+                                                           </li>
+                                                       @endforeach
+                                                   </ul>
+                                               </div>
+                                               <div class="col-sm-6">
+                                                   <h4>Attached to:</h4>
+                                                   <ul>
+                                                       @foreach($duration->types as $duration_type)
+                                                           <li>
+                                                              {{$duration_type->name}}
+                                                           </li>
+                                                       @endforeach
+                                                   </ul>
+                                               </div>
+                                           </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="row mt-3 width-100">
+                                                <div class="col-sm-4">
+                                                    <button class="btn btn-secondary width-100" type="button" data-dismiss="modal">CANCEL</button>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <a href="{{route('rental.duration_settings', $duration)}}" class="btn btn-outline-secondary width-100">Edit Duration</a>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <form method="post" action="{{route('attach.duration', $type)}}" class="
+                                                        @if($type->durations->contains($duration))
+                                                            hidden
+                                                        @endif
+                                                        ">
+                                                        @method('PUT')
+                                                        @csrf
+                                                        <input type="hidden" name="duration" value="{{$duration->id}}">
+
+                                                        <button class="btn btn-primary" type="submit">
+                                                            Attach Duration to {{$type->name}}
+                                                        </button>
 
 
-                            </form>
-
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Duration Modal -->
                         @endforeach
 
                     </div>

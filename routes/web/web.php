@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminsController;
+use App\Http\Controllers\BucketController;
 use App\Http\Controllers\CocController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DockController;
@@ -32,6 +33,13 @@ Route::get('/customer-corner/photo-gallery', [App\Http\Controllers\HomeControlle
 Route::get('/customer-corner/testimonials', [App\Http\Controllers\HomeController::class, 'testimonials'])->name('home.testimonials');
 Route::get('/customer-corner/know-before-you-go', [App\Http\Controllers\HomeController::class, 'know'])->name('home.know');
 Route::get('/customer-corner/customer-survey', [App\Http\Controllers\HomeController::class, 'survey'])->name('home.survey');
+Route::get('/rentals/{type}/book-rental-date', [App\Http\Controllers\HomeController::class, 'book_rental'])->name('home.book_rental');
+Route::put('/rentals/book-rental-duration', [BucketController::class, 'book_one'])->name('bucket.one');
+Route::put('/rentals/{bucket}/update', [BucketController::class, 'update_date'])->name('bucket.update_date');
+
+Route::get('/rentals/{bucket}/book-rental-duration', [App\Http\Controllers\HomeController::class, 'book_rental_duration'])->name('home.book_rental_duration');
+
+
 Route::get('/book-now', [App\Http\Controllers\HomeController::class, 'book_now'])->name('home.book_now');
 //Route::get('/our-fleet', [App\Http\Controllers\HomeController::class, 'our_rentals'])->name('home.our_rentals');
 

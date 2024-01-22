@@ -154,11 +154,11 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="hour">Hour Duration</label>
-                                        <input type="hour" class="form-control" name="hour">
+                                        <input type="number" class="form-control" name="hour">
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="form- mt-4">
+                                    <div class="form-group mt-4">
                                         <label for="is_active">Is Active</label>
                                         <select name="is_active" id="is_active">
                                             <option value="1" selected>Yes</option>
@@ -174,7 +174,7 @@
                         <h3>Edit Duration</h3>
                         @foreach($durations as $duration)
                             <div class="card shadow mt-0 my-2">
-                                <a href="#" class="card-link nav-link " id="view-type-tab" data-toggle="modal" data-target="#duration{{$duration->id}}">
+                                <a href="{{route('rental.duration_settings', $duration)}}" class="card-link nav-link ">
                                     <div class="card-body">
                                         <div class="row">
                                             <h2 class="mb-0">{{$duration->name}}</h2>
@@ -192,84 +192,6 @@
             </div>
         </div>
         <!-- /Rental Durations -->
-
-    @foreach($durations as $duration)
-    <!-- Service Request Modal -- Rental -->
-        <div class="modal fade" id="duration{{$duration->id}}" tabindex="-1" role="dialog" aria-labelledby="durationModal" aria-hidden="true">
-            <div class="modal-dialog modal-md" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                       <h3>Edit: <span> {{$duration->name}} </span> </h3>
-                    </div>
-                    <form action="{{route('duration.update', $duration)}}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="modal-body">
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="name" class="">Name</label>
-                                        <input type="text" class="form-control" name="name" value="{{$duration->name}}" aria-label="duration_name">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="hour" class="">Hours</label>
-                                        <input type="number" class="form-control" name="hour" value="{{$duration->hour}}">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="day" class="">Days</label>
-                                        <input type="number" class="form-control" name="day" value="{{$duration->day}}">
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="form-group">
-                                        <label for="night" class="">Nights</label>
-                                        <input type="number" class="form-control" name="night" value="{{$duration->night}}">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="before_hour" class="">Buffer Before Hours</label>
-                                        <input type="number" class="form-control" name="before_hour" value="{{$duration->before_hour}}">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="before_minute" class="">Buffer Before Minutes</label>
-                                        <input type="number" class="form-control" name="before_minute" value="{{$duration->before_minute}}">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="after_hour" class="">Buffer After Hours</label>
-                                        <input type="number" class="form-control" name="after_hour" value="{{$duration->after_hour}}">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="after_minute" class="">Buffer After Minutes</label>
-                                        <input type="number" class="form-control" name="after_minute" value="{{$duration->after_minute}}">
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel </button>
-                            <button class="btn btn-primary" type="submit">Update </button>
-
-
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-<!-- /Service Modal -- Rental  -->
-@endforeach
     @endsection
 
 
@@ -278,5 +200,68 @@
     @endsection
 
 
+        <form action="{{route('duration.update', $duration)}}" method="post" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="modal-body">
 
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label for="name" class="">Name</label>
+                            <input type="text" class="form-control" name="name" value="{{$duration->name}}" aria-label="duration_name">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="hour" class="">Hours</label>
+                            <input type="number" class="form-control" name="hour" value="{{$duration->hour}}">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="day" class="">Days</label>
+                            <input type="number" class="form-control" name="day" value="{{$duration->day}}">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="night" class="">Nights</label>
+                            <input type="number" class="form-control" name="night" value="{{$duration->night}}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="before_hour" class="">Buffer Before Hours</label>
+                            <input type="number" class="form-control" name="before_hour" value="{{$duration->before_hour}}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="before_minute" class="">Buffer Before Minutes</label>
+                            <input type="number" class="form-control" name="before_minute" value="{{$duration->before_minute}}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="after_hour" class="">Buffer After Hours</label>
+                            <input type="number" class="form-control" name="after_hour" value="{{$duration->after_hour}}">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="after_minute" class="">Buffer After Minutes</label>
+                            <input type="number" class="form-control" name="after_minute" value="{{$duration->after_minute}}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Cancel </button>
+                <button class="btn btn-primary" type="submit">Update </button>
+
+
+            </div>
+        </form>
 </x-admin-master>

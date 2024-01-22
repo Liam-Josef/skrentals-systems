@@ -290,7 +290,8 @@ th {
 
 label {
     display: inline-block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
+    font-size:  1.25rem;
 }
 
 button {
@@ -2952,6 +2953,17 @@ fieldset:disabled a.btn {
     border-color: #cf191c;
 }
 
+.btn-outline-primary-black {
+    color: #151515;
+    border-color: #cf191c;
+}
+
+.btn-outline-primary-black:hover {
+    color: #fff;
+    background-color: #cf191c;
+    border-color: #cf191c;
+}
+
 .btn-outline-primary:focus, .btn-outline-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.5);
 }
@@ -5222,7 +5234,7 @@ span.spacer {
 }
 @media screen and (min-width: 800px) {
     .card .modal-footer .btn {
-        width: auto !important;
+        width: 100%;
         display: block !important;
         /*margin-left: 5px !important;*/
         /*margin-right: 0 !important;*/
@@ -6462,6 +6474,7 @@ h4.modal-section-title {
 .modal-open .modal {
     overflow-x: inherit;
     overflow-y: auto;
+    z-index: 9999;
 }
 
 .modal {
@@ -10458,6 +10471,13 @@ a.text-primary:hover, a.text-primary:focus {
 a.text-secondary:hover, a.text-secondary:focus {
     color: #60616f !important;
 }
+.text-secondary-dk {
+    color: #151515;
+}
+
+a:hover .text-secondary-dk, a:focus .text-secondary {
+    color: #60616f !important;
+}
 
 .text-success {
     color: #1cc88a !important;
@@ -12751,4 +12771,7 @@ footer img.img-square {
 }
 .duration-list {
     list-style: none !important;
+}
+h1 span.text-primary {
+    color: #151515 !important;
 }
