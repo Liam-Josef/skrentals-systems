@@ -32,8 +32,6 @@ class DurationController extends Controller
         $price->type_id = request('type_id');
         $price->save();
 
-//        $price->save($price->amount = request('amount'));
-
         $price->durations()->attach(request('duration_id'));
 
         return back();

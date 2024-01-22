@@ -113,7 +113,7 @@
                                 Ask Us About Our Multiple Day Discounts
                             </p>
 
-                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $spyder)}}" class="btn btn-book">Click to Book Now</a>
 
                             <p class="text-center">
                                 $2000 Damage Deposit per Unit <br>

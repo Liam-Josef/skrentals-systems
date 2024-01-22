@@ -114,7 +114,7 @@
                                 Ask Us About Our Multiple Day Discounts
                             </p>
 
-                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $summit)}}" class="btn btn-book">Click to Book Now</a>
                         @endforeach
                         <!-- /Summit Info -->
                     </div>
@@ -155,7 +155,7 @@
                                 Ask Us About Our Multiple Day Discounts
                             </p>
 
-                            <a href="#" class="btn btn-book">Click to Book Now</a>
+                            <a href="{{route('home.book_rental', $renegade)}}" class="btn btn-book">Click to Book Now</a>
                         @endforeach
                         <!-- /Renegade Info -->
                     </div>

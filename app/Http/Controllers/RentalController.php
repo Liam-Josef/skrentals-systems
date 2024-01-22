@@ -95,6 +95,26 @@ class RentalController extends Controller
         ]);
     }
 
+    public function duration_settings(Duration $duration) {
+        $rentals = Rental::all();
+        $types = Type::all();
+        $durations = Duration::all();
+        $prices = Price::all();
+        $availabils= Availabil::all();
+        $today = Carbon::now('PST')->toDateString();
+        return view('admin.rentals.duration-settings', [
+            'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'rentals' => $rentals,
+            'today' => $today,
+            'types' => $types,
+            'durations' => $durations,
+            'duration' => $duration,
+            'prices' => $prices,
+            'availabils' => $availabils,
+        ]);
+    }
+
     public function addRental() {
         Rental::create([
             'booking_id' => request('booking_id'),
