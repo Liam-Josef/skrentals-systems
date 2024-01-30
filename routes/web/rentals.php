@@ -15,21 +15,17 @@ Route::middleware(['role:zapier'])->group(function() {
 });
 
 Route::middleware(['role:admin'])->group(function() {
-    Route::get('admin/rentals/index', [RentalController::class, 'index'])->name('rental.index');
-    Route::get('admin/rentals/{rental}/show', [RentalController::class, 'show'])->name('rental.show');
-    Route::put('admin/rentals/{rental}/update', [RentalController::class, 'updateRental'])->name('rental.updateRental');
-    Route::put('admin/rentals/{rental}/coc-update', [RentalController::class, 'cocUpdate'])->name('rental.cocUpdate');
-    Route::put('admin/rentals/{rental}/rental-coc-update', [RentalController::class, 'rentalCocUpdate'])->name('rental.rentalCocUpdate');
-    Route::get('admin/rentals/rentals-today', [RentalController::class, 'rentalToday'])->name('rental.today');
-    Route::get('admin/rentals/rental-history', [RentalController::class, 'rentalHistory'])->name('rental.history');
-    Route::get('admin/rentals/rental-settings', [RentalController::class, 'rentalSettings'])->name('rental.settings');
-    Route::get('admin/rentals/rental-settings/{duration}/duration', [RentalController::class, 'duration_settings'])->name('rental.duration_settings');
-    Route::put('team/rental-type/store', [TypeController::class, 'store'])->name('type.store');
-    Route::put('team/rental-duration/store', [DurationController::class, 'store'])->name('duration.store');
-    Route::put('team/{duration}/duration-availabil/store', [AvailabilityController::class, 'store'])->name('availabil.store');
-    Route::put('team/{duration}/attach-availability/', [AvailabilityController::class, 'attachAvail'])->name('duration.attachAvail');
-    Route::put('team/{duration}/detach-availability/', [AvailabilityController::class, 'detachAvail'])->name('duration.detachAvail');
-    Route::put('team/{availabil}/update-availability/', [AvailabilityController::class, 'update'])->name('availabil.update');
+    Route::get('/admin/rentals/main', [RentalController::class, 'index'])->name('rental.index');
+    Route::get('/admin/rentals/main/{booking}', [RentalController::class, 'booking'])->name('rental.booking');
+    Route::get('/admin/rentals/{rental}/show', [RentalController::class, 'show'])->name('rental.show');
+    Route::put('/admin/rentals/{rental}/update', [RentalController::class, 'updateRental'])->name('rental.updateRental');
+    Route::put('/admin/rentals/{rental}/coc-update', [RentalController::class, 'cocUpdate'])->name('rental.cocUpdate');
+    Route::put('/admin/rentals/{rental}/rental-coc-update', [RentalController::class, 'rentalCocUpdate'])->name('rental.rentalCocUpdate');
+    Route::get('/admin/rentals/cancelled', [RentalController::class, 'cancelled'])->name('rental.cancelled');
+    Route::get('/admin/rentals/rental-history', [RentalController::class, 'rentalHistory'])->name('rental.history');
+    Route::get('/admin/rentals/rental-settings', [RentalController::class, 'rentalSettings'])->name('rental.settings');
+
+
 
 
 ////    // AJAX Rental Modal (office.index)

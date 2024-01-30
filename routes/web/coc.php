@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CocController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+Auth::routes();
 
 Route::middleware(['role:admin'])->group(function() {
 

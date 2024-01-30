@@ -162,8 +162,6 @@
         <!-- /Rental Durations -->
 
         <!-- Rental Duration Availability -->
-
-
         <div class="row">
             <div class="col-sm-4">
                 <div class="card shadow mb-3">
@@ -481,45 +479,27 @@
                                     @endif
 
                                     <!-- Availability Attach Confirmation Modal -->
-                                    <div class="modal fade mt-5" id="availabilChooseModal{{$availabil->id}}" tabindex="-1" role="dialog" aria-labelledby="availabilModal" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
+                                    <div class="modal fade mt-5" id="availabilChooseModal{{$availabil->id}}" tabindex="-1" role="dialog" aria-labelledby="availabilityModal" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content width-100">
                                                 <div class="modal-header">
                                                     <h3>
                                                         Repeats
                                                         <span>
-                                                                        @if($availabil->repeat_day == '1')
+                                                                    @if($availabil->repeat_day == '1')
                                                                 DAILY
                                                             @elseif($availabil->repeat_day == '0')
                                                                 WEEKLY
                                                             @endif
-                                                                        every {{$availabil->start_min_increm}} min
-                                                                        from {{\Carbon\Carbon::parse($availabil->start_time)->format('h:i A')}}
-                                                                        to {{\Carbon\Carbon::parse($availabil->end_time)->format('h:i A')}}
-                                                        </span>
+                                                                    every {{$availabil->start_min_increm}} min
+                                                                    from {{\Carbon\Carbon::parse($availabil->start_time)->format('h:i A')}}
+                                                                    to {{\Carbon\Carbon::parse($availabil->end_time)->format('h:i A')}}
+                                                    </span>
                                                     </h3>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <h4>Availabilities:</h4>
-                                                            <ul class="text-white">
-                                                                @foreach($duration->availabils as $availabil)
-                                                                    <li>
-                                                                        Repeats
-                                                                        @if($availabil->repeat_day == '1')
-                                                                            DAILY
-                                                                        @elseif($availabil->repeat_day == '0')
-                                                                            WEEKLY
-                                                                        @endif
-                                                                        every {{$availabil->start_min_increm}} min
-                                                                        from {{\Carbon\Carbon::parse($availabil->start_time)->format('h:i A')}}
-                                                                        to {{\Carbon\Carbon::parse($availabil->end_time)->format('h:i A')}}
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-12">
                                                             <h4>Attached to:</h4>
                                                             <ul class="text-white">
                                                                 @foreach($duration->types as $duration_type)
@@ -531,20 +511,20 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
+                                                <div class="modal-footer width-100">
                                                     <div class="row mt-3 width-100">
-                                                        <div class="col-sm-4">
-                                                            <button class="btn btn-secondary width-100" type="button" data-dismiss="modal">CANCEL</button>
+                                                        <div class="col-12">
+                                                            <button class="btn btn-secondary width-100 mb-3 btn-center" type="button" data-dismiss="modal">CANCEL</button>
                                                         </div>
-                                                        <div class="col-sm-4">
-                                                            <a href="#" class="btn btn-outline-secondary width-100" data-dismiss="modal" data-toggle="modal" data-target="#availabilModal{{$availabil->id}}">Edit Availability</a>
+                                                        <div class="col-12">
+                                                            <a href="#" class="btn btn-outline-secondary width-100 mb-3 btn-center" data-dismiss="modal" data-toggle="modal" data-target="#availabilModal{{$availabil->id}}">Edit Availability</a>
                                                         </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-12">
                                                             <form action="{{route('duration.attachAvail', $duration)}}" method="post">
                                                                 @csrf
                                                                 @method("PUT")
                                                                 <input type="text" class="hidden" name="availabil_id" value="{{$availabil->id}}">
-                                                                <button class="btn btn-primary width-100 mb-3" type="submit">
+                                                                <button class="btn btn-primary width-100 mb-3 btn-center" type="submit">
                                                                     Attach to {{$duration->name}}
                                                                 </button>
                                                             </form>
@@ -563,7 +543,6 @@
 
             </div>
         </div>
-
         <!-- /Rental Duration Availability -->
 
     @endsection

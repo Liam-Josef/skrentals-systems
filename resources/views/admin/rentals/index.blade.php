@@ -8,11 +8,11 @@
         @foreach($applications as $application)
 
         @section('page_title')
-            <h1>Rentals</h1>
+            <h1>Rental Calendar</h1>
         @endsection
 
         @section('browser_title')
-            <title>Rentals | {{$application->name}}</title>
+            <title>Rental Calendar | {{$application->name}}</title>
         @endsection
 
         @section('logo-square')
@@ -75,18 +75,54 @@
     @section('content')
         <div class="row">
             <div class="col-12">
-                <h1>Rental Main</h1>
+                <h1>Rental Calendar</h1>
             </div>
         </div>
 
-            <!-- 404 Error Text -->
-            <div class="text-center mt-5">
-                <div class="error mx-auto" data-text="COMING SOON">COMING SOON</div>
-                <p class="lead text-gray-800 mb-5">Still in Production!</p>
-                <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
+       <div class="row">
+           <div class="col-12">
+               <div id="calendar"></div>
+           </div>
+       </div>
+
+        <!-- Modals -->
+            <!-- View Calendar Event -->
+            <div id="calendarViewBookModal" class="modal fade">
+                <div class="modal-dialog modal-lg mt-0" role="document">
+                   <div class="modal-content">
+
+                       <div class="modal-header">
+                           <h3>Adding Event</h3>
+                       </div>
+                       <div class="modal-body">
+
+                       </div>
+                       <div class="modal-footer">
+                           <button class="btn btn-secondary" type="button" data-dismiss="modal">close</button>
+                       </div>
+                   </div>
+                </div>
             </div>
+            <!-- /View Calendar Event -->
+            <!-- Add Calendar Event -->
+            <div id="calendarAddBookModal" class="modal fade">
+                <div class="modal-dialog modal-lg mt-0" role="document">
+                    <div class="modal-content">
 
+                        <div class="modal-header">
+                            <h3>Adding Event</h3>
+                        </div>
+                        <div class="modal-body">
 
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Add Calendar Event -->
+        <!-- /Modals -->
     @endsection
 
 
@@ -97,7 +133,44 @@
 
             <!-- Page level custom scripts -->
             <script src="{{asset('js/demo/datatables-scripts.js')}}"></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var calendarEl = document.getElementById('calendar');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        headerToolbar: { center: 'timeGridDay,timeGridWeek,dayGridMonth,dayGridWeek' }, // buttons for switching between views
+                        initialView: 'timeGridWeek',
+                        slotMinTime: '07:00:00',
+                        slotMaxTime: '24:00:00',
+                        events: @json($bookings),
+                        nowIndicator: 'true',
+                        dateClick: function() {
+                            // $('#calendarAddBookModal').modal();
+                        },
+                        eventClick: function(event, jsEvent, view) {
+                            // $('#calendarViewBookModal').modal();
+                            if (event.url) {
+                                //if you want to open url in the same tab
+                                location.href = "/";
+                                //if you want to open url in another window / tab, use the commented code below
+                                //window.open(event.url);
+                                return false;
+                            }
+                        }
+                    });
+
+                    // Dynamic Date Click - https://fullcalendar.io/docs/handlers
+                    // calendar.on('dateClick', function(info) {
+                    //     console.log('clicked on ' + info.dateStr);
+                    // });
+
+                    calendar.render();
+                });
+            </script>
     @endsection
+
 
 
 

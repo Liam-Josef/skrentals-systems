@@ -12,9 +12,9 @@
     <div id="collapseRentals" class="collapse {{ Request::is('admin/rentals*') ? 'show' : '' }}" aria-labelledby="headingRentals" data-parent="#accordionSidebar">
         <div class="py-2 collapse-inner rounded">
             <h6 class="collapse-header">Rentals Menu:</h6>
-            <a class="inactive collapse-item {{ Request::is('admin/rentals/index*') ? 'active' : '' }}" href="{{route('rental.index')}}">Rentals Main</a>
-            <a class="collapse-item {{ Request::is('admin/rentals/rentals-today*') ? 'active' : '' }}" href="{{route('rental.today')}}">Rentals Today</a>
+            <a class="collapse-item {{ Request::is('admin/rentals/main*') ? 'active' : '' }}" href="{{route('rental.index')}}">Rental Calendar</a>
             <a class="collapse-item {{ Request::is('admin/rentals/rental-history*') ? 'active' : '' }}" href="{{route('rental.history')}}">Rental History</a>
+            <a class="collapse-item {{ Request::is('admin/rentals/cancelled*') ? 'active' : '' }}" href="{{route('rental.cancelled')}}">Cancelled Bookings</a>
             <a class="collapse-item {{ Request::is('admin/rentals/type*') ? 'active' : '' }} {{ Request::is('admin/rentals/rental-settings*') ? 'active' : '' }}" href="{{route('rental.settings')}}">Rental Settings</a>
         </div>
     </div>

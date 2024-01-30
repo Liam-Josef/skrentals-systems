@@ -3,13 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Availabil;
 use App\Models\Duration;
 use App\Models\Price;
+use App\Models\Rental;
+use App\Models\Type;
+use App\Models\Website;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class DurationController extends Controller
 {
+
+    public function duration_settings(Duration $duration) {
+        $rentals = Rental::all();
+        $types = Type::all();
+        $durations = Duration::all();
+        $prices = Price::all();
+        $availabils= Availabil::all();
+        $today = Carbon::now('PST')->toDateString();
+        return view('admin.rentals.duration-settings', [
+            'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'rentals' => $rentals,
+            'today' => $today,
+            'types' => $types,
+            'durations' => $durations,
+            'duration' => $duration,
+            'prices' => $prices,
+            'availabils' => $availabils,
+        ]);
+    }
     public function store() {
         request()->validate([
             'name' => ['required']
@@ -72,10 +97,10 @@ class DurationController extends Controller
 
 
 
-//    public function attach_duration(Type $type) {
-//        $type->durations()->attach(request('duration'));
-//        return back();
-//    }
+    public function detach_duration(Duration $duration) {
+        $duration->types()->detach(request('type_id'));
+        return back();
+    }
 
 
 

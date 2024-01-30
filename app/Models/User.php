@@ -118,6 +118,9 @@ class User extends Authenticatable
     public function training() {
         return $this->hasOne(Training::class);
     }
+    public function bookings() {
+        return $this->belongsToMany(Booking::class);
+    }
 
 
 }

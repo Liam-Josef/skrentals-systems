@@ -37,6 +37,10 @@ class Customer extends Model
         return $this->belongsToMany(Rental::class);
     }
 
+    public function bookings() {
+        return $this->belongsToMany(Booking::class);
+    }
+
     public function customerRentals() {
         return $this->hasMany(Rental::class);
     }

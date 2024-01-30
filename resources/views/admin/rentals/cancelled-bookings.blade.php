@@ -8,11 +8,11 @@
         @foreach($applications as $application)
 
         @section('page_title')
-            <h1>Rentals Today</h1>
+            <h1>Cancelled Bookings</h1>
         @endsection
 
         @section('browser_title')
-            <title>Rentals Today | {{$application->name}}</title>
+            <title>Cancelled Bookings | {{$application->name}}</title>
         @endsection
 
         @section('logo-square')
@@ -75,7 +75,7 @@
     @section('content')
        <div class="row">
            <div class="col-12">
-               <h1>Rentals Today</h1>
+               <h1>Cancelled Bookings</h1>
            </div>
        </div>
 
@@ -97,9 +97,8 @@
                             <th>
                                 <span class="visible-xs-table">&nbsp;</span>
                                 <div class="row hidden-xs-flex">
-                                    <div class="col-sm-1">Invoice</div>
                                     <div class="col-sm-1">Booking ID</div>
-                                    <div class="col-sm-2">Vehicle</div>
+                                    <div class="col-sm-3">Vehicle</div>
                                     <div class="col-sm-1">Date</div>
                                     <div class="col-sm-1">First</div>
                                     <div class="col-sm-1">Last</div>
@@ -113,50 +112,23 @@
                         <tbody>
 
                         @foreach($rentals as $rental)
-                           @if(strpos($rental->activity_date, $today) !== false)
-                               <tr>
+                           <tr>
                                    <td>
                                        <a href="{{route('rental.show', $rental)}}" class="table-li-link">
                                            <div class="row">
-                                               <div class="col-sm-1">
-                                                   <p>#{{$rental->invoice_number}}</p>
-                                               </div>
                                                <div class="col-sm-1">
                                                    <p>
                                                        {{$rental->booking_id}}
                                                    </p>
                                                </div>
-                                               <div class="col-sm-2">
+                                               <div class="col-sm-3">
                                                    <p>
                                                            <span>
-                                               @if($rental->activity_item == 'Scarab 215')
-                                                                   Scarab
-                                                               @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                   Pontoon
-                                                               @elseif($rental->activity_item == '23ft. Pontoon Boat')
-                                                                   Pontoon
-                                                               @elseif($rental->activity_item == 'Renegade BC 600ETec')
-                                                                   Renegade
-                                                               @elseif($rental->activity_item == 'Summit 154 SP')
-                                                                   Summit
-                                                               @elseif($rental->activity_item == '14ft. Aluminum Boat')
-                                                                   Aluminum
-                                                               @elseif($rental->activity_item == 'Kayak Single')
-                                                                   Single Kayak
-                                                               @elseif($rental->activity_item == 'Double Kayak')
-                                                                   Double Kayak
-                                                               @elseif($rental->activity_item == 'Stand Up Paddleboard')
-                                                                   SUP
-                                                               @elseif($rental->activity_item == 'Segway i2')
-                                                                   Segway
-                                                               @elseif($rental->activity_item == 'Spyder RT-S SE6')
-                                                                   Spyder
-                                                               @elseif($rental->activity_item == 'SeaDoo')
-                                                                   SeaDoo
-                                                               @else
-                                                                   <br />
-
-                                                               @endif
+                                               @foreach($types as $type)
+                                                   @if($type->id == $rental->type_id)
+                                                       {{$type->name}}
+                                                   @endif
+                                               @endforeach
                                           </span>
                                                    </p>
                                                </div>
@@ -166,16 +138,16 @@
                                                    </p>
                                                </div>
                                                <div class="col-sm-1">
-                                                   {{$rental->first_name}}
+                                                   {{$rental->first}}
                                                    <span class="hidden">
-                                                           {{Str::lower($rental->first_name)}}
+                                                           {{Str::lower($rental->first)}}
                                                        </span>
                                                </div>
                                                <div class="col-sm-1">
                                                    <p class="xs-center">
-                                                       {{$rental->last_name}}
+                                                       {{$rental->last}}
                                                        <span class="hidden">
-                                                           {{Str::lower($rental->last_name)}}
+                                                           {{Str::lower($rental->last)}}
                                                        </span>
                                                    </p>
                                                </div>
@@ -201,7 +173,6 @@
                                        </a>
                                    </td>
                                </tr>
-                           @endif
                         @endforeach
 
                         </tbody>

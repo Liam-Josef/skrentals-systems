@@ -89,56 +89,41 @@
 
 
                 <!-- Booking Step 1 -->
-                <form action="{{route('bucket.one', $type)}}" id="bookStage1" method="post">
-                    @csrf
-                    @method("PUT")
+                <div class="row">
+                    <div class="col-11">
+                        <form action="{{route('bucket.one', $type)}}" id="bookStage1" method="post">
+                            @csrf
+                            @method("PUT")
 
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label for="rental_date">Rental Date</label>
-                                    </div>
-                                    <div class="col-6">
-                                        <input type="text" id="alternate" class="form-control-plaintext">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group mt-4">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label for="rental_date">Rental Date</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="text" id="alternate" class="form-control-plaintext">
+                                            </div>
+                                        </div>
+                                        <input type="text" class="hidden" name="rental_time" value="00:00:00">
+                                        <input type="text" class="hidden" name="duration_id" value="0">
+                                        <input type="text" class="hidden" name="duration_name" value="none">
+                                        <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
+                                        <input type="text" class="hidden" name="type_name" value="{{$type->slug}}">
+                                        <input type="text" class="form-control datepicker rentalDate" name="rental_date" id="datepicker" value="" placeholder="Select Date">
                                     </div>
                                 </div>
-                                <input type="text" class="hidden" name="rental_time" value="00:00:00">
-                                <input type="text" class="hidden" name="duration_id" value="0">
-                                <input type="text" class="hidden" name="duration_name" value="none">
-                                <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
-                                <input type="text" class="hidden" name="type_name" value="{{$type->slug}}">
-                                <input type="text" class="form-control datepicker rentalDate" name="rental_date" id="datepicker" value="" placeholder="Select Date">
                             </div>
-                        </div>
+                        </form>
                     </div>
-                </form>
+                </div>
                 <!-- /Booking Step 1 -->
 
 
 
 
-                <!-- Confirmation Modal -->
-                <div class="modal fade mt-5" id="booknow" tabindex="-1" role="dialog" aria-labelledby="bookNow" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3>Book a <span>{{$type->name}}</span></h3>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
 
-
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /Confirmation Modal -->
 
             </div>
         </div>
@@ -176,10 +161,6 @@
                     }
                 });
             });
-
-
-
-
         </script>
     @endsection
 

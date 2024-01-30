@@ -3,18 +3,20 @@
 use App\Http\Controllers\DurationController;
 use App\Http\Controllers\PriceController;
 use App\Http\Controllers\TypeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+Auth::routes();
 
 Route::middleware(['role:admin'])->group(function() {
 
-    Route::get('admin/rentals/type/{type}', [TypeController::class, 'settings'])->name('type.settings');
-    Route::put('admin/types/{type}/update', [TypeController::class, 'update'])->name('type.update');
-    Route::put('admin/types/{type}/attach-duration', [TypeController::class, 'attach_duration'])->name('attach.duration');
-    Route::put('admin/types/{type}/type-duration', [TypeController::class, 'type_duration'])->name('type.duration');
-    Route::put('admin/duration/{duration}/duration-price', [DurationController::class, 'duration_price'])->name('price.store.attach');
-    Route::put('admin/duration/{duration}/update', [DurationController::class, 'update'])->name('duration.update');
-    Route::put('admin/price/{price}/update', [PriceController::class, 'update'])->name('price.update');
-    Route::put('admin/price/{price}/update-note', [PriceController::class, 'note'])->name('price.note');
+    Route::get('/admin/rentals/rental-settings/type/{type}', [TypeController::class, 'settings'])->name('type.settings');
+    Route::put('/admin/rentals/rental-settings/rental-type/store', [TypeController::class, 'store'])->name('type.store');
+    Route::put('/admin/rentals/rental-settings/types/{type}/update', [TypeController::class, 'update'])->name('type.update');
+    Route::put('/admin/rentals/rental-settings/types/{type}/attach-duration', [TypeController::class, 'attach_duration'])->name('attach.duration');
+    Route::put('/admin/rentals/rental-settings/types/{type}/type-duration', [TypeController::class, 'type_duration'])->name('type.duration');
+
+
 
 
 

@@ -35,6 +35,25 @@
 
         gtag('config', 'G-V2HB7CGVTH');
     </script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    <!-- Page level custom scripts -->
+    <script>
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $('#sidebarCollapseInt').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+    </script>
+    @yield('scripts')
 
 
 </head>
@@ -45,11 +64,26 @@
 <x-team.header.team-header></x-team.header.team-header>
 
 <!-- Page Content -->
-<div class="container-fluid">
+<div class="container">
     <div class="page-min-height">
         <div class="row">
 
-        @yield('page_title')
+           <!-- Mobile Sidebar Button -->
+            <div class="col-12">
+               <div class="teamSidebar">
+                   <div class="row">
+                       <div class="col-12">
+                           <button type="button" id="sidebarCollapse" class="btn btn-outline-primary" style="position: absolute; right: 10px; ">
+                               <i class="fas fa-align-right"></i>
+                           </button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <!-- /Mobile Sidebar Button -->
+
+
+            @yield('page_title')
 
         </div>
 
@@ -85,6 +119,7 @@
 
 
         </div>
+            <x-team.team-sidebar-mobile></x-team.team-sidebar-mobile>
         @endif
 
 
@@ -118,12 +153,7 @@
 
 <!-- Logout Modal-->
 <x-modal.logout></x-modal.logout>
-<!-- Bootstrap core JavaScript -->
-<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-<!-- Page level custom scripts -->
-@yield('scripts')
 </body>
 
 </html>

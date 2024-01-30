@@ -236,7 +236,7 @@
                             <div class="card shadow mt-0 my-2 width-100">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-2">
                                             <h2 >{{$duration->name}}</h2>
                                         </div>
 
@@ -245,9 +245,7 @@
 
                                                 @foreach($duration->prices as $price)
                                                     @if($duration->id == $price->duration_id && $type->id == $price->type_id)
-                                                        <form method="post" action="{{route('price.update', $price)}}"
-
-                                                        >
+                                                        <form method="post" action="{{route('price.update', $price)}}">
                                                             @method('PUT')
                                                             @csrf
                                                             <div class="row">
@@ -291,7 +289,7 @@
                                             </form>
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             @if($duration->has('prices'))
 
                                                 @foreach($duration->prices as $price)
@@ -318,6 +316,10 @@
                                             @endif
                                         </div>
 
+                                        <div class="col-sm-2">
+                                            <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#durationDetach{{$duration->id}}">Detach</a>
+                                        </div>
+
 
                                         <div class="col-sm-1">
                                             @foreach($prices as $price)
@@ -332,6 +334,45 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <!-- Duration Detach Confirmation Modal -->
+                            <div class="modal fade mt-5" id="durationDetach{{$duration->id}}" tabindex="-1" role="dialog" aria-labelledby="availabilDetach" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3>
+                                                Detach from
+                                                <span>{{$type->name}}</span>
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Are you sure you want to detach:
+                                                <span class="text-white">
+                                                    {{$duration->name}}
+                                                </span>
+                                            </h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="row mt-3 width-100">
+                                                <div class="col-6">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <form action="{{route('type.detachDuration', $duration)}}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+
+                                                        <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
+                                                        <button class="btn btn-primary width-100 btn-right" type="submit">Detach</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Duration Detach Confirmation Modal -->
                            @endif
                        @endforeach
                 </div>
@@ -424,7 +465,7 @@
                                             <input type="file" class="form-control-file" name="image">
                                         </div>
                                         <div class="col-6">
-                                            <img class="img-center mt-3" src="{{asset('storage/' . $type->image)}}" width="60%" height="auto" />
+                                            <img class="img-center mt-3 width-100" src="{{asset('storage/' . $type->image)}}" width="60%" height="auto" />
                                         </div>
                                     </div>
                                 </div>
@@ -501,6 +542,351 @@
         </div>
         <!-- /Rental Type Info -->
 
+        <!-- Additions -->
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card shadow mb-3">
+                    <div class="card-header">
+                        <h3 class="mb-0"><span>{{$type->name}}</span> Additions</h3>
+                    </div>
+                    <div class="card-body">
+                        @foreach($additions as $addition)
+
+                            @if(!$type->additions->contains($addition))
+                                {{--                                    <h5 class="text-center">--}}
+                                {{--                                        No Availability has been attached to <strong>{{$duration->name}}</strong>--}}
+                                {{--                                    </h5>--}}
+                            @else
+                                <div class="card shadow mb-3">
+                                    <a href="#" class="card-body" data-toggle="modal" data-target="#additionModal{{$addition->id}}">
+                                        <h4 class="text-center text-secondary-dk">
+                                            {{$addition->name}}
+{{--                                            Repeats--}}
+{{--                                            @if($availabil->repeat_day == '1')--}}
+{{--                                                DAILY--}}
+{{--                                            @elseif($availabil->repeat_day == '0')--}}
+{{--                                                WEEKLY--}}
+{{--                                            @endif--}}
+{{--                                            every {{$availabil->start_min_increm}} min--}}
+{{--                                            <br>--}}
+{{--                                            from {{\Carbon\Carbon::parse($availabil->start_time)->format('h:i A')}}--}}
+{{--                                            to {{\Carbon\Carbon::parse($availabil->end_time)->format('h:i A')}}--}}
+                                        </h4>
+                                    </a>
+                                </div>
+
+                            @endif
+
+                        <!-- Edit Addition Modal -->
+                            <div class="modal fade mt-5" id="additionModal{{$addition->id}}" tabindex="-1" role="dialog" aria-labelledby="additionModal" aria-hidden="true">
+                                <div class="modal-dialog modal-md" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3>Edit: {{$addition->name}}
+{{--                                                <span>--}}
+{{--                                                     Repeats--}}
+{{--                                                    @if($availabil->repeat_day == '1')--}}
+{{--                                                        DAILY--}}
+{{--                                                    @elseif($availabil->repeat_day == '0')--}}
+{{--                                                        WEEKLY--}}
+{{--                                                    @endif--}}
+{{--                                                       every {{$availabil->start_min_increm}} min--}}
+{{--                                                       from {{\Carbon\Carbon::parse($availabil->start_time)->format('h:i A')}}--}}
+{{--                                                       to {{\Carbon\Carbon::parse($availabil->end_time)->format('h:i A')}}--}}
+{{--                                                </span>--}}
+                                            </h3>
+                                        </div>
+                                        <form action="{{route('addition.update', $addition)}}" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h4 class="text-secondary">
+                                                                <em>This will effect all Rental types with this addition</em>
+                                                            </h4>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row">
+
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="name">Addition Name</label>
+                                                                <input type="text" class="form-control" name="name" value="{{$addition->name}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="cost">Cost</label>
+                                                                <input type="number" class="form-control" name="cost" value="{{$addition->cost}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="description">Description</label>
+                                                                <textarea class="form-control" name="description" id="" cols="30" rows="5">{{$addition->description}}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="quantity">Quantity</label>
+                                                                <input type="number" class="form-control" name="quantity" value="{{$addition->quantity}}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-group">
+                                                                <label for="image">Image</label>
+                                                                <input type="file" class="form-control-file" name="image">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-2 mt-2">
+                                                                        <select name="visible" id="visible" class="form-control">
+                                                                            <option name="visible" value="1">Yes</option>
+                                                                            <option name="visible" value="0"
+                                                                            @if($addition->visible == '0')
+                                                                                selected
+                                                                            @endif
+                                                                            >No</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-10">
+                                                                        <label for="visible">
+                                                                            <span class="text-white">Select if you want customers to be able to reserve this at booking</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="row mt-3 width-100">
+                                                        <div class="col-sm-4">
+                                                            <button class="btn btn-secondary width-100" type="button" data-dismiss="modal">CANCEL</button>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            @if($type->additions->contains($addition))
+                                                                <a href="#" class="btn btn-outline-secondary width-100" data-dismiss="modal" data-toggle="modal" data-target="#additionDetach{{$addition->id}}">Detach</a>
+                                                            @else
+                                                                &nbsp;
+
+                                                            @endif
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <button class="btn btn-primary width-100 btn-right" type="submit">Update</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Edit Addition Modal -->
+
+                            <!-- Addition Detach Confirmation Modal -->
+                            <div class="modal fade mt-5" id="additionDetach{{$addition->id}}" tabindex="-1" role="dialog" aria-labelledby="availabilDetach" aria-hidden="true">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3>
+                                                Detach from
+                                                <span>{{$type->name}}</span>
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Are you sure you want to detach:
+                                                <span class="text-white">
+                                                    {{$addition->name}}
+                                                </span>
+                                            </h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="row mt-3 width-100">
+                                                <div class="col-6">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCEL</button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <form action="{{route('type.detachAddition', $addition)}}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
+                                                        <button class="btn btn-primary width-100 btn-right" type="submit">Detach</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Addition Detach Confirmation Modal -->
+
+                        @endforeach
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card shadow mb-3">
+                            <div class="card-header">
+                                <h3 class="mb-0">Add Addition</h3>
+                            </div>
+                            <div class="card-body">
+                                <form action="{{route('addition.store')}}" method="post" enctype="multipart/form-data" id="addAddition">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <div class="row">
+
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="name">Addition Name</label>
+                                                <input type="text" class="form-control" name="name">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="cost">Cost</label>
+                                                <input type="number" class="form-control" name="cost">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="description">Description</label>
+                                                <textarea class="form-control" name="description" id="" cols="30" rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity</label>
+                                                <input type="number" class="form-control" name="quantity">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="image">Image</label>
+                                                <input type="file" class="form-control-file" name="image">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-2 mt-2">
+                                                        <select name="visible" id="visible">
+                                                            <option value="1" default>Yes</option>
+                                                            <option value="0">No</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-10">
+                                                        <label for="visible">Select if you want customers to be able to reserve this at booking</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
+                                            <button class="btn btn-primary btn-right" type="submit">Add</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card shadow mb-3">
+                            <div class="card-header">
+                                <h3 class="mb-0">Attach Addition</h3>
+                            </div>
+                            <div class="card-body">
+                                @foreach($additions as $addition)
+
+                                    @if($type->additions->contains($addition))
+                                        {{--                                       <h5 class="text-center">--}}
+                                        {{--                                           All Pre-Made Availabilities have been attached to <strong>{{$duration->name}}</strong>--}}
+                                        {{--                                       </h5>--}}
+                                    @else
+                                        <a href="#" class="btn btn-outline-primary-black width-100 mb-3" data-toggle="modal" data-target="#additionChooseModal{{$addition->id}}">
+                                            {{$addition->name}}
+                                            <br>
+                                            @foreach($addition->types as $addition_type)
+                                                <span class="text-secondary">{{$addition_type->name}}</span>  &nbsp;
+                                            @endforeach
+                                        </a>
+
+                                    @endif
+
+                                <!-- Availability Attach Confirmation Modal -->
+                                    <div class="modal fade mt-5" id="additionChooseModal{{$addition->id}}" tabindex="-1" role="dialog" aria-labelledby="additionModal" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content width-100">
+                                                <div class="modal-header">
+                                                    <h3>
+                                                       {{$addition->name}}
+                                                    </h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-12">
+                                                            <h4>Attached to:</h4>
+                                                            <ul class="text-white">
+                                                                @foreach($addition->types as $addition_type)
+                                                                    <li>
+                                                                        {{$addition_type->name}}
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer width-100">
+                                                    <div class="row mt-3 width-100">
+                                                        <div class="col-12">
+                                                            <button class="btn btn-secondary width-100 mb-3 btn-center" type="button" data-dismiss="modal">CANCEL</button>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <a href="#" class="btn btn-outline-secondary width-100 mb-3 btn-center" data-dismiss="modal" data-toggle="modal" data-target="#additionModal{{$addition->id}}">Edit Addition</a>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <form action="{{route('type.attachAddition', $addition)}}" method="post">
+                                                                @csrf
+                                                                @method("PUT")
+
+                                                                <input type="text" class="hidden" name="type_id" value="{{$type->id}}">
+                                                                <button class="btn btn-primary width-100 mb-3 btn-center" type="submit">
+                                                                    Attach to {{$type->name}}
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /Availability Attach Confirmation Modal -->
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /Additions -->
+
 
 
     @endsection
@@ -509,7 +895,7 @@
     @section('scripts')
             <script>
 
-                // $(document).ready(function(){
+                $(document).ready(function(){
                 //     $('#v-pills-tab li:first-child button').tab('active') // Select first tab
                 // });
 

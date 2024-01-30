@@ -35,6 +35,25 @@
 
         gtag('config', 'G-V2HB7CGVTH');
     </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+    <!-- Page level custom scripts -->
+    @yield('scripts')
+    <script>
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $('#sidebarCollapseInt').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+    </script>
 </head>
 
 <body>
@@ -45,6 +64,19 @@
 
 <!-- Page Content -->
 <div class="container-fluid">
+    <!-- Mobile Sidebar Button -->
+    <div class="col-12">
+        <div class="teamSidebar">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-primary" style="position: absolute; right: 10px; ">
+                        <i class="fas fa-align-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Mobile Sidebar Button -->
 
     <div class="page-min-height">
         <div class="row">
@@ -65,7 +97,7 @@
 </div>
 <!-- /.container -->
 
-
+<x-team.team-sidebar-mobile></x-team.team-sidebar-mobile>
 
 <!-- Footer -->
 <x-footer></x-footer>
@@ -75,12 +107,6 @@
 <!-- Logout Modal-->
 <x-modal.logout></x-modal.logout>
 
-<!-- Bootstrap core JavaScript -->
-<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-
-<!-- Page level custom scripts -->
-@yield('scripts')
 
 </body>
 
