@@ -81,7 +81,7 @@
 
 
                 @if(Auth::check())
-                    @if(auth()->user()->userHasRole('Admin', 'Office Dock 1'))
+                    @if(auth()->user()->userHasRole('Admin'))
                     <li class="nav-item smaller">
                         <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
                     </li>

@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Addition;
 use App\Models\Application;
+use App\Models\Availabil;
+use App\Models\Booking;
 use App\Models\Coc;
 use App\Models\Customer;
+use App\Models\Duration;
 use App\Models\Maintenance;
 use App\Models\Post;
+use App\Models\Price;
 use App\Models\Rental;
+use App\Models\Reschedule;
+use App\Models\Type;
 use App\Models\User;
 use App\Models\Vehicle;
 use App\Models\Website;
@@ -110,16 +117,198 @@ class OfficeController extends Controller
 
 
     }
+    public function main() {
+        $users = User::all();
+        $cocs = Coc::all();
+        $posts = Post::orderBy('created_at', 'desc')->take(2)->get();
+        $vehicles = Vehicle::all();
+        $today = Carbon::now('PST')->toDateString();
+        $bookings = Booking::where('activity_date_start', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->where('is_active', '=', '1')->orderBy('activity_date_start', 'asc')->get();
 
-    public function show(Rental $rental) {
+        $rentalReturn = Rental::where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnScarab = Rental::where('activity_item', '=', 'Scarab 215')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnPontoon = Rental::where('activity_item', '=', '23ft. Pontoon Boat')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnSeaDoo = Rental::where('activity_item', '=', 'SeaDoo')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnSup = Rental::where('activity_item', '=', 'Stand Up Paddleboard')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnKayak = Rental::where('activity_item', '=', ['activity_item', 'like', '%Kayak%'])->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnSpyder = Rental::where('activity_item', '=', 'Spyder RT-S SE6')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnSegway = Rental::where('activity_item', '=', 'Segway i2')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnSkiDoo = Rental::where('activity_item', '=', ['Renegade BC 600ETec', 'Summit 154 SP'])->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+        $rentalReturnAluminum = Rental::where('activity_item', '=', '14ft. Aluminum Boat')->where('activity_date', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'On Dock', 'COC', 'Clear', 'On Water')")->orderBy('updated_at', 'desc')->get();
+
+        $rentalTypeScarab = Booking::where('activity_item', '=', 'scarab')->where('activity_date_start', 'like', '%'.$today.'%')->orderByRaw("FIELD(status , 'Pre-Check', '')")->where('is_active', '=', '1')->get()->count();
+        $rentalTypePontoon = Booking::where('activity_item', '=', 'pontoon')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $rentalTypeSeaDoo = Booking::where('activity_item', '=', 'seadoo')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $rentalTypeSup = Booking::where('activity_item', '=', 'paddleboard')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $rentalTypeKayak = Booking::where('activity_item', 'like', '%kayak%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $rentalTypeSpyder = Booking::where('activity_item', '=', 'spyder')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->get()->where('is_active', '=', '1')->count();
+        $rentalTypeSegway = Booking::where('activity_item', '=', 'segway')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->get()->where('is_active', '=', '1')->count();
+        $rentalTypeSkiDoo = Booking::where('activity_item', '=', 'Renegade BC 600ETec' or 'Summit 154 SP')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $rentalTypeRenegade = Booking::where('activity_item', '=', 'renegade')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $rentalTypeSummit = Booking::where('activity_item', '=', 'summit')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $rentalTypeAluminum = Booking::where('activity_item', '=', 'aluminum')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+
+
+        return view('office.main', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'bookings' => $bookings,
+            'rentalReturn' => $rentalReturn,
+            'posts' => $posts,
+            'vehicles' => $vehicles,
+            'customers' => Customer::where('attached', '=', '1')->where('attached_date', 'like', '%'.$today.'%')->get(),
+            'durations' => Duration::all(),
+            'types' => Type::all(),
+            'today' => $today,
+            'cocs' => $cocs,
+            'users' => $users,
+            'rentalTypeScarab' => $rentalTypeScarab,
+            'rentalTypePontoon' => $rentalTypePontoon,
+            'rentalTypeSeaDoo' => $rentalTypeSeaDoo,
+            'rentalTypeSup' => $rentalTypeSup,
+            'rentalTypeKayak' => $rentalTypeKayak,
+            'rentalTypeSpyder' => $rentalTypeSpyder,
+            'rentalTypeSegway' => $rentalTypeSegway,
+            'rentalTypeSkiDoo' => $rentalTypeSkiDoo,
+            'rentalTypeRenegade' => $rentalTypeRenegade,
+            'rentalTypeSummit' => $rentalTypeSummit,
+            'rentalTypeAluminum' => $rentalTypeAluminum,
+
+            'rentalReturnScarab' => $rentalReturnScarab,
+            'rentalReturnPontoon' => $rentalReturnPontoon,
+            'rentalReturnSeaDoo' => $rentalReturnSeaDoo,
+            'rentalReturnSup' => $rentalReturnSup,
+            'rentalReturnKayak' => $rentalReturnKayak,
+            'rentalReturnSpyder' => $rentalReturnSpyder,
+            'rentalReturnSegway' => $rentalReturnSegway,
+            'rentalReturnSkiDoo' => $rentalReturnSkiDoo,
+            'rentalReturnAluminum' => $rentalReturnAluminum
+        ]);
+
+
+
+    }
+
+    public function update_booking(Booking $booking) {
+        $dateNow = Carbon::now('PST')->addHours(1);
+
+
+        return view('office.update-booking', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'types' => Type::where('id', '=', $booking->type_id)->get(),
+            'durations' => Duration::where('id', '=', $booking->duration_id)->get(),
+            'booking'=>$booking,
+            'prices' => Price::all(),
+            'customers' => Customer::all(),
+            'additions' => Addition::all(),
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    public function reschedule_booking(Booking $booking) {
+        $dateNow = Carbon::now('PST')->addHours(1);
+
+
+        return view('office.reschedule', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'types' => Type::where('id', '=', $booking->type_id)->get(),
+            'durations' => Duration::where('id', '=', $booking->duration_id)->get(),
+            'booking'=>$booking,
+            'customers' => Customer::all(),
+            'additions' => Addition::all(),
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    public function reschedule_booking_duration(Reschedule $reschedule) {
+        $dateNow = Carbon::now('PST')->addHours(1);
+
+
+        return view('office.reschedule-2-duration', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'types' => Type::where('id', '=', $reschedule->type_id)->get(),
+            'durations' => Duration::all(),
+            'prices' => Price::all(),
+            'bookings' => Booking::where('id', '=', $reschedule->booking_id)->get(),
+            'reschedule'=>$reschedule,
+            'customers' => Customer::all(),
+            'additions' => Addition::all(),
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    public function reschedule_booking_time(Reschedule $reschedule) {
+        $dateNow = Carbon::now('PST')->addHours(1);
+
+
+        return view('office.reschedule-3-time', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'types' => Type::where('id', '=', $reschedule->type_id)->get(),
+            'durations' => Duration::all(),
+            'bookings' => Booking::where('id', '=', $reschedule->booking_id)->get(),
+            'availabils' => Availabil::all(),
+            'reschedule'=>$reschedule,
+            'prices' => Price::all(),
+            'customers' => Customer::all(),
+            'additions' => Addition::all(),
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    public function reschedule_booking_additions(Reschedule $reschedule) {
+        $dateNow = Carbon::now('PST')->addHours(1);
+
+
+        return view('office.reschedule-4-additions', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'types' => Type::where('id', '=', $reschedule->type_id)->get(),
+            'durations' => Duration::all(),
+            'bookings' => Booking::where('id', '=', $reschedule->booking_id)->get(),
+            'availabils' => Availabil::all(),
+            'reschedule'=>$reschedule,
+            'prices' => Price::all(),
+            'customers' => Customer::all(),
+            'additions' => Addition::all(),
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    public function reschedule_booking_confirmation(Reschedule $reschedule) {
+        $dateNow = Carbon::now('PST')->addHours(1);
+
+
+        return view('office.reschedule-5-confirmation', [
+           'applications' => Website::where('id', '=', '1')->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'types' => Type::where('id', '=', $reschedule->type_id)->get(),
+            'durations' => Duration::all(),
+            'bookings' => Booking::where('id', '=', $reschedule->booking_id)->get(),
+            'availabils' => Availabil::all(),
+            'reschedule'=>$reschedule,
+            'prices' => Price::all(),
+            'customers' => Customer::all(),
+            'additions' => Addition::all(),
+            'dateNow' => $dateNow
+        ]);
+    }
+
+    public function checkin_1(Booking $booking) {
         $dateNow =Carbon::now('PST')->addHours(1);
 
 
         return view('office.checkin', [
            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
-            'rental'=>$rental,
+            'types' => Type::where('id', '=', $booking->type_id)->get(),
+            'durations' => Duration::where('id', '=', $booking->duration_id)->get(),
+            'booking'=>$booking,
             'customers' => Customer::all(),
+            'additions' => Addition::all(),
             'dateNow' => $dateNow
         ]);
     }
@@ -172,29 +361,35 @@ class OfficeController extends Controller
         return back();
     }
 
-    public function storeNew() {
-        $inputs = request()->validate([
+    public function storeNew(Booking $booking) {
+        request()->validate([
             'first_name' => ['required'],
             'last_name' => ['required'],
             'phone' => ['required'],
-            'email' => ['required'],
-            'address_1' => ['required'],
-            'city' => ['required'],
-            'state' => ['required'],
-            'zip_code' => ['required'],
-            'driver_license_state' => ['required'],
-            'driver_license_number' => ['required'],
-            'birth_date' => ['required'],
-            'how_heard' => [''],
-            'license_front' => ['']
+            'email' => ['required']
         ]);
-        if(request('license_front')) {
-            $inputs['license_front'] = request('license_front');
-        }
-        Customer::create($inputs);
+        $customer = new Customer();
+        $customer->first_name = Str::ucfirst(request('first_name'));
+        $customer->last_name = Str::ucfirst(request('last_name'));
+        $customer->email = request('email');
+        $customer->phone = request('phone');
+        $customer->address_1 = request('address_1');
+        $customer->city = request('city');
+        $customer->state = request('state');
+        $customer->zip_code = request('zip_code');
+        $customer->driver_license_state = request('driver_license_state');
+        $customer->driver_license_number = request('driver_license_number');
+        $customer->birth_date = request('birth_date');
+        $customer->how_heard = request('how_heard', 'null');
+        $customer->license_front = request('license_front');
+        $customer->attached = request('attached');
+        $customer->attached_date = Carbon::now('PST')->toDateString();
+        $customer->save();
 
-
-//        $rental->customers()->attach(request('customer'));
+//        if(request('license_front')) {
+//            $inputs['license_front'] = request('license_front')->store('images');
+//        }
+        $booking->customers()->attach($customer);
 
         return back();
     }

@@ -19,8 +19,17 @@ return new class extends Migration
             $table->string('type_name');
             $table->integer('duration_id');
             $table->string('duration_name');
+            $table->integer('hour')->nullable();
+            $table->integer('avail_id')->nullable();
             $table->date('rental_date');
             $table->time('rental_time');
+            $table->time('end_time')->nullable();
+            $table->boolean('reserved')->default('0');
+            $table->dateTime('activity_date_start')->nullable();
+            $table->dateTime('activity_date_end')->nullable();
+            $table->string('customer_last')->nullable();
+            $table->string('customer_first')->nullable();
+            $table->string('customer_ip')->nullable();
             $table->timestamps();
         });
     }

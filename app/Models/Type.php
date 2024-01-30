@@ -11,6 +11,12 @@ class Type extends Model
 
     protected $guarded = [];
 
+    public function additions() {
+        return $this->belongsToMany(Addition::class);
+    }
+    public function buckets() {
+        return $this->belongsToMany(Bucket::class);
+    }
     public function availabils() {
         return $this->belongsToMany(Availabil::class);
     }
@@ -19,5 +25,8 @@ class Type extends Model
     }
     public function prices() {
         return $this->belongsToMany(Price::class);
+    }
+    public function rentals() {
+        return $this->belongsToMany(Rental::class);
     }
 }

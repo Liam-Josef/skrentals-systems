@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Addition;
 use App\Models\Availabil;
 use App\Models\Duration;
 use App\Models\Post;
@@ -19,10 +20,10 @@ class TypeController extends Controller
 
     public function settings(Type $type) {
         $rentals = Rental::all();
-//        $type = Type::where('id', '=', $type)->get();
         $durations = Duration::all();
         $prices = Price::all();
         $availabil = Availabil::all();
+        $additions = Addition::all();
         $today = Carbon::now('PST')->toDateString();
         return view('admin.types.settings', [
             'applications' => Website::where('id', '=', '1')->get(),
@@ -33,6 +34,8 @@ class TypeController extends Controller
             'durations' => $durations,
             'prices' => $prices,
             'availabil' => $availabil,
+            'availabil' => $availabil,
+            'additions' => $additions,
         ]);
     }
 

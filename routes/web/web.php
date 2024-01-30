@@ -34,10 +34,13 @@ Route::get('/customer-corner/testimonials', [App\Http\Controllers\HomeController
 Route::get('/customer-corner/know-before-you-go', [App\Http\Controllers\HomeController::class, 'know'])->name('home.know');
 Route::get('/customer-corner/customer-survey', [App\Http\Controllers\HomeController::class, 'survey'])->name('home.survey');
 Route::get('/rentals/{type}/book-rental-date', [App\Http\Controllers\HomeController::class, 'book_rental'])->name('home.book_rental');
-Route::put('/rentals/book-rental-duration', [BucketController::class, 'book_one'])->name('bucket.one');
-Route::put('/rentals/{bucket}/update', [BucketController::class, 'update_date'])->name('bucket.update_date');
-
+Route::get('/rentals/{bucket}/book-rental-info', [App\Http\Controllers\HomeController::class, 'book_rental_info'])->name('home.book_rental_info');
 Route::get('/rentals/{bucket}/book-rental-duration', [App\Http\Controllers\HomeController::class, 'book_rental_duration'])->name('home.book_rental_duration');
+Route::get('/rentals/{bucket}/book-rental-time', [App\Http\Controllers\HomeController::class, 'book_rental_time'])->name('home.book_rental_time');
+Route::get('/rentals/{bucket}/book-rental-customer-info', [App\Http\Controllers\HomeController::class, 'book_rental_customer_info'])->name('home.book_rental_customer_info');
+Route::get('/rentals/{bucket}/book-confirmation', [App\Http\Controllers\HomeController::class, 'book_confirmation'])->name('home.book_confirmation');
+Route::get('/merchant-agreement', [App\Http\Controllers\HomeController::class, 'merchant_agreement'])->name('home.merchant_agreement');
+Route::get('/privacy-policy', [App\Http\Controllers\HomeController::class, 'privacy_policy'])->name('home.privacy_policy');
 
 
 Route::get('/book-now', [App\Http\Controllers\HomeController::class, 'book_now'])->name('home.book_now');
@@ -54,7 +57,7 @@ Route::post('/receive-peekpro-reservation', [App\Http\Controllers\PeekProControl
 
 
 Route::get('/team', [App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
-Route::post('signature_pad', [SignaturePadController::class, 'store'])->name('signature_pad.store');
+
 
 
 

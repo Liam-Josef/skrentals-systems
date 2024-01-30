@@ -11,6 +11,9 @@ class Duration extends Model
 
     protected $guarded = [];
 
+    public function buckets() {
+        return $this->belongsToMany(Bucket::class);
+    }
     public function types() {
         return $this->belongsToMany(Type::class);
     }
@@ -19,5 +22,8 @@ class Duration extends Model
     }
     public function prices() {
         return $this->belongsToMany(Price::class);
+    }
+    public function rentals() {
+        return $this->belongsToMany(Rental::class);
     }
 }

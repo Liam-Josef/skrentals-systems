@@ -62,5 +62,14 @@ class Rental extends Model
     public function maintenances() {
         return $this->belongsToMany(Maintenance::class);
     }
+    public function bookings() {
+        return $this->belongsToMany(Booking::class);
+    }
+    public function types() {
+        return $this->belongsToMany(Type::class);
+    }
+    public function durations() {
+        return $this->belongsToMany(Duration::class);
+    }
 
 }

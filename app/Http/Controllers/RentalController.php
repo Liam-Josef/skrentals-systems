@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Application;
 use App\Models\Availabil;
+use App\Models\Booking;
+use App\Models\Bucket;
 use App\Models\Coc;
 use App\Models\Customer;
 use App\Models\Duration;
@@ -24,11 +26,44 @@ class RentalController extends Controller
 
     public function index() {
         $rentals = Rental::all();
+        $today = Carbon::now('PST')->toDateString();
+        $bookings = [];
+
+//        $appointments = Bucket::with(['client', 'employee'])->get();
+//        $bucket = Bucket::with(['duration', 'type'])->get();
+        $buckets = Booking::where('is_active', '=', '1')->get();
+
+//        $types = Type::all();
+
+        foreach ($buckets as $bucket) {
+            $bookings[] = [
+//                'title' => $bucket->duration->name . ' ('.$bucket->type->name.')',
+                'title' => $bucket->last. ', ' .$bucket->first. ' | ' .$bucket->ticket_list,
+                'start' => $bucket->activity_date_start,
+                'end' => $bucket->activity_date_end,
+                'url' => 'main/'.$bucket->id,
+            ];
+        }
 
         return view('admin.rentals.index', [
            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
-            'rentals' => $rentals
+            'rentals' => $rentals,
+            'bookings' => $bookings,
+            'today' => $today
+        ]);
+    }
+
+    public function booking(Booking $booking) {
+        return view('admin.rentals.booking', [
+            'booking' => $booking,
+            'applications' => Website::where('id', '=', '1')->get(),
+            'types' => Type::where('id', '=', $booking->type_id)->get(),
+            'durations' => Duration::where('id', '=', $booking->duration_id)->get(),
+            'websites' => Website::where('id', '=', '1')->get(),
+            'rental' => Rental::all(),
+            'users' => User::all(),
+            'vehicles' => Vehicle::all()
         ]);
     }
 
@@ -44,14 +79,15 @@ class RentalController extends Controller
         ]);
     }
 
-    public function rentalToday() {
-        $rentals = Rental::all();
+    public function cancelled() {
+        $rentals = Booking::where('is_active', '=', '0')->get();
         $today = Carbon::now('PST')->toDateString();
-        return view('admin.rentals.rentals-today', [
+        return view('admin.rentals.cancelled-bookings', [
            'applications' => Website::where('id', '=', '1')->get(),
             'websites' => Website::where('id', '=', '1')->get(),
             'rentals' => $rentals,
-            'today' => $today
+            'today' => $today,
+            'types' => Type::all()
         ]);
     }
 
@@ -92,26 +128,6 @@ class RentalController extends Controller
             'durations' => $durations,
             'prices' => $prices,
             'availabil' => $availabil,
-        ]);
-    }
-
-    public function duration_settings(Duration $duration) {
-        $rentals = Rental::all();
-        $types = Type::all();
-        $durations = Duration::all();
-        $prices = Price::all();
-        $availabils= Availabil::all();
-        $today = Carbon::now('PST')->toDateString();
-        return view('admin.rentals.duration-settings', [
-            'applications' => Website::where('id', '=', '1')->get(),
-            'websites' => Website::where('id', '=', '1')->get(),
-            'rentals' => $rentals,
-            'today' => $today,
-            'types' => $types,
-            'durations' => $durations,
-            'duration' => $duration,
-            'prices' => $prices,
-            'availabils' => $availabils,
         ]);
     }
 
@@ -169,16 +185,16 @@ class RentalController extends Controller
 
 
 
-    public function attachCustomer(Rental $rental) {
-        $rental->customers()->attach(request('customer'));
-        $rental->customers()->update(['attached' => '1']);
-        $rental->customers()->update(['attached_date' => Carbon::now('PST')->toDateString()]);
+    public function attachCustomer(Booking $booking) {
+        $booking->customers()->attach(request('customer'));
+        $booking->customers()->update(['attached' => '1']);
+        $booking->customers()->update(['attached_date' => Carbon::now('PST')->toDateString()]);
         return back();
     }
 
-    public function detachCustomer(Rental $rental) {
-        $rental->customers()->detach(request('customer'));
-        $rental->customers()->update(['attached' => '0']);
+    public function detachCustomer(Booking $booking) {
+        $booking->customers()->detach(request('customer'));
+        $booking->customers()->update(['attached' => '0']);
         return back();
     }
 

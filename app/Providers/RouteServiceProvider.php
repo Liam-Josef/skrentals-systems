@@ -38,6 +38,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web/web.php'));
 
+            Route::middleware('web')
+                ->group(base_path('routes/web/bucket.php'));
+
+            Route::middleware('web')
+                ->group(base_path('routes/web/booking.php'));
+
             Route::middleware('admin')
                 ->middleware('web')
                 ->group(base_path('routes/web/posts.php'));
@@ -74,6 +80,26 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware(['web', 'auth', 'role:dev'])
                 ->group(base_path('routes/web/roles.php'));
 
+            Route::middleware('admin')
+                ->middleware('web')
+                ->group(base_path('routes/web/availabil.php'));
+
+            Route::middleware('admin')
+                ->middleware('web')
+                ->group(base_path('routes/web/addition.php'));
+
+            Route::middleware('admin')
+                ->middleware('web')
+                ->group(base_path('routes/web/price.php'));
+
+            Route::middleware('admin')
+                ->middleware('web')
+                ->group(base_path('routes/web/duration.php'));
+
+            Route::middleware('team')
+                ->middleware(['web'])
+                ->group(base_path('routes/web/reschedule.php'));
+
             Route::middleware('team')
                 ->middleware(['web'])
                 ->group(base_path('routes/web/office.php'));
@@ -81,6 +107,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('team')
                 ->middleware(['web'])
                 ->group(base_path('routes/web/dock.php'));
+
+            Route::middleware('team')
+                ->middleware(['web'])
+                ->group(base_path('routes/web/signature.php'));
 
             Route::middleware('runnerview')
                 ->middleware(['web'])

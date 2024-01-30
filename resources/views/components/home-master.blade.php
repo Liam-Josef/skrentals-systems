@@ -31,13 +31,36 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <!-- Page level custom scripts -->
+    <script>
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $('#sidebarCollapseInt').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+    </script>
+@yield('scripts')
+
     <!-- Global site tag (gtag.js) - Google Analytics - DO NOT USE FOR ZAPIER -->
 </head>
 
 <body style="padding-top: 0px !important;">
 
 <!-- Navigation -->
-<x-home.home-header-sk></x-home.home-header-sk>
+<div class="homeSidebar">
+    <x-home.home-header-sk></x-home.home-header-sk>
+</div>
 
 <!-- Page Content -->
 <div class="container-fluid pl-0 pr-0">
@@ -57,26 +80,7 @@
 <x-modal.logout></x-modal.logout>
 <!-- Bootstrap core JavaScript -->
 {{--<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>--}}
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-
-<!-- Page level custom scripts -->
-<script>
-    $(document).ready(function () {
-
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-        $('#sidebarCollapseInt').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-
-    });
-</script>
-@yield('scripts')
 
 </body>
 

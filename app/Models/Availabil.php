@@ -11,6 +11,9 @@ class Availabil extends Model
 
     protected $guarded = [];
 
+    public function buckets() {
+        return $this->belongsToMany(Bucket::class);
+    }
     public function types() {
         return $this->belongsToMany(Type::class);
     }

@@ -26,7 +26,18 @@
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
 
+    <script>
+        $(document).ready(function () {
 
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $('#sidebarCollapseInt').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+    </script>
     @yield('styles')
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -38,6 +49,31 @@
 
         gtag('config', 'G-V2HB7CGVTH');
     </script>
+    <!-- Logout Modal-->
+    <x-modal.logout></x-modal.logout>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+    <!-- Page level custom scripts -->
+    @yield('scripts')
+    <script>
+        $(document).ready(function () {
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+            $('#sidebarCollapseInt').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+    </script>
 </head>
 
 <body style="padding-right :0px !important;">
@@ -47,6 +83,19 @@
 
 <!-- Page Content -->
 <div class="container-fluid">
+    <!-- Mobile Sidebar Button -->
+    <div class="col-12">
+        <div class="teamSidebar">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-primary" style="position: absolute; right: 10px; ">
+                        <i class="fas fa-align-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Mobile Sidebar Button -->
     <div class="page-min-height">
         <div class="row">
 
@@ -58,7 +107,7 @@
                     <ul class="navbar-nav sidebar-post accordion my-3 shadow" id="accordionSidebar">
 
                         <li class="nav-item bg-dark mb-2">
-                            <a href="{{route('office.index')}}" class="nav-link collapsed bg-dark {{ Request::is('team/office/index*') ? 'dkred disabled' : '' }}">
+                            <a id="officeSchedule" href="{{route('office.index')}}" class="nav-link collapsed bg-dark {{ Request::is('team/office/index*') ? 'dkred disabled' : '' }}">
                                 <span>Office Schedule</span>
                             </a>
                         </li>
@@ -111,20 +160,15 @@
     </div>
     <!-- /.row -->
 
+    <x-team.team-sidebar-mobile></x-team.team-sidebar-mobile>
+
 </div>
 <!-- /.container -->
 
 <!-- Footer -->
 <x-footer></x-footer>
 
-<!-- Logout Modal-->
-<x-modal.logout></x-modal.logout>
-<!-- Bootstrap core JavaScript -->
-<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
-<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
-<!-- Page level custom scripts -->
-@yield('scripts')
 
 </body>
 

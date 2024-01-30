@@ -13,7 +13,7 @@
                     <a href="#" class="phone">(503)284-6447</a>
                 </div>
                 <div class="col-sm-4">
-                    <a class="" href="{{route('admin.index')}}">
+                    <a class="" href="{{route('home.index')}}">
                         <img src="@yield('logo-horizontal-1')" alt="SK Watercraft Rentals" class="brand" />
                     </a>
                 </div>
