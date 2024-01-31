@@ -89,205 +89,146 @@
 
                 <div class="col-12 col-sm-8">
                     <div class="row">
+
+                    <div class="col-12 col-md-4
                         @if($scarabCount)
-                            <div class="col-12  col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Scarab</h4>
-                                        <h2 class="text-dk-red">{{$scarabCount}}</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        @else
-                            <div class="col-12  col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Scarab</h4>
-                                        <h2 class="text-dk-red">{{$scarabCount}}</h2>
-                                    </div>
-                                </div>
-                            </div>
+                           @else
+                                hidden
                         @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>Scarab</h4>
+                                    <h2 class="text-dk-red">{{$scarabCount}}</h2>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($pontoonCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Pontoon</h4>
-                                        <h2 class="text-dk-red">{{$pontoonCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>Pontoon</h4>
+                                    <h2 class="text-dk-red">{{$pontoonCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>Pontoon</h4>
-                                            <h2 class="text-dk-red">0</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($seadooCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>SeaDoo</h4>
-                                        <h2 class="text-dk-red">{{$seadooCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>SeaDoo</h4>
+                                    <h2 class="text-dk-red">{{$seadooCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>SeaDoo</h4>
-                                            <h2 class="text-dk-red">0</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($supCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>SUP</h4>
-                                        <h2 class="text-dk-red">{{$supCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>SUP</h4>
+                                    <h2 class="text-dk-red">{{$supCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>SUP</h4>
-                                            <h2 class="text-dk-red">{{$supCount}}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($kayakCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Kayak</h4>
-                                        <h2 class="text-dk-red">{{$kayakCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>Kayak</h4>
+                                    <h2 class="text-dk-red">{{$kayakCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>Kayak</h4>
-                                            <h2 class="text-dk-red">{{$kayakCount}}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($spyderCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Spyder</h4>
-                                        <h2 class="text-dk-red">{{$spyderCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>Spyder</h4>
+                                    <h2 class="text-dk-red">{{$spyderCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>Spyder</h4>
-                                            <h2 class="text-dk-red">{{$spyderCount}}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($segwayCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Segway</h4>
-                                        <h2 class="text-dk-red">{{$segwayCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>Segway</h4>
+                                    <h2 class="text-dk-red">{{$segwayCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>Segway</h4>
-                                            <h2 class="text-dk-red">{{$segwayCount}}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($backcountryCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>BC</h4>
-                                        <h2 class="text-dk-red">{{$backcountryCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>BC</h4>
+                                    <h2 class="text-dk-red">{{$backcountryCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>BC</h4>
-                                            <h2 class="text-dk-red">{{$backcountryCount}}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($summitCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Summit</h4>
-                                        <h2 class="text-dk-red">{{$summitCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>Summit</h4>
+                                    <h2 class="text-dk-red">{{$summitCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>Summit</h4>
-                                            <h2 class="text-dk-red">{{$summitCount}}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
+                        <div class="col-12 col-md-4
                         @if($alumCount)
-                            <div class="col-12 col-md-4">
-                                <div class="card shadow m-3">
-                                    <div class="card-body text-center">
-                                        <h4>Alum</h4>
-                                        <h2 class="text-dk-red">{{$alumCount}}</h2>
-                                    </div>
+                           @else
+                                hidden
+                        @endif
+                        ">
+                            <div class="card shadow m-3">
+                                <div class="card-body text-center">
+                                    <h4>Alum</h4>
+                                    <h2 class="text-dk-red">{{$alumCount}}</h2>
                                 </div>
                             </div>
-                            @else
-                                <div class="col-12 col-md-4">
-                                    <div class="card shadow m-3">
-                                        <div class="card-body text-center">
-                                            <h4>Alum</h4>
-                                            <h2 class="text-dk-red">{{$alumCount}}</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                        @endif
+                        </div>
 
                     </div>
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Booking;
 use App\Models\Maintenance;
 use App\Models\Post;
 use App\Models\Rental;
@@ -51,17 +52,17 @@ class TeamController extends Controller
 
         $rentals = Rental::all();
 
-        $rentalCounts = Rental::select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $scarabCount = Rental::where('activity_item', 'like', '%Scarab%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $pontoonCount = Rental::where('activity_item', 'like', '%Pontoon%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $seadooCount = Rental::where('activity_item', 'like', '%SeaDoo%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $supCount = Rental::where('activity_item', '=', 'Stand Up Paddleboard')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $kayakCount = Rental::where('activity_item', 'like', '%Kayak%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $spyderCount = Rental::where('activity_item', 'like', '%Spyder%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $segwayCount = Rental::where('activity_item', 'like', '%Segway%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $backcountryCount = Rental::where('activity_item', 'like', '%Renegade%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $summitCount = Rental::where('activity_item', 'like', '%Summit%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
-        $alumCount = Rental::where('activity_item', 'like', '%Aluminum%')->select('activity_date')->where('activity_date', 'like', '%'.$today.'%')->get()->count();
+        $rentalCounts = Booking::select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $scarabCount = Booking::where('activity_item', 'like', '%Scarab%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $pontoonCount = Booking::where('activity_item', 'like', '%Pontoon%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $seadooCount = Booking::where('activity_item', 'like', '%SeaDoo%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $supCount = Booking::where('activity_item', '=', 'Stand Up Paddleboard')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $kayakCount = Booking::where('activity_item', 'like', '%Kayak%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $spyderCount = Booking::where('activity_item', 'like', '%Spyder%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $segwayCount = Booking::where('activity_item', 'like', '%Segway%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $backcountryCount = Booking::where('activity_item', 'like', '%Renegade%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $summitCount = Booking::where('activity_item', 'like', '%Summit%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
+        $alumCount = Booking::where('activity_item', 'like', '%Aluminum%')->select('activity_date_start')->where('activity_date_start', 'like', '%'.$today.'%')->where('is_active', '=', '1')->get()->count();
 
         $serviceTotalCount = Maintenance::where('status', '!=', 'Completed')->get()->count();
         $serviceAppCount = Maintenance::where('status', '=', 'Completed')->get()->count();

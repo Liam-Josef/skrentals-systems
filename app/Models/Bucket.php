@@ -24,7 +24,7 @@ class Bucket extends Model
         return $this->belongsToMany(Availabil::class);
     }
     public function bookings() {
-        return $this->belongsToMany(Availabil::class);
+        return $this->belongsToMany(Booking::class);
     }
 
 }
